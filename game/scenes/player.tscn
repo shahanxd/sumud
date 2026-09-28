@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://sumud_player"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_player"]
+
+[sub_resource type="CapsuleShape2D" id="stand"]
+radius = 20.0
+height = 110.0
+
+[sub_resource type="RectangleShape2D" id="crawl"]
+size = Vector2(80, 40)
+
+[sub_resource type="RectangleShape2D" id="pickup"]
+size = Vector2(120, 120)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+floor_snap_length = 8.0
+script = ExtResource("1_player")
+
+[node name="StandShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -55)
+shape = SubResource("stand")
+
+[node name="CrawlShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("crawl")
+disabled = true
+
+[node name="CeilingCheck" type="RayCast2D" parent="."]
+position = Vector2(0, -38)
+target_position = Vector2(0, -74)
+collision_mask = 1
+
+[node name="PickupArea" type="Area2D" parent="."]
+position = Vector2(0, -40)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("pickup")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Body" type="Polygon2D" parent="Visual"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(-12, -80, 12, -80, 16, -40, 10, -40, 14, 0, 4, 0, 0, -30, -4, 0, -14, 0, -10, -40, -16, -40)
+
+[node name="Head" type="Polygon2D" parent="Visual"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(0, -112, 11, -109, 16, -98, 12, -85, 0, -80, -12, -85, -16, -98, -11, -109)
+
+[node name="Ponytail" type="Polygon2D" parent="Visual"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(-12, -104, -22, -100, -30, -84, -24, -78, -16, -86)
+
+[node name="EyeL" type="Polygon2D" parent="Visual"]
+color = Color(1, 0.85, 0.6, 1)
+polygon = PackedVector2Array(4, -100, 8, -100, 8, -96, 4, -96)
+
+[node name="EyeR" type="Polygon2D" parent="Visual"]
+color = Color(1, 0.85, 0.6, 1)
+polygon = PackedVector2Array(11, -100, 15, -100, 15, -96, 11, -96)
+
+[node name="Hand" type="Node2D" parent="Visual"]
+position = Vector2(22, -46)

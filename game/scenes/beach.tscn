@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://sumud_beach"]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/kite.tscn" id="2_kite"]
+[ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="3_carry"]
+[ext_resource type="Script" path="res://scripts/skyline.gd" id="4_skyline"]
+[ext_resource type="Script" path="res://scripts/camera_rig.gd" id="5_camera"]
+[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="6_sky"]
+[ext_resource type="Shader" path="res://shaders/sea.gdshader" id="7_sea"]
+
+[sub_resource type="ShaderMaterial" id="sky_mat"]
+shader = ExtResource("6_sky")
+
+[sub_resource type="ShaderMaterial" id="sea_mat"]
+shader = ExtResource("7_sea")
+
+[sub_resource type="LabelSettings" id="hint"]
+font_size = 22
+font_color = Color(0.95, 0.9, 0.8, 0.85)
+
+[node name="Beach" type="Node2D"]
+
+[node name="SkyLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Sky" type="ColorRect" parent="SkyLayer"]
+material = SubResource("sky_mat")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skyline" type="Node2D" parent="."]
+script = ExtResource("4_skyline")
+horizon_y = 720.0
+
+[node name="Sea" type="Polygon2D" parent="."]
+z_index = -10
+material = SubResource("sea_mat")
+color = Color(0.1, 0.2, 0.29, 1)
+polygon = PackedVector2Array(-3000, 790, 9000, 790, 9000, 1500, -3000, 1500)
+uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Ground"]
+polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
+
+[node name="Sand" type="Polygon2D" parent="Ground"]
+z_index = -5
+color = Color(0.16, 0.13, 0.11, 1)
+polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
+
+[node name="Boat" type="StaticBody2D" parent="."]
+position = Vector2(1500, 900)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Boat"]
+polygon = PackedVector2Array(-160, -70, 160, -70, 200, -120, 120, 0, -120, 0)
+
+[node name="Hull" type="Polygon2D" parent="Boat"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(-160, -70, 160, -70, 200, -120, 120, 0, -120, 0)
+
+[node name="Crates" type="StaticBody2D" parent="."]
+position = Vector2(2300, 900)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Crates"]
+polygon = PackedVector2Array(0, 0, 0, -60, 60, -60, 60, -120, 120, -120, 120, 0)
+
+[node name="Boxes" type="Polygon2D" parent="Crates"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(0, 0, 0, -60, 60, -60, 60, -120, 120, -120, 120, 0)
+
+[node name="LowWall" type="StaticBody2D" parent="."]
+position = Vector2(3000, 900)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="LowWall"]
+polygon = PackedVector2Array(0, -55, 0, -320, 100, -320, 100, -55)
+
+[node name="Wall" type="Polygon2D" parent="LowWall"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(0, -55, 0, -320, 100, -320, 100, -55)
+
+[node name="Bread" parent="." instance=ExtResource("3_carry")]
+position = Vector2(800, 900)
+label = "bread"
+
+[node name="Jerrycan" parent="." instance=ExtResource("3_carry")]
+position = Vector2(1100, 900)
+weight = 1
+label = "jerrycan"
+color = Color(0.85, 0.75, 0.2, 1)
+
+[node name="WaterDrum" parent="." instance=ExtResource("3_carry")]
+position = Vector2(1250, 900)
+weight = 2
+label = "water drum"
+color = Color(0.3, 0.5, 0.7, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(300, 900)
+kite_path = NodePath("../Kite")
+
+[node name="Kite" parent="." instance=ExtResource("2_kite")]
+anchor_path = NodePath("../Player/Visual/Hand")
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("5_camera")
+player_path = NodePath("../Player")
+kite_path = NodePath("../Kite")
+position_smoothing_enabled = false
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Hint" type="Label" parent="HUD"]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 1200.0
+offset_bottom = 60.0
+text = "A D  move      Space  jump      S  crawl      E  grab / drop      Q  kite up / down      W S  reel"
+label_settings = SubResource("hint")
