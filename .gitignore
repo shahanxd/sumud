@@ -1,0 +1,17 @@
+# Godot editor binaries and caches
+bin/
+.godot/
+*.import
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Builds
+build/
+export/
