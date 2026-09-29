@@ -3,8 +3,11 @@
 # Exit code is non-zero if anything fails. Usage from the repo root:  bash tools/check.sh
 set -u
 cd "$(dirname "$0")/.."
-GODOT=./bin/Godot_v4.7.2-stable_win64_console.exe
-if [ ! -x "$GODOT" ]; then
+GODOT=""
+for candidate in ./bin/Godot_v4.7.2-stable_win64_console.exe ./bin/Godot_v4.7.2-stable_linux.x86_64; do
+	if [ -x "$candidate" ]; then GODOT=$candidate; break; fi
+done
+if [ -z "$GODOT" ]; then
 	GODOT=$(command -v godot || true)
 fi
 if [ -z "$GODOT" ]; then
