@@ -50,9 +50,9 @@ polygon = PackedVector2Array(-12, -80, 12, -80, 16, -40, 10, -40, 14, 0, 4, 0, 0
 color = Color(0.09, 0.08, 0.1, 1)
 polygon = PackedVector2Array(0, -112, 11, -109, 16, -98, 12, -85, 0, -80, -12, -85, -16, -98, -11, -109)
 
-[node name="Ponytail" type="Polygon2D" parent="Visual"]
+[node name="Headscarf" type="Polygon2D" parent="Visual"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(-12, -104, -22, -100, -30, -84, -24, -78, -16, -86)
+polygon = PackedVector2Array(0, -117, 13, -113, 19, -100, 19, -86, 24, -70, 8, -74, 0, -76, -8, -74, -24, -70, -19, -86, -19, -100, -13, -113)
 
 [node name="EyeL" type="Polygon2D" parent="Visual"]
 color = Color(1, 0.85, 0.6, 1)
