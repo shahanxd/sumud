@@ -1,0 +1,173 @@
+{
+ "edits": [
+  {
+   "id": "p01",
+   "severity": "must",
+   "find_text": "It is absent on Days 1 and 2 and on the final beach, so its absence lands.",
+   "new_text": "It is absent on Day 1, arrives as the first faint hum on Day 2, and is gone on the final beach, so its absence lands.",
+   "reason": "Contradiction. The Day 2 row says \"the first hum in the sky\" and Core mechanics says \"From Day 2 the drone is in the sky as a sound\", but Audio says the zanana is absent on Days 1 and 2.",
+   "source": "gdd.new.md lines 76, 106, 158"
+  },
+  {
+   "id": "p02",
+   "severity": "must",
+   "find_text": "reading the route over the rubble on Day 7, lifting the generator wire to the roof on Day 8. The kite is lost on Day 7",
+   "new_text": "reading the route over the rubble on Day 7. The kite is lost on Day 7",
+   "reason": "Contradiction. The same paragraph says the kite is lost on Day 7 and returned on Day 9, so it cannot lift the generator wire on Day 8; Day 8 is also a Sumud day, not a siege day, and its mechanic row lists no kite.",
+   "source": "gdd.new.md lines 82, 106"
+  },
+  {
+   "id": "p03",
+   "severity": "must",
+   "find_text": "which funded Dreams on a Pillow with 244,000 USD from 3,300 backers",
+   "new_text": "which funded Dreams on a Pillow with 240,502 USD from more than 3,300 backers",
+   "reason": "Wrong and inconsistent number. Vision gives 240,502 USD, which 13-verify-facts.md item 1b confirms from LaunchGood; 244,000 is Wikipedia's rounded figure carried over from 12-critic-market.md. The doc must not contradict 13.",
+   "source": "13-verify-facts.md:11; gdd.new.md lines 13, 298"
+  },
+  {
+   "id": "p04",
+   "severity": "must",
+   "find_text": "which a game may enter once, ever, and which cannot precede a launch",
+   "new_text": "which a game may enter once, ever, and only while it is still unreleased",
+   "reason": "Inverted fact. Next Fest must come before launch, not after; the rule (12-critic-market.md) is that only unreleased games may enter. As written the clause says the opposite of what the paragraph argues.",
+   "source": "12-critic-market.md:8; gdd.new.md line 246"
+  },
+  {
+   "id": "p05",
+   "severity": "should",
+   "find_text": "decide what to carry, cross the street, help someone, bring light home, sit on the roof.",
+   "new_text": "decide what to carry, cross the street, help someone, bring light home, sit on the roof, write the notebook.",
+   "reason": "Wrong count. The sentence lists five steps, but the drawing is titled \"day loop · 6 steps\" and the next line says \"the same six steps\"; the sixth in the v0.1 loop is the notebook.",
+   "source": "gdd.new.md lines 98, 100, 102; research/00 line 88"
+  },
+  {
+   "id": "p06",
+   "severity": "should",
+   "find_text": "at most one beat a day, none on Day 7 night or Day 10",
+   "new_text": "at most one beat a day (Day 3 has two, one by day and one by night), none on Day 7 or Day 10",
+   "reason": "Internal contradiction. The same paragraph lists two beats on Day 3 (the stairs and the candle) and later says Day 7 \"has no timed input at all\", so \"none on Day 7 night\" and \"at most one a day\" are both untrue as written.",
+   "source": "gdd.new.md line 120"
+  },
+  {
+   "id": "p07",
+   "severity": "should",
+   "find_text": "at most one timed beat a day, all diegetic",
+   "new_text": "at most one timed beat a day (two on Day 3), all diegetic",
+   "reason": "Same inconsistency as p06, restated in Accessibility; keep the two sections in step.",
+   "source": "gdd.new.md lines 120, 304"
+  },
+  {
+   "id": "p08",
+   "severity": "should",
+   "find_text": "the bread you brought the twins on Day 3 is the paper for Sami's kite on Day 9",
+   "new_text": "the bread you brought the twins on Day 3 is why their family brings a part for Sami's kite on Day 9",
+   "reason": "Contradiction. The Sami paragraph says the kite's paper comes from Mama's books and lists one part per family; this example gives the paper to the twins instead.",
+   "source": "gdd.new.md lines 88, 110"
+  },
+  {
+   "id": "p09",
+   "severity": "should",
+   "find_text": "One street, its rooftops, the bakery, the clinic, the UNRWA school, the harbour and the beach: five spaces",
+   "new_text": "The beach, the street with its bakery and clinic, the home and its roof, the UNRWA school, the harbour: five spaces",
+   "reason": "The sentence names seven places and calls them five spaces; pillar 4 defines the five as beach, street, home and roof, school courtyard, harbour.",
+   "source": "gdd.new.md lines 32, 55"
+  },
+  {
+   "id": "p10",
+   "severity": "should",
+   "find_text": "Only two small games have been about Palestine, Liyla (2016) and the coming Dreams on a Pillow",
+   "new_text": "The two comparable small games about Palestine are Liyla (2016) and the coming Dreams on a Pillow",
+   "reason": "Overclaim the market critique itself contradicts: 12-critic-market.md names Fursan al-Aqsa, another Palestine-themed game, so \"only two\" is not defensible; the point is comparables.",
+   "source": "12-critic-market.md:24; gdd.new.md line 13"
+  },
+  {
+   "id": "p11",
+   "severity": "should",
+   "find_text": "and none is a narrative game about Gaza now",
+   "new_text": "and neither is a narrative game about Gaza now",
+   "reason": "Grammar: \"none\" for two items; \"neither\" is correct.",
+   "source": "gdd.new.md line 13"
+  },
+  {
+   "id": "p12",
+   "severity": "should",
+   "find_text": "The ten-day structure stands. The minutes do not:",
+   "new_text": "The ten-day structure stands. The first draft's 25 to 35 minutes a day do not:",
+   "reason": "A sentence that only makes sense to the author: a fresh reader has not seen the first draft's day lengths, which are named only in Production plan.",
+   "source": "gdd.new.md lines 53, 246"
+  },
+  {
+   "id": "p13",
+   "severity": "should",
+   "find_text": "and the promise made whoever wins: the winner flies at the wedding",
+   "new_text": "and the promise made, whoever wins: the winner flies at the wedding",
+   "reason": "The clause does not parse without the comma; it reads as \"the promise made [to] whoever wins\".",
+   "source": "gdd.new.md line 75"
+  },
+  {
+   "id": "p14",
+   "severity": "should",
+   "find_text": "per [The Gaza Kitchen](https://en.wikipedia.org/wiki/Palestinian_cuisine)",
+   "new_text": "per [Palestinian cuisine, Gaza dishes](https://en.wikipedia.org/wiki/Palestinian_cuisine)",
+   "reason": "Misleading link label: the URL is the Wikipedia article on Palestinian cuisine, not The Gaza Kitchen, and the Sources section already labels this link \"Palestinian cuisine, Gaza dishes\".",
+   "source": "gdd.new.md lines 40, 372"
+  },
+  {
+   "id": "p15",
+   "severity": "should",
+   "find_text": "and the accessibility guidelines behind Steam's \"playable at your own pace\" tag are in the Sources;",
+   "new_text": "and the accessibility guidelines behind Steam's \"playable at your own pace\" tag are in research/08;",
+   "reason": "Misleading pointer: the Sources section has no entries for Until Dawn, Florence, timed-moment research or accessibility guidelines; that material is in docs/research/08-intensity-and-ratings.md, and the doc already cites research files this way (research/18).",
+   "source": "gdd.new.md lines 120, 213, 358-382"
+  },
+  {
+   "id": "p16",
+   "severity": "should",
+   "find_text": "**Checks.** All 14 verses and 6 of the 8 hadith were confirmed a second time on 29 September 2026 (research/18); Sahih al-Bukhari 1284 and Sunan Ibn Majah 1896 carry one verification and are re-checked before launch.",
+   "new_text": "**Checks.** All 14 verses and 6 of the 8 hadith were confirmed a second time on 29 September 2026 (research/18); the two that wait are named above.",
+   "reason": "Says the same thing twice: the bullet \"Two cards wait\" two lines above already names both references, links them and states the re-check; the intro paragraph says it a third time.",
+   "source": "gdd.new.md lines 178, 211, 213"
+  },
+  {
+   "id": "p17",
+   "severity": "should",
+   "find_text": "; the macOS build moves after launch; the public kite web page moves after launch.",
+   "new_text": "; the macOS build moves after launch.",
+   "reason": "Misleading: Go-to-market already states the public kite page follows after launch, so listing it as a cut to be triggered later contradicts the plan (the first cut item is flagged \"already the plan\"; this one is not).",
+   "source": "gdd.new.md lines 270, 294"
+  },
+  {
+   "id": "p18",
+   "severity": "nit",
+   "find_text": "# SUMUD — Game Design Document v0.2",
+   "new_text": "# SUMUD: Game Design Document v0.2",
+   "reason": "The only em dash in the document, in the title; the voice rules forbid em dashes.",
+   "source": "gdd.new.md line 1"
+  },
+  {
+   "id": "p19",
+   "severity": "nit",
+   "find_text": "so the prototype switches off it this week",
+   "new_text": "so the prototype moves off it this week",
+   "reason": "\"switches off it\" reads as \"turns it off\"; the meaning is that the prototype stops using the Compatibility renderer.",
+   "source": "gdd.new.md line 222"
+  },
+  {
+   "id": "p20",
+   "severity": "nit",
+   "find_text": "records the fourteen ayat in Scripture moments",
+   "new_text": "records the fourteen passages in Scripture moments",
+   "reason": "Count: the table has fourteen Quran rows but three of them are two ayat each (3:169-170, 76:8-9, 94:5-6), so the hafiz records seventeen ayat in fourteen passages.",
+   "source": "gdd.new.md lines 164, 180-203"
+  },
+  {
+   "id": "p21",
+   "severity": "nit",
+   "find_text": "the wedding photo, the men's courtyard in silhouette, is composed from who you helped and can be saved",
+   "new_text": "the wedding photo (the men's courtyard in silhouette) is composed from who you helped and can be saved",
+   "reason": "The comma appositive reads as a list item inside an already long list; brackets make it parse on first read.",
+   "source": "gdd.new.md line 124"
+  }
+ ],
+ "notes": "Checked the whole of gdd.new.md (383 lines) top to bottom, every table row's cell count (all seven tables consistent), numbered list continuity, bracket balance (only the escaped embedded-content markers differ, by design), doubled words (only Arabic in the Scripture table, which was not touched), and em/en dashes (one em dash, the title; one en dash inside Saheeh's English on line 189, copied from quran.com, left alone). Every section's first sentence states its point. Facts cross-checked against 13 to 18 and 12: Steam prices, Godot 4.7.2 date, gdUnit4 4.7.1 list, Android toolchain, 1.3 GB templates, UNICEF 21,289 to 3 Feb 2026, one child a day, Haddad, Bakr, the sea (Jan 2025 closure, 14 changes in 2019), 24 and 25 August kite dates, 12,350 kites in 2011, UNESCO 2021, Dr Israr Ahmed April 2022, Vapor World, kyles 2016 pack, ROSE, Maher Zain, ElevenLabs from 6 USD, PEGI ratings, Liyla dates, itch bundle totals, tax percentages, charity numbers, Next Fest dates; all hold except the Dreams on a Pillow figure (p03). GodotSteam's 4 September 2026 archive date is not covered by 17 (it says GodotSteam is unverified); not contradicted, so no edit.\n\nLower-priority items not made into edits (design or founder calls, or too small): (1) Line 106 says kite running is the set piece of Days 1 and 9, but the Day 9 row has no kite running; either add a fallen-kite run to Day 9 or say Day 1 only. (2) Day 4's mechanic is \"Two-handed carry\" while Carry describes a jerrycan as a heavy one-hand item and Art says the body leans under a jerrycan; say whether Day 4 means two jerrycans. (3) Line 152 puts the duff in the clear on Day 9's henna night; HANDOFF's hard rule is duff only at the wedding on the women's side. A henna night is part of the wedding, but the scholar who signs off the wedding storyboard should be shown this line explicitly. (4) Line 257's Week 4 gate names two strangers while lines 282, 296 and 354 say five testers by Week 4; presumably cumulative, but say so. (5) Decision 12 wants readers by Week 6 while the Week 8 gate is the first hard stop; consistent as target versus gate, but a reader may ask. (6) \"which for this audience is a selling point\" appears verbatim at lines 168 and 308. (7) The headscarf sentence appears near-verbatim in the cast table (line 61) and Characters (line 138), both with the readers' caveat. (8) Line 88 says the two child-death cases are in the Sources; the wedding-tent article is, but the four-year-old kite case (EI via Countercurrents) is not listed. (9) Line 292 says \"the Sources tab\" while the doc elsewhere says \"the Sources section\"; if an in-game sources tab is meant, say so once. (10) Line 3's byline \"Sep 29, 2026 · @Gulrez Alam\" is the doc's own date and mention block (US date format); not editable as text. (11) 16-verify item 16 dates the first kite record to 30 July 2009 while 13-verify item 3a and the UN News link give 29 July 2010; the doc's \"2010 and 2011\" follows 13 and is not contradicted, but the readers could be asked whether to say \"2009 to 2011\". No Arabic in the Scripture table was touched."
+}

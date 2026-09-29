@@ -8,7 +8,7 @@ shahanxd (GitHub). Indian, a practising Muslim; everything in the game must be h
 
 ## Where things live
 
-- **Design document (living, commentable):** https://claude.ai/code/artifact/edb009e1-ac2b-462a-8860-f031366c2ec2 — a Claude Doc, now titled v0.2. Doc id `edb009e1-ac2b-462a-8860-f031366c2ec2`, tab file id `97c63c3c-32af`, body node id `dc81e545-7518`. Edit it with the docs tools, never by publishing HTML. `docs/gdd.md` is a faithful markdown snapshot (doc rev 48).
+- **Design document (living, commentable):** https://claude.ai/code/artifact/edb009e1-ac2b-462a-8860-f031366c2ec2 — a Claude Doc, now titled v0.2. Doc id `edb009e1-ac2b-462a-8860-f031366c2ec2`, tab file id `97c63c3c-32af`, body node id `dc81e545-7518`. Edit it with the docs tools, never by publishing HTML. `docs/gdd.md` is a faithful markdown snapshot (doc rev 79).
 - **Research, verification and critiques:** `docs/research/`, numbered. 00 is the original v0.1 doc plus the founder's full feedback. 01 to 08 research lenses, 09 to 12 critiques, 13 to 18 independent verification passes, 19 and 20 the edit lists that folded critique 11 and the corrections into v0.2. Nothing in the doc may contradict 13 to 18.
 - **Decisions log:** `docs/decisions.md`. **Rights ledger:** `docs/rights.md`. **Outreach drafts** (readers, testers): `docs/outreach.md`.
 
@@ -16,7 +16,7 @@ shahanxd (GitHub). Indian, a practising Muslim; everything in the game must be h
 
 Limbo as the art base, with more colour carried by light; Godot; the cast as designed; ten days; English and Arabic at launch; player kites in the ending; title SUMUD for now; one death and Karim's choice; no combat; the perpetrator is "they", faceless but present (soldiers, gunboats, drones may be shown indirectly), and the game must feel defiant, not cowardly; children's deaths may be shown; absolutely halal, so no instruments, Quran or hadith quietly at related moments, halal nasheed instead of music; real explosion sound is fine; mobile one day, Steam first; surprise moments and cinematics only where they work; The Kite Runner as a liked reference, not a template; prototype this week, final game in two to three months; charity "yes, 100%" (meaning to be clarified); the repo is on GitHub and the work continues in the cloud.
 
-## The design document is finished (v0.2, rev 48)
+## The design document is finished (v0.2, rev 79)
 
 Done on 29 September, in the cloud session:
 
@@ -26,7 +26,7 @@ Done on 29 September, in the cloud session:
 4. **Verification corrections** applied: Liyla's dates (18, 20 and 22 May 2016), the BBC's 2025 guidance on "yahud", Maher Zain's album, Layla's headscarf age wording, the December 2025 shelling (the shelter beside the tent), the Valiant Hearts sale price. The UN Commission of Inquiry figures were not in the doc, so nothing to correct; Darul Ifta Birmingham and the Standing Committee are not cited in the doc.
 5. **Proofread**: contradictions fixed (the strike clock, the eight inputs, "the first four systems" overclaim, the wedding photo, Israel named "once"), the Tech and Production sections brought up to date, the Decisions items on fonts, Steamworks and charity rewritten.
 
-A final two-agent check (facts and rules on every changed sentence; a fresh-eyes proofread) was started at the end of the session; its findings, if any, go into the doc before the next handoff.
+A final two-agent check (facts and rules on every changed sentence; a fresh-eyes proofread) found 31 items; 29 were applied (research/21 and 22 hold the lists): the Steam fee's 30-day wait does not block the store page, the zanana now arrives faintly on Day 2 to match the Structure table, the kite no longer lifts a wire on Day 8 while lost, Next Fest "only while unreleased", the six-step loop, Day 3's two timed beats, the five spaces named consistently, one figure for Dreams on a Pillow (240,502 USD), the Google Play rule stated exactly, a row added to the critiques table on the mosque as a sixth space, and smaller wording. Not applied: the em dash in the title (the founder has seen that title) and a duplicate of the Palestine-games count fix.
 
 ## Pending founder confirmations
 

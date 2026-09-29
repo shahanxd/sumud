@@ -1,0 +1,85 @@
+{
+ "edits": [
+  {
+   "id": "E1",
+   "severity": "must",
+   "find_text": "The fee starts a 30-day wait before any page can go live, and onboarding can take one to three weeks.",
+   "new_text": "The fee starts Steam's 30-day clock, and onboarding can take one to three weeks.",
+   "reason": "Unsupported and self-contradictory. Research 12 (line 20) says only 'a 30-day wait after paying the 100 dollar Steam Direct fee'; it never says the wait blocks the store page, and it lists the wait beside the two-week Coming Soon minimum and the 3 to 5 day page review as the runway before release. The doc's own plan pays the fee in Week 1 (29 September to 5 October) and puts the Coming Soon page live in Week 4 (20 to 26 October), which is inside 30 days, so 'before any page can go live' cannot be true at the same time as the Week 4 gate. Week 1 already uses the neutral wording 'so the 30-day clock runs'. partner.steamgames.com is blocked from this container, so the neutral wording is the one the research supports.",
+   "source": "docs/research/12-critic-market.md line 20; gdd.new.md lines 254, 257, 298"
+  },
+  {
+   "id": "E2",
+   "severity": "should",
+   "find_text": "and Google Play's sensitive-events policy bans appearing to profit from one unless the app is educational, documentary or artistic with a discernible benefit to the victims.",
+   "new_text": "and Google Play's sensitive-events policy bans appearing to profit from one with no discernible benefit to the victims, with an exception for educational, documentary or artistic content.",
+   "reason": "The doc fuses two separate conditions into one. Research 12 quotes the policy as banning 'appearing to profit from a sensitive event with no discernible benefit to the victims', with a separate exception for educational, documentary or artistic content. As written the doc requires both together, which overstates the bar.",
+   "source": "docs/research/12-critic-market.md line 24"
+  },
+  {
+   "id": "E3",
+   "severity": "should",
+   "find_text": "LaunchGood, which funded Dreams on a Pillow with 244,000 USD from 3,300 backers after other platforms refused it",
+   "new_text": "LaunchGood, which funded Dreams on a Pillow with 240,502 USD from more than 3,300 backers after other platforms refused it",
+   "reason": "The same document gives two figures for one campaign: 240,502 USD in Vision (per Game Developer) and 244,000 USD here (research 12 took it from Wikipedia and PC Gamer). Research 13 claim 1b confirms 240,502 USD against a 194,800 goal from over 3,300 backers and notes Wikipedia's 244,000 as the outlier. Use one figure.",
+   "source": "docs/research/13-verify-facts.md line 11 to 13; gdd.new.md line 13"
+  },
+  {
+   "id": "E4",
+   "severity": "should",
+   "find_text": "| 10 | Before the duff starts on the women's side of the zaffa |",
+   "new_text": "| 10 | Before the duff starts in the women's hall |",
+   "reason": "Scripture Moment no longer matches the story. The rewritten Day 10 row puts the zaffa in the courtyard (men, played as Karim) and the duff in the women's hall (played as Layla); 'the women's side of the zaffa' is the old Day 10 wording. Arabic and English cells untouched.",
+   "source": "gdd.new.md line 84 (Day 10 row); line 152 (Teta's songs); Decision 3"
+  },
+  {
+   "id": "E5",
+   "severity": "should",
+   "find_text": "one real bang, and the minaret falls silent; blackout",
+   "new_text": "one real bang, and the minaret falls silent, so until Day 8 the adhan is one unaided voice from a roof; blackout",
+   "reason": "The new clause creates an unexplained gap. 'Faith is lived' says the adhan marks the phases of every day and 'The adhan is the clock' makes it the phase mechanic, but the minaret now falls silent on Day 3 and the Day 8 row says the speaker carries the adhan 'for the first time since the mosque was hit'. Days 4 to 7 would have no adhan and no clock. Research 11 proposed exactly this reconciliation (a neighbour calling the adhan from a roof unaided). The added clause is fiction, not a fact claim, so no verification file is needed.",
+   "source": "gdd.new.md lines 47, 82, 114, 156; docs/research/11-critic-culture-and-faith.md line 13"
+  },
+  {
+   "id": "E6",
+   "severity": "should",
+   "find_text": "records the fourteen ayat in Scripture moments, and the four of Teta's bedtime, under a written licence",
+   "new_text": "records the fourteen Quran passages in Scripture moments and the four passages of Teta's bedtime under a written licence",
+   "reason": "The counts are wrong as ayat and this sentence is the recording brief. The table has fourteen Quran entries but three of them (3:169-170, 76:8-9, 94:5-6) are two ayat each, so seventeen ayat; Ayat al-Kursi plus the three Quls are sixteen ayat, not four. 'Passages' is the convention the Scripture section already uses ('one complete ayah or short passage').",
+   "source": "gdd.new.md lines 154, 162, 182 to 203"
+  },
+  {
+   "id": "E7",
+   "severity": "should",
+   "find_text": "| Culture and faith | Move the commercial case out of the design document | Disagree. The founder asked for the commercial case; it stays, rewritten with numbers, and the readers are paid and credited |",
+   "new_text": "| Culture and faith | Move the commercial case out of the design document | Disagree. The founder's brief covers Steam, the fee, charity and a launch date, so the commercial case stays, rewritten with numbers, and the readers are paid and credited |\n| Culture and faith | Add the mosque as a sixth space, with Jumu'ah on its rubble | Disagree on the space. Five spaces is the scope; the mosque is present as the adhan that turns every phase, the minaret on Day 3 and the courtyard speaker on Day 8. Jumu'ah goes to the readers |",
+   "reason": "Two problems in one row. (1) 'The founder asked for the commercial case' is not in the founder's feedback: research 00 records 'Steam fee: fine', 'Charity: yes, 100%', 'Mobile one day; Steam for now' and a launch window, but no request for the commercial case; the reworded cell states only what 00 supports. (2) The table says it 'records what changed and where the document disagrees', but research 11's blocker fix 'Add the mosque to the five places' and 'hold Jumu'ah on the rubble of the mosque' is a disagreement the table does not record (Jumu'ah appears only in the 'Not written' row). The added row closes that gap.",
+   "source": "docs/research/00-gdd-v0.1-and-founder-feedback.md lines 215 to 230; docs/research/11-critic-culture-and-faith.md line 13; gdd.new.md line 314"
+  },
+  {
+   "id": "E8",
+   "severity": "should",
+   "find_text": "Only two small games have been about Palestine, Liyla (2016)",
+   "new_text": "Only two small narrative games have been about Palestine, Liyla (2016)",
+   "reason": "Research 12 itself documents a third small game about Palestine, Fursan al-Aqsa (a solo-developed shooter removed from the UK store in 2024), so 'only two small games' is false as written. Restricting the claim to narrative games makes it true and matches the paragraph's point.",
+   "source": "docs/research/12-critic-market.md line 24"
+  },
+  {
+   "id": "E9",
+   "severity": "nit",
+   "find_text": "anchored in their developers being Palestinian",
+   "new_text": "anchored in their developer being Palestinian",
+   "reason": "Liyla and Dreams on a Pillow have the same developer, Rasheed Abueideh; research 12 and 13 both say so.",
+   "source": "docs/research/12-critic-market.md line 36; docs/research/13-verify-facts.md line 12"
+  },
+  {
+   "id": "E10",
+   "severity": "nit",
+   "find_text": "which the classical biographies say",
+   "new_text": "which most classical biographies say",
+   "reason": "Research 11 asserts al-Shafi'i was born in Gaza without a source, and no verification file covers it; the classical biographies give Gaza as the main report but also record Asqalan and Yemen, so 'the classical biographies say' overstates. The hedge already in the sentence (readers confirm before it is written) is right; this keeps the claim accurate until then.",
+   "source": "docs/research/11-critic-culture-and-faith.md line 92"
+  }
+ ],
+ "notes": "Confirmed against the research files (no edit needed): Path Out 192, Bury Me My Love 129 with BAFTA and Washington Post, 1979 Revolution 1,022 after 304,741 USD and four years, Liyla could not fund a next game, narrative top genre 2025, base case 200 to 1,500 (12 lines 16 to 17). UNICEF 21,289 to 3 Feb 2026 and one child a day in the ceasefire (13 claim 11). BBC 2025 default to literal 'Jews' and the Times of Israel URL (16 claim 23). Liyla 18, 20 and 22 May 2016 (13 claim 1a). Valiant Hearts 3.74 in a 75 percent weekend deal (13 claim 7). Apple 1.1.2 and 1.1.7 (12 line 24). Steam Direct 100 USD, two-week Coming Soon, 3 to 5 day review, 150 wishlists, 1,000 to 3,000 vs 7,000 (12 line 20 to 21). Bundle totals 902,365, 365,554, 578,573 (12 line 48). Steam Playtest, press list, teacher's guide, review-bomb response, devlogs as time sinks (12). Charity mechanics: 30 percent, 15 percent treaty withholding, no 80G for foreign charities, 20 percent TCS above 10 lakh, UK commercial participator, seven US states, War Child DLC since 2015, MAP 1045315, PCRF 501(c)(3), 11 bit launch-week pledge and three-tier DLC (12 lines 12 to 13, 50, 55). Maher Zain vocals-only edition and hundreds of thousands (14). Kite moderation rules (12 line 29). Tuffah wedding shelter wording (16 claim 20). Four-year-old single-sourced (16 claim 17). Teta born after the Nakba, mother's key; Sami as ibn 'amm; scholarship not boat; news and teasing; marbles; hasbunallahu and untranslated phrases; WANN, PViG, Abueideh as peer; Kite Runner avoid list; bismillah on pages; bedtime Ayat al-Kursi and Quls; switching to see the wedding whole; al-Shafi'i line (all in 11). Scripture: all 14 Quran entries and the six hadith 6011, 6014, 1283, 1956, 2486, 5644 appear in 18; 1284 and 1896 absent from 18, so 'All 14 verses and 6 of the 8 hadith' is exact; reserve list matches 03. Every other Moment matches the story (Day 1 roof question, Day 3 stairs and bread, Day 4 truck and jerrycan, Day 5 Iqra, Day 6 boat and net, Day 7 corridor, door, Sami's name, Day 8 courtyard, janazah, poster, Day 9 bread and kite, Day 10 nikah, sky). Repo checks: fonts total 1.1 MB with OFL.txt in both folders; founder's machine is Windows (research 06 line 111, HANDOFF line 60); the 'by the evening' list matches commits 921efa4 (beat sequencer, notebook JSON, colour budget, screen effects) and c2062ce (beach beat, kite fetches Sami's string) plus game/data/lines.csv and palette.json. Controls: eight inputs now count correctly, but project.godot has no 'crawl' action (move, jump, interact, grab, kite, switch_character, notebook; crawl is move_down), so the doc's list describes intent, not the build. Critique table rows otherwise fair to 11 and 12. Not fetched: partner.steamgames.com is egress-blocked, so E1 rests on 12 and the doc's own dates. Pre-existing tensions noted, not edited because the text is unchanged: Layla 'gives her own kite away on Day 9' while the mechanics say the kite is taken on Day 7 and returned as Sami's on Day 9; Teta's bedtime recitation has a woman reciting on screen while the audio is 'the recorded reciter's', a scene-logic oddity for the scholar; playing as Layla inside the Day 10 women's hall means whatever women sing there reaches a mixed player base in the clear, which the Teta's songs paragraph names as the highest halal risk and should be in the wedding storyboard the scholar reviews. Hard rules: no new sentence breaks halal, combat, faceless-perpetrator or Sami's-death rules."
+}
