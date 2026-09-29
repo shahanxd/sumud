@@ -318,11 +318,12 @@ def write_wav(path: str, x: np.ndarray, loop: bool, rng: np.random.Generator) ->
     if x.ndim == 1:
         x = x[:, None]
     x = np.asarray(x, dtype=np.float64)
-    if loop:
-        x = np.concatenate([x, x[:1]], axis=0)
-    frames, channels = x.shape
     dither = (rng.random(x.shape) + rng.random(x.shape) - 1.0) / 32768.0
     pcm = np.clip(np.round((x + dither) * 32767.0), -32768, 32767).astype("<i2")
+    if loop:
+        # Duplicate after quantising so the copy is bit-identical to frame 0.
+        pcm = np.concatenate([pcm, pcm[:1]], axis=0)
+    frames, channels = pcm.shape
     data = pcm.tobytes()
     fmt = struct.pack("<HHIIHH", 1, channels, SR, SR * channels * 2, channels * 2, 16)
     chunks = [b"fmt " + struct.pack("<I", len(fmt)) + fmt, b"data" + struct.pack("<I", len(data)) + data]
@@ -391,14 +392,22 @@ def strike_bang(rng: np.random.Generator) -> np.ndarray:
     front[pre + k:pre + 4 * k] = np.linspace(-0.6, 0.0, 3 * k)
     front = band(front, 25, None, order=1)
 
-    # Crack.
-    ck = seconds(0.014)
-    crack_l = white(rng, ck) * np.exp(-t_axis(ck) / 0.0035)
-    crack_r = 0.6 * crack_l + 0.8 * white(rng, ck) * np.exp(-t_axis(ck) / 0.0035)
+    # Crack: a clipped broadband burst with a fast and a slower decay, plus the punch
+    # (200 Hz to 1.2 kHz, 40 ms) that carries the hit on small speakers.
+    ck = seconds(0.026)
+    tk = t_axis(ck)
+    shape = np.exp(-tk / 0.0035) + 0.35 * np.exp(-tk / 0.012)
+    crack_l = white(rng, ck) * shape
+    crack_r = 0.6 * crack_l + 0.8 * white(rng, ck) * shape
     crack = np.zeros((n, 2))
     crack[pre:pre + ck, 0] = band(crack_l, 900, None, order=2)
     crack[pre:pre + ck, 1] = band(crack_r, 900, None, order=2)
     crack = soft_clip(crack * 3.0, drive=2.5)
+    pk = seconds(0.04)
+    punch = band(white(rng, pk), 200, 1200, order=2) * np.exp(-t_axis(pk) / 0.011)
+    punch = soft_clip(punch / (peak(punch) + 1e-12) * 2.0, drive=2.0)
+    crack[pre:pre + pk, 0] += 0.8 * punch
+    crack[pre:pre + pk, 1] += 0.8 * punch
 
     # Sub thump: falling sine, sharp, saturated; a second, lower pulse a few ms later
     # (the ground shock arrives through the floor).
@@ -419,7 +428,7 @@ def strike_bang(rng: np.random.Generator) -> np.ndarray:
     fc = 4000.0 * np.exp(-np.maximum(ts, 0) / 0.45) + 90.0
     body = np.zeros((n, 2))
     for c in range(2):
-        src = coloured(rng, n, slope=-1.6) * body_env
+        src = coloured(rng, n, slope=-1.2) * body_env
         src = tv_filter(src, fc, 0.7, kind="lowpass")
         body[:, c] = np.roll(src, pre)
         body[:pre, c] = 0.0
@@ -450,7 +459,7 @@ def strike_bang(rng: np.random.Generator) -> np.ndarray:
         thud = band(white(rng, d), 70, rng.uniform(220, 520), order=2) * np.exp(-t_axis(d) / rng.uniform(0.02, 0.05))
         thud = soft_clip(thud * 2.0, 1.5) * rng.uniform(0.3, 0.8) * math.exp(-(tt - t0) / 1.4)
         place(debris, pan(thud, rng.uniform(-0.7, 0.7)), seconds(tt))
-    debris = normalise_peak(debris, -6.0)
+    debris = normalise_peak(debris, -5.0)
 
     # Dust pouring: a hiss that swells just after the bang and dies over three seconds.
     dust = np.zeros((n, 2))
@@ -462,11 +471,11 @@ def strike_bang(rng: np.random.Generator) -> np.ndarray:
 
     # Mix the dry impact, then send it through the street.
     dry = np.zeros((n, 2))
-    dry[:, 0] = 0.9 * front + 1.0 * sub
-    dry[:, 1] = 0.9 * front + 1.0 * sub
-    dry += 0.55 * crack + 0.8 * body
-    ir_l = street_ir(rng, 2.6, rt_low=2.2, rt_high=0.9, early=[(0.031, 0.5), (0.047, 0.35), (0.074, 0.3), (0.118, 0.2)])
-    ir_r = street_ir(rng, 2.6, rt_low=2.2, rt_high=0.9, early=[(0.029, 0.4), (0.052, 0.35), (0.081, 0.25), (0.126, 0.2)])
+    dry[:, 0] = 0.9 * front + 0.8 * sub
+    dry[:, 1] = 0.9 * front + 0.8 * sub
+    dry += 1.2 * crack + 1.0 * body
+    ir_l = street_ir(rng, 2.6, rt_low=1.7, rt_high=0.9, early=[(0.031, 0.5), (0.047, 0.35), (0.074, 0.3), (0.118, 0.2)])
+    ir_r = street_ir(rng, 2.6, rt_low=1.7, rt_high=0.9, early=[(0.029, 0.4), (0.052, 0.35), (0.081, 0.25), (0.126, 0.2)])
     wet = np.zeros((n, 2))
     wet[:, 0] = convolve(dry[:, 0], ir_l)
     wet[:, 1] = convolve(dry[:, 1], ir_r)
@@ -500,7 +509,7 @@ def ringing(rng: np.random.Generator) -> np.ndarray:
     fl = smooth(white(rng, n), 5.0)
     flutter = 1.0 + 0.12 * fl / (peak(fl) + 1e-12)
     out = core * env * flutter
-    return fade(normalise_peak(out, -24.0))
+    return normalise_peak(fade(out), -24.0)
 
 
 # --------------------------------------------------------------------------------------
@@ -657,9 +666,11 @@ def wind_loop(rng: np.random.Generator) -> np.ndarray:
         if len(whistle_at) == 3:
             break
 
+    low_common = spectral_band(coloured(rng, n, -2.0), 18, 160, 3)
     for c in range(2):
         s = np.roll(speed, lag * c)
-        low = spectral_band(coloured(rng, n, -2.0), 18, 160, 3)
+        # The pressure band is mostly shared between the ears; the whoosh and hiss are not.
+        low = 0.8 * low_common + 0.45 * spectral_band(coloured(rng, n, -2.0), 18, 160, 3)
         low = low / (rms(low) + 1e-12) * (0.2 + 0.8 * s ** 1.5)
         mid_src = spectral_band(coloured(rng, n, -1.0), 60, 7000, 2)
         fc = 250.0 + 1600.0 * s ** 1.5
@@ -822,7 +833,7 @@ def birds_leave(rng: np.random.Generator) -> np.ndarray:
         chirp *= (0.5 - 0.5 * np.cos(2 * np.pi * tc / tc[-1])) * (0.7 + 0.3 * np.sin(2 * np.pi * 120.0 * tc))
         chirp += 0.15 * band(white(rng, d), 3000, 8000, order=2) * shape
         place(out, pan(chirp * 0.16, rng.uniform(-0.8, 0.8)), seconds(rng.uniform(0.2, 2.4)))
-    return fade(normalise_peak(out, -6.0), 5.0, 60.0)
+    return normalise_peak(fade(out, 5.0, 60.0), -6.0)
 
 
 def roof_breath_loop(rng: np.random.Generator) -> np.ndarray:
@@ -854,8 +865,10 @@ def roof_breath_loop(rng: np.random.Generator) -> np.ndarray:
     wander, _ = lfo_eval(lfo_terms(rng, dur, 0.05, 0.2, 4), t)
 
     out = np.zeros((n, 2))
+    src_common = coloured(rng, n, -0.7)
     for c in range(2):
-        src = coloured(rng, n, -0.7)
+        # One breath heard by two ears: a shared source, a little of its own per side.
+        src = 0.8 * src_common + 0.45 * coloured(rng, n, -0.7)
         voice = np.zeros(n)
         for i, (q, g) in enumerate([(9.0, 1.0), (7.0, 0.55), (6.0, 0.3)]):
             f_track = tracks[i] * (1.0 + (0.012 if c else -0.012)) * (1.0 + 0.02 * wander)
@@ -865,7 +878,7 @@ def roof_breath_loop(rng: np.random.Generator) -> np.ndarray:
         hiss /= rms(hiss) + 1e-12
         room = spectral_band(coloured(rng, n, -2.0), 30, 180, 3)
         room /= rms(room) + 1e-12
-        out[:, c] = voice * (exhale + 0.12 * inhale) + hiss * (0.35 * inhale + 0.05 * exhale) + room * (0.5 + 0.2 * unit(wander)) * 0.6
+        out[:, c] = voice * (exhale + 0.12 * inhale) + hiss * (0.35 * inhale + 0.05 * exhale) + room * (0.5 + 0.2 * unit(wander)) * 0.35
     return normalise_rms(out, -30.0)
 
 
@@ -887,7 +900,7 @@ def candle_out(rng: np.random.Generator) -> np.ndarray:
     for _ in range(3):
         g = ping(rng, rng.uniform(5000, 9000), 0.003, 0.01, q=5, noise=1.0)
         place(wick, g * 0.25, seconds(rng.uniform(0.22, 0.45)))
-    return fade(normalise_peak(puff / (peak(puff) + 1e-12) + wick, -18.0))
+    return normalise_peak(fade(puff / (peak(puff) + 1e-12) + wick), -18.0)
 
 
 def footstep_sand(rng: np.random.Generator, variant: int) -> np.ndarray:
@@ -910,7 +923,7 @@ def footstep_sand(rng: np.random.Generator, variant: int) -> np.ndarray:
     thud = band(white(rng, n), 60, 120, order=2) * env_ad(n, 0.004, 0.03)
     shush = band(white(rng, n), 300, 1500, order=2) * (env_ad(n, 0.01, 0.05) + 0.7 * np.roll(env_ad(n, 0.012, 0.05), seconds(toe)))
     out = grains / (peak(grains) + 1e-12) + 0.5 * thud / (peak(thud) + 1e-12) + 0.35 * shush / (peak(shush) + 1e-12)
-    return fade(normalise_peak(out, -14.0))
+    return normalise_peak(fade(out), -14.0)
 
 
 def footstep_concrete(rng: np.random.Generator, variant: int) -> np.ndarray:
@@ -931,7 +944,7 @@ def footstep_concrete(rng: np.random.Generator, variant: int) -> np.ndarray:
         place(out, g * rng.uniform(0.1, 0.4), seconds(gap + rng.uniform(0.005, 0.09)))
     ir = street_ir(rng, 0.09, rt_low=0.12, rt_high=0.06, early=[(0.011, 0.5), (0.023, 0.3)])
     out = out + 0.35 * convolve(out, ir)
-    return fade(normalise_peak(out, -12.0))
+    return normalise_peak(fade(out), -12.0)
 
 
 def window_at(n: int, centre: float, width: float, power: float = 1.0) -> np.ndarray:
@@ -952,7 +965,7 @@ def cloth_rustle(rng: np.random.Generator) -> np.ndarray:
         env += window_at(n, rng.uniform(0.06, 0.38), rng.uniform(0.1, 0.2)) * rng.uniform(0.5, 1.0)
     tex = band(white(rng, n), None, 200, 2)
     tex = 0.5 + 0.5 * unit(tex / (peak(tex) + 1e-12))
-    return fade(normalise_peak(src * env * tex, -18.0))
+    return normalise_peak(fade(src * env * tex), -18.0)
 
 
 def paper_page(rng: np.random.Generator) -> np.ndarray:
@@ -976,7 +989,7 @@ def paper_page(rng: np.random.Generator) -> np.ndarray:
     for _ in range(5):
         g = ping(rng, rng.uniform(3000, 7000), rng.uniform(0.0005, 0.0015), 0.005, q=rng.uniform(3, 6), noise=1.0)
         place(out, g * rng.uniform(0.1, 0.3), seconds(rng.uniform(0.53, 0.68)))
-    return fade(normalise_peak(out, -14.0))
+    return normalise_peak(fade(out), -14.0)
 
 
 def stitch(rng: np.random.Generator, variant: int) -> np.ndarray:
@@ -999,7 +1012,7 @@ def stitch(rng: np.random.Generator, variant: int) -> np.ndarray:
         place(out, g * amp, seconds(tt))
     hiss = band(white(rng, n), 3000, 8000, 2) * window_at(n, 0.006 + length * 0.5, length * 1.1)
     out += 0.12 * hiss / (peak(hiss) + 1e-12)
-    return fade(normalise_peak(out, -20.0), 1.0, 5.0)
+    return normalise_peak(fade(out, 1.0, 5.0), -20.0)
 
 
 def door_wood(rng: np.random.Generator) -> np.ndarray:
@@ -1027,7 +1040,7 @@ def door_wood(rng: np.random.Generator) -> np.ndarray:
         place(out, g * rng.uniform(0.15, 0.4), seconds(rng.uniform(0.39, 0.51)))
     ir = street_ir(rng, 0.25, rt_low=0.3, rt_high=0.15, early=[(0.009, 0.4), (0.019, 0.25)])
     out = soft_clip(out + 0.3 * convolve(out, ir), 1.4)
-    return fade(normalise_peak(out, -10.0))
+    return normalise_peak(fade(out), -10.0)
 
 
 def grab(rng: np.random.Generator) -> np.ndarray:
@@ -1045,7 +1058,7 @@ def grab(rng: np.random.Generator) -> np.ndarray:
     place(out, ping(rng, 190, 0.04, 0.15, q=5, noise=0.3) * 0.35, seconds(0.03))
     d = seconds(0.05)
     place(out, band(white(rng, d), 150, 500, 2) * np.exp(-t_axis(d) / 0.012) * 0.5, seconds(0.03))
-    return fade(normalise_peak(out, -14.0))
+    return normalise_peak(fade(out), -14.0)
 
 
 def drop_heavy(rng: np.random.Generator) -> np.ndarray:
@@ -1068,7 +1081,7 @@ def drop_heavy(rng: np.random.Generator) -> np.ndarray:
         g = ping(rng, rng.uniform(2000, 6000), rng.uniform(0.001, 0.003), 0.008, q=rng.uniform(3, 6), noise=1.0)
         place(grit, g * rng.uniform(0.1, 0.3), seconds(rng.uniform(0.02, 0.08)))
     out = 1.3 * sub + 1.1 * body / (peak(body) + 1e-12) + 0.8 * slap / (peak(slap) + 1e-12) + 0.5 * can / (peak(can) + 1e-12) + 0.45 * slosh / (peak(slosh) + 1e-12) + grit
-    return fade(normalise_peak(soft_clip(out, 1.3), -6.0))
+    return normalise_peak(fade(soft_clip(out, 1.3)), -6.0)
 
 
 def kite_flap(rng: np.random.Generator) -> np.ndarray:
@@ -1093,7 +1106,7 @@ def kite_flap(rng: np.random.Generator) -> np.ndarray:
         place(out, ping(rng, rng.uniform(200, 600), 0.004, 0.02, q=2, noise=0.8) * 0.25 * strength, at)
     wind = band(white(rng, n), 200, 1500, 2) * (0.3 + 0.7 * gust)
     out += 0.18 * wind / (peak(wind) + 1e-12)
-    return fade(normalise_peak(out, -16.0))
+    return normalise_peak(fade(out), -16.0)
 
 
 # --------------------------------------------------------------------------------------
@@ -1181,7 +1194,7 @@ SOUNDS += [
 
 
 def level_text(level: tuple[str, float]) -> str:
-    return f"{level[0].upper()} {level[1]:g} dBFS"
+    return f"{'RMS' if level[0] == 'rms' else 'peak'} {level[1]:g} dBFS"
 
 
 def build(only: list[str] | None) -> None:

@@ -34,7 +34,7 @@ var _was_on_floor := true
 @onready var ceiling_check: RayCast2D = $CeilingCheck
 @onready var hand: Node2D = $Visual/Hand
 @onready var visual: Node2D = $Visual
-@onready var body: Polygon2D = $Visual/Body
+@onready var figure: Figure = $Visual
 @onready var pickup_area: Area2D = $PickupArea
 
 
@@ -48,14 +48,16 @@ func _ready() -> void:
 
 
 func _apply_build() -> void:
+	figure.build = build
 	if build == 1:
-		visual.scale = Vector2(1.12, 1.18)
-		var scarf := get_node_or_null("Visual/Headscarf")
-		if scarf:
-			scarf.visible = false
+		figure.headscarf = false
+		figure.dress = 0
 		var stand := stand_shape.shape as CapsuleShape2D
 		if stand:
+			# Own copy: the shape resource is shared by every player in the scene.
+			stand = stand.duplicate()
 			stand.height = 130.0
+			stand_shape.shape = stand
 			stand_shape.position.y = -65.0
 
 
@@ -182,30 +184,31 @@ func _toggle_grab() -> void:
 			_set_crawling(false)
 
 
+## Drives the figure: which pose, how far into the stride, what the hands hold.
 func _animate(delta: float) -> void:
 	visual.scale.x = absf(visual.scale.x) * float(facing)
-	var running := is_on_floor() and absf(velocity.x) > 20.0
-	if running:
-		_run_phase += delta * 11.0 * speed_factor() * 1.6
+	var moving := is_on_floor() and absf(velocity.x) > 20.0
+	if moving:
+		figure.stride = clampf(absf(velocity.x) / maxf(run_speed, 1.0), 0.15, 1.0)
+		var cadence := 5.0 if crawling else 7.0 + 5.0 * figure.stride
+		_run_phase += delta * cadence
 	else:
-		_run_phase = move_toward(_run_phase, 0.0, delta * 8.0)
+		figure.stride = move_toward(figure.stride, 0.0, delta * 4.0)
+		# Ease the legs back together instead of freezing mid-step.
+		var rest := roundf(_run_phase / PI) * PI
+		_run_phase = move_toward(_run_phase, rest, delta * 10.0)
 	_squash = move_toward(_squash, 0.0, delta * 1.6)
 
-	var bob := -absf(sin(_run_phase)) * 4.0 if running else 0.0
-	var lean := 0.0
-	match load_kind():
-		Carryable.Weight.HEAVY: lean = 0.12
-		Carryable.Weight.TWO_HANDED: lean = 0.2
-	var tall := 1.18 if build == 1 else 1.0
+	figure.phase = _run_phase
+	figure.load = load_kind()
+	figure.arm_up = kite_mode()
+	figure.airborne = not is_on_floor()
 	if sitting:
-		visual.rotation = 0.0
-		visual.position = Vector2(0.0, 24.0)
-		visual.scale.y = tall * 0.78
+		figure.pose = Figure.Pose.SIT
 	elif crawling:
-		visual.rotation = -PI * 0.5 * 0.92
-		visual.position = Vector2(-10.0, 0.0)
-		visual.scale.y = tall
+		figure.pose = Figure.Pose.CRAWL
+	elif moving or figure.stride > 0.02:
+		figure.pose = Figure.Pose.WALK
 	else:
-		visual.rotation = lean
-		visual.position = Vector2(0.0, bob)
-		visual.scale.y = tall * (1.0 + _squash)
+		figure.pose = Figure.Pose.STAND
+	visual.scale.y = 1.0 + _squash

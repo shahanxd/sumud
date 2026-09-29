@@ -51,26 +51,29 @@ func run() -> void:
 	print("  info imported formats (0 8-bit, 1 16-bit, 2 IMA ADPCM, 3 QOA): ", formats)
 
 	# One-shots.
-	var p := sound.play("stitch_1", "effects", -6.0, 0.05)
+	var p: AudioStreamPlayer = sound.play("stitch_1", "effects", -6.0, 0.05)
 	check(p is AudioStreamPlayer and p.is_inside_tree() and p.stream != null and p.playing and p.bus == &"effects", "play() returns a playing one-shot on its bus")
 	check(absf(p.pitch_scale - 1.0) <= 0.05 and p.pitch_scale != 1.0, "play() jitters the pitch within the range (%.3f)" % p.pitch_scale)
-	var freed := await until(func(): return not is_instance_valid(p), 120)
+	# Weakrefs: a lambda that captures a node freed under it pushes an error when called.
+	var wp: WeakRef = weakref(p)
+	var freed := await until(func(): return wp.get_ref() == null, 120)
 	check(freed, "a one-shot frees itself when finished")
-	var p2 := sound.play_at("grab", Vector2(320, 40), "effects", -3.0)
+	var p2: AudioStreamPlayer2D = sound.play_at("grab", Vector2(320, 40), "effects", -3.0)
 	check(p2 is AudioStreamPlayer2D and p2.position == Vector2(320, 40) and p2.playing, "play_at() returns a positioned player")
-	var p3 := sound.play("stitch_2", "no_such_bus")
+	var p3: AudioStreamPlayer = sound.play("stitch_2", "no_such_bus")
 	check(p3.bus == &"Master", "an unknown bus falls back to Master")
 
 	# Loops.
-	var l := sound.loop("wind_loop", "ambience", -3.0, 0.1)
-	var again := sound.loop("wind_loop")
+	var l: AudioStreamPlayer = sound.loop("wind_loop", "ambience", -3.0, 0.1)
+	var again: AudioStreamPlayer = sound.loop("wind_loop")
 	check(l is AudioStreamPlayer and l.playing and l.stream.loop_mode == AudioStreamWAV.LOOP_FORWARD and again == l, "loop() starts a looping player once")
 	await frames(12)
 	check(is_equal_approx(l.volume_db, -3.0), "loop() fades in to its volume (%.1f)" % l.volume_db)
 	sound.loop("sea_loop", "ambience", 0.0, 0.0)
 	check(sound.running_loops().size() == 2, "two loops run side by side")
 	sound.stop_loop("wind_loop", 0.1)
-	var gone := await until(func(): return not is_instance_valid(l), 60)
+	var wl: WeakRef = weakref(l)
+	var gone := await until(func(): return wl.get_ref() == null, 60)
 	check(gone and sound.running_loops() == ["sea_loop"], "stop_loop() fades out and frees the player")
 	sound.stop_all_loops(0.05)
 	await frames(10)
@@ -92,12 +95,15 @@ func run() -> void:
 	sound.set_bus_db("rumble", 0.0)
 
 	# Footsteps.
-	var s1 := sound.step("sand")
-	var s2 := sound.step("sand")
+	var s1: AudioStreamPlayer = sound.step("sand")
+	var s2: AudioStreamPlayer = sound.step("sand")
 	check(s1 is AudioStreamPlayer and s1.playing and s2 == null, "step() plays a variant and rate-limits the next")
 	await frames(10)
-	var s3 := sound.step("concrete")
+	var s3: AudioStreamPlayer = sound.step("concrete")
 	check(s3 != null and String(s3.stream.resource_path).contains("footstep_concrete_"), "step(\"concrete\") picks a concrete variant after the interval")
+	# Let the last players finish; quitting mid-playback reports their playbacks as leaked.
+	var ws: WeakRef = weakref(s3)
+	await until(func(): return ws.get_ref() == null, 120)
 
 	# Errors, when the log is at hand.
 	for arg in OS.get_cmdline_user_args():

@@ -162,11 +162,15 @@ func _start(p: Node, name: String, bus: String, volume_db: float, pitch_jitter: 
 		p.queue_free()
 		return
 	p.play()
-	# The Dummy driver may never report finished; free on the clock as well.
+	# The Dummy driver may never report finished; free on the clock as well. Bound, not
+	# captured: a lambda holding a freed player would push an error when it fired.
 	var life := stream.get_length() / maxf(p.pitch_scale, 0.1) + 0.5
-	get_tree().create_timer(life).timeout.connect(func() -> void:
-		if is_instance_valid(p):
-			p.queue_free())
+	get_tree().create_timer(life).timeout.connect(_expire.bind(p))
+
+
+func _expire(p) -> void:
+	if is_instance_valid(p):
+		p.queue_free()
 
 
 func _ramp_bus(tw: Tween, index: int, to_db: float, seconds: float) -> void:

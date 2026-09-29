@@ -10,10 +10,13 @@ signal approached(npc: Npc)
 ## 0 child, 1 adult, 2 elder: changes the height of the silhouette.
 @export_enum("child", "adult", "elder") var build := 0
 @export var headscarf := false
+## Auto gives an elder a long dress and everyone else none.
+@export_enum("auto:-1", "none:0", "short:1", "long:2") var dress := -1
 @export var talk_radius := 130.0
 @export var silhouette := Color(0.09, 0.08, 0.10)
 
 var player_near := false
+var figure: Figure
 
 var _visual: Node2D
 var _prompt: Polygon2D
@@ -28,53 +31,20 @@ func _ready() -> void:
 func _build() -> void:
 	_visual = Node2D.new()
 	add_child(_visual)
-	var h: float = [0.78, 1.0, 0.9][build]
-	var body := Polygon2D.new()
-	body.color = silhouette
-	body.polygon = _scaled(PackedVector2Array([
-		Vector2(-12, -80), Vector2(12, -80), Vector2(16, -40), Vector2(10, -40), Vector2(14, 0),
-		Vector2(4, 0), Vector2(0, -30), Vector2(-4, 0), Vector2(-14, 0), Vector2(-10, -40), Vector2(-16, -40)]), h)
-	_visual.add_child(body)
-	var head := Polygon2D.new()
-	head.color = silhouette
-	head.polygon = _scaled(PackedVector2Array([
-		Vector2(0, -112), Vector2(11, -109), Vector2(16, -98), Vector2(12, -85), Vector2(0, -80),
-		Vector2(-12, -85), Vector2(-16, -98), Vector2(-11, -109)]), h)
-	_visual.add_child(head)
-	if headscarf:
-		var scarf := Polygon2D.new()
-		scarf.color = silhouette
-		scarf.polygon = _scaled(PackedVector2Array([
-			Vector2(0, -117), Vector2(13, -113), Vector2(19, -100), Vector2(19, -86), Vector2(24, -70),
-			Vector2(8, -74), Vector2(0, -76), Vector2(-8, -74), Vector2(-24, -70), Vector2(-19, -86),
-			Vector2(-19, -100), Vector2(-13, -113)]), h)
-		_visual.add_child(scarf)
-	if build == 2:
-		# A cane.
-		var cane := Line2D.new()
-		cane.width = 3.0
-		cane.default_color = silhouette
-		cane.points = PackedVector2Array([Vector2(20, -60), Vector2(26, 0)])
-		_visual.add_child(cane)
-	for dx in [4.0, 11.0]:
-		var eye := Polygon2D.new()
-		eye.color = Color(1.0, 0.85, 0.6)
-		var y := -100.0 * h
-		eye.polygon = PackedVector2Array([Vector2(dx, y), Vector2(dx + 4, y), Vector2(dx + 4, y + 4), Vector2(dx, y + 4)])
-		_visual.add_child(eye)
+	figure = Figure.new()
+	figure.build = build
+	figure.headscarf = headscarf
+	figure.dress = dress if dress >= 0 else (2 if build == 2 else 0)
+	figure.cane = build == 2
+	figure.color = silhouette
+	figure.hand_path = NodePath()
+	_visual.add_child(figure)
 	# A small warm mark above the head when the player can talk.
 	_prompt = Polygon2D.new()
 	_prompt.color = Color(1.0, 0.85, 0.6, 0.0)
-	var py := -132.0 * h
+	var py := -figure.height() * 1.16
 	_prompt.polygon = PackedVector2Array([Vector2(0, py - 6), Vector2(5, py), Vector2(0, py + 6), Vector2(-5, py)])
 	_visual.add_child(_prompt)
-
-
-func _scaled(points: PackedVector2Array, h: float) -> PackedVector2Array:
-	var out := PackedVector2Array()
-	for p in points:
-		out.append(Vector2(p.x * lerpf(0.85, 1.0, h), p.y * h))
-	return out
 
 
 func _physics_process(delta: float) -> void:

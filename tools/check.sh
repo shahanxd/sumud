@@ -22,6 +22,9 @@ timeout 60 "$GODOT" --headless --path game -- --smoke 2>&1 | grep -E "SUMUD|ERRO
 echo "== core =="
 "$GODOT" --headless --path game res://tests/test_core.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|core:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== audio =="
+timeout 120 "$GODOT" --headless --path game res://tests/test_audio.tscn -- --bot 2>&1 | grep -E "FAIL|audio:|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== beach bot =="
 "$GODOT" --headless --path game res://tests/bot_beach.tscn 2>&1 | grep -E "FAIL|bot:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
