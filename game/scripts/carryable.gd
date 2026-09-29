@@ -4,6 +4,9 @@ class_name Carryable
 ## carrier moves. LIGHT leaves the body free, HEAVY removes the jump and slows the run,
 ## TWO_HANDED also removes crawling, so the route itself has to change.
 
+signal picked_up(item: Carryable)
+signal dropped(item: Carryable, at: Vector2)
+
 enum Weight { LIGHT, HEAVY, TWO_HANDED }
 
 @export var weight := Weight.LIGHT
@@ -46,6 +49,7 @@ func pick_up(hand: Node2D) -> void:
 	reparent(hand)
 	position = Vector2.ZERO
 	rotation = 0.0
+	picked_up.emit(self)
 
 
 ## Called by the player. Returns the item to the level at a world position.
@@ -54,3 +58,4 @@ func drop(at: Vector2) -> void:
 	reparent(home_parent)
 	global_position = at
 	rotation = 0.0
+	dropped.emit(self, at)

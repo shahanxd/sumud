@@ -15,3 +15,6 @@ Thumbs.db
 # Builds
 build/
 export/
+
+# Keep the dialogue CSV as a plain file; Godot must not import it as translations
+!game/data/lines.csv.import
