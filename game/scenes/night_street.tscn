@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://sumud_night_street"]
+[gd_scene load_steps=13 format=3 uid="uid://sumud_night_street"]
 
 [ext_resource type="Script" path="res://scripts/beats/night_street_beat.gd" id="0_beat"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="0_npc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/plank.tscn" id="4_plank"]
 [ext_resource type="Script" path="res://scripts/skyline.gd" id="5_skyline"]
 [ext_resource type="Script" path="res://scripts/camera_rig.gd" id="6_camera"]
+[ext_resource type="Script" path="res://scripts/wind_dust.gd" id="8_dust"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="7_sky"]
 
 [sub_resource type="ShaderMaterial" id="sky_mat"]
@@ -102,8 +103,14 @@ position = Vector2(3400, 900)
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("6_camera")
+world_horizon_y = 640.0
 player_path = NodePath("../Player")
 position_smoothing_enabled = false
+
+[node name="Dust" type="Node2D" parent="."]
+script = ExtResource("8_dust")
+count = 60
+color = Color(0.8, 0.75, 0.65, 0.22)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

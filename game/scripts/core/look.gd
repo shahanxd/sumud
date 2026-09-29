@@ -1,10 +1,12 @@
 extends Node
 ## Autoload "Look". The per-day colour budget from game/data/palette.json. Beats put their
 ## sky ColorRect in group "sky", their sea Polygon2D in group "sea" and one CanvasModulate
-## in group "ambient"; set_phase() tweens all of them. Everything is driven by one JSON
-## file the founder can tune.
+## in group "ambient"; set_phase() tweens all of them, plus the sun, the haze, the stars and
+## the print pass. Everything is driven by one JSON file the founder can tune.
 
 const PALETTE_PATH := "res://data/palette.json"
+const COLOR_KEYS := ["sky_top", "sky_horizon", "sea", "haze", "ambient", "sun_color", "tint"]
+const FLOAT_KEYS := ["saturation", "sun_x", "sun_y", "sun_size", "sun_glow", "stars", "haze_alpha", "grain", "vignette"]
 
 var current: Dictionary = {}
 var _data: Dictionary = {}
@@ -29,11 +31,24 @@ func palette(day: int, phase: String) -> Dictionary:
 	var day_over: Dictionary = days.get(str(day), {})
 	var sat := float(day_over.get("saturation", 1.0)) * float(base.get("saturation", 1.0))
 	var out := {}
-	for k in ["sky_top", "sky_horizon", "sea", "haze", "ambient"]:
-		var c := Color(String(base.get(k, "#ffffff")))
-		if k != "ambient":
+	for k in COLOR_KEYS:
+		var fallback := "#ffffff"
+		var c := Color(String(base.get(k, fallback)))
+		if k in ["sky_top", "sky_horizon", "sea", "haze"]:
 			c = _desaturate(c, sat)
 		out[k] = c
+	for k in FLOAT_KEYS:
+		var d := 1.0
+		match k:
+			"sun_x": d = 0.76
+			"sun_y": d = 0.42
+			"sun_size": d = 0.03
+			"sun_glow": d = 0.3
+			"stars": d = 0.0
+			"haze_alpha": d = 0.5
+			"grain": d = 0.05
+			"vignette": d = 0.3
+		out[k] = float(base.get(k, d))
 	out["saturation"] = sat
 	out["phase"] = phase
 	out["day"] = day
@@ -64,6 +79,8 @@ func _blend(a: Dictionary, b: Dictionary, t: float) -> void:
 	for k in b:
 		if b[k] is Color and a.get(k) is Color:
 			mix[k] = (a[k] as Color).lerp(b[k], t)
+		elif (b[k] is float or b[k] is int) and (a.get(k) is float or a.get(k) is int) and k != "day":
+			mix[k] = lerpf(float(a[k]), float(b[k]), t)
 		else:
 			mix[k] = b[k]
 	current = mix
@@ -75,22 +92,37 @@ func _apply(p: Dictionary) -> void:
 	var tree := get_tree()
 	if tree == null:
 		return
+	var haze: Color = p["haze"]
+	var haze_a := Color(haze.r, haze.g, haze.b, float(p.get("haze_alpha", 0.5)))
 	for node in tree.get_nodes_in_group("sky"):
 		var mat := (node as CanvasItem).material as ShaderMaterial
 		if mat:
 			mat.set_shader_parameter("top_color", p["sky_top"])
 			mat.set_shader_parameter("horizon_color", p["sky_horizon"])
+			mat.set_shader_parameter("sun_pos", Vector2(float(p.get("sun_x", 0.76)), float(p.get("sun_y", 0.42))))
+			mat.set_shader_parameter("sun_color", p["sun_color"])
+			mat.set_shader_parameter("sun_size", float(p.get("sun_size", 0.03)))
+			mat.set_shader_parameter("sun_glow", float(p.get("sun_glow", 0.3)))
+			mat.set_shader_parameter("haze_color", haze_a)
+			mat.set_shader_parameter("stars", float(p.get("stars", 0.0)))
+			mat.set_shader_parameter("saturation", 1.0)
 	for node in tree.get_nodes_in_group("sea"):
 		var mat := (node as CanvasItem).material as ShaderMaterial
 		if mat:
 			mat.set_shader_parameter("deep_color", p["sea"])
-			mat.set_shader_parameter("glint_color", p["sky_horizon"])
+			mat.set_shader_parameter("glint_color", p["sun_color"])
+			mat.set_shader_parameter("haze_color", haze)
+			mat.set_shader_parameter("sun_x", float(p.get("sun_x", 0.76)))
+			mat.set_shader_parameter("glint_strength", 0.25 + 0.4 * float(p.get("sun_glow", 0.3)))
 	for node in tree.get_nodes_in_group("ambient"):
 		if node is CanvasModulate:
 			(node as CanvasModulate).color = p["ambient"]
 	for node in tree.get_nodes_in_group("skyline"):
 		if node.has_method("tint"):
-			node.tint(p["haze"])
+			node.tint(haze)
+	var grade := get_node_or_null("/root/Grade")
+	if grade != null and grade.has_method("apply"):
+		grade.apply(p)
 
 
 ## Dress a freshly built beat with the current palette.

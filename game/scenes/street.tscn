@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://sumud_street"]
+[gd_scene load_steps=13 format=3 uid="uid://sumud_street"]
 
 [ext_resource type="Script" path="res://scripts/beats/street_beat.gd" id="0_beat"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://scenes/plank.tscn" id="4_plank"]
 [ext_resource type="Script" path="res://scripts/skyline.gd" id="5_skyline"]
 [ext_resource type="Script" path="res://scripts/camera_rig.gd" id="6_camera"]
+[ext_resource type="Script" path="res://scripts/wind_dust.gd" id="8_dust"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="7_sky"]
 
 [sub_resource type="ShaderMaterial" id="sky_mat"]
@@ -118,9 +119,14 @@ anchor_path = NodePath("../Player/Visual/Hand")
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("6_camera")
+world_horizon_y = 640.0
 player_path = NodePath("../Player")
 kite_path = NodePath("../Kite")
 position_smoothing_enabled = false
+
+[node name="Dust" type="Node2D" parent="."]
+script = ExtResource("8_dust")
+
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

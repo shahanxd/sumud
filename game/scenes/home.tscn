@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sumud_home"]
+[gd_scene load_steps=16 format=3 uid="uid://sumud_home"]
 
 [ext_resource type="Script" path="res://scripts/beats/home_beat.gd" id="0_beat"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="0_npc"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="3_carry"]
 [ext_resource type="Script" path="res://scripts/skyline.gd" id="4_skyline"]
 [ext_resource type="Script" path="res://scripts/camera_rig.gd" id="5_camera"]
+[ext_resource type="Script" path="res://scripts/wind_dust.gd" id="8_dust"]
+[ext_resource type="Script" path="res://scripts/sea.gd" id="9_sea"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="6_sky"]
 [ext_resource type="Shader" path="res://shaders/sea.gdshader" id="7_sea"]
 
@@ -51,6 +53,7 @@ horizon_y = 700.0
 
 [node name="Sea" type="Polygon2D" parent="." groups=["sea"]]
 z_index = -10
+script = ExtResource("9_sea")
 material = SubResource("sea_mat")
 color = Color(0.1, 0.2, 0.29, 1)
 polygon = PackedVector2Array(-3000, 700, 9000, 700, 9000, 790, -3000, 790)
@@ -212,8 +215,13 @@ character_name = "Baba"
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("5_camera")
+world_horizon_y = 700.0
 player_path = NodePath("../Player")
 position_smoothing_enabled = false
+
+[node name="Dust" type="Node2D" parent="."]
+script = ExtResource("8_dust")
+
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

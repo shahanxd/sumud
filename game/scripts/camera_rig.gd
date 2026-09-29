@@ -8,6 +8,9 @@ extends Camera2D
 @export var look_ahead := 140.0
 @export var follow_speed := 5.0
 @export var ground_bias := -250.0
+## The world y of the horizon (the sea line or the far ground); the sky shader is told
+## where it falls on screen every frame so the sun and the haze sit on it.
+@export var world_horizon_y := 700.0
 
 var _player: Player
 var _kite: Kite
@@ -58,3 +61,17 @@ func _process(delta: float) -> void:
 		offset = Vector2(randf_range(-k, k), randf_range(-k, k))
 	else:
 		offset = offset.lerp(Vector2.ZERO, t)
+	_place_horizon()
+
+
+func _place_horizon() -> void:
+	var view := get_viewport_rect().size
+	if view.y <= 0.0:
+		return
+	var centre := get_screen_center_position()
+	var frac := 0.5 + (world_horizon_y - centre.y) * zoom.y / view.y
+	frac = clampf(frac, 0.2, 0.95)
+	for node in get_tree().get_nodes_in_group("sky"):
+		var mat := (node as CanvasItem).material as ShaderMaterial
+		if mat:
+			mat.set_shader_parameter("horizon", frac)

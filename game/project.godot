@@ -16,6 +16,7 @@ config/icon="res://icon.svg"
 
 Wind="*res://scripts/wind.gd"
 Look="*res://scripts/core/look.gd"
+Grade="*res://scripts/core/grade.gd"
 Notebook="*res://scripts/core/notebook.gd"
 Fx="*res://scripts/core/fx.gd"
 Settings="*res://scripts/core/settings.gd"

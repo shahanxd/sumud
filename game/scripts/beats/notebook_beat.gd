@@ -37,7 +37,7 @@ func begin(ctx: Dictionary) -> void:
 
 func _build() -> void:
 	_layer = CanvasLayer.new()
-	_layer.layer = 40
+	_layer.layer = 75
 	add_child(_layer)
 	var backdrop := ColorRect.new()
 	backdrop.color = Color(0.03, 0.03, 0.04, 1.0)
