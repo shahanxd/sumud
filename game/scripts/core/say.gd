@@ -39,11 +39,16 @@ func _load_lines() -> void:
 
 func _build() -> void:
 	_box = PanelContainer.new()
-	_box.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	# Anchored to a line near the bottom; the box grows upward to fit however many lines wrap.
+	_box.anchor_left = 0.0
+	_box.anchor_right = 1.0
+	_box.anchor_top = 1.0
+	_box.anchor_bottom = 1.0
 	_box.offset_left = 240.0
 	_box.offset_right = -240.0
-	_box.offset_top = -230.0
+	_box.offset_top = -60.0
 	_box.offset_bottom = -60.0
+	_box.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.03, 0.03, 0.04, 0.78)

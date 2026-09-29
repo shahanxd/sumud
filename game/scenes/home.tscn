@@ -53,8 +53,13 @@ horizon_y = 700.0
 z_index = -10
 material = SubResource("sea_mat")
 color = Color(0.1, 0.2, 0.29, 1)
-polygon = PackedVector2Array(-3000, 740, 9000, 740, 9000, 1500, -3000, 1500)
+polygon = PackedVector2Array(-3000, 700, 9000, 700, 9000, 790, -3000, 790)
 uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="FarGround" type="Polygon2D" parent="."]
+z_index = -6
+color = Color(0.11, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-3000, 790, 9000, 790, 9000, 900, -3000, 900)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 collision_layer = 1

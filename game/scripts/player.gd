@@ -19,6 +19,8 @@ class_name Player
 var facing := 1
 var crawling := false
 var sitting := false
+## Set by a beat: +1 forbids moving right, -1 forbids moving left (darkness without a flame).
+var movement_block := 0
 var carried: Carryable = null
 var kite: Kite = null
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -107,6 +109,8 @@ func _physics_process(delta: float) -> void:
 	var axis := 0.0
 	if reads_input and not kite_mode():
 		axis = Input.get_axis("move_left", "move_right")
+		if movement_block != 0 and signf(axis) == float(movement_block):
+			axis = 0.0
 
 	# Crawling: hold down on the floor. Stay down while something is overhead.
 	var want_crawl := reads_input and Input.is_action_pressed("move_down") and is_on_floor() and can_crawl() and not kite_mode()

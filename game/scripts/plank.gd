@@ -13,6 +13,8 @@ signal lifted(plank: Plank)
 @export var snap_reach := 160.0
 @export var length := 340.0
 @export var thickness := 14.0
+## Already laid across the gap when the scene starts (the street at night, after the day).
+@export var start_bridged := false
 
 var is_bridge := false
 
@@ -34,7 +36,7 @@ func _ready() -> void:
 	bridge_shape.shape = rect
 	bridge_shape.position = Vector2(0.0, thickness * 0.5)
 	bridge.global_position = Vector2((gap_left + gap_right) * 0.5, ground_y)
-	_set_bridge(false)
+	_set_bridge(start_bridged)
 
 
 func _on_dropped(_item: Carryable, at: Vector2) -> void:
