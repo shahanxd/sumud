@@ -1,0 +1,112 @@
+{
+ "edits": [
+  {
+   "id": "v13-01",
+   "section": "Go-to-market",
+   "op": "replace",
+   "find_text": "Apple rejected Liyla and the Shadows of War from the App Store's Games category at launch in May 2016 and reversed within four days after outcry",
+   "new_text": "Apple rejected Liyla and the Shadows of War from the App Store's Games category on 18 May 2016, reversed by 20 May after outcry, and the app was live in the Games category by 22 May",
+   "rationale": "The verification pins the dates: rejected 18 May 2016, reversal announced by 20 May, live as a Game by 22 May, and recommends exactly this wording over 'within four days'.",
+   "source": "research/13-verify-facts.md:8",
+   "confidence": "high"
+  },
+  {
+   "id": "v13-02",
+   "section": "Sources",
+   "op": "append_sources",
+   "find_text": "Market and platform.",
+   "new_text": " · [Kotaku, Apple reverses on Liyla, May 2016](https://kotaku.com/apple-says-game-about-palestine-israel-conflict-isnt-a-1778217660)",
+   "rationale": "Adds the source for the 20 May reversal date, which the TouchArcade piece (18 May) cannot carry; the URL is taken from the verification file.",
+   "source": "research/13-verify-facts.md:9",
+   "confidence": "high"
+  },
+  {
+   "id": "v16-01",
+   "section": "Tone and ethics",
+   "op": "replace",
+   "find_text": "Gazans colloquially say al-yahud for the army and the state; the BBC's 2025 row over translating it shows why it would swallow the game's reception",
+   "new_text": "Gazans colloquially say al-yahud for the army and the state. After its 2025 review of a Gaza documentary the BBC told staff to translate the word literally, as Jews, and that row shows why it would swallow the game's reception",
+   "rationale": "After the July 2025 Johnston review the BBC's guidance defaults to the literal translation, so the sentence must not read as if translating it as 'Israeli' were still accepted; the design rule that characters say 'they' is unchanged.",
+   "source": "research/16-verify-gaza-reality.md:96",
+   "confidence": "high"
+  },
+  {
+   "id": "v16-02",
+   "section": "Sources",
+   "op": "append_sources",
+   "find_text": "Sound, warnings, the perpetrator.",
+   "new_text": " · [Times of Israel, BBC guidance on yahud, July 2025](https://www.timesofisrael.com/bbc-says-gaza-documentary-in-breach-by-not-disclosing-narrator-was-hamas-officials-son/)",
+   "rationale": "Adds the source for the BBC's 2025 default to the literal translation, which the Jerusalem Post link alone does not state; the URL is taken from the verification file.",
+   "source": "research/16-verify-gaza-reality.md:97",
+   "confidence": "high"
+  },
+  {
+   "id": "v14-01",
+   "section": "Audio: a score made only of voices",
+   "op": "replace",
+   "find_text": "Maher Zain's vocals-only album sold hundreds of thousands",
+   "new_text": "Maher Zain's Thank You Allah sold hundreds of thousands and was reissued as a vocals-only edition",
+   "rationale": "The sales figure belongs to the album as a whole (Wikipedia, over 300,000 copies) and the vocals-only edition is a separate 2012 reissue; the verification notes the two facts come from different sources, so the doc must not credit the sales to the vocals-only edition.",
+   "source": "research/14-verify-halal-audio.md:32",
+   "confidence": "medium"
+  },
+  {
+   "id": "v14-02",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "as Gaza school custom expects at her age",
+   "new_text": "as Gaza school custom expects from about her age",
+   "rationale": "The age-12 threshold rests on an unverified grade mapping, so the cast row should carry the same 'from about her age' wording the Characters paragraph already uses.",
+   "source": "research/14-verify-halal-audio.md:68",
+   "confidence": "medium"
+  },
+  {
+   "id": "v16-03",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "the eight-year-old killed when a wedding tent was shelled in December 2025",
+   "new_text": "the eight-year-old killed when shelling hit the shelter beside a wedding tent in Gaza City in December 2025",
+   "rationale": "The verified account is that the shelling hit a vocational training facility used as a shelter next to the tent in Tuffah, Gaza City, not the tent itself.",
+   "source": "research/16-verify-gaza-reality.md:84",
+   "confidence": "medium"
+  },
+  {
+   "id": "v13-03",
+   "section": "Go-to-market",
+   "op": "replace",
+   "find_text": "Valiant Hearts 14.99 and often 3.74 on sale",
+   "new_text": "Valiant Hearts 14.99, cut to 3.74 in a 75 percent weekend deal",
+   "rationale": "The 3.74 price was observed once, in a 75 percent weekend deal ending 1 October; 'often' is not supported by the check.",
+   "source": "research/13-verify-facts.md:60",
+   "confidence": "medium"
+  }
+ ],
+ "responses": [
+  {
+   "point": "UN Commission of Inquiry figures (20,179 killed, 44,143 injured) cover 7 October 2023 to 7 October 2025 only",
+   "status": "already_in_doc",
+   "note": "The doc never cites the Commission of Inquiry figures. It gives UNICEF's 21,289 children killed to 3 February 2026 (Tone and ethics) and says the end card carries the UNICEF figure with its date; 13-verify-facts.md:80 confirms that as the latest citable cumulative, so no edit is needed."
+  },
+  {
+   "point": "Liyla was rejected 18 May 2016, reversed by 20 May, live by 22 May",
+   "status": "applied",
+   "note": "Edit v13-01 replaces 'reversed within four days' with the three dates; v13-02 adds the Kotaku source for the 20 May reversal."
+  },
+  {
+   "point": "The 2025 BBC guidance now defaults to translating 'yahud' literally",
+   "status": "applied",
+   "note": "Edit v16-01 rewrites the BBC sentence so it states the literal-translation default and no longer reads as an open 'row'; the rule that characters say 'they' is untouched. v16-02 adds the Times of Israel source."
+  },
+  {
+   "point": "The Darul Ifta Birmingham view is duff for women only and disliked for men",
+   "status": "already_in_doc",
+   "note": "The doc never names Darul Ifta Birmingham. Its duff rule is already women's side of the wedding only (Pillar 6, Decision 3, Audio), which matches the corrected view, so nothing contradicts 14-verify-halal-audio.md:8."
+  },
+  {
+   "point": "The Standing Committee clapping fatwa is not about weddings",
+   "status": "already_in_doc",
+   "note": "The doc never cites the Standing Committee. It says clapping 'is disputed and used sparingly' (Audio) and 'Men clapping in the dabke is disputed' (Decision 3), which is consistent with 14-verify-halal-audio.md:28, so no edit is needed."
+  }
+ ],
+ "notes": "Checked every dated, numbered, licence, Godot, tool and Steam fact in the doc against research/13 to 17. Confirmed and left alone: UNICEF 21,289 to 3 Feb 2026 and one child a day since; the 25 August 2026 committees' appeal on kites; 12,350 kites in 2011; the fishing-limit history and January 2025 closure; the Haddad rename; Gazan food; Godot 4.7.2 of 18 August 2026, IK experimental, Compatibility renderer limits, gdUnit4 list stopping at 4.7.1, 1.3 GB template archive, Android JDK 17 / Platform 35 / NDK r28b; GodotSteam 4.22.1 and the 4 September 2026 GitHub archive; Next Fest 22 February to 1 March 2027 with 10 and 25 January deadlines; Inside 24.99 and Gris 14.99; Amiri and Noto under OFL 1.1; quran.com and quranicaudio non-commercial terms, Alafasy Berhad, everyayah's dead licence link; Israr Ahmed's channel termination in April 2022 (exact date 1 April, the doc's month is right); ElevenLabs own-voice cloning only and the Eleven Music 'Studio Games' exclusion; Flow Music commercial rights only through paid membership; Suno stems and Udio's export halt; the CC0 Gaza 2016 pack; ROSE at Berlinale 2026. Two items I deliberately did not edit: (a) the doc's statement that Steam's AI disclosure covers marketing (Audio and Go-to-market): 13-verify-facts.md:56 marks finding 6 confirmed and calls the marketing scope the prudent reading of Valve's January 2026 clarification, and the doc already lists the Game Developer report in Sources; (b) 14-verify notes that no source documents duff drumming at the henna night, but the doc's duff at the henna is a design choice under the wedding permission, not a claim about documented custom. The Scripture references (Bukhari 5147 and the pending Scripture moments block) are outside these five files and were not touched. No files under /home/user/sumud were modified and no scratch files were needed."
+}

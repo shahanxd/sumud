@@ -1,0 +1,542 @@
+{
+ "edits": [
+  {
+   "id": "c11-01",
+   "section": "Design pillars",
+   "op": "replace",
+   "find_text": "Choices change who sits at the wedding, which names are on the wall, and what Teta sings.",
+   "new_text": "Choices change presence and light: who sits at the wedding, which windows are lit, which kites rise beside Sami's on Day 10, and what Teta recites. No choice decides who dies.",
+   "rationale": "A player choice must never decide who dies; the pillar now says so and lists what choices do change.",
+   "source": "research/11-critic-culture-and-faith.md:21; HANDOFF.md:61",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-02",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "Each changes who sits at the wedding, which names are on the wall, and what Teta recites.",
+   "new_text": "Each changes who sits at the wedding, which windows are lit, which kites rise beside Sami's, and what Teta recites. None decides who dies: the neighbour you do not carry on Day 7 reaches the school later, by another door, and remembers it.",
+   "rationale": "Removes the wall of names as a choice outcome and closes the Day 7 loophole where the uncarried neighbour could be read as dead.",
+   "source": "research/11-critic-culture-and-faith.md:21; HANDOFF.md:61",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-03",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "Whether Karim leaves on a boat or stays.",
+   "new_text": "Whether Karim puts his name down for a scholarship abroad, or stays.",
+   "rationale": "The sea has been a no-go zone since January 2025 and the harbour's boats were destroyed, so nobody in this setting leaves by boat; the choice keeps its leave-or-stay shape in a form that asserts no unverified route.",
+   "source": "research/13-verify-facts.md:24; research/05-gaza-reality.md:60; research/11-critic-culture-and-faith.md:65",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-04",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "the janazah; Karim's choice: leave on a boat, or stay and dig out the bakery with the young men;",
+   "new_text": "the janazah in silhouette, men in rows and the women's row behind, then the burial off screen; Karim's choice: put his name down for a scholarship abroad, or stay and dig out the bakery with the young men;",
+   "rationale": "Gives the janazah its form in silhouette and replaces the boat, which the closed sea rules out.",
+   "source": "research/13-verify-facts.md:24; research/11-critic-culture-and-faith.md:49,65",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-05",
+   "section": "Tone and ethics",
+   "op": "replace",
+   "find_text": "a small shape wrapped in white carried through the street, a name on the wall, a kite that no longer flies",
+   "new_text": "a small shape wrapped in white carried through the street, a hand-drawn poster with his name on the school wall, a kite that no longer flies",
+   "rationale": "The name on a wall is a Western memorial image; the martyr's poster drawn by hand is Gaza's own, and it is flagged for the readers in c11-19.",
+   "source": "research/11-critic-culture-and-faith.md:49; HANDOFF.md:17",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-06",
+   "section": "Audio: a score made only of voices",
+   "op": "replace",
+   "find_text": "the camera holds on a non-human subject (sea, sky, hands, bread, the wall of names)",
+   "new_text": "the camera holds on a non-human subject (sea, sky, hands, bread, the dedicated kites)",
+   "rationale": "Retires the last wall of names; the dedicated kites on Day 10 carry names and are a non-human subject a verse may sit over.",
+   "source": "research/11-critic-culture-and-faith.md:49; research/03-scripture.md:118",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-07",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "Grandmother, keeps the 1948 house key, tells stories, recites",
+   "new_text": "Grandmother, born after the Nakba; keeps her mother's 1948 house key and tells her mother's stories of the village (a biography for the readers to confirm); recites",
+   "rationale": "At 71 in a 2023 to 2026 setting Teta was born after 1948 and cannot remember the village; keys and stories handed down from a mother are documented, and the biography change is flagged for the readers.",
+   "source": "research/05-gaza-reality.md:120; research/11-critic-culture-and-faith.md:33",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-08",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "Layla's best friend, the best kite maker on the street",
+   "new_text": "Layla's cousin next door, ibn 'amm, and her closest friend, the best kite maker on the street (the relation is for the readers to confirm)",
+   "rationale": "A boy and a girl of 12 as best friends reads as romance to one audience and as improper to another; the cousin next door keeps the cast and fixes the reading, flagged for the readers.",
+   "source": "research/11-critic-culture-and-faith.md:45; HANDOFF.md:17",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-09",
+   "section": "Tone and ethics",
+   "op": "replace",
+   "find_text": "Sami, 12, Layla's best friend, dies on Day 7.",
+   "new_text": "Sami, 12, Layla's cousin and closest friend, dies on Day 7.",
+   "rationale": "Keeps the Children bullet consistent with the cast table after c11-08.",
+   "source": "research/11-critic-culture-and-faith.md:45",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-10",
+   "section": "Design pillars",
+   "op": "replace",
+   "find_text": "Every day contains laughter, food, football, gossip, a song or a wedding.",
+   "new_text": "Every day contains laughter, food, football, news and teasing, a song or a wedding.",
+   "rationale": "Gossip is backbiting, a sin the founder's audience will notice listed as a joy; news and teasing is what the street actually does.",
+   "source": "research/11-critic-culture-and-faith.md:81",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-11",
+   "section": "Core mechanics",
+   "op": "replace",
+   "find_text": "bread, water, medicine, a charge, company, a game of cards",
+   "new_text": "bread, water, medicine, a charge, company, a game of marbles",
+   "rationale": "Cards are contested under the halal rule the game prints on its store page; marbles are not.",
+   "source": "research/11-critic-culture-and-faith.md:81",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-12",
+   "section": "Core mechanics",
+   "op": "replace",
+   "find_text": "football against two kids, the jerrycan race, cards with the old fisherman",
+   "new_text": "football against two kids, the jerrycan race, marbles with the old fisherman",
+   "rationale": "Same as c11-11: no cards in a game that claims to be halal by design.",
+   "source": "research/11-critic-culture-and-faith.md:81",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-13",
+   "section": "Tone and ethics",
+   "op": "replace",
+   "find_text": "Samouni, al-Dalu, Rajab, Doghmush and al-Bardaweel, each attached to a real tragedy or armed clan.",
+   "new_text": "Samouni, al-Dalu, Rajab, Doghmush and al-Bardaweel, each attached to a real tragedy or armed clan. Karim's football on the sand on Day 2 is played on the beach where the Bakr boys were killed, on purpose and in their memory, and the readers say whether it stays.",
+   "rationale": "Football on Gaza City's beach evokes the four boys killed there in 2014; the doc now makes that a stated choice and gives the readers the veto.",
+   "source": "research/13-verify-facts.md:76; research/11-critic-culture-and-faith.md:81",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-14",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "which is South Asian and Afghan and does not exist in Gaza (our first draft imported it), nor the betrayal plot.",
+   "new_text": "which is South Asian and Afghan and does not exist in Gaza (our first draft imported it), nor the betrayal plot, nor a guilt and redemption arc for Layla, nor escape to the West as Karim's salvation: her story is care, and his choice is not a rescue.",
+   "rationale": "Completes the Kite Runner avoid-list so Sami's death never becomes Layla's guilt engine and leaving is never the salvation.",
+   "source": "research/11-critic-culture-and-faith.md:73",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-15",
+   "section": "Vision",
+   "op": "replace",
+   "find_text": "grief, and the certainty that these people are not victims but the strongest people they have ever met.",
+   "new_text": "grief, and the certainty that these people are not victims; they are tired, afraid, angry and funny, and they are still there, which is not a comfort but a fact the player has to sit with.",
+   "rationale": "Drops the resilience trope that many Palestinians reject while keeping the refusal to show them as victims.",
+   "source": "research/11-critic-culture-and-faith.md:77",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-16",
+   "section": "Tone and ethics",
+   "op": "replace",
+   "find_text": "We have none yet, so this is a launch gate, not a preference.",
+   "new_text": "We have none yet, so this is a launch gate, not a preference. They are paid, and credited as they wish. The routes are We Are Not Numbers, whose Gaza writers can be paid as readers, Palestinian Voices in Games, and Rasheed Abueideh, approached as a peer with something to offer, not as prior art.",
+   "rationale": "Writes the concrete routes to readers and the paid-and-credited commitment into the gate that depends on them; outreach.md holds the messages but not the routes.",
+   "source": "research/11-critic-culture-and-faith.md:95; research/12-critic-market.md:37; research/13-verify-facts.md:12",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-17",
+   "section": "Sources",
+   "op": "append_sources",
+   "find_text": "Market and platform.",
+   "new_text": " · [Palestinian Voices in Games](https://buttondown.com/PalestinianVoicesInGames/archive)",
+   "rationale": "Source for the route named in c11-16; the URL is the one the market critique gives, so new_text is a markdown link.",
+   "source": "research/12-critic-market.md:37",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-18",
+   "section": "Tone and ethics",
+   "op": "insert_after",
+   "find_text": "Our first draft's maqluba and musakhan were pan-Palestinian slips.",
+   "new_text": "\n- **Gazan, not South Asian.** The founder's own frame is Indian, so the slips to watch are written down: Teta or Sitti as the readers choose, never Dadi; a Palestinian qari, not a Pakistani lecturer; sahja, not qawwali; a Palestinian nasheed, not an Urdu one; adults called by kunya, Abu Karim and Um Karim, not by first name; kites that fly, and no manja.",
+   "rationale": "The checklist the critique asked for, kept to items the doc already practises or has verified, with Sitti versus Teta left to the readers.",
+   "source": "research/11-critic-culture-and-faith.md:96; research/13-verify-facts.md:32",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-19",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "Day 8 is his janazah. Day 9 the street rebuilds his kite",
+   "new_text": "Day 8 is his janazah, and the grief is tears, not wailing, as Sahih al-Bukhari 1284 shows it; the street calls him shahid, and nobody says he passed away. The 'aza customs, whether names are written on children's arms, the hand-drawn poster and whether a martyr's funeral may rhyme with the wedding are the readers' to settle before they are built. Day 9 the street rebuilds his kite",
+   "rationale": "Applies the verified part of the funeral guidance (tears not wailing, per the hadith already in the scripture research) and sends the customs no verification file carries to the readers.",
+   "source": "research/03-scripture.md:126; research/11-critic-culture-and-faith.md:49,94",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-20",
+   "section": "Core mechanics",
+   "op": "replace",
+   "find_text": "On Day 8 a page appears in the notebook in Sami's handwriting, the note he sent down the line on Day 5.",
+   "new_text": "Layla writes bismillah at the top of every notebook page, set clean, untouched by the grain and ink passes. On Day 8 a page appears in the notebook in Sami's handwriting, the note he sent down the line on Day 5.",
+   "rationale": "Makes the notebook recognisably a Muslim schoolgirl's; the words are set clean, consistent with the doc's rule that Quranic text is never decorated.",
+   "source": "research/11-critic-culture-and-faith.md:89; research/03-scripture.md:122",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-21",
+   "section": "Audio: a score made only of voices",
+   "op": "insert_after",
+   "find_text": "and never claim the unseen, the rule the Prophet applied to the girls singing at a wedding (Sahih al-Bukhari 5147).",
+   "new_text": "\n\n**Teta at bedtime.** On some nights the night scene ends with Teta reciting Ayat al-Kursi and the three Quls over the children. It is Quran, so it keeps the full-stop rules below: a held moment, every bus silent, the text clean on screen with its reference, the audio the recorded reciter's or none, never under the drone and never under play. The four references join Scripture moments once they have passed the same check.",
+   "rationale": "Teta's bedtime becomes recitation rather than a song, which is truer and removes a sung-adult-woman risk, and it is bound to the Quran full-stop rules so nothing plays under gameplay.",
+   "source": "research/11-critic-culture-and-faith.md:90; research/03-scripture.md:119-120; HANDOFF.md:59",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-22",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "Zaffa in the courtyard, dabke with voices and feet, the duff on the women's side; the walk to the beach at dusk past the dedicated kites",
+   "new_text": "Zaffa in the courtyard; the men's dabke with voices and feet, played as Karim; the women's hall with the duff, played as Layla, its dancing heard and never shown; only the player, switching, sees the wedding whole; the walk to the beach at dusk past the dedicated kites",
+   "rationale": "Character switching, which the game already has, becomes the only way to see a segregated wedding whole, turning the halal rule into design.",
+   "source": "research/11-critic-culture-and-faith.md:93; research/14-verify-halal-audio.md:56",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-23",
+   "section": "Go-to-market",
+   "op": "replace",
+   "find_text": "Not a game about a war. A game about a street that refuses to stop being a street",
+   "new_text": "Not a war game. A game about a street that refuses to stop being a street",
+   "rationale": "Palestinians will say it is a game about a war; denying the genre keeps the line and drops the denial.",
+   "source": "research/11-critic-culture-and-faith.md:25",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-24",
+   "section": "Story",
+   "op": "replace",
+   "find_text": "The year is never stated; the conditions are those of 2023 to 2026.",
+   "new_text": "The year is never stated; the conditions are those of 2023 to 2026, compressed into ten days: the before days carry the blockade's grid hours and a school that is still a school, the siege days the war, and the sumud days the ceasefire, whose weddings, football on the ruins and kites are all in the Sources.",
+   "rationale": "Answers the critique's which-Gaza question by stating the compression the doc already relies on; the blockade-era alternative is not taken because the ending rests on the August 2026 kite fact.",
+   "source": "research/11-critic-culture-and-faith.md:25; research/16-verify-gaza-reality.md:64,76,88; research/13-verify-facts.md:36",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-25",
+   "section": "Decisions for the founder",
+   "op": "insert_after",
+   "find_text": "Recommendation: start outreach today; I will draft the messages.",
+   "new_text": "\n13. **Dhul Hijjah.** One critique proposes making the ten days the first ten of Dhul Hijjah, so the wedding falls on Eid al-Adha and the street chants the takbirat. It would fix a calendar the fiction keeps open, put a janazah and a wedding inside the Eid days, and add a religious frame the readers have not checked. Recommendation: no; if you want the takbirat, one Eid memory in Teta's stories is enough.\n14. **Whose wedding.** The document never says who marries. Recommendation: the bride is Sami's older sister, Layla's cousin, so the wedding is the family's own, Day 8's question is whether to hold it two days after his janazah, and his father gives the blessing; the groom is a young man of the street. The readers check the custom; you decide the story.",
+   "rationale": "Two real founder decisions raised by the critique: the calendar, and the couple the doc never names.",
+   "source": "research/11-critic-culture-and-faith.md:88,41",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-26",
+   "section": "Go-to-market",
+   "op": "replace",
+   "find_text": "because it needs a moderation queue and privacy handling, which is a month of work and a liability on launch day.",
+   "new_text": "because it needs a moderation queue and privacy handling, which is a month of work and a liability on launch day. When it comes, a kite for a real killed child is accepted only from that child's family or from an organisation that consents, free text is moderated, and no name is scraped from a list, so the sky is a tribute and not a database.",
+   "rationale": "The consent rule for real children's names, so the ending's sky cannot become a scraped list.",
+   "source": "research/11-critic-culture-and-faith.md:97",
+   "confidence": "high"
+  },
+  {
+   "id": "c11-27",
+   "section": "Tone and ethics",
+   "op": "replace",
+   "find_text": "Characters pray, make dua, say \"inna lillahi wa inna ilayhi raji'un\" at the moment of loss, wash and bury their dead.",
+   "new_text": "Characters pray, make dua, say \"inna lillahi wa inna ilayhi raji'un\" at the moment of loss and \"hasbunallahu wa ni'mal wakeel\" under the bombardment, say bismillah, alhamdulillah, inshallah and Allah yustur through the day with some left untranslated in the subtitles, and wash and bury their dead.",
+   "rationale": "Puts the everyday grammar of a Muslim household into the dialogue rule; hasbunallahu wa ni'mal wakeel is already the verified Day 3 line in the scripture research.",
+   "source": "research/03-scripture.md:12; research/11-critic-culture-and-faith.md:13",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-28",
+   "section": "Core mechanics",
+   "op": "replace",
+   "find_text": "Optional, unrewarded, and the thing people will remember.",
+   "new_text": "Optional, unrewarded, and the thing people will remember. Whether Teta may say that Imam al-Shafi'i was born on this sand is a question for the readers; nothing about Gaza's own history goes into her mouth unchecked.",
+   "rationale": "No research file or source in the doc supports the birth claim, so it goes to the readers rather than into a line.",
+   "source": "research/11-critic-culture-and-faith.md:92",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-29",
+   "section": "Design pillars",
+   "op": "replace",
+   "find_text": "Karim confronts and chooses, Layla flies the kite they have called a weapon.",
+   "new_text": "Karim confronts and chooses, Layla flies the kite they have called a weapon. The family's answer to Karim's anger is the one Gaza gives, the stairwell school and the morning under the gunboat, never a lecture that violence is wrong.",
+   "rationale": "Answers the founder's not-cowards line in the pillar itself and forbids the Western pacifist reply.",
+   "source": "research/11-critic-culture-and-faith.md:61; HANDOFF.md:17",
+   "confidence": "medium"
+  },
+  {
+   "id": "c11-30",
+   "section": "Production plan",
+   "op": "replace",
+   "find_text": "Steam page drafted with the content warning and the no-AI statement.",
+   "new_text": "Steam page drafted with the content warning and the no-AI statement, after a search of Steam and the press for other uses of the title.",
+   "rationale": "The title collision check the critique asks for, placed at the week the page is drafted, without asserting any collision as fact.",
+   "source": "research/11-critic-culture-and-faith.md:99",
+   "confidence": "medium"
+  }
+ ],
+ "responses": [
+  {
+   "point": "Top 1: the Audio section is entirely haram (oud, qanun, ney, riq, darbuka, pads)",
+   "status": "already_in_doc",
+   "note": "Audio: 'the score is human voice and the world', duff only at the wedding, nothing that imitates an instrument, Nasheed may be faded but Quran may not."
+  },
+  {
+   "point": "Top 2: prayer, adhan, mosque, dua and Jumu'ah absent",
+   "status": "partly_applied",
+   "note": "Already: 'The adhan is the clock', 'The phases are the prayer times', 'Faith is lived, not preached', Day 8's speaker adhan since the mosque was hit. Applied: the everyday formulas with some untranslated (c11-27), the janazah in silhouette rows (c11-04). Not taken: a mosque as a sixth space and a Jumu'ah scene, because pillar 4 fixes five spaces and the two-hour budget, and 'Jumu'ah on the rubble, documented 2023-24' is in no verification file."
+  },
+  {
+   "point": "Top 3: Quran etiquette, famous reciters, Dr Israr Ahmed, AI recitation",
+   "status": "already_in_doc",
+   "note": "'Quran is a full stop', 'Recitation audio: the truth about famous reciters', Dr Israr out at launch, no AI recitation. Ayat al-Kursi before sleep now applied (c11-21). Salawat at the zaffa not added: 14-verify-halal-audio.md:56 finds no source naming it for a Gaza zaffa. A hafiz character not added: the cast is locked."
+  },
+  {
+   "point": "Top 4: player choices decide who dies ('which names are on the wall')",
+   "status": "applied",
+   "note": "c11-01, c11-02, c11-05, c11-06 remove the wall of names and state that no choice decides who dies; the Children bullet already says never preventable, never a mechanic, never a punishment."
+  },
+  {
+   "point": "Top 5: the era is undefined and mixes two Gazas",
+   "status": "partly_applied",
+   "note": "The doc had chosen 2023 to 2026; c11-24 states the compression day by day and c11-23 drops 'not a game about a war'. The blockade-era alternative is refused: the ending rests on the verified August 2026 kite fact (13-verify-facts.md:36) and the sumud textures (weddings, beach, football on ruins) are documented for 2024 to 2026."
+  },
+  {
+   "point": "Top 6: the family name Haddad; Sitti versus Teta; kunyas; locate the street",
+   "status": "already_in_doc",
+   "note": "'The family is no longer called Haddad ... the Awad family until the Palestinian readers choose'; the street is 'near the sea', with the harbour. Kunyas and Sitti-or-Teta enter via the checklist (c11-18); the critique's candidate names are superseded by 13-verify-facts.md:76, which the readers will use."
+  },
+  {
+   "point": "Top 7: Teta at 71 cannot remember 1948",
+   "status": "applied",
+   "note": "c11-07: born after the Nakba, the key and the stories are her mother's, flagged for the readers; supported by 05-gaza-reality.md:120 (keys handed down with a mother's stories)."
+  },
+  {
+   "point": "Top 8: women's silhouettes are Western defaults",
+   "status": "already_in_doc",
+   "note": "Cast and Art: Layla's white headscarf outdoors and at school, hair only at home, 'Adult women wear hijab and thobe or abaya outside the home', women's dancing heard never shown."
+  },
+  {
+   "point": "Top 9: the wedding drawn as Western, unnamed couple, no segregation",
+   "status": "partly_applied",
+   "note": "Already segregated: duff on the women's side, henna heard through the wall, men's sahja, no couple shots. Applied: switching as the only way to see it whole (c11-22). The couple's identity and the father's blessing go to the founder (c11-25 item 14)."
+  },
+  {
+   "point": "Top 10: Layla and Sami as boy-and-girl best friends at 12",
+   "status": "applied",
+   "note": "c11-08 and c11-09 make Sami her cousin next door (ibn 'amm), flagged for the readers as HANDOFF allows for a relation; c11-14 forbids the guilt engine."
+  },
+  {
+   "point": "Top 11: the child's death in Western memorial imagery",
+   "status": "partly_applied",
+   "note": "Already: the small shape wrapped in white, inna lillahi at the moment of loss. Applied: poster for wall (c11-05, c11-06), janazah in silhouette with the women's row behind and burial off screen (c11-04), tears not wailing per Bukhari 1284 and shahid never 'passed away' (c11-19). Deferred to readers in c11-19: the 'aza, names on children's arms and the poster custom, which no verification file carries."
+  },
+  {
+   "point": "Top 12: how the perpetrator is named",
+   "status": "already_in_doc",
+   "note": "Pillar 2 'They have no face, but they are there', the '\"They\", never \"al-yahud\"' bullet, the leaflet, recorded call and loudhailer as their own artefacts, Israel named once. 'The blockade since 2007 and Egypt's role' not added: not in a verification file."
+  },
+  {
+   "point": "Top 13: soldiers and gunboats in silhouette, no stealth",
+   "status": "already_in_doc",
+   "note": "Day 6 gunboat, searchlight, loudhailer, water cannon; Day 7 soldiers as shadows behind a berm; 'Never a villain character, never a target'; no stealth or chase anywhere in Core mechanics."
+  },
+  {
+   "point": "Top 14: the founder's 'we don't be cowards' has no answer",
+   "status": "applied",
+   "note": "Pillar 2 already said 'Defiance is played, not fought'; c11-29 adds the family's answer to Karim and bans the 'violence is wrong' reply."
+  },
+  {
+   "point": "Top 15: Karim leaves on a boat",
+   "status": "applied",
+   "note": "c11-03 and c11-04: a scholarship abroad, or stay and dig; the sea ban (13-verify-facts.md:24) rules the boat out. The Rafah coordination fee is not written because no verification file confirms it."
+  },
+  {
+   "point": "Top 16: kite duels with glass string asserted",
+   "status": "already_in_doc",
+   "note": "'There is no kite fighting; Gaza's kite culture is making and flying', the record attempt with a 30-second count, and the 2011 Guinness record in Sources."
+  },
+  {
+   "point": "Top 17: The Kite Runner named with no avoid-list",
+   "status": "applied",
+   "note": "The doc had kite fighting and the betrayal plot; c11-14 adds no guilt and redemption arc for Layla and no escape to the West as Karim's salvation."
+  },
+  {
+   "point": "Top 18: 'Why this will sell' and the resilient-Palestinian trope",
+   "status": "partly_applied",
+   "note": "c11-15 rewrites the feeling statement; c11-16 makes readers paid and credited. The commercial paragraph itself and the charity mechanics belong to the market critique's pass and are left to it; the fixed share is already recommended in Go-to-market and Decision 5."
+  },
+  {
+   "point": "Top 19: small texture errors (musakhan, gossip, cards, candlelight bakery, CC0 prayer calls, beach football)",
+   "status": "partly_applied",
+   "note": "Food and the human-recorded adhan were already fixed. Applied: gossip (c11-10), cards (c11-11, c11-12), football on the Bakr beach as a stated choice with a readers' veto (c11-13). Kept: 'bakes by candlelight', because the oven is hand-cranked per 16-verify-gaza-reality.md:44 and the candle is the blackout's light; the taboon claim is unverified."
+  },
+  {
+   "point": "Top 20: Google generative music and ElevenLabs voices",
+   "status": "already_in_doc",
+   "note": "'AI tools: the truth' and 'No generative AI': nothing generated ships, placeholders stay out of the repository."
+  },
+  {
+   "point": "Missed: the ten days as Dhul Hijjah ending on Eid al-Adha",
+   "status": "deferred_to_founder",
+   "note": "c11-25 item 13, recommendation no; the calendar would pin a year the fiction keeps open and the readers have not checked the frame."
+  },
+  {
+   "point": "Missed: Bismillah at the top of every notebook page",
+   "status": "applied",
+   "note": "c11-20, set clean and untouched by the shaders, consistent with the Quran text rule."
+  },
+  {
+   "point": "Missed: Teta's lullaby as Ayat al-Kursi and the three Quls",
+   "status": "applied",
+   "note": "c11-21 as a held full-stop moment, audio by the recorded reciter or none, never under play; the four references go into Scripture moments after the same quran.com check (2:255 and 112 to 114 are not yet in 18-scripture-checks.md)."
+  },
+  {
+   "point": "Missed: the zanana as the constant sound of the siege act",
+   "status": "already_in_doc",
+   "note": "'The zanana' paragraph in Audio and the drone intensity schedule in Core mechanics; absent on Days 1 and 2 and the final beach."
+  },
+  {
+   "point": "Missed: Imam al-Shafi'i born in Gaza as a Teta line",
+   "status": "deferred_to_readers",
+   "note": "No research file or doc source supports the claim; c11-28 puts the question to the readers where Teta's lines live."
+  },
+  {
+   "point": "Missed: character switching as the only way to see the segregated wedding whole",
+   "status": "applied",
+   "note": "c11-22 in the Day 10 row."
+  },
+  {
+   "point": "Missed: the martyr's funeral as his wedding ('urs al-shahid)",
+   "status": "deferred_to_readers",
+   "note": "One clause in c11-19; the critique itself says it belongs with the readers."
+  },
+  {
+   "point": "Missed: routes to paid Gazan readers (We Are Not Numbers, Rasheed Abueideh)",
+   "status": "applied",
+   "note": "c11-16 adds the routes and Palestinian Voices in Games to the readers gate, c11-17 adds the source; outreach.md has the messages but named no routes."
+  },
+  {
+   "point": "Missed: a 'Gazan, not South Asian' checklist",
+   "status": "applied",
+   "note": "c11-18 as a Tone and ethics bullet; taboon versus tandoor and the Egyptian reciters line are left out as unverified."
+  },
+  {
+   "point": "Missed: kite campaign moderation and consent for real children's names",
+   "status": "applied",
+   "note": "c11-26 in The kites paragraph."
+  },
+  {
+   "point": "Missed: answer the colour question honestly",
+   "status": "already_in_doc",
+   "note": "'The honest answer on more colour: yes, but as light, never as paint' and 'Colour is a budget the days spend'."
+  },
+  {
+   "point": "Missed: check the title against the 2025 Global Sumud Flotilla",
+   "status": "applied",
+   "note": "c11-30 adds the search to the Week 11 gate without naming the flotilla, which no research file mentions."
+  },
+  {
+   "point": "Keep: no combat, steadfastness as verbs",
+   "status": "already_in_doc",
+   "note": "Pillar 1 'Steadfastness is a verb'."
+  },
+  {
+   "point": "Keep: the joy pillar and the redesign rule",
+   "status": "already_in_doc",
+   "note": "Pillar 3, with gossip corrected by c11-10."
+  },
+  {
+   "point": "Keep: specificity over genericising",
+   "status": "already_in_doc",
+   "note": "'Specific, not generic' bullet; Gaza City named, Gazan food."
+  },
+  {
+   "point": "Keep: violence heard and felt, white screen of dust, no death animation",
+   "status": "already_in_doc",
+   "note": "'Violence is heard and felt' bullet and 'Danger, and the surprise'."
+  },
+  {
+   "point": "Keep: no slogans in dialogue",
+   "status": "already_in_doc",
+   "note": "'No slogans in dialogue' bullet, unchanged."
+  },
+  {
+   "point": "Keep: the sources tab and binding readers' notes",
+   "status": "already_in_doc",
+   "note": "Sources section; 'their notes are binding'; now also paid and credited (c11-16)."
+  },
+  {
+   "point": "Keep: hope as staying, the ending on the sea with kites",
+   "status": "already_in_doc",
+   "note": "'Hope is earned' and the Ending paragraph."
+  },
+  {
+   "point": "Keep: the Day 7 carry choice made with the hands, never deciding who dies",
+   "status": "already_in_doc",
+   "note": "Carry: 'made with the hands, not a menu'; c11-02 now states that the uncarried neighbour lives."
+  },
+  {
+   "point": "Keep: tatreez as the interface language",
+   "status": "already_in_doc",
+   "note": "'Thread' paragraph in Art direction."
+  },
+  {
+   "point": "Keep: kites as pure colour, visible wind, the courtyard wedding",
+   "status": "already_in_doc",
+   "note": "Art direction opening, the kite system, Day 10."
+  },
+  {
+   "point": "Keep: the documented textures (blackouts, water trucks, stairwell school, solar, the limit, the school shelter)",
+   "status": "already_in_doc",
+   "note": "Structure table and Sources."
+  },
+  {
+   "point": "Keep: Arabic on screen with English below, native RTL, Amiri and Noto Naskh",
+   "status": "already_in_doc",
+   "note": "'Voice acting' and the Tech table."
+  },
+  {
+   "point": "Keep: accessibility as launch requirements",
+   "status": "already_in_doc",
+   "note": "'Accessibility' paragraph: 'Launch requirements, not stretch goals'."
+  },
+  {
+   "point": "Keep: the fixed, audited charity share on the store page",
+   "status": "already_in_doc",
+   "note": "'Charity' paragraph and Decision 5, pending the founder's answer on '100%'."
+  },
+  {
+   "point": "Keep: Um Samir the nurse and Rania the teacher",
+   "status": "already_in_doc",
+   "note": "Cast table, unchanged."
+  }
+ ],
+ "notes": "Thirty edits, all checked against /home/user/sumud/docs/gdd.md with the prescribed count (each find_text occurs exactly once; replace anchors 30 to 400 characters; insert_after anchors 30 to 200 and at block end; no markup in any find_text). A simulated application is at /tmp/claude-0/-home-user/2cf65463-56a2-5e63-87b8-1330f566ec5a/scratchpad/wf/gdd_preview.md and the edit set at edits11.json in the same folder; the preview has no remaining 'names are on the wall', 'wall of names', 'on a boat', 'a game of cards', 'gossip', 'best friend' or 'Teta sings'. Facts deliberately not written because no verification file carries them: the Rafah coordination fee, Jumu'ah on the mosque rubble, the name written on a child's arm, the three-day 'aza with bitter coffee, salawat in the zaffa, taboon ovens, the Egyptian reciters as a Gazan household's voices, Imam al-Shafi'i's birth in Gaza, the Global Sumud Flotilla, and Egypt's role in the blockade; where a design needed them they are framed as questions for the readers. Overlaps to watch when critique 12 is folded in: the press angle line (c11-23), the Palestinian Voices in Games source (c11-17) and the title check (c11-30) may be touched by both passes. Follow-ups for the pending Scripture moments block: verify 2:255, 112, 113 and 114 on quran.com before Teta's bedtime moment ships, and note that Sahih al-Bukhari 1284 (now cited in c11-19) was verified in the first pass but its second check did not run, per HANDOFF.md:27. The bride-and-groom decision (item 14) interacts with Day 9's 'thread from the dress', which becomes the bride's own thread in her brother's kite if the founder accepts it."
+}
