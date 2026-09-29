@@ -1,0 +1,6 @@
+key,speaker,en,ar,notes
+beach.sami.string,Sami,"My string's caught on Abu Fadi's roof. Your kite can fetch it, no?","خيطي علق على سطح أبو فادي. طيّارتك بتجيبه، مش هيك؟","Placeholder Gazan colloquial; the readers vet every Arabic line."
+beach.layla.got_it,Layla,"Got it. Hold on.","مسكته. استنى.",""
+beach.sami.thanks,Sami,"You're the best flyer on the street. Race you home.","إنتِ أحسن واحدة بتطيّر في الحارة. سابقيني عالبيت.",""
+beach.hint.fetch,,"The string is on the roof. Q flies the kite; A and D steer it; W and S reel it in and out. Fly it into the string and reel in.","",""
+notebook.beach.fetched,Layla,"Sami's string was on Abu Fadi's roof. My kite brought it down. He says I am the best flyer on the street.","خيط سامي كان على سطح أبو فادي. طيّارتي نزّلته. بيقول إني أحسن واحدة بتطيّر في الحارة.",""

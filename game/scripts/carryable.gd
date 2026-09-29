@@ -9,6 +9,8 @@ enum Weight { LIGHT, HEAVY, TWO_HANDED }
 @export var weight := Weight.LIGHT
 @export var label := "bread"
 @export var color := Color(0.85, 0.72, 0.45)
+## A light item the kite may snag and carry. Off for things that should stay put.
+@export var hookable := true
 
 var held := false
 var home_parent: Node = null

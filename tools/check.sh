@@ -25,6 +25,9 @@ echo "== core =="
 echo "== beach bot =="
 "$GODOT" --headless --path game res://tests/bot_beach.tscn 2>&1 | grep -E "FAIL|bot:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== beach beat bot =="
+timeout 120 "$GODOT" --headless --path game res://tests/bot_beach_beat.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|beach beat:|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== chapter card =="
 timeout 60 "$GODOT" --headless --path game res://tests/shot_card.tscn 2>&1 | grep -E "card finished|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1

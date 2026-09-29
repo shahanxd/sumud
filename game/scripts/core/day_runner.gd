@@ -9,13 +9,13 @@ signal day_finished(day: int, context: Dictionary)
 ## The prototype day: one continuous playable from the beach to the end card.
 const DAYS := {
 	1: [
-		"res://scenes/beats/beach.tscn",
-		"res://scenes/beats/street.tscn",
-		"res://scenes/beats/home.tscn",
-		"res://scenes/beats/roof.tscn",
-		"res://scenes/beats/strike.tscn",
-		"res://scenes/beats/night_street.tscn",
-		"res://scenes/beats/notebook_page.tscn",
+		"res://scenes/beach.tscn",
+		"res://scenes/street.tscn",
+		"res://scenes/home.tscn",
+		"res://scenes/roof.tscn",
+		"res://scenes/strike.tscn",
+		"res://scenes/night_street.tscn",
+		"res://scenes/notebook_page.tscn",
 	],
 }
 

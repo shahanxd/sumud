@@ -1,5 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://sumud_beach"]
+[gd_scene load_steps=14 format=3 uid="uid://sumud_beach"]
 
+[ext_resource type="Script" path="res://scripts/beats/beach_beat.gd" id="0_beat"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="0_npc"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/kite.tscn" id="2_kite"]
 [ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="3_carry"]
@@ -19,6 +21,7 @@ font_size = 22
 font_color = Color(0.95, 0.9, 0.8, 0.85)
 
 [node name="Beach" type="Node2D"]
+script = ExtResource("0_beat")
 
 [node name="SkyLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -107,6 +110,32 @@ position = Vector2(1250, 900)
 weight = 2
 label = "water drum"
 color = Color(0.3, 0.5, 0.7, 1)
+
+[node name="Stall" type="StaticBody2D" parent="."]
+position = Vector2(3600, 900)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Stall"]
+polygon = PackedVector2Array(0, 0, 0, -300, 300, -300, 300, 0)
+
+[node name="Wall" type="Polygon2D" parent="Stall"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(0, 0, 0, -300, 300, -300, 300, 0)
+
+[node name="Panels" type="Polygon2D" parent="Stall"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(40, -300, 60, -330, 140, -330, 120, -300)
+
+[node name="StringSpool" parent="." instance=ExtResource("3_carry")]
+position = Vector2(3750, 600)
+label = "kite string"
+color = Color(0.93, 0.9, 0.8, 1)
+
+[node name="Sami" type="Node2D" parent="."]
+position = Vector2(3350, 900)
+script = ExtResource("0_npc")
+npc_name = "Sami"
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(300, 900)

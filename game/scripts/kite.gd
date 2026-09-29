@@ -17,9 +17,19 @@ class_name Kite
 
 const ROPE_POINTS := 16
 const TAIL_POINTS := 9
+## How close the kite or its tail must pass to snag a light item.
+const HOOK_REACH := 46.0
+const HOOK_WEIGHT := 90.0
+
+signal hooked_item(item: Carryable)
+signal dropped_item(item: Carryable)
 
 var flying := false
 var vel := Vector2.ZERO
+## A light carryable the kite has snagged. It comes down when the kite is reeled in.
+var hooked: Carryable = null
+## Whoever holds the string; the item is dropped at their feet.
+var carrier: Node2D = null
 
 var _anchor: Node2D
 var _rope := PackedVector2Array()
@@ -56,6 +66,45 @@ func launch(facing: int) -> void:
 func reel_in() -> void:
 	flying = false
 	visible = false
+	if hooked != null:
+		var at := global_position
+		if carrier != null:
+			at = carrier.global_position + Vector2(signf(global_position.x - carrier.global_position.x) * 44.0, 0.0)
+		else:
+			at.y = ground_y + 10.0
+		_release(at)
+
+
+func _release(at: Vector2) -> void:
+	var item := hooked
+	hooked = null
+	weight -= HOOK_WEIGHT
+	item.drop(at)
+	dropped_item.emit(item)
+
+
+## Snag the nearest light, unheld carryable that the kite or its tail is touching.
+func _try_hook() -> void:
+	if hooked != null:
+		return
+	for node in get_tree().get_nodes_in_group("carryable"):
+		var item := node as Carryable
+		if item == null or item.held or item.weight != Carryable.Weight.LIGHT or not item.hookable:
+			continue
+		var centre := item.global_position + Vector2(0.0, -11.0)
+		var near := global_position.distance_to(centre) < HOOK_REACH
+		if not near:
+			for p in _tail:
+				if p.distance_to(centre) < HOOK_REACH:
+					near = true
+					break
+		if near:
+			hooked = item
+			weight += HOOK_WEIGHT
+			item.pick_up(self)
+			item.position = Vector2(0.0, 40.0)
+			hooked_item.emit(item)
+			return
 
 
 func _physics_process(delta: float) -> void:
@@ -91,12 +140,17 @@ func _physics_process(delta: float) -> void:
 
 	# Crash if it touches the ground.
 	if global_position.y > ground_y:
+		if hooked != null:
+			_release(Vector2(global_position.x, ground_y + 10.0))
 		reel_in()
 		return
 
 	rotation = offset.angle() + PI * 0.5
 	_update_rope(anchor, delta)
 	_update_tail(delta)
+	_try_hook()
+	if hooked != null:
+		hooked.rotation = -rotation
 
 
 func _update_rope(anchor: Vector2, delta: float) -> void:

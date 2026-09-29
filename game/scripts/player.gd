@@ -30,8 +30,11 @@ var _was_on_floor := true
 
 
 func _ready() -> void:
+	add_to_group("player")
 	if kite_path != NodePath():
 		kite = get_node(kite_path) as Kite
+		if kite:
+			kite.carrier = self
 
 
 ## What the hands are doing, as a movement rule.
