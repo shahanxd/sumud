@@ -132,16 +132,24 @@ polygon = PackedVector2Array(600, 480, 620, 480, 620, 770, 600, 770)
 polygon = PackedVector2Array(1380, 440, 1400, 440, 1400, 900, 1380, 900)
 
 [node name="FloorFirst" type="CollisionPolygon2D" parent="House/Structure"]
-polygon = PackedVector2Array(600, 700, 1080, 700, 1080, 720, 600, 720)
+polygon = PackedVector2Array(600, 700, 1130, 700, 1130, 720, 600, 720)
+
+[node name="FloorFirstWell" type="CollisionPolygon2D" parent="House/Structure"]
+one_way_collision = true
+polygon = PackedVector2Array(1130, 700, 1380, 700, 1380, 720, 1130, 720)
 
 [node name="Roof" type="CollisionPolygon2D" parent="House/Structure"]
-polygon = PackedVector2Array(920, 500, 1400, 500, 1400, 520, 920, 520)
+polygon = PackedVector2Array(1010, 500, 1400, 500, 1400, 520, 1010, 520)
+
+[node name="RoofWell" type="CollisionPolygon2D" parent="House/Structure"]
+one_way_collision = true
+polygon = PackedVector2Array(600, 500, 1010, 500, 1010, 520, 600, 520)
 
 [node name="FlightA" type="CollisionPolygon2D" parent="House/Structure"]
-polygon = PackedVector2Array(1080, 700, 1380, 900, 1380, 920, 1080, 720)
+polygon = PackedVector2Array(1080, 900, 1380, 670, 1380, 690, 1080, 920)
 
 [node name="FlightB" type="CollisionPolygon2D" parent="House/Structure"]
-polygon = PackedVector2Array(620, 700, 920, 500, 920, 520, 620, 720)
+polygon = PackedVector2Array(1080, 700, 780, 500, 780, 520, 1080, 720)
 
 [node name="Walls" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
@@ -153,19 +161,19 @@ polygon = PackedVector2Array(1380, 440, 1400, 440, 1400, 900, 1380, 900)
 
 [node name="FloorFirstVis" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(600, 700, 1080, 700, 1080, 720, 600, 720)
+polygon = PackedVector2Array(600, 700, 1380, 700, 1380, 720, 600, 720)
 
 [node name="RoofVis" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(920, 500, 1400, 500, 1400, 520, 920, 520)
+polygon = PackedVector2Array(600, 500, 1400, 500, 1400, 520, 600, 520)
 
 [node name="FlightAVis" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(1380, 900, 1380, 880, 1350, 880, 1350, 860, 1320, 860, 1320, 840, 1290, 840, 1290, 820, 1260, 820, 1260, 800, 1230, 800, 1230, 780, 1200, 780, 1200, 760, 1170, 760, 1170, 740, 1140, 740, 1140, 720, 1110, 720, 1110, 700, 1080, 700, 1080, 720, 1380, 920)
+polygon = PackedVector2Array(1080, 900, 1080, 877, 1110, 877, 1110, 854, 1140, 854, 1140, 831, 1170, 831, 1170, 808, 1200, 808, 1200, 785, 1230, 785, 1230, 762, 1260, 762, 1260, 739, 1290, 739, 1290, 716, 1320, 716, 1320, 693, 1350, 693, 1350, 670, 1380, 670, 1380, 690, 1080, 920)
 
 [node name="FlightBVis" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(620, 700, 620, 680, 650, 680, 650, 660, 680, 660, 680, 640, 710, 640, 710, 620, 740, 620, 740, 600, 770, 600, 770, 580, 800, 580, 800, 560, 830, 560, 830, 540, 860, 540, 860, 520, 890, 520, 890, 500, 920, 500, 920, 520, 620, 720)
+polygon = PackedVector2Array(1080, 700, 1080, 680, 1050, 680, 1050, 660, 1020, 660, 1020, 640, 990, 640, 990, 620, 960, 620, 960, 600, 930, 600, 930, 580, 900, 580, 900, 560, 870, 560, 870, 540, 840, 540, 840, 520, 810, 520, 810, 500, 780, 500, 780, 520, 1080, 720)
 
 [node name="Tank" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
@@ -176,7 +184,7 @@ position = Vector2(1200, 500)
 
 [node name="ParapetVis" type="Polygon2D" parent="House/Parapet"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(-280, 0, 200, 0, 200, -14, -280, -14)
+polygon = PackedVector2Array(-600, 0, 200, 0, 200, -14, -600, -14)
 
 [node name="Dado" type="Polygon2D" parent="House"]
 z_index = -4
@@ -186,7 +194,7 @@ polygon = PackedVector2Array(620, 860, 1380, 860, 1380, 900, 620, 900)
 [node name="DadoFirst" type="Polygon2D" parent="House"]
 z_index = -4
 color = Color(0.24, 0.21, 0.19, 1)
-polygon = PackedVector2Array(620, 664, 1080, 664, 1080, 700, 620, 700)
+polygon = PackedVector2Array(620, 664, 1380, 664, 1380, 700, 620, 700)
 
 [node name="WindowFrameG" type="Polygon2D" parent="House"]
 z_index = -4
@@ -316,27 +324,27 @@ polygon = PackedVector2Array(1052, 822, 1092, 822, 1092, 828, 1052, 828)
 [node name="Wardrobe" type="Polygon2D" parent="House"]
 z_index = -3
 color = Color(0.22, 0.17, 0.13, 1)
-polygon = PackedVector2Array(960, 560, 1060, 560, 1060, 700, 960, 700)
+polygon = PackedVector2Array(640, 560, 740, 560, 740, 700, 640, 700)
 
 [node name="WardrobeSplit" type="Polygon2D" parent="House"]
 z_index = -3
 color = Color(0.31, 0.27, 0.23, 1)
-polygon = PackedVector2Array(1009, 566, 1011, 566, 1011, 694, 1009, 694)
+polygon = PackedVector2Array(689, 566, 691, 566, 691, 694, 689, 694)
 
 [node name="Rug" type="Polygon2D" parent="House"]
 z_index = -3
 color = Color(0.44, 0.24, 0.22, 1)
-polygon = PackedVector2Array(780, 694, 940, 694, 940, 700, 780, 700)
+polygon = PackedVector2Array(1290, 694, 1370, 694, 1370, 700, 1290, 700)
 
 [node name="RolledA" type="Polygon2D" parent="House"]
 z_index = -3
 color = Color(0.38, 0.22, 0.2, 1)
-polygon = PackedVector2Array(640, 668, 736, 668, 736, 700, 640, 700)
+polygon = PackedVector2Array(1180, 668, 1276, 668, 1276, 700, 1180, 700)
 
 [node name="RolledB" type="Polygon2D" parent="House"]
 z_index = -3
 color = Color(0.42, 0.26, 0.22, 1)
-polygon = PackedVector2Array(650, 640, 726, 640, 726, 668, 650, 668)
+polygon = PackedVector2Array(1190, 640, 1266, 640, 1266, 668, 1190, 668)
 
 [node name="RoofMat" type="Polygon2D" parent="House"]
 z_index = -3
@@ -460,7 +468,7 @@ is_light_source = true
 position = Vector2(680, 900)
 
 [node name="Baba" parent="." instance=ExtResource("1_player")]
-position = Vector2(1100, 900)
+position = Vector2(1000, 900)
 is_active = false
 build = 1
 character_name = "Baba"

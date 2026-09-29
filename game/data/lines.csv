@@ -10,7 +10,7 @@ street.hint.plank,,"The water is too heavy to jump with. Set it down, find anoth
 street.mama.thanks,Mama,"Alhamdulillah. Wash your hands, the bread is warm.","الحمد لله. اغسلي إيديكي، الخبز سخن.",""
 notebook.street.plank,Layla,"Abu Ahmad's plank makes a bridge over the pit. He will want it back.","لوح أبو أحمد صار جسر فوق الحفرة. رح يبدّه يرجع.",""
 notebook.street.water,Layla,"I carried water home from the truck. Twenty litres turns a pit into a river.","جبت مي عالبيت من التنكر. عشرين لتر بتخلّي الحفرة نهر.",""
-home.hint.roof,,"Teta is on the roof. The stairs are at the back. E to sit with her.","",""
+home.hint.roof,,"Teta is on the roof. The stairs start at the right-hand wall: walk under them to the wall, then climb. E to sit with her.","",""
 home.teta.sit,Teta,"Sit, habibti. The sea is doing its evening thing.","اقعدي يا حبيبتي. البحر عم يعمل شغلته المسائية.","Placeholder colloquial; readers vet."
 home.teta.majdal,Teta,"My mother said the sea at al-Majdal was this same water, a little further up.","إمي كانت تقول إن بحر المجدل هو نفس هالمي، بس أبعد شوي.",""
 home.teta.question,Teta,"Tell me something. When people say we are still here, what do you think it means, to stay?","قوليلي شي. لما الناس يقولوا إحنا لسا هون، شو معناها برأيك، إنك تبقي؟",""

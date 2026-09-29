@@ -18,6 +18,16 @@ func run() -> void:
 	check(not baba.is_active and layla.is_active, "Layla is active, Baba stands by")
 	check("wind_loop" in Sound.running_loops(), "the wind runs faint over the roof")
 
+	# The stairs must be walkable without a jump: under the flight to the wall, then up,
+	# along the first floor to the far wall, then up the second flight to the roof.
+	teleport(layla, Vector2(900.0, 900.0))
+	await hold("move_right", 120)
+	check(layla.global_position.y < 730.0 and layla.global_position.x > 1300.0, "Layla walks up the ground-floor flight without jumping (%s)" % layla.global_position)
+	await hold("move_left", 160)
+	check(layla.global_position.y < 530.0, "Layla walks up the second flight to the roof (%s)" % layla.global_position)
+	await hold("move_right", 150)
+	check(layla.global_position.y < 530.0 and layla.global_position.x > 1200.0, "Layla walks along the roof to Teta (%s)" % layla.global_position)
+
 	# Up to the roof and sit with Teta.
 	teleport(layla, Vector2(1250.0, 500.0))
 	await frames(8)
