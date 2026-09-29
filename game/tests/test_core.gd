@@ -62,6 +62,17 @@ func run() -> void:
 	await Fx.fade_in(0.05)
 	check(true, "screen effects run to completion")
 
+	# The main scene must not carry a camera or a backdrop of its own: a beat's camera has
+	# to own the view, and nothing may sit over the beat's sky and sea.
+	var main_scene: PackedScene = load("res://scenes/main.tscn")
+	var state := main_scene.get_state()
+	var stray: Array[String] = []
+	for i in state.get_node_count():
+		var t := state.get_node_type(i)
+		if t in ["Camera2D", "ColorRect", "Polygon2D", "Sprite2D"]:
+			stray.append("%s:%s" % [state.get_node_name(i), t])
+	check(stray.is_empty(), "main.tscn has no camera or backdrop of its own (%s)" % [stray])
+
 	# Quit clean: the loop the runner faded out must be gone before the tree goes down, and
 	# the mixer needs a moment more to drop its playback.
 	await until(func(): return Sound.get_child_count() == 0, 300)

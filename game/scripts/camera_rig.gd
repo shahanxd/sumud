@@ -25,8 +25,11 @@ func _ready() -> void:
 	_player = get_node_or_null(player_path) as Player
 	_kite = get_node_or_null(kite_path) as Kite
 	zoom = Vector2.ONE * ground_zoom
+	# The beat's camera owns the view, whatever else is in the tree.
+	make_current()
 	if _player:
 		global_position = _player.global_position + Vector2(0.0, ground_bias)
+		reset_smoothing()
 
 
 ## Follow a player again (after a switch) or any node (a view for a card).

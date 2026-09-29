@@ -11,12 +11,12 @@ func _ready() -> void:
 		await get_tree().process_frame
 		get_tree().quit(0)
 		return
-	$Title.visible = false
+	$TitleLayer/Title.visible = false
 	Day.day_finished.connect(_on_day_finished)
 	Day.start(1, self)
 
 
 func _on_day_finished(_day: int, _ctx: Dictionary) -> void:
-	$Title.visible = true
+	$TitleLayer/Title.visible = true
 	if Day.bot_mode:
 		get_tree().quit(0)
