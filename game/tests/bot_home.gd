@@ -12,8 +12,11 @@ func run() -> void:
 	var candle: Carryable = home.get_node("Candle")
 	var result := {}
 	home.finished.connect(func(r: Dictionary): result.merge(r, true))
+	if not flow:
+		home.begin({})
 	await frames(10)
 	check(not baba.is_active and layla.is_active, "Layla is active, Baba stands by")
+	check("wind_loop" in Sound.running_loops(), "the wind runs faint over the roof")
 
 	# Up to the roof and sit with Teta.
 	teleport(layla, Vector2(1250.0, 500.0))
@@ -21,6 +24,8 @@ func run() -> void:
 	await tap("interact")
 	check(await until(func(): return home.sat, 60), "sitting with Teta starts the roof scene")
 	check(layla.sitting, "Layla sits")
+	check("roof_breath_loop" in Sound.running_loops(), "the roof breath comes in on the voices bus when she sits")
+	check(int(Sound.play_count.get("cloth_rustle", 0)) >= 1, "cloth rustles as she sits down")
 	# Lines auto-advance in bot mode; the card needs the interact key after its minimum hold.
 	var card_open := await until(func(): return Cards.showing, 900)
 	check(card_open, "the hadith card appears after Teta's question")
@@ -35,12 +40,17 @@ func run() -> void:
 
 	# Stay on the roof: caught outside once.
 	check(await until(func(): return home.strike_armed, 300), "the strike is telegraphed after the card")
+	var loops: Array = Sound.running_loops()
+	check(int(Sound.play_count.get("birds_leave", 0)) == 1 and not ("roof_breath_loop" in loops), "the birds leave and the breath fades with them")
+	check(not ("drone_hum_loop" in loops) and not ("rumble_loop" in loops), "Day 1: no hum and no rumble under the telegraph")
 	check(await until(func(): return home.fails >= 1, 400), "caught on the roof: white-out, not death")
 	check(layla.global_position.distance_to(Vector2(960.0, 500.0)) < 60.0, "sent back to the hatch (%.0f, %.0f)" % [layla.global_position.x, layla.global_position.y])
 
 	# Take cover inside.
 	teleport(layla, Vector2(800.0, 900.0))
 	check(await until(func(): return home.struck, 400), "inside in time: the strike lands")
+	check(int(Sound.play_count.get("strike_bang", 0)) == 1, "one bang, on the strike bus (%d)" % int(Sound.play_count.get("strike_bang", 0)))
+	check(Sound.running_loops().is_empty(), "every loop is cut with the bang (%s)" % [Sound.running_loops()])
 	check(String(Look.current.get("phase", "")) == "siege_night", "the world goes dark and grey (%s)" % Look.current.get("phase"))
 	check(await until(func(): return home.beam != null, 120), "the beam comes down across the door")
 	check(home.beam.blocking(), "the beam blocks the door")
@@ -79,5 +89,11 @@ func run() -> void:
 	check(layla.carried == candle and layla.has_light(), "Layla carries the lit candle")
 	teleport(layla, Vector2(630.0, 900.0))
 	check(await until(func(): return result.get("candle", false), 300), "out of the door: the beat finishes with the candle")
+	check(int(Sound.play_count.get("door_wood", 0)) == 1 and int(Sound.play_count.get("ringing", 0)) == 1, "the ringing came once, and the door to the street sounds on the way out")
 	check(Notebook.has("home_first_strike"), "the notebook remembers the first strike")
+	if not flow:
+		# Quit clean: a player still playing at exit is reported as leaked.
+		Sound.stop_all_loops(0.0)
+		await until(func(): return Sound.get_child_count() == 0, 600)
+		await frames(30)
 	done()

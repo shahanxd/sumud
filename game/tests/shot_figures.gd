@@ -29,15 +29,15 @@ func _ready() -> void:
 		["jump", {"airborne": true}],
 	]
 	var row2: Array = [
-		["Baba", {"build": 1, "headscarf": false, "dress": 0}],
+		["Baba", {"build": 1, "headscarf": false, "dress": 0, "shoulder": 0.14}],
 		["Baba walk", {"build": 1, "headscarf": false, "dress": 0, "pose": Figure.Pose.WALK, "stride": 0.5, "phase": 1.0}],
 		["Baba beam", {"build": 1, "headscarf": false, "dress": 0, "load": 2, "pose": Figure.Pose.WALK, "stride": 0.3, "phase": 2.0}],
-		["Teta", {"build": 2, "headscarf": true, "dress": 2, "cane": true}],
-		["Teta sit", {"build": 2, "headscarf": true, "dress": 2, "pose": Figure.Pose.SIT}],
+		["Teta", {"build": 2, "headscarf": true, "scarf_color": Color(0.09, 0.08, 0.10), "dress": 2, "cane": true}],
+		["Teta sit", {"build": 2, "headscarf": true, "scarf_color": Color(0.09, 0.08, 0.10), "dress": 2, "pose": Figure.Pose.SIT}],
 		["Sami", {"build": 0, "headscarf": false, "dress": 0}],
 		["Sami run", {"build": 0, "headscarf": false, "dress": 0, "pose": Figure.Pose.WALK, "stride": 1.0, "phase": 1.0}],
 		["Abu Ahmad", {"build": 1, "headscarf": false, "dress": 0, "pose": Figure.Pose.WALK, "stride": 0.3, "phase": 3.5}],
-		["Mama", {"build": 1, "headscarf": true, "dress": 2, "pose": Figure.Pose.WALK, "stride": 0.5, "phase": 0.5}],
+		["Mama", {"build": 1, "headscarf": true, "scarf_color": Color(0.09, 0.08, 0.10), "dress": 2, "pose": Figure.Pose.WALK, "stride": 0.5, "phase": 0.5}],
 		["Layla faces left", {"flip": true, "pose": Figure.Pose.WALK, "stride": 0.5, "phase": 1.5}],
 	]
 	_row(row1, 400.0)
@@ -55,10 +55,11 @@ func _row(specs: Array, y: float) -> void:
 		var f := Figure.new()
 		f.build = 0
 		f.headscarf = true
+		f.scarf_color = Color(0.80, 0.76, 0.68)
 		f.dress = 1
 		for k in props:
 			if k == "flip":
-				holder.scale.x = -1.0
+				f.scale.x = -1.0
 			else:
 				f.set(k, props[k])
 		holder.add_child(f)

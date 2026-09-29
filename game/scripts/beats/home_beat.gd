@@ -54,19 +54,18 @@ func _physics_process(_delta: float) -> void:
 		_leave()
 
 
-func _sound() -> Node:
-	return get_node_or_null("/root/Sound")
-
-
-func _play(name: String, bus: String = "effects") -> void:
-	var s := _sound()
-	if s != null and s.has_method("play"):
-		s.play(name, bus)
+func begin(ctx: Dictionary) -> void:
+	super.begin(ctx)
+	# The wind over the roof, faint. Day 1: no hum, no rumble.
+	Sound.loop("wind_loop", "ambience", -14.0, 2.0)
 
 
 func _roof_sequence() -> void:
 	sat = true
 	layla.sit(true)
+	Sound.play("cloth_rustle", "effects", -6.0, 0.08)
+	# The roof at dusk: the friend's vocal pad (its placeholder for now) breathes in over 4 s.
+	Sound.loop("roof_breath_loop", "voices", -6.0, 4.0)
 	layla.facing = -1 if teta.global_position.x < layla.global_position.x else 1
 	hint.text = ""
 	await Say.key("home.teta.sit")
@@ -83,18 +82,17 @@ func _roof_sequence() -> void:
 	camera.follow(layla)
 	card_done = true
 	layla.sit(false)
+	Sound.play("cloth_rustle", "effects", -6.0, 0.08)
 	await get_tree().create_timer(0.3 if Day.bot_mode else 2.5).timeout
 	_telegraph()
 
 
-## The birds leave first. Then the hum. Then the clock.
+## The birds leave first. Then the clock. (No hum on Day 1: the zanana comes later.)
 func _telegraph() -> void:
 	strike_armed = true
 	_birds_leave()
-	_play("birds_leave", "ambience")
-	var s := _sound()
-	if s != null and s.has_method("loop"):
-		s.loop("drone_hum_loop", "rumble", -6.0, 3.0)
+	Sound.stop_loop("roof_breath_loop", 3.0)
+	Sound.play("birds_leave", "effects")
 	Say.key("home.baba.inside", 2.5)
 	hint.text = Say.text("home.hint.cover")
 	_countdown(2.0 if Day.bot_mode else 12.0)
@@ -138,22 +136,23 @@ func _birds_leave() -> void:
 func _strike() -> void:
 	struck = true
 	hint.text = ""
-	var s := _sound()
-	if s != null and s.has_method("stop_loop"):
-		s.stop_loop("drone_hum_loop", 0.1)
-	_play("strike_bang", "strike")
+	# The bang is alone: every loop cut at once, the one close bang, then the ringing under
+	# the white-out. The world comes back slowly (see _wind_returns).
+	Sound.stop_all_loops(0.05)
+	Sound.play("strike_bang", "strike")
+	_wind_returns()
 	camera.shake(22.0, 0.9)
 	Fx.strike_flash(3.0)
 	Look.set_phase(1, "siege_night", 0.4)
 	lights.visible = false
 	await get_tree().create_timer(0.2 if Day.bot_mode else 1.6).timeout
-	_play("ringing", "effects")
+	Sound.play("ringing", "strike")
 	beam = BEAM_SCENE.instantiate()
 	beam.position = beam_spawn.position
 	beam.door_x = door.global_position.x
 	add_child(beam)
 	beam.lifted.connect(_on_beam_lifted)
-	_play("drop_heavy", "effects")
+	Sound.play("drop_heavy", "effects")
 	await get_tree().create_timer(0.2 if Day.bot_mode else 2.0).timeout
 	await Say.key("home.baba.everyone")
 	await Say.line("Teta", Cards.arabic("day3.teta.hasbuna"), Cards.english("day3.teta.hasbuna"), 0.0)
@@ -163,12 +162,21 @@ func _strike() -> void:
 	Notebook.write("home_first_strike", Say.text("notebook.home.strike", "en"), Say.text("notebook.home.strike", "ar"), {"act": true})
 
 
+## After the bang only the ringing; the wind returns low, seven seconds on. Runs beside
+## the rest of the strike; if the beat has ended by then, nothing starts.
+func _wind_returns() -> void:
+	await get_tree().create_timer(7.0).timeout
+	if _done or not is_inside_tree():
+		return
+	Sound.loop("wind_loop", "ambience", -20.0, 4.0)
+
+
 func _switch() -> void:
 	_active = baba if _active == layla else layla
 	layla.is_active = _active == layla
 	baba.is_active = _active == baba
 	camera.follow(_active)
-	_play("cloth_rustle", "effects")
+	Sound.play("cloth_rustle", "effects", -8.0, 0.08)
 
 
 func _on_beam_lifted(_beam: Beam) -> void:
@@ -178,4 +186,5 @@ func _on_beam_lifted(_beam: Beam) -> void:
 
 func _leave() -> void:
 	hint.text = ""
+	Sound.play("door_wood", "effects")
 	finish({"candle": true, "strike": true, "beam_lifted": beam != null and not beam.blocking()})

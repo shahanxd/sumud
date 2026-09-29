@@ -5,7 +5,7 @@ extends Node
 ## the print pass. Everything is driven by one JSON file the founder can tune.
 
 const PALETTE_PATH := "res://data/palette.json"
-const COLOR_KEYS := ["sky_top", "sky_horizon", "sea", "haze", "ambient", "sun_color", "tint"]
+const COLOR_KEYS := ["sky_top", "sky_horizon", "sea", "haze", "ambient", "sun_color", "tint", "ground"]
 const FLOAT_KEYS := ["saturation", "sun_x", "sun_y", "sun_size", "sun_glow", "stars", "haze_alpha", "grain", "vignette"]
 
 var current: Dictionary = {}
@@ -34,7 +34,7 @@ func palette(day: int, phase: String) -> Dictionary:
 	for k in COLOR_KEYS:
 		var fallback := "#ffffff"
 		var c := Color(String(base.get(k, fallback)))
-		if k in ["sky_top", "sky_horizon", "sea", "haze"]:
+		if k in ["sky_top", "sky_horizon", "sea", "haze", "ground"]:
 			c = _desaturate(c, sat)
 		out[k] = c
 	for k in FLOAT_KEYS:
@@ -117,6 +117,11 @@ func _apply(p: Dictionary) -> void:
 	for node in tree.get_nodes_in_group("ambient"):
 		if node is CanvasModulate:
 			(node as CanvasModulate).color = p["ambient"]
+	# The ground is the brightest thing below the horizon by day and near-black by night;
+	# figures and props stay dark, so the silhouette rule holds.
+	for node in tree.get_nodes_in_group("ground"):
+		if node is Polygon2D:
+			(node as Polygon2D).color = p["ground"]
 	for node in tree.get_nodes_in_group("skyline"):
 		if node.has_method("tint"):
 			node.tint(haze)

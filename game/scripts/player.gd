@@ -15,6 +15,8 @@ class_name Player
 ## 0 child (Layla), 1 adult (Baba). Adults can lift what children cannot.
 @export_enum("child", "adult") var build := 0
 @export var character_name := "Layla"
+## What the feet land on, for Sound.step: "concrete" or "sand" (the beach).
+@export var surface := "concrete"
 
 var facing := 1
 var crawling := false
@@ -52,6 +54,7 @@ func _apply_build() -> void:
 	if build == 1:
 		figure.headscarf = false
 		figure.dress = 0
+		figure.shoulder = 0.14
 		var stand := stand_shape.shape as CapsuleShape2D
 		if stand:
 			# Own copy: the shape resource is shared by every player in the scene.
@@ -144,6 +147,7 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor() and not _was_on_floor:
 		_squash = 0.22
+		Sound.step(surface)
 	_was_on_floor = is_on_floor()
 	_animate(delta)
 
@@ -191,7 +195,11 @@ func _animate(delta: float) -> void:
 	if moving:
 		figure.stride = clampf(absf(velocity.x) / maxf(run_speed, 1.0), 0.15, 1.0)
 		var cadence := 5.0 if crawling else 7.0 + 5.0 * figure.stride
+		# A foot plants each time the phase crosses a multiple of PI (one leg, then the other).
+		var plants := floori(_run_phase / PI)
 		_run_phase += delta * cadence
+		if floori(_run_phase / PI) != plants:
+			Sound.step(surface, -12.0 if crawling else -2.0)
 	else:
 		figure.stride = move_toward(figure.stride, 0.0, delta * 4.0)
 		# Ease the legs back together instead of freezing mid-step.

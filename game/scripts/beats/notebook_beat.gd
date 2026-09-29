@@ -26,9 +26,7 @@ func _ready() -> void:
 func begin(ctx: Dictionary) -> void:
 	super.begin(ctx)
 	_build()
-	var snd := get_node_or_null("/root/Sound")
-	if snd != null and snd.has_method("play"):
-		snd.play("paper_page", "effects")
+	Sound.play("paper_page", "effects")
 	var tw := create_tween()
 	tw.tween_property(_paper, "modulate:a", 1.0, 0.2 if Day.bot_mode else 1.0)
 	await tw.finished
@@ -144,18 +142,17 @@ func _physics_process(_delta: float) -> void:
 
 
 func _close() -> void:
-	var snd := get_node_or_null("/root/Sound")
-	if snd != null and snd.has_method("play"):
-		snd.play("paper_page", "effects")
+	Sound.play("paper_page", "effects")
 	var tw := create_tween()
 	tw.tween_property(_paper, "modulate:a", 0.0, 0.1 if Day.bot_mode else 0.6)
 	await tw.finished
-	var card := CARD_SCENE.instantiate()
+	var card: ChapterCard = CARD_SCENE.instantiate()
 	card.band_path = "res://assets/tatreez/band_2.json"
 	if Day.bot_mode:
 		card.stitch_seconds = 0.2
 		card.hold_seconds = 0.05
 	_layer.add_child(card)
+	Day.stitch_sounds(card)
 	await card.play(Say.text("notebook.end.day"), Say.text("notebook.end.title"))
 	card.queue_free()
 	finish({"notebook_shown": true, "entries": entry_count})

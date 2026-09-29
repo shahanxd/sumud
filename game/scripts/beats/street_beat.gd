@@ -23,6 +23,12 @@ func _ready() -> void:
 	_open()
 
 
+func begin(ctx: Dictionary) -> void:
+	super.begin(ctx)
+	# The wind reaches the street faintly, between the houses.
+	Sound.loop("wind_loop", "ambience", -16.0, 2.0)
+
+
 func _open() -> void:
 	await get_tree().physics_frame
 	await Say.key("street.mama.water")

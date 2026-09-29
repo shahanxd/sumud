@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/skyline.gd" id="4_skyline"]
 [ext_resource type="Script" path="res://scripts/camera_rig.gd" id="5_camera"]
 [ext_resource type="Script" path="res://scripts/wind_dust.gd" id="8_dust"]
+[ext_resource type="FontFile" path="res://assets/fonts/amiri/Amiri-Bold.ttf" id="10_amiri"]
 [ext_resource type="Script" path="res://scripts/sea.gd" id="9_sea"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="6_sky"]
 [ext_resource type="Shader" path="res://shaders/sea.gdshader" id="7_sea"]
@@ -72,22 +73,39 @@ collision_mask = 0
 [node name="Shape" type="CollisionPolygon2D" parent="Ground"]
 polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
 
-[node name="Sand" type="Polygon2D" parent="Ground"]
+[node name="Sand" type="Polygon2D" parent="Ground" groups=["ground"]]
 z_index = -5
 color = Color(0.16, 0.13, 0.11, 1)
 polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
 
 [node name="Boat" type="StaticBody2D" parent="."]
-position = Vector2(1500, 900)
+position = Vector2(1500, 906)
+rotation = -0.07
 collision_layer = 1
 collision_mask = 0
 
 [node name="Shape" type="CollisionPolygon2D" parent="Boat"]
-polygon = PackedVector2Array(-160, -70, 160, -70, 200, -120, 120, 0, -120, 0)
+polygon = PackedVector2Array(-170, -66, 150, -66, 150, -80, 210, -128, 130, 0, -130, 0)
 
 [node name="Hull" type="Polygon2D" parent="Boat"]
 color = Color(0.11, 0.09, 0.09, 1)
-polygon = PackedVector2Array(-160, -70, 160, -70, 200, -120, 120, 0, -120, 0)
+polygon = PackedVector2Array(-176, -60, -170, -78, 150, -84, 214, -134, 200, -80, 132, 0, -130, 0, -172, -20)
+
+[node name="Gunwale" type="Polygon2D" parent="Boat"]
+color = Color(0.2, 0.17, 0.15, 1)
+polygon = PackedVector2Array(-168, -74, 148, -80, 150, -72, -166, -66)
+
+[node name="Thwarts" type="Polygon2D" parent="Boat"]
+color = Color(0.2, 0.17, 0.15, 1)
+polygon = PackedVector2Array(-90, -62, -78, -62, -78, -58, -90, -58)
+
+[node name="Mast" type="Polygon2D" parent="Boat"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(-30, -76, -26, -76, -22, -250, -28, -250)
+
+[node name="Keel" type="Polygon2D" parent="Boat"]
+color = Color(0.2, 0.17, 0.15, 1)
+polygon = PackedVector2Array(-100, -30, 60, -30, 60, -27, -100, -27)
 
 [node name="Crates" type="StaticBody2D" parent="."]
 position = Vector2(2300, 900)
@@ -101,6 +119,22 @@ polygon = PackedVector2Array(0, 0, 0, -60, 60, -60, 60, -120, 120, -120, 120, 0)
 color = Color(0.11, 0.09, 0.09, 1)
 polygon = PackedVector2Array(0, 0, 0, -60, 60, -60, 60, -120, 120, -120, 120, 0)
 
+[node name="Slats" type="Polygon2D" parent="Crates"]
+color = Color(0.19, 0.16, 0.13, 1)
+polygon = PackedVector2Array(4, -56, 56, -56, 56, -53, 4, -53)
+
+[node name="Slats2" type="Polygon2D" parent="Crates"]
+color = Color(0.19, 0.16, 0.13, 1)
+polygon = PackedVector2Array(64, -116, 116, -116, 116, -113, 64, -113)
+
+[node name="Slats3" type="Polygon2D" parent="Crates"]
+color = Color(0.19, 0.16, 0.13, 1)
+polygon = PackedVector2Array(64, -60, 116, -60, 116, -57, 64, -57)
+
+[node name="Slats4" type="Polygon2D" parent="Crates"]
+color = Color(0.19, 0.16, 0.13, 1)
+polygon = PackedVector2Array(4, -30, 56, -30, 56, -27, 4, -27)
+
 [node name="LowWall" type="StaticBody2D" parent="."]
 position = Vector2(3000, 900)
 collision_layer = 1
@@ -111,23 +145,48 @@ polygon = PackedVector2Array(0, -55, 0, -320, 100, -320, 100, -55)
 
 [node name="Wall" type="Polygon2D" parent="LowWall"]
 color = Color(0.11, 0.09, 0.09, 1)
-polygon = PackedVector2Array(0, -55, 0, -320, 100, -320, 100, -55)
+polygon = PackedVector2Array(0, -55, -6, -110, 0, -320, 100, -322, 106, -120, 100, -55, 70, -60, 30, -58)
+
+[node name="Post" type="Polygon2D" parent="LowWall"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(-14, 0, -14, -330, -4, -330, -4, 0)
+
+[node name="Post2" type="Polygon2D" parent="LowWall"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(104, 0, 104, -330, 114, -330, 114, 0)
+
+[node name="Rubble" type="Polygon2D" parent="LowWall"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(-60, 0, -40, -18, -20, -12, -8, -20, 0, -8, 4, 0)
+
+[node name="Rubble2" type="Polygon2D" parent="LowWall"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(100, 0, 104, -10, 120, -22, 140, -12, 158, -16, 170, 0)
+
+[node name="Courses" type="Polygon2D" parent="LowWall"]
+color = Color(0.19, 0.16, 0.13, 1)
+polygon = PackedVector2Array(2, -150, 98, -151, 98, -148, 2, -147)
+
+[node name="Courses2" type="Polygon2D" parent="LowWall"]
+color = Color(0.19, 0.16, 0.13, 1)
+polygon = PackedVector2Array(2, -240, 98, -241, 98, -238, 2, -237)
 
 [node name="Bread" parent="." instance=ExtResource("3_carry")]
 position = Vector2(800, 900)
 label = "bread"
+color = Color(0.36, 0.27, 0.16, 1)
 
 [node name="Jerrycan" parent="." instance=ExtResource("3_carry")]
 position = Vector2(1100, 900)
 weight = 1
 label = "jerrycan"
-color = Color(0.85, 0.75, 0.2, 1)
+color = Color(0.42, 0.38, 0.14, 1)
 
 [node name="WaterDrum" parent="." instance=ExtResource("3_carry")]
 position = Vector2(1250, 900)
 weight = 2
 label = "water drum"
-color = Color(0.3, 0.5, 0.7, 1)
+color = Color(0.16, 0.24, 0.34, 1)
 
 [node name="Stall" type="StaticBody2D" parent="."]
 position = Vector2(3600, 900)
@@ -138,12 +197,61 @@ collision_mask = 0
 polygon = PackedVector2Array(0, 0, 0, -300, 300, -300, 300, 0)
 
 [node name="Wall" type="Polygon2D" parent="Stall"]
-color = Color(0.11, 0.09, 0.09, 1)
+color = Color(0.34, 0.30, 0.26, 1)
 polygon = PackedVector2Array(0, 0, 0, -300, 300, -300, 300, 0)
 
+[node name="Hatch" type="Polygon2D" parent="Stall"]
+color = Color(0.1, 0.09, 0.09, 1)
+polygon = PackedVector2Array(30, -200, 30, -110, 250, -110, 250, -200)
+
+[node name="Counter" type="Polygon2D" parent="Stall"]
+color = Color(0.5, 0.42, 0.32, 1)
+polygon = PackedVector2Array(20, -116, 20, -104, 262, -104, 262, -116)
+
+[node name="Goods" type="Polygon2D" parent="Stall"]
+color = Color(0.46, 0.3, 0.3, 1)
+polygon = PackedVector2Array(60, -150, 60, -128, 88, -128, 88, -150)
+
+[node name="Goods2" type="Polygon2D" parent="Stall"]
+color = Color(0.34, 0.4, 0.5, 1)
+polygon = PackedVector2Array(150, -160, 150, -128, 180, -128, 180, -160)
+
+[node name="HatchLid" type="Polygon2D" parent="Stall"]
+color = Color(0.26, 0.23, 0.2, 1)
+polygon = PackedVector2Array(24, -200, 24, -206, 256, -206, 256, -200, 300, -250, 300, -258, 22, -258)
+
+[node name="Roof" type="Polygon2D" parent="Stall"]
+color = Color(0.22, 0.2, 0.18, 1)
+polygon = PackedVector2Array(-16, -300, 316, -300, 316, -310, -16, -310)
+
+[node name="RoofBattens" type="Polygon2D" parent="Stall"]
+color = Color(0.14, 0.13, 0.12, 1)
+polygon = PackedVector2Array(20, -310, 20, -318, 24, -318, 24, -310, 140, -310, 140, -318, 144, -318, 144, -310, 260, -310, 260, -318, 264, -318, 264, -310)
+
 [node name="Panels" type="Polygon2D" parent="Stall"]
-color = Color(0.11, 0.09, 0.09, 1)
-polygon = PackedVector2Array(40, -300, 60, -330, 140, -330, 120, -300)
+color = Color(0.16, 0.2, 0.28, 1)
+polygon = PackedVector2Array(40, -310, 60, -334, 140, -334, 120, -310)
+
+[node name="Sign" type="Polygon2D" parent="Stall"]
+color = Color(0.2, 0.17, 0.15, 1)
+polygon = PackedVector2Array(40, -262, 40, -292, 260, -292, 260, -262)
+
+[node name="SignText" type="Label" parent="Stall"]
+offset_left = 40.0
+offset_top = -298.0
+offset_right = 260.0
+offset_bottom = -256.0
+theme_override_colors/font_color = Color(0.88, 0.8, 0.62, 1)
+theme_override_fonts/font = ExtResource("10_amiri")
+theme_override_font_sizes/font_size = 28
+text = "كشك الشاطئ"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_direction = 2
+
+[node name="Awning" type="Polygon2D" parent="Stall"]
+color = Color(0.46, 0.22, 0.18, 1)
+polygon = PackedVector2Array(10, -230, 290, -230, 300, -206, 0, -206)
 
 [node name="StringSpool" parent="." instance=ExtResource("3_carry")]
 position = Vector2(3750, 600)
@@ -158,6 +266,7 @@ npc_name = "Sami"
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(300, 900)
 kite_path = NodePath("../Kite")
+surface = "sand"
 
 [node name="Kite" parent="." instance=ExtResource("2_kite")]
 anchor_path = NodePath("../Player/Visual/Hand")

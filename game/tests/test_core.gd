@@ -38,6 +38,8 @@ func run() -> void:
 	Day.beat_started.connect(func(b: Beat, i: int): starts.append(i))
 	# Lambdas capture locals by value, so mutate the dictionary rather than reassigning it.
 	Day.day_finished.connect(func(_d: int, ctx: Dictionary): finished.merge(ctx, true))
+	# A loop left running by one beat must not reach the next.
+	Sound.loop("wind_loop", "ambience", -10.0, 0.0)
 	Day.start_beats([
 		"res://tests/beats/fake_beat.tscn",
 		"res://tests/beats/missing_beat.tscn",
@@ -49,6 +51,7 @@ func run() -> void:
 	check(int(finished.get("fake", 0)) == 2, "beat results merge into the day's context (fake=%s)" % finished.get("fake"))
 	check(finished.get("carried") == "bread", "context passed at start survives to the end")
 	check(Day.beat == null or not is_instance_valid(Day.beat) or Day.beat.is_queued_for_deletion(), "the last beat is freed")
+	check(Sound.running_loops().is_empty(), "the day runner stops every loop between beats (%s)" % [Sound.running_loops()])
 
 	# Fx.
 	await Fx.strike_flash(0.1)
@@ -59,4 +62,8 @@ func run() -> void:
 	await Fx.fade_in(0.05)
 	check(true, "screen effects run to completion")
 
+	# Quit clean: the loop the runner faded out must be gone before the tree goes down, and
+	# the mixer needs a moment more to drop its playback.
+	await until(func(): return Sound.get_child_count() == 0, 300)
+	await frames(30)
 	done()

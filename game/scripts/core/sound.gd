@@ -12,6 +12,10 @@ const STEP_INTERVAL_MS := 120
 
 ## Bus name to index, filled in _ready.
 var buses: Dictionary = {}
+## The name of the last one-shot that started, and how many times each name has started.
+## For tests; loops are listed by running_loops() instead.
+var last_played := ""
+var play_count: Dictionary = {}
 
 var _streams: Dictionary = {}
 var _loops: Dictionary = {}
@@ -141,12 +145,13 @@ func unduck(seconds: float = 1.0) -> void:
 
 ## A footstep on "sand" or "concrete": one of four variants with a little pitch jitter,
 ## at most one every 0.12 s. Returns the player, or null when rate-limited.
-func step(surface: String) -> AudioStreamPlayer:
+## `volume_db` lowers a crawl or a soft landing.
+func step(surface: String, volume_db: float = -2.0) -> AudioStreamPlayer:
 	var now := Time.get_ticks_msec()
 	if now - _last_step_ms < STEP_INTERVAL_MS:
 		return null
 	_last_step_ms = now
-	return play("footstep_%s_%d" % [surface, _rng.randi_range(1, 4)], "effects", -2.0, 0.06)
+	return play("footstep_%s_%d" % [surface, _rng.randi_range(1, 4)], "effects", volume_db, 0.06)
 
 
 func _start(p: Node, name: String, bus: String, volume_db: float, pitch_jitter: float) -> void:
@@ -162,6 +167,8 @@ func _start(p: Node, name: String, bus: String, volume_db: float, pitch_jitter: 
 		p.queue_free()
 		return
 	p.play()
+	last_played = name
+	play_count[name] = int(play_count.get(name, 0)) + 1
 	# The Dummy driver may never report finished; free on the clock as well. Bound, not
 	# captured: a lambda holding a freed player would push an error when it fired.
 	var life := stream.get_length() / maxf(p.pitch_scale, 0.1) + 0.5

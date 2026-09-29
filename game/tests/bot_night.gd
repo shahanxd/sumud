@@ -16,6 +16,7 @@ func run() -> void:
 	var candle: Carryable = night.candle
 	check(candle != null and layla.carried == candle and layla.has_light(), "Layla starts with the lit candle from home")
 	check(night.lit_count() == 5, "five windows are lit from the data table (%d)" % night.lit_count())
+	check(Sound.running_loops() == ["wind_loop"], "only the wind runs at night: no hum, no rumble on Day 1 (%s)" % [Sound.running_loops()])
 
 	# Without a flame, darkness is a wall.
 	await tap("grab")
@@ -40,6 +41,7 @@ func run() -> void:
 	Input.action_release("move_left")
 	check(out, "the alley draft blows the candle out when it is not cupped")
 	check(night.blown_out == 1, "one candle lost")
+	check(int(Sound.play_count.get("candle_out", 0)) == 1, "the puff is heard once, from the candle itself")
 	# Dead candle: darkness blocks again; a lit window relights it.
 	teleport(layla, Vector2(2690.0, 900.0))
 	await frames(4)
@@ -74,4 +76,9 @@ func run() -> void:
 	check(await until(func(): return result.get("bread", false), 300), "the beat finishes with bread")
 	check(int(result.get("lit_windows", 0)) == 6, "the result counts six lit windows")
 	check(Notebook.has("night_bread"), "the notebook remembers the bread")
+	if not flow:
+		# Quit clean: a player still playing at exit is reported as leaked.
+		Sound.stop_all_loops(0.0)
+		await until(func(): return Sound.get_child_count() == 0, 600)
+		await frames(30)
 	done()

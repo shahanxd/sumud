@@ -44,19 +44,19 @@ func _build() -> void:
 	_box.anchor_right = 1.0
 	_box.anchor_top = 1.0
 	_box.anchor_bottom = 1.0
-	_box.offset_left = 240.0
-	_box.offset_right = -240.0
-	_box.offset_top = -60.0
-	_box.offset_bottom = -60.0
+	_box.offset_left = 360.0
+	_box.offset_right = -360.0
+	_box.offset_top = -48.0
+	_box.offset_bottom = -48.0
 	_box.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.03, 0.03, 0.04, 0.78)
 	style.set_corner_radius_all(4)
-	style.content_margin_left = 40.0
-	style.content_margin_right = 40.0
-	style.content_margin_top = 18.0
-	style.content_margin_bottom = 18.0
+	style.content_margin_left = 34.0
+	style.content_margin_right = 34.0
+	style.content_margin_top = 14.0
+	style.content_margin_bottom = 16.0
 	_box.add_theme_stylebox_override("panel", style)
 	add_child(_box)
 	var col := VBoxContainer.new()
@@ -65,7 +65,7 @@ func _build() -> void:
 
 	_speaker = Label.new()
 	_speaker.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker.add_theme_font_size_override("font_size", 20)
+	_speaker.add_theme_font_size_override("font_size", 18)
 	_speaker.add_theme_color_override("font_color", Color(0.82, 0.55, 0.42))
 	col.add_child(_speaker)
 
@@ -74,7 +74,7 @@ func _build() -> void:
 	_ar.text_direction = Control.TEXT_DIRECTION_RTL
 	_ar.language = "ar"
 	_ar.autowrap_mode = TextServer.AUTOWRAP_WORD
-	_ar.add_theme_font_size_override("font_size", 44)
+	_ar.add_theme_font_size_override("font_size", 36)
 	_ar.add_theme_color_override("font_color", Color(0.96, 0.93, 0.86))
 	var font := load(ARABIC_FONT)
 	if font:
@@ -84,7 +84,7 @@ func _build() -> void:
 	_en = Label.new()
 	_en.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_en.autowrap_mode = TextServer.AUTOWRAP_WORD
-	_en.add_theme_font_size_override("font_size", 28)
+	_en.add_theme_font_size_override("font_size", 23)
 	_en.add_theme_color_override("font_color", Color(0.88, 0.85, 0.78))
 	col.add_child(_en)
 

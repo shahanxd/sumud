@@ -35,6 +35,9 @@ var _anchor: Node2D
 var _rope := PackedVector2Array()
 var _rope_prev := PackedVector2Array()
 var _tail := PackedVector2Array()
+## Seconds until the bag crackles again, and the crackle now playing.
+var _flap_timer := 0.0
+var _flap_player: AudioStreamPlayer2D = null
 
 @onready var string_line: Line2D = $String
 @onready var sail: Polygon2D = $Sail
@@ -55,6 +58,7 @@ func launch(facing: int) -> void:
 	visible = true
 	global_position = _anchor.global_position + Vector2(facing * 50.0, -70.0)
 	vel = Vector2(facing * 80.0, -220.0)
+	_flap_timer = 0.15
 	for i in ROPE_POINTS:
 		var p := _anchor.global_position.lerp(global_position, float(i) / float(ROPE_POINTS - 1))
 		_rope[i] = p
@@ -66,6 +70,7 @@ func launch(facing: int) -> void:
 func reel_in() -> void:
 	flying = false
 	visible = false
+	_stop_flap()
 	if hooked != null:
 		var at := global_position
 		if carrier != null:
@@ -81,6 +86,28 @@ func _release(at: Vector2) -> void:
 	weight -= HOOK_WEIGHT
 	item.drop(at)
 	dropped_item.emit(item)
+
+
+## The plastic bag crackling in the wind: a 1.5 s one-shot retriggered every 1.1 to 1.7 s,
+## sooner in stronger wind, from where the kite is.
+func _flap(delta: float) -> void:
+	_flap_timer -= delta
+	if _flap_timer > 0.0:
+		return
+	var speed := Wind.sample(global_position).length()
+	var strong := clampf((speed - 60.0) / 300.0, 0.0, 1.0)
+	_flap_timer = clampf(lerpf(1.7, 1.1, strong) + randf_range(-0.08, 0.08), 1.1, 1.7)
+	_flap_player = Sound.play_at("kite_flap", global_position, "effects", -4.0, 0.12)
+
+
+## Lets the current crackle die away when the kite comes down.
+func _stop_flap() -> void:
+	if _flap_player == null or not is_instance_valid(_flap_player):
+		return
+	var tw := _flap_player.create_tween()
+	tw.tween_property(_flap_player, "volume_db", Sound.SILENT_DB, 0.15)
+	tw.tween_callback(_flap_player.queue_free)
+	_flap_player = null
 
 
 ## Snag the nearest light, unheld carryable that the kite or its tail is touching.
@@ -146,6 +173,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	rotation = offset.angle() + PI * 0.5
+	_flap(delta)
 	_update_rope(anchor, delta)
 	_update_tail(delta)
 	_try_hook()

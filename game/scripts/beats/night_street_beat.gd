@@ -47,11 +47,8 @@ func begin(ctx: Dictionary) -> void:
 	super.begin(ctx)
 	_give_candle()
 	hint.text = Say.text("night.hint.start")
-	await get_tree().physics_frame
-	var snd := get_node_or_null("/root/Sound")
-	if snd != null and snd.has_method("loop"):
-		snd.loop("wind_loop", "ambience", -8.0, 2.0)
-		snd.loop("drone_hum_loop", "rumble", -14.0, 4.0)
+	# The night wind between the houses. Day 1: no hum, no rumble.
+	Sound.loop("wind_loop", "ambience", -12.0, 2.0)
 
 
 func _give_candle() -> void:
@@ -198,12 +195,9 @@ func _drafts(delta: float) -> void:
 	var cupping := Input.is_action_pressed("interact") and layla.is_active
 	if _draft_timer > window_seconds:
 		if not cupping and layla.has_light():
-			candle.set_lit(false)
+			candle.set_lit(false)  # the candle itself sounds the puff
 			blown_out += 1
 			hint.text = Say.text("night.hint.relight")
-			var snd := get_node_or_null("/root/Sound")
-			if snd != null and snd.has_method("play"):
-				snd.play("candle_out", "effects")
 		_current_draft["done"] = true
 		draft_active = false
 	elif (_entry_side == 1 and x > _current_draft["x1"] + 40.0) or (_entry_side == -1 and x < _current_draft["x0"] - 40.0):

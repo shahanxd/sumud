@@ -17,7 +17,10 @@ float hash(vec2 p) {
 }
 
 void fragment() {
-	vec3 col = texture(screen_tex, SCREEN_UV).rgb;
+	// Ink misregistration: a still, low-frequency wobble of about a pixel, so vector edges
+	// stop being perfectly straight and the frame reads as printed.
+	vec2 wob = vec2(sin(SCREEN_UV.y * 61.0 + SCREEN_UV.x * 13.0 + 1.7), cos(SCREEN_UV.x * 53.0 - SCREEN_UV.y * 17.0)) * (0.8 / vec2(1920.0, 1080.0));
+	vec3 col = texture(screen_tex, SCREEN_UV + wob).rgb;
 	float g = dot(col, vec3(0.299, 0.587, 0.114));
 	col = mix(vec3(g), col, saturation);
 	col = clamp(col * gain + lift, 0.0, 1.0);

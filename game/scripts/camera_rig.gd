@@ -11,6 +11,8 @@ extends Camera2D
 ## The world y of the horizon (the sea line or the far ground); the sky shader is told
 ## where it falls on screen every frame so the sun and the haze sit on it.
 @export var world_horizon_y := 700.0
+## Zoom while walking; the figure should be about a sixth of the frame, not a tenth.
+@export var ground_zoom := 1.3
 
 var _player: Player
 var _kite: Kite
@@ -22,6 +24,7 @@ var _shake_time := 0.0
 func _ready() -> void:
 	_player = get_node_or_null(player_path) as Player
 	_kite = get_node_or_null(kite_path) as Kite
+	zoom = Vector2.ONE * ground_zoom
 	if _player:
 		global_position = _player.global_position + Vector2(0.0, ground_bias)
 
@@ -42,7 +45,7 @@ func shake(amount: float, seconds: float) -> void:
 
 func _process(delta: float) -> void:
 	var target := global_position
-	var target_zoom := Vector2.ONE
+	var target_zoom := Vector2.ONE * ground_zoom
 	if _target != null:
 		target = _target.global_position
 		target_zoom = Vector2.ONE * 0.9
@@ -51,7 +54,7 @@ func _process(delta: float) -> void:
 		if _kite != null and _kite.flying:
 			target = _player.global_position.lerp(_kite.global_position, 0.5)
 			var spread := _player.global_position.distance_to(_kite.global_position)
-			target_zoom = Vector2.ONE * clampf(1.0 - spread / 2400.0, 0.7, 1.0)
+			target_zoom = Vector2.ONE * clampf(ground_zoom - spread / 2000.0, 0.7, ground_zoom)
 	var t := 1.0 - exp(-follow_speed * delta)
 	global_position = global_position.lerp(target, t)
 	zoom = zoom.lerp(target_zoom, t)

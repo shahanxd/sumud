@@ -12,7 +12,10 @@ func run() -> void:
 	var plank_item: Carryable = plank.get_node("Item")
 	var result := {}
 	street.finished.connect(func(r: Dictionary): result.merge(r, true))
+	if not flow:
+		street.begin({})
 	await frames(45)
+	check(Sound.running_loops() == ["wind_loop"], "only a faint wind runs in the street (%s)" % [Sound.running_loops()])
 
 	# Empty-handed, the pit is a jump.
 	teleport(player, Vector2(1850.0, 900.0))
@@ -45,9 +48,11 @@ func run() -> void:
 	Input.action_release("move_left")
 	check(out, "she can always walk back out (x=%.0f y=%.0f)" % [player.global_position.x, player.global_position.y])
 	await frames(3)
+	var drops := int(Sound.play_count.get("drop_heavy", 0))
 	await tap("grab")
 	await frames(3)
 	check(player.carried == null, "sets the water down")
+	check(int(Sound.play_count.get("drop_heavy", 0)) == drops + 1, "twenty litres thud when set down")
 	var water_x := jerrycan.global_position.x
 
 	# Fetch the plank, two-handed.
@@ -82,4 +87,9 @@ func run() -> void:
 	check(await until(func(): return result.get("water", false), 300), "the beat finishes with water")
 	check(result.get("used_plank", false), "the result records the plank")
 	check(Notebook.has("street_water_home"), "the notebook remembers the water")
+	if not flow:
+		# Quit clean: a player still playing at exit is reported as leaked.
+		Sound.stop_all_loops(0.0)
+		await until(func(): return Sound.get_child_count() == 0, 600)
+		await frames(30)
 	done()

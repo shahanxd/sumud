@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://sumud_street"]
+[gd_scene load_steps=14 format=3 uid="uid://sumud_street"]
 
 [ext_resource type="Script" path="res://scripts/beats/street_beat.gd" id="0_beat"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/skyline.gd" id="5_skyline"]
 [ext_resource type="Script" path="res://scripts/camera_rig.gd" id="6_camera"]
 [ext_resource type="Script" path="res://scripts/wind_dust.gd" id="8_dust"]
+[ext_resource type="Script" path="res://scripts/facades.gd" id="9_facades"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="7_sky"]
 
 [sub_resource type="ShaderMaterial" id="sky_mat"]
@@ -51,10 +52,30 @@ polygon = PackedVector2Array(-3000, 900, 2000, 900, 2200, 1000, 2300, 1000, 2300
 [node name="RightShape" type="CollisionPolygon2D" parent="Ground"]
 polygon = PackedVector2Array(2300, 900, 9000, 900, 9000, 1500, 2300, 1500)
 
-[node name="Asphalt" type="Polygon2D" parent="Ground"]
+[node name="Asphalt" type="Polygon2D" parent="Ground" groups=["ground"]]
 z_index = -5
-color = Color(0.13, 0.12, 0.12, 1)
+color = Color(0.31, 0.29, 0.27, 1)
 polygon = PackedVector2Array(-3000, 900, 2000, 900, 2200, 1000, 2300, 1000, 2300, 900, 9000, 900, 9000, 1500, -3000, 1500)
+
+[node name="PitShade" type="Polygon2D" parent="Ground"]
+z_index = -4
+color = Color(0.09, 0.08, 0.08, 1)
+polygon = PackedVector2Array(2000, 900, 2200, 1000, 2300, 1000, 2300, 900, 2340, 1040, 1960, 1040)
+
+[node name="PitRubble" type="Polygon2D" parent="Ground"]
+z_index = -4
+color = Color(0.22, 0.20, 0.18, 1)
+polygon = PackedVector2Array(1930, 900, 1950, 888, 1980, 892, 2000, 884, 2010, 900)
+
+[node name="Facades" type="Node2D" parent="."]
+z_index = -3
+script = ExtResource("9_facades")
+seed = 5
+start_x = -1200.0
+end_x = 4800.0
+ground_y = 900.0
+bakery_x = 1300.0
+pavement_gaps = Array[Vector2]([Vector2(2000, 2300)])
 
 [node name="Truck" type="StaticBody2D" parent="."]
 position = Vector2(350, 900)
@@ -64,27 +85,51 @@ collision_mask = 0
 [node name="Shape" type="CollisionPolygon2D" parent="Truck"]
 polygon = PackedVector2Array(-220, 0, -220, -170, 60, -170, 60, -110, 140, -110, 160, 0)
 
-[node name="Body" type="Polygon2D" parent="Truck"]
-color = Color(0.11, 0.09, 0.09, 1)
-polygon = PackedVector2Array(-220, 0, -220, -170, 60, -170, 60, -110, 140, -110, 160, 0)
+[node name="Chassis" type="Polygon2D" parent="Truck"]
+color = Color(0.14, 0.13, 0.13, 1)
+polygon = PackedVector2Array(-224, -40, 164, -40, 164, -22, -224, -22)
+
+[node name="Cab" type="Polygon2D" parent="Truck"]
+color = Color(0.30, 0.34, 0.38, 1)
+polygon = PackedVector2Array(60, -40, 60, -170, 100, -170, 140, -110, 164, -100, 164, -40)
+
+[node name="CabWindow" type="Polygon2D" parent="Truck"]
+color = Color(0.10, 0.10, 0.11, 1)
+polygon = PackedVector2Array(102, -160, 136, -112, 108, -112, 108, -160)
 
 [node name="Tank" type="Polygon2D" parent="Truck"]
-color = Color(0.11, 0.09, 0.09, 1)
-polygon = PackedVector2Array(-210, -170, -210, -230, 40, -230, 40, -170)
+color = Color(0.46, 0.43, 0.38, 1)
+polygon = PackedVector2Array(-214, -60, -220, -100, -220, -200, -208, -226, 40, -226, 52, -200, 52, -100, 44, -60)
 
-[node name="Bakery" type="Node2D" parent="."]
-position = Vector2(1300, 900)
-z_index = -3
+[node name="TankBand" type="Polygon2D" parent="Truck"]
+color = Color(0.30, 0.27, 0.24, 1)
+polygon = PackedVector2Array(-150, -226, -142, -226, -142, -60, -150, -60)
 
-[node name="Wall" type="Polygon2D" parent="Bakery"]
-color = Color(0.11, 0.09, 0.09, 1)
-polygon = PackedVector2Array(-300, 0, -300, -420, 40, -420, 40, 0, 0, 0, 0, -380, -260, -380, -260, 0)
+[node name="TankBand2" type="Polygon2D" parent="Truck"]
+color = Color(0.30, 0.27, 0.24, 1)
+polygon = PackedVector2Array(-30, -226, -22, -226, -22, -60, -30, -60)
+
+[node name="Tap" type="Polygon2D" parent="Truck"]
+color = Color(0.14, 0.13, 0.13, 1)
+polygon = PackedVector2Array(-214, -80, -240, -80, -240, -74, -234, -74, -234, -50, -228, -50, -228, -74, -214, -74)
+
+[node name="WheelFront" type="Polygon2D" parent="Truck"]
+color = Color(0.09, 0.08, 0.08, 1)
+polygon = PackedVector2Array(100, -36, 122, -32, 136, -18, 136, 0, 64, 0, 64, -18, 78, -32)
+
+[node name="WheelBack" type="Polygon2D" parent="Truck"]
+color = Color(0.09, 0.08, 0.08, 1)
+polygon = PackedVector2Array(-140, -36, -118, -32, -104, -18, -104, 0, -176, 0, -176, -18, -162, -32)
+
+[node name="WheelBack2" type="Polygon2D" parent="Truck"]
+color = Color(0.09, 0.08, 0.08, 1)
+polygon = PackedVector2Array(-60, -36, -38, -32, -24, -18, -24, 0, -96, 0, -96, -18, -82, -32)
 
 [node name="Jerrycan" parent="." instance=ExtResource("3_carry")]
 position = Vector2(560, 900)
 weight = 1
 label = "jerrycan"
-color = Color(0.85, 0.75, 0.2, 1)
+color = Color(0.42, 0.38, 0.14, 1)
 
 [node name="Plank" parent="." instance=ExtResource("4_plank")]
 gap_left = 2000.0

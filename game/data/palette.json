@@ -1,5 +1,5 @@
 {
-	"_about": "Colour is a budget the days spend. One entry per day and phase drives every shader and the ambient light. Hex colours; saturation 0..1 scales the sky, sea and accents; ambient multiplies the whole frame (CanvasModulate); sun_x places the sun or moon across the screen (0..1 from the left) and sun_y down the sky as a fraction of the height above the horizon (0 the top, 1 on the horizon, more than 1 set); sun_size and sun_glow shape it; stars 0..1; haze_alpha is the band over the horizon; tint, grain and vignette feed the print pass.",
+	"_about": "Colour is a budget the days spend. One entry per day and phase drives every shader and the ambient light. Hex colours; saturation 0..1 scales the sky, sea and accents; ambient multiplies the whole frame (CanvasModulate); sun_x places the sun or moon across the screen (0..1 from the left) and sun_y down the sky as a fraction of the height above the horizon (0 the top, 1 on the horizon, more than 1 set); sun_size and sun_glow shape it; stars 0..1; haze_alpha is the band over the horizon; tint, grain and vignette feed the print pass; ground colours every Polygon2D in the \"ground\" group (sand, road), bright by day and near-black at night.",
 	"default": {
 		"morning": {
 			"sky_top": "#5d7aa6",
@@ -17,7 +17,8 @@
 			"tint": "#fff8f0",
 			"grain": 0.045,
 			"vignette": 0.26,
-			"saturation": 1.0
+			"saturation": 1.0,
+			"ground": "#7d6d58"
 		},
 		"noon": {
 			"sky_top": "#6f92c2",
@@ -35,7 +36,8 @@
 			"tint": "#ffffff",
 			"grain": 0.04,
 			"vignette": 0.24,
-			"saturation": 1.0
+			"saturation": 1.0,
+			"ground": "#8a8072"
 		},
 		"dusk": {
 			"sky_top": "#3a3f6e",
@@ -53,7 +55,8 @@
 			"tint": "#fff0e4",
 			"grain": 0.05,
 			"vignette": 0.3,
-			"saturation": 1.0
+			"saturation": 1.0,
+			"ground": "#3b3129"
 		},
 		"night": {
 			"sky_top": "#070912",
@@ -71,7 +74,8 @@
 			"tint": "#e8ecff",
 			"grain": 0.06,
 			"vignette": 0.36,
-			"saturation": 0.75
+			"saturation": 0.75,
+			"ground": "#15141b"
 		},
 		"siege": {
 			"sky_top": "#5a5a5a",
@@ -89,7 +93,8 @@
 			"tint": "#f2efe8",
 			"grain": 0.07,
 			"vignette": 0.34,
-			"saturation": 0.15
+			"saturation": 0.15,
+			"ground": "#4f4c48"
 		},
 		"siege_night": {
 			"sky_top": "#0a0b10",
@@ -107,7 +112,8 @@
 			"tint": "#e6e4e0",
 			"grain": 0.075,
 			"vignette": 0.4,
-			"saturation": 0.2
+			"saturation": 0.2,
+			"ground": "#0f0f13"
 		}
 	},
 	"days": {

@@ -13,6 +13,8 @@ var _phase := ""
 var _pos := ""
 var _shots: Array = []
 var _scene: Node = null
+var _kite := false
+var _no_hud := false
 
 
 func _ready() -> void:
@@ -27,6 +29,10 @@ func _ready() -> void:
 			_phase = arg.substr(8)
 		elif arg.begins_with("--pos="):
 			_pos = arg.substr(6)
+		elif arg == "--kite":
+			_kite = true
+		elif arg == "--no-hud":
+			_no_hud = true
 		elif arg.begins_with("--shots="):
 			for part in arg.substr(8).split(","):
 				var bits := part.split("@")
@@ -36,6 +42,10 @@ func _ready() -> void:
 	add_child(_scene)
 	if _scene is Beat:
 		(_scene as Beat).begin({})
+	if _no_hud:
+		var hud := _scene.get_node_or_null("HUD")
+		if hud:
+			hud.visible = false
 	if not _phase.is_empty():
 		Look.set_phase(1, _phase, 0.0)
 	if not _pos.is_empty():
@@ -53,6 +63,11 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	_frames += 1
+	if _kite and _frames == 12:
+		# Launch the player's kite so the shot has it in the sky.
+		var player := _scene.get_node_or_null("Player") as Player
+		if player and player.kite:
+			player.kite.launch(player.facing)
 	for s in _shots:
 		if _frames == int(s[1]):
 			_save(String(s[0]))

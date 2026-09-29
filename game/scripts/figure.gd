@@ -14,13 +14,17 @@ const TAIL_SEGMENTS := 5
 
 @export_enum("child", "adult", "elder") var build := 1
 @export var headscarf := false
+## The scarf's own colour; the body colour by default, cream for Layla (her one accent).
+@export var scarf_color := Color(0.09, 0.08, 0.10)
+## Shoulder half-width as a fraction of height; broader for Baba.
+@export var shoulder := 0.0
 @export_enum("none", "short", "long") var dress := 0
 @export var cane := false
 @export var color := Color(0.09, 0.08, 0.10)
 @export var eye_color := Color(1.0, 0.85, 0.6)
 @export var eyes := true
 ## How far the far arm and leg lift toward grey, so the walk reads inside a silhouette.
-@export var depth_lift := 0.10
+@export var depth_lift := 0.22
 ## A Node2D under this one, moved to the leading hand each frame; carried things hang from it.
 @export var hand_path: NodePath = ^"Hand"
 
@@ -106,8 +110,8 @@ func _pose_points() -> Dictionary:
 	var A := (0.12 + 0.55 * stride) * (0.6 if elder else 1.0)
 	var K := 0.15 + 0.90 * stride
 	var hip_w := 0.075 * H
-	var sh_w := (0.115 if build == 1 else 0.10) * H
-	var head_r := 0.072 * H
+	var sh_w := (shoulder if shoulder > 0.0 else (0.115 if build == 1 else 0.10)) * H
+	var head_r := (0.082 if build == 0 else 0.072) * H
 	var thigh_len := 0.26 * H
 	var shin_len := 0.25 * H
 	var upper_len := 0.19 * H
@@ -174,10 +178,12 @@ func _pose_points() -> Dictionary:
 
 	if airborne and not explicit_limbs:
 		plant = false
-		thigh_a = [0.55, -0.25]
-		knee_k = [0.9, 0.45]
-		arm_a = [0.5, 0.3]
-		elbow_k = [0.4, 0.4]
+		thigh_a = [0.9, 0.6]
+		knee_k = [1.3, 1.1]
+		arm_a = [-0.4, -0.3]
+		elbow_k = [0.3, 0.3]
+		chest.x += 0.04 * H
+		head.x += 0.06 * H
 
 	if not explicit_limbs:
 		match load:
@@ -195,8 +201,15 @@ func _pose_points() -> Dictionary:
 				elbow_k = [0.25, 0.25]
 				chest.x += 0.02 * H
 		if arm_up:
-			arm_a[0] = 2.35
-			elbow_k[0] = 0.15
+			# Flying: the leading arm out and up, the other hand at the spool by the waist,
+			# the head tilted up, the weight on the back foot.
+			arm_a[0] = 1.6
+			elbow_k[0] = 0.35
+			arm_a[1] = 0.5
+			elbow_k[1] = 1.4
+			head.x += 0.06 * H
+			head.y -= 0.01 * H
+			thigh_a[1] -= 0.1
 		if cane:
 			arm_a[1] = 0.12
 			elbow_k[1] = 0.55
@@ -220,7 +233,7 @@ func _pose_points() -> Dictionary:
 	if plant:
 		# Keep the lower foot on the ground, whatever the legs are doing.
 		var lowest := maxf(ankles[0].y, ankles[1].y)
-		var shift := -0.03 * H - lowest
+		var shift := -0.012 * H - lowest
 		pelvis.y += shift
 		chest.y += shift
 		head.y += shift
@@ -252,11 +265,17 @@ func _draw() -> void:
 	var head: Vector2 = _p["head"]
 	var far := color.lerp(Color(0.55, 0.55, 0.60), depth_lift)
 
+	# Contact with the ground: a soft dark ellipse under the feet.
+	if pose != Pose.CRAWL:
+		draw_colored_polygon(_ellipse(Vector2(0.02 * H, 0.0), 0.15 * H, 0.022 * H), Color(0.0, 0.0, 0.0, 0.28))
+	else:
+		draw_colored_polygon(_ellipse(Vector2(0.12 * H, 0.0), 0.32 * H, 0.022 * H), Color(0.0, 0.0, 0.0, 0.28))
+
 	# Far limbs first, so the near ones read in front.
 	_limb(pelvis, _p["knee1"], _p["ankle1"], 0.085 * H, 0.065 * H, far)
 	_foot(_p["ankle1"], H, far)
 	_limb(chest, _p["elbow1"], _p["wrist1"], 0.06 * H, 0.05 * H, far)
-	draw_circle(_p["wrist1"], 0.028 * H, far)
+	_hand_shape(_p["elbow1"], _p["wrist1"], H, far)
 	if cane:
 		var w1: Vector2 = _p["wrist1"]
 		draw_line(w1, Vector2(w1.x + 0.04 * H, -0.004 * H), far, 0.022 * H, true)
@@ -290,7 +309,7 @@ func _draw() -> void:
 
 	# Near arm last, in front of everything; what it carries is a child node, drawn after.
 	_limb(chest, _p["elbow0"], _p["wrist0"], 0.06 * H, 0.05 * H, color)
-	draw_circle(_p["wrist0"], 0.028 * H, color)
+	_hand_shape(_p["elbow0"], _p["wrist0"], H, color)
 
 
 func _limb(a: Vector2, b: Vector2, c: Vector2, w1: float, w2: float, col: Color) -> void:
@@ -298,6 +317,22 @@ func _limb(a: Vector2, b: Vector2, c: Vector2, w1: float, w2: float, col: Color)
 	draw_circle(b, w1 * 0.5, col)
 	draw_line(b, c, col, w2, true)
 	draw_circle(c, w2 * 0.5, col)
+
+
+func _hand_shape(elbow: Vector2, wrist: Vector2, H: float, col: Color) -> void:
+	var d := (wrist - elbow).normalized()
+	if d.length_squared() < 0.5:
+		d = Vector2(0.0, 1.0)
+	draw_line(wrist, wrist + d * 0.05 * H, col, 0.045 * H, true)
+	draw_circle(wrist + d * 0.05 * H, 0.02 * H, col)
+
+
+func _ellipse(centre: Vector2, rx: float, ry: float, n := 16) -> PackedVector2Array:
+	var pts := PackedVector2Array()
+	for i in n:
+		var a := TAU * float(i) / float(n)
+		pts.append(centre + Vector2(cos(a) * rx, sin(a) * ry))
+	return pts
 
 
 func _foot(ankle: Vector2, H: float, col: Color) -> void:
@@ -340,10 +375,10 @@ func _draw_scarf(H: float, head: Vector2, head_r: float, chest: Vector2, sh_w: f
 	pts.append(Vector2(chest.x - sh_w - 0.02 * H, chest.y + 0.05 * H))
 	pts.append(Vector2(chest.x + sh_w * 0.85, chest.y + 0.05 * H))
 	pts.append(head + Vector2(head_r * 0.8, head_r * 0.95))
-	draw_colored_polygon(pts, color)
+	draw_colored_polygon(pts, scarf_color)
 	# The tail: segments that taper to the end (lines, not a strip, so a fold cannot make
 	# a self-intersecting polygon).
 	for i in range(1, _tail.size()):
 		var w := lerpf(0.05 * H, 0.014 * H, float(i) / float(TAIL_SEGMENTS))
-		draw_line(_tail[i - 1], _tail[i], color, w, true)
-		draw_circle(_tail[i], w * 0.5, color)
+		draw_line(_tail[i - 1], _tail[i], scarf_color, w, true)
+		draw_circle(_tail[i], w * 0.5, scarf_color)

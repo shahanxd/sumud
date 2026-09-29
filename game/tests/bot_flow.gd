@@ -74,4 +74,12 @@ func _on_day_finished(day: int, ctx: Dictionary) -> void:
 	print("flow: %d passed, %d failed (day %d, %d entries)" % [total_passed, all_fails.size(), day, Notebook.day_entries(day).size()])
 	for f in all_fails:
 		print("  failed: ", f)
+	# Quit clean: a player still playing at exit is reported as leaked.
+	Sound.stop_all_loops(0.0)
+	for _i in 600:
+		if Sound.get_child_count() == 0:
+			break
+		await get_tree().physics_frame
+	for _i in 30:
+		await get_tree().physics_frame
 	get_tree().quit(0 if all_fails.is_empty() else 1)

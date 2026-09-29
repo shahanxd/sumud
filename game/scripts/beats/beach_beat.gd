@@ -24,6 +24,9 @@ func _ready() -> void:
 
 func begin(ctx: Dictionary) -> void:
 	super.begin(ctx)
+	# The Mediterranean and the onshore wind; Day 1 has no hum and no rumble.
+	Sound.loop("sea_loop", "ambience", -4.0, 2.0)
+	Sound.loop("wind_loop", "ambience", -8.0, 2.0)
 
 
 func _on_sami_approached(_npc: Npc) -> void:

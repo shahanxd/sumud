@@ -29,13 +29,16 @@ void fragment() {
 	float rows = depth * 46.0;
 	// Glitter: three incommensurate sines whose product peaks rarely, so the light breaks
 	// into short sparkles instead of bands; denser toward the horizon and under the sun.
-	float a = sin(u * 1800.0 + rows * 11.0 + TIME * 1.1);
-	float b = sin(u * 1130.0 - rows * 7.0 - TIME * 0.7);
-	float c = sin(u * 2500.0 + rows * 23.0 + TIME * 0.4);
+	// Stretched sideways (the water's glitter is wider than it is tall) and denser under the sun.
+	float a = sin(u * 700.0 + rows * 11.0 + TIME * 1.1);
+	float b = sin(u * 430.0 - rows * 7.0 - TIME * 0.7);
+	float c = sin(u * 950.0 + rows * 23.0 + TIME * 0.4);
 	float glint = smoothstep(0.90, 1.0, a * b * c);
 	float fade = 1.0 - smoothstep(0.0, 0.8, v);
 	// The sun's path on the water, in screen space so it sits under the sky's sun.
 	float path = exp(-pow((SCREEN_UV.x - sun_x) * 4.0, 2.0)) * (1.0 - smoothstep(0.0, 0.95, v));
+	float path_wide = exp(-pow((SCREEN_UV.x - sun_x) * 1.6, 2.0));
+	glint *= 0.25 + 0.75 * path_wide;
 	// Swell lines: only some rows carry one, each broken along its length, so the water
 	// does not read as ruled paper.
 	float row_phase = depth * 90.0 - TIME * 0.35;
@@ -46,6 +49,8 @@ void fragment() {
 	// Foam at the waterline.
 	float foam = smoothstep(0.965, 1.0, v) * (0.35 + 0.25 * sin(u * 900.0 + TIME * 1.3));
 	vec3 col = mix(deep_color.rgb, glint_color.rgb, clamp(glint * fade * glint_strength + path * glint * 1.2 + path * 0.16 * glint_strength + swell + foam * 0.5, 0.0, 1.0));
+	// The water reflects the sky: the horizon colour bleeds down and fades toward the shore.
+	col = mix(col, haze_color.rgb, (1.0 - v) * (1.0 - v) * 0.38);
 	col = mix(haze_color.rgb, col, smoothstep(0.0, 0.12, v) * 0.85 + 0.15);
 	float g = dot(col, vec3(0.299, 0.587, 0.114));
 	col = mix(vec3(g), col, saturation);

@@ -18,6 +18,8 @@ const DAYS := {
 }
 
 const CARD_SCENE := "res://scenes/chapter_card.tscn"
+## The stitches of a card are heard at most this often while it embroiders itself in.
+const STITCH_INTERVAL_MS := 70
 
 ## True when a bot drives the game: no holds on cards or fades.
 var bot_mode := false
@@ -70,13 +72,31 @@ func _play_card() -> void:
 	var packed: PackedScene = load(CARD_SCENE)
 	if packed == null:
 		return
-	var card := packed.instantiate()
+	var card: ChapterCard = packed.instantiate()
 	_root.add_child(card)
 	if bot_mode:
 		card.stitch_seconds = 0.2
 		card.hold_seconds = 0.05
+	stitch_sounds(card)
 	await card.play("Day %d" % day, _day_title())
 	card.queue_free()
+
+
+## A needle for a chapter card: while its band stitches itself in, one of the three stitch
+## sounds each time the placed count grows, at most one every STITCH_INTERVAL_MS. Runs
+## beside card.play() (call it, do not await it) and ends with the band or with the card.
+func stitch_sounds(card: ChapterCard) -> void:
+	var total: int = card._stitches.size()
+	var placed := 0
+	var last_ms := -1000
+	while is_instance_valid(card) and card.is_inside_tree() and card._progress < 1.0:
+		var now_placed := int(card._progress * float(total))
+		var now := Time.get_ticks_msec()
+		if now_placed > placed and now - last_ms >= STITCH_INTERVAL_MS:
+			last_ms = now
+			Sound.play("stitch_%d" % randi_range(1, 3), "effects", -4.0, 0.1)
+		placed = now_placed
+		await get_tree().process_frame
 
 
 func _day_title() -> String:
@@ -89,6 +109,8 @@ func _next() -> void:
 	if beat != null:
 		beat.queue_free()
 		beat = null
+		# A beat's ambience leaves with it; the next one starts its own in begin().
+		Sound.stop_all_loops(1.2)
 	index += 1
 	var beats := _beats()
 	while index < beats.size() and not ResourceLoader.exists(beats[index]):

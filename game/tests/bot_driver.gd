@@ -143,8 +143,12 @@ func _physics_process(_delta: float) -> void:
 				_check(not kite.flying, "kite reels in")
 				_next()
 		11:
-			print("bot: %d passed, %d failed" % [_passed, _fails.size()])
-			for f in _fails:
-				print("  failed: ", f)
-			get_tree().quit(0 if _fails.is_empty() else 1)
-			_step = 99
+			# Quit clean: a sound still playing at exit is reported as leaked.
+			if _frames == 1:
+				Sound.stop_all_loops(0.0)
+			if _frames > 30 and (Sound.get_child_count() == 0 or _frames > 600):
+				print("bot: %d passed, %d failed" % [_passed, _fails.size()])
+				for f in _fails:
+					print("  failed: ", f)
+				get_tree().quit(0 if _fails.is_empty() else 1)
+				_step = 99

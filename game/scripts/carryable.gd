@@ -35,17 +35,17 @@ func _ready() -> void:
 	add_to_group("carryable")
 	home_parent = get_parent()
 	var size := _size_for_weight()
-	visual.polygon = PackedVector2Array([
-		Vector2(-size.x * 0.5, -size.y), Vector2(size.x * 0.5, -size.y),
-		Vector2(size.x * 0.5, 0.0), Vector2(-size.x * 0.5, 0.0),
-	])
-	visual.color = color
+	# The item is drawn by _draw from its label; the polygon only sized the placeholder.
+	visual.visible = false
 	var shape := $CollisionShape2D.shape as RectangleShape2D
 	if shape:
+		shape = shape.duplicate()
 		shape.size = size
+		$CollisionShape2D.shape = shape
 		$CollisionShape2D.position = Vector2(0.0, -size.y * 0.5)
 	if is_light_source:
 		_make_light()
+	queue_redraw()
 
 
 func _size_for_weight() -> Vector2:
@@ -57,11 +57,86 @@ func _size_for_weight() -> Vector2:
 		_: return Vector2(60.0, 70.0)
 
 
+## Which silhouette to draw, from the label.
+func _shape() -> String:
+	var l := label.to_lower()
+	if is_light_source:
+		return "candle"
+	if l.contains("bread") or l.contains("khubz"):
+		return "bread"
+	if l.contains("jerrycan") or l.contains("gallon"):
+		return "jerrycan"
+	if l.contains("drum") or l.contains("barrel"):
+		return "drum"
+	if l.contains("string") or l.contains("spool"):
+		return "spool"
+	return "box"
+
+
+func _ellipse(centre: Vector2, rx: float, ry: float, n := 18) -> PackedVector2Array:
+	var pts := PackedVector2Array()
+	for i in n:
+		var a := TAU * float(i) / float(n)
+		pts.append(centre + Vector2(cos(a) * rx, sin(a) * ry))
+	return pts
+
+
+## Everything a hand can hold, drawn in silhouette with one catch of light along its top,
+## so it reads against both a bright sky and a dark room.
+func _draw() -> void:
+	var rim := color.lightened(0.45)
+	if not held:
+		# Contact with the ground.
+		var w := _size_for_weight().x * 0.75
+		draw_colored_polygon(_ellipse(Vector2(1.0, 0.0), w, 3.0), Color(0.0, 0.0, 0.0, 0.3))
+	match _shape():
+		"bread":
+			# Three flat loaves, stacked.
+			for i in 3:
+				var c := Vector2(float(i - 1) * 1.5, -5.0 - float(i) * 6.0)
+				draw_colored_polygon(_ellipse(c, 15.0, 4.5), color)
+				draw_polyline(_ellipse(c + Vector2(0.0, -1.0), 12.0, 2.0, 12), rim, 1.2, true)
+		"jerrycan":
+			draw_colored_polygon(PackedVector2Array([
+				Vector2(-17, 0), Vector2(17, 0), Vector2(17, -34), Vector2(9, -42), Vector2(-17, -42)]), color)
+			# Handle loop and spout cap.
+			draw_polyline(PackedVector2Array([Vector2(-6, -42), Vector2(-6, -49), Vector2(6, -49), Vector2(6, -43)]), color, 3.0, true)
+			draw_rect(Rect2(10, -48, 6, 7), color)
+			draw_line(Vector2(-15, -40), Vector2(7, -40), rim, 1.2, true)
+			draw_line(Vector2(-13, -30), Vector2(-13, -8), rim, 1.0, true)
+		"drum":
+			draw_colored_polygon(PackedVector2Array([
+				Vector2(-30, 0), Vector2(30, 0), Vector2(31, -66), Vector2(-31, -66)]), color)
+			draw_colored_polygon(_ellipse(Vector2(0, -66), 31.0, 5.0), color)
+			draw_polyline(_ellipse(Vector2(0, -66), 29.0, 4.0), rim, 1.2, true)
+			for y in [-20.0, -44.0]:
+				draw_line(Vector2(-30, y), Vector2(30, y), rim, 1.2, true)
+		"spool":
+			# A wound spool lying on its side, its stick through the middle.
+			draw_colored_polygon(PackedVector2Array([
+				Vector2(-13, 0), Vector2(13, 0), Vector2(13, -16), Vector2(-13, -16)]), color)
+			draw_colored_polygon(_ellipse(Vector2(-13, -8), 3.0, 8.0), color)
+			draw_colored_polygon(_ellipse(Vector2(13, -8), 3.0, 8.0), color)
+			draw_line(Vector2(-22, -8), Vector2(22, -8), color, 2.0, true)
+			for x in [-8.0, -3.0, 2.0, 7.0]:
+				draw_line(Vector2(x, -15), Vector2(x, -1), rim, 1.0, true)
+		"candle":
+			draw_colored_polygon(PackedVector2Array([
+				Vector2(-5, 0), Vector2(5, 0), Vector2(5, -24), Vector2(3, -27), Vector2(-4, -26)]), color)
+			draw_line(Vector2(-4, -22), Vector2(-4, -6), rim, 1.0, true)
+		_:
+			var size := _size_for_weight()
+			draw_rect(Rect2(-size.x * 0.5, -size.y, size.x, size.y), color)
+			draw_line(Vector2(-size.x * 0.5 + 2.0, -size.y + 2.0), Vector2(size.x * 0.5 - 2.0, -size.y + 2.0), rim, 1.2, true)
+
+
 func _make_light() -> void:
 	_light = PointLight2D.new()
+	# Three stops so the light pools near the flame instead of tinting the whole room.
 	var grad := Gradient.new()
 	grad.set_color(0, Color(1, 1, 1, 1))
 	grad.set_color(1, Color(1, 1, 1, 0))
+	grad.add_point(0.35, Color(1, 1, 1, 0.25))
 	var tex := GradientTexture2D.new()
 	tex.gradient = grad
 	tex.fill = GradientTexture2D.FILL_RADIAL
@@ -95,6 +170,8 @@ func _process(delta: float) -> void:
 
 ## Blows the flame out, or lights it again at a flame source.
 func set_lit(on: bool) -> void:
+	if is_light_source and lit and not on:
+		Sound.play("candle_out", "effects")
 	lit = on
 
 
@@ -104,6 +181,7 @@ func pick_up(hand: Node2D) -> void:
 	reparent(hand)
 	position = Vector2.ZERO
 	rotation = 0.0
+	Sound.play("grab", "effects", 0.0, 0.05)
 	picked_up.emit(self)
 
 
@@ -113,4 +191,9 @@ func drop(at: Vector2) -> void:
 	reparent(home_parent)
 	global_position = at
 	rotation = 0.0
+	# The weight is heard: a full can or a beam thuds, bread or a candle is set down.
+	if weight == Weight.LIGHT:
+		Sound.play("grab", "effects", -8.0, 0.05)
+	else:
+		Sound.play("drop_heavy", "effects", 0.0, 0.04)
 	dropped.emit(self, at)

@@ -45,6 +45,7 @@ shape = SubResource("pickup")
 script = ExtResource("2_figure")
 build = 0
 headscarf = true
+scarf_color = Color(0.80, 0.76, 0.68, 1)
 dress = 1
 
 [node name="Hand" type="Node2D" parent="Visual"]

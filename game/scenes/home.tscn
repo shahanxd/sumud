@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://sumud_home"]
+[gd_scene load_steps=18 format=3 uid="uid://sumud_home"]
 
 [ext_resource type="Script" path="res://scripts/beats/home_beat.gd" id="0_beat"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="0_npc"]
@@ -16,6 +16,18 @@ shader = ExtResource("6_sky")
 
 [sub_resource type="ShaderMaterial" id="sea_mat"]
 shader = ExtResource("7_sea")
+
+[sub_resource type="Gradient" id="lamp_grad"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="lamp_tex"]
+gradient = SubResource("lamp_grad")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="LabelSettings" id="hint"]
 font_size = 22
@@ -71,28 +83,43 @@ collision_mask = 0
 [node name="Shape" type="CollisionPolygon2D" parent="Ground"]
 polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
 
-[node name="Asphalt" type="Polygon2D" parent="Ground"]
+[node name="Asphalt" type="Polygon2D" parent="Ground" groups=["ground"]]
 z_index = -5
-color = Color(0.13, 0.12, 0.12, 1)
+color = Color(0.24, 0.22, 0.2, 1)
 polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
 
 [node name="House" type="Node2D" parent="."]
 
 [node name="Back" type="Polygon2D" parent="House"]
 z_index = -4
-color = Color(0.16, 0.13, 0.12, 1)
-polygon = PackedVector2Array(600, 480, 1400, 480, 1400, 900, 600, 900)
+color = Color(0.31, 0.27, 0.23, 1)
+polygon = PackedVector2Array(600, 486, 1400, 486, 1400, 900, 600, 900)
 
 [node name="Lights" type="Node2D" parent="House"]
 z_index = -3
 
 [node name="WindowGround" type="Polygon2D" parent="House/Lights"]
-color = Color(0.98, 0.76, 0.42, 0.55)
+color = Color(0.98, 0.76, 0.42, 0.4)
 polygon = PackedVector2Array(860, 760, 980, 760, 980, 850, 860, 850)
 
 [node name="WindowFirst" type="Polygon2D" parent="House/Lights"]
 color = Color(0.98, 0.76, 0.42, 0.5)
 polygon = PackedVector2Array(700, 560, 820, 560, 820, 650, 700, 650)
+
+[node name="BulbCord" type="Polygon2D" parent="House/Lights"]
+color = Color(0.12, 0.1, 0.09, 1)
+polygon = PackedVector2Array(999, 720, 1001, 720, 1001, 742, 999, 742)
+
+[node name="Bulb" type="Polygon2D" parent="House/Lights"]
+color = Color(0.99, 0.88, 0.62, 1)
+polygon = PackedVector2Array(1000, 742, 1006, 746, 1008, 754, 1004, 760, 996, 760, 992, 754, 994, 746)
+
+[node name="BulbLight" type="PointLight2D" parent="House/Lights"]
+position = Vector2(1000, 770)
+color = Color(1, 0.82, 0.58, 1)
+energy = 0.75
+texture = SubResource("lamp_tex")
+texture_scale = 2.6
 
 [node name="Structure" type="StaticBody2D" parent="House"]
 collision_layer = 1
@@ -134,11 +161,11 @@ polygon = PackedVector2Array(920, 500, 1400, 500, 1400, 520, 920, 520)
 
 [node name="FlightAVis" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(1080, 700, 1380, 900, 1380, 920, 1080, 720)
+polygon = PackedVector2Array(1380, 900, 1380, 880, 1350, 880, 1350, 860, 1320, 860, 1320, 840, 1290, 840, 1290, 820, 1260, 820, 1260, 800, 1230, 800, 1230, 780, 1200, 780, 1200, 760, 1170, 760, 1170, 740, 1140, 740, 1140, 720, 1110, 720, 1110, 700, 1080, 700, 1080, 720, 1380, 920)
 
 [node name="FlightBVis" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(620, 700, 920, 500, 920, 520, 620, 720)
+polygon = PackedVector2Array(620, 700, 620, 680, 650, 680, 650, 660, 680, 660, 680, 640, 710, 640, 710, 620, 740, 620, 740, 600, 770, 600, 770, 580, 800, 580, 800, 560, 830, 560, 830, 540, 860, 540, 860, 520, 890, 520, 890, 500, 920, 500, 920, 520, 620, 720)
 
 [node name="Tank" type="Polygon2D" parent="House"]
 color = Color(0.09, 0.08, 0.1, 1)
@@ -150,6 +177,231 @@ position = Vector2(1200, 500)
 [node name="ParapetVis" type="Polygon2D" parent="House/Parapet"]
 color = Color(0.09, 0.08, 0.1, 1)
 polygon = PackedVector2Array(-280, 0, 200, 0, 200, -14, -280, -14)
+
+[node name="Dado" type="Polygon2D" parent="House"]
+z_index = -4
+color = Color(0.25, 0.21, 0.18, 1)
+polygon = PackedVector2Array(620, 860, 1380, 860, 1380, 900, 620, 900)
+
+[node name="DadoFirst" type="Polygon2D" parent="House"]
+z_index = -4
+color = Color(0.24, 0.21, 0.19, 1)
+polygon = PackedVector2Array(620, 664, 1080, 664, 1080, 700, 620, 700)
+
+[node name="WindowFrameG" type="Polygon2D" parent="House"]
+z_index = -4
+color = Color(0.2, 0.16, 0.13, 1)
+polygon = PackedVector2Array(852, 752, 988, 752, 988, 858, 852, 858)
+
+[node name="WindowFrameF" type="Polygon2D" parent="House"]
+z_index = -4
+color = Color(0.2, 0.16, 0.13, 1)
+polygon = PackedVector2Array(692, 552, 828, 552, 828, 658, 692, 658)
+
+[node name="WindowBarG" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.2, 0.16, 0.13, 1)
+polygon = PackedVector2Array(918, 760, 922, 760, 922, 850, 918, 850)
+
+[node name="WindowBarF" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.2, 0.16, 0.13, 1)
+polygon = PackedVector2Array(758, 560, 762, 560, 762, 650, 758, 650)
+
+[node name="CurtainF" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.46, 0.36, 0.3, 1)
+polygon = PackedVector2Array(700, 560, 740, 560, 740, 650, 700, 650)
+
+[node name="Mattress0" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.38, 0.22, 0.2, 1)
+polygon = PackedVector2Array(1150, 876, 1226, 876, 1226, 900, 1150, 900)
+
+[node name="Cushion0" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.52, 0.42, 0.3, 1)
+polygon = PackedVector2Array(1158, 852, 1210, 852, 1210, 876, 1158, 876)
+
+[node name="Mattress1" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.38, 0.22, 0.2, 1)
+polygon = PackedVector2Array(1230, 876, 1306, 876, 1306, 900, 1230, 900)
+
+[node name="Cushion1" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.34, 0.4, 0.5, 1)
+polygon = PackedVector2Array(1238, 852, 1290, 852, 1290, 876, 1238, 876)
+
+[node name="Mattress2" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.38, 0.22, 0.2, 1)
+polygon = PackedVector2Array(1300, 876, 1376, 876, 1376, 900, 1300, 900)
+
+[node name="Cushion2" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.52, 0.42, 0.3, 1)
+polygon = PackedVector2Array(1308, 852, 1360, 852, 1360, 876, 1308, 876)
+
+[node name="TableTop" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.22, 0.17, 0.13, 1)
+polygon = PackedVector2Array(900, 862, 1010, 862, 1010, 870, 900, 870)
+
+[node name="TableLegA" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.22, 0.17, 0.13, 1)
+polygon = PackedVector2Array(908, 870, 916, 870, 916, 900, 908, 900)
+
+[node name="TableLegB" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.22, 0.17, 0.13, 1)
+polygon = PackedVector2Array(994, 870, 1002, 870, 1002, 900, 994, 900)
+
+[node name="Tray" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.56, 0.5, 0.38, 1)
+polygon = PackedVector2Array(930, 862, 980, 862, 976, 856, 934, 856)
+
+[node name="Shelf" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.22, 0.17, 0.13, 1)
+polygon = PackedVector2Array(660, 800, 800, 800, 800, 806, 660, 806)
+
+[node name="JarA" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.4, 0.34, 0.26, 1)
+polygon = PackedVector2Array(672, 778, 690, 778, 690, 800, 672, 800)
+
+[node name="JarB" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.36, 0.4, 1)
+polygon = PackedVector2Array(700, 784, 722, 784, 722, 800, 700, 800)
+
+[node name="JarC" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.44, 0.3, 0.24, 1)
+polygon = PackedVector2Array(740, 774, 752, 774, 752, 800, 740, 800)
+
+[node name="GasBottle" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.32, 0.34, 1)
+polygon = PackedVector2Array(640, 848, 666, 848, 666, 900, 640, 900)
+
+[node name="GasTop" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.32, 0.34, 1)
+polygon = PackedVector2Array(648, 840, 658, 840, 658, 848, 648, 848)
+
+[node name="Frame" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.22, 0.17, 0.13, 1)
+polygon = PackedVector2Array(1040, 776, 1104, 776, 1104, 852, 1040, 852)
+
+[node name="Tatreez" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.52, 0.2, 0.26, 1)
+polygon = PackedVector2Array(1048, 784, 1096, 784, 1096, 844, 1048, 844)
+
+[node name="TatreezRow" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.86, 0.78, 0.6, 1)
+polygon = PackedVector2Array(1052, 800, 1092, 800, 1092, 806, 1052, 806)
+
+[node name="TatreezRow2" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.86, 0.78, 0.6, 1)
+polygon = PackedVector2Array(1052, 822, 1092, 822, 1092, 828, 1052, 828)
+
+[node name="Wardrobe" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.22, 0.17, 0.13, 1)
+polygon = PackedVector2Array(960, 560, 1060, 560, 1060, 700, 960, 700)
+
+[node name="WardrobeSplit" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.31, 0.27, 0.23, 1)
+polygon = PackedVector2Array(1009, 566, 1011, 566, 1011, 694, 1009, 694)
+
+[node name="Rug" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.44, 0.24, 0.22, 1)
+polygon = PackedVector2Array(780, 694, 940, 694, 940, 700, 780, 700)
+
+[node name="RolledA" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.38, 0.22, 0.2, 1)
+polygon = PackedVector2Array(640, 668, 736, 668, 736, 700, 640, 700)
+
+[node name="RolledB" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.42, 0.26, 0.22, 1)
+polygon = PackedVector2Array(650, 640, 726, 640, 726, 668, 650, 668)
+
+[node name="RoofMat" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.42, 0.3, 0.25, 1)
+polygon = PackedVector2Array(1180, 492, 1372, 492, 1372, 500, 1180, 500)
+
+[node name="TinPot" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.32, 0.32, 0.34, 1)
+polygon = PackedVector2Array(932, 476, 954, 476, 954, 500, 932, 500)
+
+[node name="Plant" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.17, 0.21, 0.16, 1)
+polygon = PackedVector2Array(943, 478, 928, 466, 936, 452, 943, 462, 950, 448, 958, 462, 962, 470, 950, 478)
+
+[node name="LaundryLine" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.18, 0.16, 0.14, 1)
+polygon = PackedVector2Array(1060, 452, 1384, 452, 1384, 454, 1060, 454)
+
+[node name="ClothA" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.62, 0.62, 0.64, 1)
+polygon = PackedVector2Array(1110, 454, 1128, 454, 1128, 488, 1110, 488)
+
+[node name="ClothB" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.46, 0.3, 0.3, 1)
+polygon = PackedVector2Array(1150, 454, 1176, 454, 1176, 482, 1150, 482)
+
+[node name="ClothC" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.34, 0.4, 0.5, 1)
+polygon = PackedVector2Array(1230, 454, 1246, 454, 1246, 492, 1230, 492)
+
+[node name="TankBand" type="Polygon2D" parent="House"]
+z_index = 0
+color = Color(0.2, 0.19, 0.2, 1)
+polygon = PackedVector2Array(1000, 466, 1060, 466, 1060, 470, 1000, 470)
+
+[node name="Dish" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.24, 0.23, 0.24, 1)
+polygon = PackedVector2Array(1364, 486, 1372, 470, 1384, 462, 1388, 472, 1380, 486)
+
+[node name="Rebar0" type="Polygon2D" parent="House"]
+z_index = 0
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1384, 420, 1386, 420, 1386, 440, 1384, 440)
+
+[node name="Rebar1" type="Polygon2D" parent="House"]
+z_index = 0
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1390, 420, 1392, 420, 1392, 440, 1390, 440)
+
+[node name="Rebar2" type="Polygon2D" parent="House"]
+z_index = 0
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1396, 420, 1398, 420, 1398, 440, 1396, 440)
+
+[node name="Doorstep" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.28, 0.26, 1)
+polygon = PackedVector2Array(590, 896, 630, 896, 630, 900, 590, 900)
 
 [node name="Teta" type="Node2D" parent="."]
 position = Vector2(1330, 500)
@@ -200,7 +452,7 @@ position = Vector2(2200, 560)
 [node name="Candle" parent="." instance=ExtResource("3_carry")]
 position = Vector2(900, 900)
 label = "candle"
-color = Color(0.95, 0.9, 0.8, 1)
+color = Color(0.86, 0.8, 0.68, 1)
 hookable = false
 is_light_source = true
 

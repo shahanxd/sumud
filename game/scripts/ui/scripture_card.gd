@@ -112,9 +112,8 @@ func show_card(key: String) -> void:
 	while showing or Say.busy:
 		await get_tree().process_frame
 	showing = true
-	var sound := get_node_or_null("/root/Sound")
-	if sound != null and sound.has_method("duck"):
-		sound.duck([], -80.0, 0.6)
+	# Nothing plays under the words: every bus to silence, restored only after the card.
+	Sound.duck([], Sound.SILENT_DB, 0.4)
 	var quran := String(e.get("grade", "")) == "Quran"
 	var font = load(QURAN_FONT if quran else HADITH_FONT)
 	if font:
@@ -137,6 +136,5 @@ func show_card(key: String) -> void:
 	out.tween_property(_dim, "modulate:a", 0.0, 0.1 if bot else 0.7)
 	await out.finished
 	_dim.visible = false
-	if sound != null and sound.has_method("unduck"):
-		sound.unduck(1.0)
+	Sound.unduck(1.5)
 	showing = false

@@ -22,3 +22,7 @@ Founder decisions, with the date. The design document holds the reasoning; this 
 | 2026-09-29 | Proposed, founder to confirm: charity in the War Child wording, Medical Aid for Palestinians or PCRF, quarterly post, launch-week pledge | Decision 5 |
 | 2026-09-29 | Open: Decision 13 (Dhul Hijjah, recommended no), Decision 14 (whose wedding, recommended Sami's sister) | founder |
 | 2026-09-29 | Amiri and Noto Naskh Arabic fetched into the repository under the OFL for the prototype | founder to confirm |
+| 2026-09-29 | Prototype look: sky and sea shaders, a screen-space print grade, a per-phase palette with a lit ground colour; the ground is bright by day, figures and props stay dark | founder to react to the renders |
+| 2026-09-29 | Characters are one procedural bone rig (Figure) drawn each frame, no sprites; Layla's headscarf drawn cream as her one accent | founder to confirm the scarf colour |
+| 2026-09-29 | All prototype sound is synthesised by tools/audio.py from noise and resonances; roof_breath_loop.wav is a placeholder for the friend's vocal pad; Day 1 has no drone and no rumble | |
+| 2026-09-29 | Street facades, the home interior and the beach props are generated or hand-placed polygons with muted plaster tones; signs say "مخبز أبو أحمد" and "كشك الشاطئ" | readers to vet the signs |
