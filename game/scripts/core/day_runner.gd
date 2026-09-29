@@ -12,8 +12,6 @@ const DAYS := {
 		"res://scenes/beach.tscn",
 		"res://scenes/street.tscn",
 		"res://scenes/home.tscn",
-		"res://scenes/roof.tscn",
-		"res://scenes/strike.tscn",
 		"res://scenes/night_street.tscn",
 		"res://scenes/notebook_page.tscn",
 	],
@@ -43,6 +41,7 @@ func start(which: int, root: Node, ctx: Dictionary = {}) -> void:
 	context = ctx.duplicate()
 	context["day"] = day
 	Notebook.begin_day(day)
+	Fx.blackout()
 	await _play_card()
 	_next()
 

@@ -1,0 +1,220 @@
+[gd_scene load_steps=14 format=3 uid="uid://sumud_home"]
+
+[ext_resource type="Script" path="res://scripts/beats/home_beat.gd" id="0_beat"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="0_npc"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="3_carry"]
+[ext_resource type="Script" path="res://scripts/skyline.gd" id="4_skyline"]
+[ext_resource type="Script" path="res://scripts/camera_rig.gd" id="5_camera"]
+[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="6_sky"]
+[ext_resource type="Shader" path="res://shaders/sea.gdshader" id="7_sea"]
+
+[sub_resource type="ShaderMaterial" id="sky_mat"]
+shader = ExtResource("6_sky")
+
+[sub_resource type="ShaderMaterial" id="sea_mat"]
+shader = ExtResource("7_sea")
+
+[sub_resource type="LabelSettings" id="hint"]
+font_size = 22
+font_color = Color(0.95, 0.9, 0.8, 0.85)
+
+[sub_resource type="RectangleShape2D" id="sit_shape"]
+size = Vector2(140, 160)
+
+[sub_resource type="RectangleShape2D" id="cover_shape"]
+size = Vector2(760, 380)
+
+[sub_resource type="RectangleShape2D" id="door_shape"]
+size = Vector2(70, 130)
+
+[node name="Home" type="Node2D"]
+script = ExtResource("0_beat")
+
+[node name="SkyLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Sky" type="ColorRect" parent="SkyLayer" groups=["sky"]]
+material = SubResource("sky_mat")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ambient" type="CanvasModulate" parent="." groups=["ambient"]]
+
+[node name="Skyline" type="Node2D" parent="."]
+script = ExtResource("4_skyline")
+seed = 5
+horizon_y = 700.0
+
+[node name="Sea" type="Polygon2D" parent="." groups=["sea"]]
+z_index = -10
+material = SubResource("sea_mat")
+color = Color(0.1, 0.2, 0.29, 1)
+polygon = PackedVector2Array(-3000, 740, 9000, 740, 9000, 1500, -3000, 1500)
+uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Ground"]
+polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
+
+[node name="Asphalt" type="Polygon2D" parent="Ground"]
+z_index = -5
+color = Color(0.13, 0.12, 0.12, 1)
+polygon = PackedVector2Array(-3000, 900, 9000, 900, 9000, 1500, -3000, 1500)
+
+[node name="House" type="Node2D" parent="."]
+
+[node name="Back" type="Polygon2D" parent="House"]
+z_index = -4
+color = Color(0.16, 0.13, 0.12, 1)
+polygon = PackedVector2Array(600, 480, 1400, 480, 1400, 900, 600, 900)
+
+[node name="Lights" type="Node2D" parent="House"]
+z_index = -3
+
+[node name="WindowGround" type="Polygon2D" parent="House/Lights"]
+color = Color(0.98, 0.76, 0.42, 0.55)
+polygon = PackedVector2Array(860, 760, 980, 760, 980, 850, 860, 850)
+
+[node name="WindowFirst" type="Polygon2D" parent="House/Lights"]
+color = Color(0.98, 0.76, 0.42, 0.5)
+polygon = PackedVector2Array(700, 560, 820, 560, 820, 650, 700, 650)
+
+[node name="Structure" type="StaticBody2D" parent="House"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="LeftWallUpper" type="CollisionPolygon2D" parent="House/Structure"]
+polygon = PackedVector2Array(600, 480, 620, 480, 620, 770, 600, 770)
+
+[node name="RightWall" type="CollisionPolygon2D" parent="House/Structure"]
+polygon = PackedVector2Array(1380, 440, 1400, 440, 1400, 900, 1380, 900)
+
+[node name="FloorFirst" type="CollisionPolygon2D" parent="House/Structure"]
+polygon = PackedVector2Array(600, 700, 1080, 700, 1080, 720, 600, 720)
+
+[node name="Roof" type="CollisionPolygon2D" parent="House/Structure"]
+polygon = PackedVector2Array(920, 500, 1400, 500, 1400, 520, 920, 520)
+
+[node name="FlightA" type="CollisionPolygon2D" parent="House/Structure"]
+polygon = PackedVector2Array(1080, 700, 1380, 900, 1380, 920, 1080, 720)
+
+[node name="FlightB" type="CollisionPolygon2D" parent="House/Structure"]
+polygon = PackedVector2Array(620, 700, 920, 500, 920, 520, 620, 720)
+
+[node name="Walls" type="Polygon2D" parent="House"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(600, 480, 620, 480, 620, 770, 600, 770)
+
+[node name="WallRight" type="Polygon2D" parent="House"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1380, 440, 1400, 440, 1400, 900, 1380, 900)
+
+[node name="FloorFirstVis" type="Polygon2D" parent="House"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(600, 700, 1080, 700, 1080, 720, 600, 720)
+
+[node name="RoofVis" type="Polygon2D" parent="House"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(920, 500, 1400, 500, 1400, 520, 920, 520)
+
+[node name="FlightAVis" type="Polygon2D" parent="House"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1080, 700, 1380, 900, 1380, 920, 1080, 720)
+
+[node name="FlightBVis" type="Polygon2D" parent="House"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(620, 700, 920, 500, 920, 520, 620, 720)
+
+[node name="Tank" type="Polygon2D" parent="House"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1000, 500, 1000, 440, 1060, 440, 1060, 500)
+
+[node name="Parapet" type="Node2D" parent="House"]
+position = Vector2(1200, 500)
+
+[node name="ParapetVis" type="Polygon2D" parent="House/Parapet"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(-280, 0, 200, 0, 200, -14, -280, -14)
+
+[node name="Teta" type="Node2D" parent="."]
+position = Vector2(1330, 500)
+script = ExtResource("0_npc")
+npc_name = "Teta"
+build = 2
+headscarf = true
+talk_radius = 150.0
+
+[node name="SitSpot" type="Area2D" parent="."]
+position = Vector2(1250, 440)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="SitSpot"]
+shape = SubResource("sit_shape")
+
+[node name="Cover" type="Area2D" parent="."]
+position = Vector2(1000, 720)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Cover"]
+shape = SubResource("cover_shape")
+
+[node name="StreetDoor" type="Area2D" parent="."]
+position = Vector2(612, 835)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="StreetDoor"]
+shape = SubResource("door_shape")
+
+[node name="Frame" type="Polygon2D" parent="StreetDoor"]
+z_index = -2
+color = Color(0.98, 0.78, 0.45, 0.25)
+polygon = PackedVector2Array(-12, 65, -12, -65, 12, -65, 12, 65)
+
+[node name="Hatch" type="Node2D" parent="."]
+position = Vector2(960, 500)
+
+[node name="BeamSpawn" type="Node2D" parent="."]
+position = Vector2(620, 900)
+
+[node name="CardView" type="Node2D" parent="."]
+position = Vector2(2200, 560)
+
+[node name="Candle" parent="." instance=ExtResource("3_carry")]
+position = Vector2(900, 900)
+label = "candle"
+color = Color(0.95, 0.9, 0.8, 1)
+hookable = false
+is_light_source = true
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(680, 900)
+
+[node name="Baba" parent="." instance=ExtResource("1_player")]
+position = Vector2(1100, 900)
+is_active = false
+build = 1
+character_name = "Baba"
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("5_camera")
+player_path = NodePath("../Player")
+position_smoothing_enabled = false
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Hint" type="Label" parent="HUD"]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 1400.0
+offset_bottom = 60.0
+label_settings = SubResource("hint")

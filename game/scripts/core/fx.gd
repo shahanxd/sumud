@@ -14,7 +14,7 @@ var _letterbox := 0.0
 
 func _ready() -> void:
 	layer = 100
-	_fade = _rect(Color(0, 0, 0, 1))
+	_fade = _rect(Color(0, 0, 0, 0))
 	_flash = _rect(Color(1, 1, 1, 0))
 	_bar_top = _rect(Color(0, 0, 0, 1))
 	_bar_bottom = _rect(Color(0, 0, 0, 1))
@@ -30,6 +30,11 @@ func _rect(c: Color) -> ColorRect:
 	r.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(r)
 	return r
+
+
+## Cuts to black at once; the day runner uses it before the chapter card.
+func blackout() -> void:
+	_fade.color.a = 1.0
 
 
 func fade_in(seconds: float) -> void:

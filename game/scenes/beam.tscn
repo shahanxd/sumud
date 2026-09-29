@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://sumud_beam"]
+
+[ext_resource type="Script" path="res://scripts/beam.gd" id="1_beam"]
+[ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="2_carry"]
+
+[sub_resource type="RectangleShape2D" id="block_shape"]
+size = Vector2(90, 260)
+
+[node name="Beam" type="Node2D"]
+script = ExtResource("1_beam")
+
+[node name="Item" parent="." instance=ExtResource("2_carry")]
+position = Vector2(60, 0)
+weight = 2
+label = "beam"
+color = Color(0.3, 0.22, 0.15, 1)
+hookable = false
+min_build = 1
+
+[node name="Block" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Block"]
+position = Vector2(45, -130)
+shape = SubResource("block_shape")
+
+[node name="Lean" type="Polygon2D" parent="Block"]
+color = Color(0.3, 0.22, 0.15, 1)
+polygon = PackedVector2Array(0, -250, 22, -256, 130, 0, 96, 0)

@@ -1,22 +1,85 @@
 {
 	"_about": "Colour is a budget the days spend. One entry per day and phase drives every shader and the ambient light. Hex colours; saturation 0..1 scales the sky, sea and accents; ambient multiplies the whole frame (CanvasModulate).",
 	"default": {
-		"morning": {"sky_top": "#5d7aa6", "sky_horizon": "#f6cd88", "sea": "#1a3549", "haze": "#e8c9a0", "ambient": "#ffffff", "saturation": 1.0},
-		"noon":    {"sky_top": "#6f92c2", "sky_horizon": "#f2dcb4", "sea": "#1e4059", "haze": "#f0e0c8", "ambient": "#ffffff", "saturation": 1.0},
-		"dusk":    {"sky_top": "#3a3f6e", "sky_horizon": "#f08a5a", "sea": "#1a2a45", "haze": "#c98a7a", "ambient": "#f4dcc8", "saturation": 1.0},
-		"night":   {"sky_top": "#070912", "sky_horizon": "#1b2038", "sea": "#050a14", "haze": "#141a2c", "ambient": "#6b7390", "saturation": 0.75},
-		"siege":   {"sky_top": "#5a5a5a", "sky_horizon": "#9a9186", "sea": "#2c2f33", "haze": "#8c8780", "ambient": "#b8b4ae", "saturation": 0.15}
+		"morning": {
+			"sky_top": "#5d7aa6",
+			"sky_horizon": "#f6cd88",
+			"sea": "#1a3549",
+			"haze": "#e8c9a0",
+			"ambient": "#ffffff",
+			"saturation": 1.0
+		},
+		"noon": {
+			"sky_top": "#6f92c2",
+			"sky_horizon": "#f2dcb4",
+			"sea": "#1e4059",
+			"haze": "#f0e0c8",
+			"ambient": "#ffffff",
+			"saturation": 1.0
+		},
+		"dusk": {
+			"sky_top": "#3a3f6e",
+			"sky_horizon": "#f08a5a",
+			"sea": "#1a2a45",
+			"haze": "#c98a7a",
+			"ambient": "#f4dcc8",
+			"saturation": 1.0
+		},
+		"night": {
+			"sky_top": "#070912",
+			"sky_horizon": "#1b2038",
+			"sea": "#050a14",
+			"haze": "#141a2c",
+			"ambient": "#6b7390",
+			"saturation": 0.75
+		},
+		"siege": {
+			"sky_top": "#5a5a5a",
+			"sky_horizon": "#9a9186",
+			"sea": "#2c2f33",
+			"haze": "#8c8780",
+			"ambient": "#b8b4ae",
+			"saturation": 0.15
+		},
+		"siege_night": {
+			"sky_top": "#0a0b10",
+			"sky_horizon": "#2a2622",
+			"sea": "#07090c",
+			"haze": "#1c1a18",
+			"ambient": "#3a3c42",
+			"saturation": 0.2
+		}
 	},
 	"days": {
-		"1": {"saturation": 1.0},
-		"2": {"saturation": 0.95},
-		"3": {"saturation": 0.35},
-		"4": {"saturation": 0.3},
-		"5": {"saturation": 0.3},
-		"6": {"saturation": 0.4},
-		"7": {"saturation": 0.1},
-		"8": {"saturation": 0.45},
-		"9": {"saturation": 0.7},
-		"10": {"saturation": 1.0}
+		"1": {
+			"saturation": 1.0
+		},
+		"2": {
+			"saturation": 0.95
+		},
+		"3": {
+			"saturation": 0.35
+		},
+		"4": {
+			"saturation": 0.3
+		},
+		"5": {
+			"saturation": 0.3
+		},
+		"6": {
+			"saturation": 0.4
+		},
+		"7": {
+			"saturation": 0.1
+		},
+		"8": {
+			"saturation": 0.45
+		},
+		"9": {
+			"saturation": 0.7
+		},
+		"10": {
+			"saturation": 1.0
+		}
 	}
 }

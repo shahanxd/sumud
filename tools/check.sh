@@ -31,6 +31,9 @@ timeout 120 "$GODOT" --headless --path game res://tests/bot_beach_beat.tscn -- -
 echo "== street bot =="
 timeout 180 "$GODOT" --headless --path game res://tests/bot_street.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|street:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== home bot =="
+timeout 240 "$GODOT" --headless --path game res://tests/bot_home.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|home:|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== chapter card =="
 timeout 60 "$GODOT" --headless --path game res://tests/shot_card.tscn 2>&1 | grep -E "card finished|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1

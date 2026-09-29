@@ -18,6 +18,8 @@ Wind="*res://scripts/wind.gd"
 Look="*res://scripts/core/look.gd"
 Notebook="*res://scripts/core/notebook.gd"
 Fx="*res://scripts/core/fx.gd"
+Settings="*res://scripts/core/settings.gd"
+Cards="*res://scripts/ui/scripture_card.gd"
 Say="*res://scripts/core/say.gd"
 Day="*res://scripts/core/day_runner.gd"
 
