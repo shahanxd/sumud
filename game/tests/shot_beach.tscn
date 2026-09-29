@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://sumud_shot_beach"]
+
+[ext_resource type="Script" path="res://tests/shot_driver.gd" id="1_shot"]
+[ext_resource type="PackedScene" path="res://scenes/beach.tscn" id="2_beach"]
+
+[node name="ShotBeach" type="Node"]
+script = ExtResource("1_shot")
+
+[node name="Beach" parent="." instance=ExtResource("2_beach")]

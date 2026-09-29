@@ -6,7 +6,7 @@ extends Camera2D
 @export var kite_path: NodePath
 @export var look_ahead := 140.0
 @export var follow_speed := 5.0
-@export var ground_bias := -160.0
+@export var ground_bias := -250.0
 
 var _player: Player
 var _kite: Kite

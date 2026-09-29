@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://sumud_chapter_card"]
+
+[ext_resource type="Script" path="res://scripts/chapter_card.gd" id="1_card"]
+
+[sub_resource type="LabelSettings" id="title"]
+font_size = 88
+font_color = Color(0.945, 0.902, 0.816, 1)
+
+[sub_resource type="LabelSettings" id="subtitle"]
+font_size = 30
+font_color = Color(0.71, 0.07, 0.11, 1)
+
+[node name="ChapterCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_card")
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -110.0
+offset_right = 400.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DAY 1"
+label_settings = SubResource("subtitle")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -60.0
+offset_right = 700.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The Kite Festival"
+label_settings = SubResource("title")
+horizontal_alignment = 1

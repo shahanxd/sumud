@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://sumud_shot_card"]
+
+[ext_resource type="Script" path="res://tests/shot_card_driver.gd" id="1_drv"]
+[ext_resource type="PackedScene" path="res://scenes/chapter_card.tscn" id="2_card"]
+
+[node name="ShotCard" type="Node"]
+script = ExtResource("1_drv")
+
+[node name="Layer" type="CanvasLayer" parent="."]
+
+[node name="ChapterCard" parent="Layer" instance=ExtResource("2_card")]
