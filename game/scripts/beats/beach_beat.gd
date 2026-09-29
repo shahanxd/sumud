@@ -27,6 +27,9 @@ func begin(ctx: Dictionary) -> void:
 	# The Mediterranean and the onshore wind; Day 1 has no hum and no rumble.
 	Sound.loop("sea_loop", "ambience", -4.0, 2.0)
 	Sound.loop("wind_loop", "ambience", -8.0, 2.0)
+	# Sami calls from down the beach, so the player knows where to go before anything else.
+	hint.text = Say.text("beach.hint.find")
+	Say.key("beach.sami.call", 4.0)
 
 
 func _on_sami_approached(_npc: Npc) -> void:
