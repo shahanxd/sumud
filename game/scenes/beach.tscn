@@ -23,7 +23,7 @@ font_color = Color(0.95, 0.9, 0.8, 0.85)
 [node name="SkyLayer" type="CanvasLayer" parent="."]
 layer = -100
 
-[node name="Sky" type="ColorRect" parent="SkyLayer"]
+[node name="Sky" type="ColorRect" parent="SkyLayer" groups=["sky"]]
 material = SubResource("sky_mat")
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,9 @@ grow_vertical = 2
 script = ExtResource("4_skyline")
 horizon_y = 720.0
 
-[node name="Sea" type="Polygon2D" parent="."]
+[node name="Ambient" type="CanvasModulate" parent="." groups=["ambient"]]
+
+[node name="Sea" type="Polygon2D" parent="." groups=["sea"]]
 z_index = -10
 material = SubResource("sea_mat")
 color = Color(0.1, 0.2, 0.29, 1)

@@ -1,13 +1,22 @@
 extends Node2D
-## Placeholder main scene. Proves the project opens, renders and quits cleanly.
-## Replaced by the Day 1 beach scene in the first prototype milestone.
+## The main scene. Starts the prototype day; the beats are children of this node.
+## `--smoke` renders one frame and exits, for the headless smoke test.
 
-const VERSION := "0.0.1-skeleton"
+const VERSION := "0.1.0-prototype"
 
 
 func _ready() -> void:
 	print("SUMUD %s ready" % VERSION)
 	if OS.get_cmdline_user_args().has("--smoke"):
-		# Used by the headless smoke test: one frame, then exit 0.
 		await get_tree().process_frame
+		get_tree().quit(0)
+		return
+	$Title.visible = false
+	Day.day_finished.connect(_on_day_finished)
+	Day.start(1, self)
+
+
+func _on_day_finished(_day: int, _ctx: Dictionary) -> void:
+	$Title.visible = true
+	if Day.bot_mode:
 		get_tree().quit(0)

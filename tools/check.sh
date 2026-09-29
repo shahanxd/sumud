@@ -16,7 +16,11 @@ fi
 fail=0
 "$GODOT" --headless --path game --import --quit >/dev/null 2>&1
 echo "== smoke =="
-"$GODOT" --headless --path game -s res://tests/smoke.gd 2>&1 | grep -E "smoke:|ERROR|SCRIPT" || true
+# The real main scene with its autoloads, one frame, then exit 0.
+timeout 60 "$GODOT" --headless --path game -- --smoke 2>&1 | grep -E "SUMUD|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== core =="
+"$GODOT" --headless --path game res://tests/test_core.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|core:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== beach bot =="
 "$GODOT" --headless --path game res://tests/bot_beach.tscn 2>&1 | grep -E "FAIL|bot:|ERROR|SCRIPT" || true

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sumud_fake_beat"]
+
+[ext_resource type="Script" path="res://tests/beats/fake_beat.gd" id="1_fake"]
+
+[node name="FakeBeat" type="Node2D"]
+script = ExtResource("1_fake")

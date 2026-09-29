@@ -11,7 +11,11 @@ extends Node2D
 @export var near_color := Color(0.09, 0.08, 0.10)
 
 
+var _layers: Array[Polygon2D] = []
+
+
 func _ready() -> void:
+	add_to_group("skyline")
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed
 	for i in layer_count:
@@ -24,8 +28,18 @@ func _ready() -> void:
 		add_child(layer)
 		var poly := Polygon2D.new()
 		poly.polygon = _skyline(rng, depth)
-		poly.color = near_color.lerp(sky_color, (1.0 - depth) * 0.72)
+		poly.set_meta("depth", depth)
 		layer.add_child(poly)
+		_layers.append(poly)
+	tint(sky_color)
+
+
+## Far layers take the haze colour of the day; near layers stay near-black.
+func tint(haze: Color) -> void:
+	sky_color = haze
+	for poly in _layers:
+		var depth: float = poly.get_meta("depth", 1.0)
+		poly.color = near_color.lerp(haze, (1.0 - depth) * 0.72)
 
 
 func _skyline(rng: RandomNumberGenerator, depth: float) -> PackedVector2Array:

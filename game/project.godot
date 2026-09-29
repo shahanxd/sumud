@@ -15,6 +15,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 Wind="*res://scripts/wind.gd"
+Look="*res://scripts/core/look.gd"
+Notebook="*res://scripts/core/notebook.gd"
+Fx="*res://scripts/core/fx.gd"
+Day="*res://scripts/core/day_runner.gd"
 
 [display]
 

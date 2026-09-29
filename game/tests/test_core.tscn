@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://sumud_test_core"]
+
+[ext_resource type="Script" path="res://tests/test_core.gd" id="1_core"]
+
+[node name="TestCore" type="Node"]
+
+[node name="Bot" type="Node" parent="."]
+script = ExtResource("1_core")
