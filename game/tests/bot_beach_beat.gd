@@ -5,7 +5,7 @@ extends Bot
 
 func run() -> void:
 	name_tag = "beach beat"
-	var beach = get_parent().get_node("Beach")
+	var beach = target("Beach")
 	var player: Player = beach.get_node("Player")
 	var kite: Kite = beach.get_node("Kite")
 	var sami: Npc = beach.get_node("Sami")

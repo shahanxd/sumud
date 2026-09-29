@@ -2,11 +2,16 @@ extends Node
 class_name Bot
 ## Base class for scripted playthroughs. A bot presses the real input actions and checks
 ## the design's rules, as a coroutine: `await hold("move_right", 60)`. Subclasses override
-## run(). Prints one line per check; exit code 0 when every check passes.
+## run(). Prints one line per check; standalone it quits with the exit code, and inside the
+## full-day flow (flow = true) it reports through run_finished instead.
+
+signal run_finished(passed: int, fails: PackedStringArray)
 
 var passed := 0
 var fails := PackedStringArray()
 var name_tag := "bot"
+## True when driven by the flow bot: the beat is the day runner's current beat.
+var flow := false
 
 
 func _ready() -> void:
@@ -17,6 +22,13 @@ func _ready() -> void:
 ## Override. Awaitable.
 func run() -> void:
 	pass
+
+
+## The beat under test: a sibling named `name` when standalone, the live beat in the flow.
+func target(name: String) -> Node:
+	if flow and Day.beat != null:
+		return Day.beat
+	return get_parent().get_node(name)
 
 
 func frames(n: int) -> void:
@@ -46,7 +58,7 @@ func check(ok: bool, what: String) -> void:
 		passed += 1
 		print("  ok   ", what)
 	else:
-		fails.append(what)
+		fails.append(name_tag + ": " + what)
 		print("  FAIL ", what)
 
 
@@ -64,10 +76,13 @@ func teleport(p: Player, to: Vector2) -> void:
 	p.velocity = Vector2.ZERO
 
 
-## Prints the summary and quits with the exit code. Call at the end of run().
+## Prints the summary and quits with the exit code, or reports to the flow. Call at the end of run().
 func done() -> void:
 	release_all()
 	print("%s: %d passed, %d failed" % [name_tag, passed, fails.size()])
 	for f in fails:
 		print("  failed: ", f)
+	if flow:
+		run_finished.emit(passed, fails)
+		return
 	get_tree().quit(0 if fails.is_empty() else 1)

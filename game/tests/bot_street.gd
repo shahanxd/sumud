@@ -5,7 +5,7 @@ extends Bot
 
 func run() -> void:
 	name_tag = "street"
-	var street = get_parent().get_node("Street")
+	var street = target("Street")
 	var player: Player = street.get_node("Player")
 	var jerrycan: Carryable = street.get_node("Jerrycan")
 	var plank: Plank = street.get_node("Plank")

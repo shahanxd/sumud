@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://sumud_bot_notebook"]
+
+[ext_resource type="Script" path="res://tests/bot_notebook.gd" id="1_bot"]
+[ext_resource type="PackedScene" path="res://scenes/notebook_page.tscn" id="2_page"]
+
+[node name="BotNotebook" type="Node"]
+
+[node name="NotebookPage" parent="." instance=ExtResource("2_page")]
+
+[node name="Bot" type="Node" parent="."]
+script = ExtResource("1_bot")

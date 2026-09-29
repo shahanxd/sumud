@@ -6,9 +6,10 @@ extends Bot
 
 func run() -> void:
 	name_tag = "night"
-	var night = get_parent().get_node("NightStreet")
+	var night = target("NightStreet")
 	var layla: Player = night.get_node("Player")
-	night.begin({"candle": true})
+	if not flow:
+		night.begin({"candle": true})
 	var result := {}
 	night.finished.connect(func(r: Dictionary): result.merge(r, true))
 	await frames(10)

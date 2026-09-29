@@ -6,7 +6,7 @@ extends Bot
 
 func run() -> void:
 	name_tag = "home"
-	var home = get_parent().get_node("Home")
+	var home = target("Home")
 	var layla: Player = home.get_node("Player")
 	var baba: Player = home.get_node("Baba")
 	var candle: Carryable = home.get_node("Candle")

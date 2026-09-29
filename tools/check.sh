@@ -37,6 +37,12 @@ timeout 240 "$GODOT" --headless --path game res://tests/bot_home.tscn -- --bot -
 echo "== night bot =="
 timeout 180 "$GODOT" --headless --path game res://tests/bot_night.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|night:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== notebook bot =="
+timeout 120 "$GODOT" --headless --path game res://tests/bot_notebook.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|notebook:|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== full day flow =="
+timeout 420 "$GODOT" --headless --path game res://tests/bot_flow.tscn -- --bot --notebook=user://test_flow_notebook.json 2>&1 | grep -E "FAIL|flow:|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== chapter card =="
 timeout 60 "$GODOT" --headless --path game res://tests/shot_card.tscn 2>&1 | grep -E "card finished|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
