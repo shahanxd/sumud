@@ -1,0 +1,127 @@
+# Production pipeline
+
+How SUMUD goes from the first playable (v0.2 in the founder's words) to the game the founder has in mind. Read with `docs/production/lock.md` (what must be decided) and `docs/HANDOFF.md` (where everything is).
+
+## The stages
+
+| Stage | What it proves | Output | Gate | Dates |
+| --- | --- | --- | --- | --- |
+| 1. Concept | The idea, the rules, the research | Design document, research 01 to 22 | Founder | Done |
+| 2. First playable | The systems work end to end | Day 1 sampler, bots, `tools/check.sh` | Founder plays it | Done (29 September 2026) |
+| 3. **Pre-production lock** (now) | Every decision that cannot change later is made | `lock.md` all P0 rows LOCKED; animation test; style frames; Day 1 script; the friend's first recording | Founder signs the lock in `decisions.md` | 30 September to 13 October 2026 |
+| 4. Vertical slice: Day 1 | One day at shipping quality | Day 1 playable start to finish at the bar below | The world-class tests below | About 14 October to 8 December 2026 |
+| 5. Slice 2: Day 3 | The siege and the strike work (the hardest tone) | Day 3 at shipping quality | Readers' sign-off; tests; launch date set here | About 8 weeks after gate 4 |
+| 6. Production | The rest | Days 2, 4 to 10, in order of risk: 7, 10, 8, 5, 2, 4, 6, 9 | Each day passes its definition of done | 2027 |
+| 7. Alpha | Whole game playable | All ten days, placeholder allowed only in polish | Full playthrough by 5 strangers | Set at gate 5 |
+| 8. Beta | Content complete | Everything final; localisation in; accessibility list done | Readers, scholar, testers on the full game | Set at gate 5 |
+| 9. Launch | | Steam (Windows, Linux) | | Not earlier than late 2027; a Next Fest with the Day 1 demo 2 to 4 months before (confirm Steam's dates) |
+
+The founder said yes on 30 September 2026 to moving the launch for quality. The date is set at gate 5, when the speed of real production is known, not before.
+
+## The world-class bar, as tests
+
+"World class" is judged, not described. Every slice and every day must pass:
+
+1. **The stranger test.** Three people who have not heard of the game play it on the founder's laptop with no help. Nobody gets lost for more than 30 seconds (the readability rules); at least two say unprompted that they want to keep playing.
+2. **The store-page test.** Any frame grabbed at random could be a store screenshot.
+3. **The feel test.** The founder plays with a controller and a keyboard and does not call any movement "weird". The feel targets in `docs/design/feel-and-readability.md` are met.
+4. **The people test.** Every character on screen moves like a person (performed, not puppeted); every scene has someone react to the player.
+5. **The sound test.** Nothing sounds synthetic except the drone and the rumble; the mix is balanced on laptop speakers and headphones.
+6. **The readers' test.** The two Palestinian readers sign off; their notes are binding.
+7. **The halal test.** The scholar has signed off the audio rules, the voices, and the wedding; `tools/check.sh` passes its audio audit.
+8. **The tech test.** 60 frames a second at 1080p on the founder's laptop; no crash in a full playthrough; `tools/check.sh` passes.
+
+## Roles
+
+| Role | Who | Does |
+| --- | --- | --- |
+| Founder, director | shahanxd | Decides; plays every build; films and records; recruits; pays; signs the lock and each gate |
+| Agent (engineering, design, first drafts) | An AI coding agent in this repository | Code, tools, level building, bots, docs, the English guidance script, the Claude Doc sync; never makes art or audio that ships |
+| Artist | To recruit (`docs/art/artist-brief.md`) | Model sheets, style frames, clean-up, hero props |
+| Performers | Family and friends, with consent | Rotoscope performances (if method B), barks |
+| The friend | The founder's friend | The voice score |
+| Palestinian writer | To recruit | The Arabic of every line |
+| Readers | Two Palestinians, paid, credited | Binding review of story, names, culture, the Arabic |
+| Scholar | One, named | Halal rules, voices, the wedding, the scripture cards |
+| Reciter | A licensed human qari | Quran audio, or text only |
+| Testers | Strangers, then Steam playtest | The stranger test |
+
+## The lock: week by week
+
+| Week | Tasks | Owner | Output |
+| --- | --- | --- | --- |
+| 1 (30 Sep to 6 Oct) | Read `lock.md` and answer every PROPOSED row; post the artist, reader and performer calls (`docs/outreach.md`); record the friend's first session; film Layla's walk, run, jump and carry on a phone (a girl of about twelve with a parent, or any small performer in costume) | Founder | Answers; footage; first recordings |
+| 1 | Write `tools/roto.py` (classical keying) and the `SpriteFrames` import tool; improve the code rig as method A; build the animation test scene | Agent | The test scene, rendered |
+| 1 to 2 | Coyote time, jump buffer, variable jump, ledge grab, camera leading and the debug tuning overlay in the first playable | Agent | A build the founder tunes |
+| 2 (7 to 13 Oct) | The animation test: the founder watches A, B (and C) on the laptop and picks | Founder | F-03 locked |
+| 2 | Style frames in-engine (or the artist's, if one has joined); the founder picks; three strangers look | Agent or artist, founder | F-05, F-06, F-07 |
+| 2 | Scholar and readers contacted with the Day 1 script and the characters | Founder | Dates for their reviews |
+| End of 2 | Founder signs the lock | Founder | `decisions.md` row |
+
+If a P0 row cannot be locked by 13 October (usually the readers or the scholar), the slice starts on everything else and that row's work comes last in the slice.
+
+## The vertical slice (Day 1): what gets built
+
+1. The day as one continuous walk: beach, coastal road, street, home, roof (`docs/story/world.md`), driven by a data file.
+2. The characters by the chosen method: Layla's full list, then Sami, Teta, the family, the neighbours, the crowd.
+3. The scene list in `docs/story/day1-script.md`, each with a want, an obstacle, a turn, a payoff and something optional.
+4. The recorded sound course for Day 1 (`docs/audio/direction.md`).
+5. The world fixes (ground, lights, specific places) from `docs/art/direction.md`.
+6. Transitions by the adhan; the chapter card; the notebook.
+7. Bots for every required route; `tools/check.sh` green.
+8. The Arabic from the writer, reviewed by the readers.
+
+## Definition of done, per scene
+
+- Plays start to finish with no help (the stranger test on that scene).
+- Every required route walked by a bot with real physics; no soft locks.
+- Final or approved-placeholder art and sound with `docs/rights.md` rows.
+- Every line keyed in `game/data/lines.csv` in English and Arabic, reviewed.
+- Rendered at 1920x1010 from `main.tscn` and looked at by the agent before handing to the founder.
+- The founder has played it in a Windows build.
+
+## How assets flow
+
+1. The need is written (the animation list, the takes list, the prop list).
+2. Made by a person (filmed, recorded, drawn) with consent and rights.
+3. Placed in `game/assets/...` by the agent with a `rights.md` row; nothing AI-generated at any step (lock F-01).
+4. Reviewed in-engine, in context, never in isolation (the pose sheet, the scene render).
+5. The founder approves; the readers review anything cultural.
+
+## Cadence and feedback
+
+- The agent pushes a playable build to `main` whenever a scene changes, with `tools/check.sh` green and a note of what to try.
+- The founder plays with `tools/play.bat` and replies with screenshots and plain words; the agent writes each session into `docs/playtests/` and a triage table.
+- Every decision goes into `docs/decisions.md` the day it is made.
+- Weekly: a short note in `docs/HANDOFF.md` of where things stand.
+
+## Budget lines (amounts are the founder's)
+
+Readers (paid); the Palestinian writer; the artist (test piece, then batches); the scholar's time if paid; the reciter's licence; performers' thanks; a recorder or a good phone microphone; Steamworks fee; translation to Urdu and Hindi; a charity share (Decision 5). LaunchGood if money is needed (the design document).
+
+## Risks
+
+| Risk | Effect | Answer |
+| --- | --- | --- |
+| No readers found | No public build | Post the call in week 1; slow down rather than ship without them |
+| No artist found | People look like a programmer drew them | Method B (rotoscope) needs no artist to reach "people move like people"; the founder or a friend cleans frames |
+| Scholar disagrees with a voice or the wedding | Rework of audio or Day 10 | Ask before recording, not after |
+| The founder's time | Everything slows | The agent carries everything that is not the founder's; the gates move, the bar does not |
+| Rotoscope footage of minors | Consent, privacy | Parent present and consenting; footage deleted after keying; no faces used |
+| Scope | Ten days at slice quality is a lot | The short days stay short; cut optional look-ats before cutting quality |
+| Agent change | Context lost | The repository is the source of truth; `docs/HANDOFF.md` is the entry point |
+
+## Backlog (numbered, in order)
+
+1. Founder answers `lock.md`.
+2. Feel pass in the first playable (coyote, buffer, variable jump, ledge grab, camera, tuning overlay).
+3. `tools/roto.py` and the SpriteFrames import tool.
+4. The animation test scene and render.
+5. Style frames in-engine.
+6. Day structure in code: one day scene of connected spaces from a data file (lock I-04).
+7. Day 1 route: beach, coastal road, street, home, roof as one walk.
+8. Day 1 scenes 0 to 9 from the script with keyed lines.
+9. Adhan transitions; sound leads the picture.
+10. Recorded audio in; synthesised foley out.
+11. World fixes (ground shader, lights, specific places).
+12. Bots per scene; stranger test; gate 4.

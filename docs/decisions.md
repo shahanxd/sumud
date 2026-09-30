@@ -26,3 +26,11 @@ Founder decisions, with the date. The design document holds the reasoning; this 
 | 2026-09-29 | Characters are one procedural bone rig (Figure) drawn each frame, no sprites; Layla's headscarf drawn cream as her one accent | founder to confirm the scarf colour |
 | 2026-09-29 | All prototype sound is synthesised by tools/audio.py from noise and resonances; roof_breath_loop.wav is a placeholder for the friend's vocal pad; Day 1 has no drone and no rumble | |
 | 2026-09-29 | Street facades, the home interior and the beach props are generated or hand-placed polygons with muted plaster tones; signs say "مخبز أبو أحمد" and "كشك الشاطئ" | readers to vet the signs |
+| 2026-09-29 | Founder played the first playable on Windows: "if my dream is v2.0, this is v0.2"; characters wooden, scarf and eyes weird, walk and jump weird, story dead, gameplay dry, cuts sudden, sounds weird | `docs/playtests/2026-09-29-founder.md` |
+| 2026-09-30 | Pre-production lock phase begins: every decision that cannot change later is settled before production (`docs/production/lock.md`) | founder: "document everything first" |
+| 2026-09-30 | Launch date may move for quality; set at the Day 3 gate, not earlier than late 2027 | founder said yes; the "two to three months" of 29 September is retired |
+| 2026-09-30 | The order of work: lock, then a vertical slice of Day 1 at shipping quality, then Day 3, then production (`docs/production/pipeline.md`) | proposed; lock A-06, K-01 |
+| 2026-09-30 | AI-generated textures, sounds or art are not used, even as placeholders or style targets; people make the assets (recorded, filmed, drawn) | restates the design document; lock F-01 |
+| 2026-09-30 | Characters to be made by performance (rotoscoped silhouettes) or by an artist's cut-out rig, chosen by an animation test; the code rig is retired | proposed; lock F-03 |
+| 2026-09-30 | References: Silksong (hand-made motion, feel), Life is Strange (quiet moments, lived-in rooms), The Kite Runner (a child's city at kite height) | lock A-05 |
+| 2026-09-30 | The repository's `docs/` is the source of truth for any agent; the Claude Doc is the founder's reading copy | lock K-06 |
