@@ -54,6 +54,8 @@ Each scene in the first playable was one mechanic with a hint line. Every scene 
 
 **Look-ats.** Like Life is Strange, objects Layla can look at give one short handwritten thought. They are optional, never required, and every home, shop and roof has a few.
 
+**Barks never stop movement.** Lines spoken as Layla passes play while she keeps moving; only a sit spot or a conversation the player starts holds her.
+
 **Conversation.** No dialogue trees. At most one or two moments a day where the player chooses how Layla answers (two options, never timed, recorded in the notebook, echoed once later). Lines advance on input or wait; timing never gates reading (the design document).
 
 ## Transitions: why the cuts felt sudden
@@ -61,7 +63,7 @@ Each scene in the first playable was one mechanic with a hint line. Every scene 
 The first playable joined separate scenes with fades to black. From now on:
 
 1. **A day is one continuous walk** through connected spaces. The camera never cuts in the middle of a walk.
-2. **Time moves on the adhan.** A phase change is a short sequence: the adhan begins, the camera eases up to the sky or out to the sea, the light changes, the camera comes back down on the next moment. No black.
+2. **Time moves on the adhan.** A phase change begins with the adhan; the light changes while it plays, and play continues under it. The adhan is never cut or faded mid-phrase to change a scene (the scholar confirms how it may be used; lock E-05). The camera move varies (up to the sky, out to the sea, along a roofline, holding on a face) so it never becomes wallpaper. No black.
 3. **Sound leads.** The next scene's sound starts a moment before its picture; the last scene's sound tails a moment after.
 4. **Endings breathe.** A beat holds for one or two seconds after it resolves before anything new starts.
 5. **Black is for the day's edges only**: the day's start (after the chapter card), and the end of Day 7.

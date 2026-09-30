@@ -22,8 +22,8 @@ Everything that cannot change once production starts, in one list. Production st
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
 | B-01 | Premise and ending | One family, ten days, a kite festival to a courtyard wedding; the ending flies Sami's kite after kites are declared drones; not a rescue | LOCKED | P0 | Founder | gdd Story |
-| B-02 | The through-line | Teta's question on Day 1, "who is braver, the kite or the hand that holds the string?", answered by Layla on Day 10: "the hand" | PROPOSED | P0 | Founder, writer | story/beat-sheet |
-| B-03 | The promise | Day 1 knot: the winner flies at the wedding, the loser builds the kite; the knot tied into Sami's kite on Day 10 | PROPOSED | P0 | Founder | beat-sheet |
+| B-02 | The through-line | Teta's question on Day 1, "who is braver, the kite or the hand that holds the string?", asked while Layla holds a kite still; answered on Day 10 by holding, not by stating it ("Teta. I'm holding.") | PROPOSED | P0 | Founder, writer | story/beat-sheet |
+| B-03 | The promise | Day 1 knot: whoever won the contest flies at the wedding, and Sami builds the kite either way; the knot tied into Sami's kite on Day 10 | PROPOSED | P0 | Founder | beat-sheet |
 | B-04 | The count | Day 1's count to thirty repeated on Day 10 in human voices | PROPOSED | P1 | Founder | beat-sheet |
 | B-05 | The one death | Sami, Day 7, off-screen, aftermath only, never preventable, never a fail state, never caused by a choice | LOCKED | P0 | Founder | gdd |
 | B-06 | Whose wedding | Nour, Sami's older sister; groom Fadi, Abu Fadi's son; Abu Sami gives the blessing (Decision 14) | PROPOSED | P1 | Founder, readers | characters |

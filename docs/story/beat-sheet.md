@@ -8,9 +8,9 @@ Read with `docs/story/characters.md` (who), `docs/story/world.md` (where) and `d
 
 **Logline.** Over ten days in Gaza City, a twelve-year-old kite flyer learns why her grandmother says the hand that holds the string is braver than the kite.
 
-**The question.** On the roof on Day 1, Teta asks Layla: "Up there, who is braver, the kite or the hand that holds the string?" Layla says the kite: "The hand just stands there." Nobody answers her. The game answers over ten days by taking away her running and giving her things to hold: water, a candle, stillness under the drone, a neighbour, a street. On Day 10, on the beach, after they have been told a kite is a drone, Teta asks again, and Layla answers: the hand. Standing there is what sumud means.
+**The question.** On the roof on Day 1, Teta asks Layla: "Up there, who is braver, the kite or the hand that holds the string?" Layla says the kite: "The hand just stands there." Nobody answers her. The game answers over ten days by taking away her running and giving her things to hold: water, a candle, stillness under the drone, a neighbour, a street. Day 1 already makes the player do it once: Teta hands Layla the string and tells her to hold the kite still, and Layla finds it boring. On Day 10, on the beach, after they have been told a kite is a drone, Teta starts to ask again and Layla cuts her off without looking: "Teta. I'm holding." The player's hands give the answer; nobody announces it. Standing there is what sumud means.
 
-**The promise.** On Day 1, after the kite contest, Layla and Sami tie a piece of their two strings into one knot: whoever won flies at Nour's wedding, whoever lost builds the kite. Sami is killed on Day 7. On Day 9 the whole street builds his kite, one part from each family. On Day 10 Layla ties the knot into its bridle and flies it.
+**The promise.** On Day 1, after the kite contest, Layla and Sami tie a piece of their two strings into one knot: whoever won flies at Nour's wedding, and Sami builds the kite either way ("because yours are ugly"). The promise holds whoever won the contest. Sami is killed on Day 7. On Day 9 the whole street builds his kite, one part from each family. On Day 10 Layla ties the knot into its bridle and flies it.
 
 **The count.** On Day 1 the whole beach counts to thirty to keep thousands of kites in the air for a record (the game never shows a number). On Day 10, at dusk, the street counts to thirty again, in human voices, with Sami's kite first.
 
@@ -25,10 +25,13 @@ Read with `docs/story/characters.md` (who), `docs/story/world.md` (where) and `d
 | 3 | "Until Day 8 the adhan is one unaided voice from a roof" | Whose voice | Abu Khalil, the old fisherman; on Day 8 his voice goes through the speaker Karim repairs |
 | 4 | Someone conducts the nikah and leads the janazah | Nobody named | The street's imam, a neighbour (readers decide if this is right) |
 | 5 | The wedding is Sami's older sister's (Decision 14, recommended) | Relations not fixed | Teta is Baba's mother; Sami's father is Baba's younger brother, so Teta is grandmother to Layla, Karim, Sami and Nour, and the wedding is the family's own. The groom is Fadi, Abu Fadi's son |
-| 6 | "Teta says the line from Day 1" at the end | No line written | Her question about the kite and the hand (above) |
+| 6 | "Teta says the line from Day 1" at the end | No line written | Her question about the kite and the hand (above), which Layla answers by holding, not by stating it |
 | 7 | "The kite is taken" on Day 7 | By whom | At the checkpoint Layla must drop what is in her hands to raise them; the wind takes the kite back over the berm. No soldier touches it |
 | 8 | Choices change "what Teta recites" | Tying Quran to player choices makes recitation a reward | Choices change which of her mother's stories and which proverb Teta tells; her recitation is the same for everyone, pending the scholar |
 | 9 | A leaflet is caught by the kite on Day 7, but the sky is closed above hum 0.6 | Contradiction | At dawn on Day 7 the hum dips; Layla flies from the roof, sees the column forming, snags a leaflet, and brings the kite down as the hum rises |
+| 10 | Day 3 holds four cards between maghrib and night (3:173, 2:155, Bukhari 2486, 2:153) | The most driven evening becomes stop and start | Proposal for the founder and the scholar: hold two (3:173 under the stairs, 2:153 on the roof) and move the other two to quieter moments or the notebook page. The scripture list itself is unchanged until they decide |
+| 11 | The ending: the question, the count, a held card, credits with a card, the end card | Five endings in a row | Keep the count, one held card (94:5-6), then the credits, whose last line is 3:170 (not held), then the end card |
+| 12 | Day 1's promise: "the winner flies at the wedding, the loser builds the kite" | If Layla wins, Day 10 has her flying a kite the loser should have built; if Sami wins, she flies the kite he won the right to fly, and the Day 8 note has to explain it | Whoever won flies; Sami builds the kite either way ("because yours are ugly"). If Sami won, Layla says so as she launches it on Day 10 |
 
 ## The days at a glance
 
@@ -57,16 +60,16 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 
 1. **Cold open, fajr.** The sea at dawn and one kite over it; the player is already holding the string. The camera follows the string down to Layla on the roof testing her contest kite. Mama calls up about bread. The chapter card stitches in as she goes down the stairs.
 2. **The house wakes.** Baba home from a night's fishing with a small basket; Mishmish the cat adopts him. Teta finishing her prayer. Mama and the wedding lists. Karim asleep. Look-ats: the key on its nail, the list on the fridge. Layla grabs her scarf from the hook as she runs out.
-3. **Everyone knows.** The street wakes; every neighbour cheers her on as she passes. The twins join her.
+3. **The street wakes.** Everyone busy with their own morning (the bakery's wedding order, a stubborn solar panel, a boy with one shoe); Layla passes through it. The twins join her.
 4. **The festival.** The beach full of families and homemade kites; Sami has made two. Layla's kite has no proper tail; she crawls under the beached boat for a plastic bag the twins spotted and ties a tail.
 5. **Thirty.** The whistle; the whole beach launches; hundreds of voices count to thirty while the player keeps the kite up in the gusts. The camera pulls wide over a sky full of kites. The count reaches thirty (the design document's Day 1 joy beat). Whose kite was highest decides who won.
-6. **The promise.** Sitting on the sand: the wedding is in nine days; whoever won flies at it, whoever lost builds the kite. They tie a piece of their strings into one knot; Layla keeps it in her notebook.
-7. **The kite run.** Sami shows off, his string snaps, the onshore wind carries his kite into the city, and Layla runs it down through the street and over the roofs, the kite leading the way. It snags on Hajja Amina's laundry line; she can put the washing back.
-8. **The power comes on.** Home at asr: the grid's half day arrives, the fridge shudders, the fan turns, the whole street cheers. Teta's knafeh ghazawiya. Layla patches Sami's kite with thread Teta is saving for Nour's dress.
-9. **The question.** Maghrib on the roof: pigeons on the water tanks, Baba mending nets, the sun into the sea. Teta asks who is braver. Card: Tirmidhi 1956, smiling as charity.
-10. **A light nobody mentions.** Isha: the grid cuts out across the city in sections; far out on the black sea, one light that does not move. Baba looks at it a second too long. The notebook page.
+6. **The promise.** Sitting on the sand: the wedding is in nine days; whoever won flies at it, and Sami builds the kite either way. They tie a piece of their strings into one knot; Layla keeps it in her notebook. Sami's wish: one day the wind turns and his kite goes to Cyprus.
+7. **The kite run.** Sami shows off, his string snaps, the onshore wind carries his kite into the city, and Layla runs it down back past the same doors and over the roofs, the kite leading the way. It snags on Hajja Amina's laundry line; she can put the washing back. Sami asks if she'll fix it: the game's first answer choice.
+8. **The power comes on.** Home at asr: the grid's half day arrives, the fridge shudders, the fan turns, the whole street cheers. Teta's knafeh ghazawiya. Karim mentions a friend in Cairo; nobody answers. On the two roofs that almost touch, Layla and Sami patch his kite together with thread Teta is saving for Nour's dress (his secret now). Um Sami shouts "SAMI! The bread!" and he answers "Ten more seconds!", Layla's own line.
+9. **The question.** Maghrib on the roof: pigeons on the water tanks, Baba mending nets, the sun into the sea. Teta hands Layla the string and tells her to hold the kite still; while she holds, Teta asks who is braver. "The kite. Obviously." Card: Tirmidhi 1956, smiling as charity, on Teta's smile.
+10. **A light nobody mentions.** Isha: the grid cuts out across the city in sections; far out on the black sea, one light that does not move. Baba stops mending and stands; then sits and mends again. The notebook page: "KITE. Obviously."
 
-**Marks.** Who won the contest. Whether she put Hajja Amina's washing back. **Joy.** The count, the kite run, the power coming on, knafeh. **Seeds planted.** The pigeons (Day 3), the power cuts (Day 3), the dress thread (Day 9), the knot (Day 10), the key (Days 2, 7, 10), the question (Day 10), Hajja Amina (Days 4, 7, 10), the twins (Days 3, 4, 9), Abu Fadi's radio (Day 9), the light at sea (Day 6), the count (Day 10).
+**Marks.** Who won the contest. Layla's answer to "You'll fix my kite?". Whether she put Hajja Amina's washing back. **Joy.** The count, the kite run, the power coming on, knafeh. **Seeds planted.** The pigeons (Day 3), the power cuts (Day 3), the dress thread (Day 9), the knot (Day 10), the key (Days 2, 7, 10), the question (Day 10), Sami's name shouted from the next roof (Days 2 to 6, and Day 7), Karim's friend in Cairo (Day 8), the roof gap (Days 5, 7), holding still (Day 5), Sami's wish for Cyprus (Day 10), Hajja Amina (Days 4, 7, 10), the twins (Days 3, 4, 9), Abu Fadi's radio (Day 9), the light at sea (Day 6), the count (Day 10).
 
 ---
 
@@ -135,10 +138,10 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 | Fajr | Closed | The neighbourhood UNRWA school is shut. Mama clears the stairwell | Carry cardboard as Mama or Layla |
 | Dhuhr | The stairwell school | Children arrive because Layla goes and gets them (her social verb: children follow her). Mama writes one word on cardboard. Card: Quran 96:1, the first lesson | Gather the children (the twins, Samir); a joy beat of voices |
 | Asr | The line | The two roofs almost touch. Layla flies the kite across the gap to carry a string to Sami; a tin can on the string carries notes back and forth: jokes, drawings, a map of the wedding kite | Kite hook; hauling the can |
-| Asr | The hum | A drone passes low. Every input must be released: the kite hangs still, Layla holds still, Sami holds still on his roof. Sami's last note is in her hand; she pushes it into her notebook without reading it | The stillness moment (the design document's Day 5 beat); "own pace" waits for the release |
+| Asr | The hum | A drone passes low. Every input must be released: the kite hangs still, Layla holds still, Sami holds still on his roof. She has read his other notes; the last one is in her hand when the drone comes, and to hold still she lets it go. It drops between the roofs | The stillness moment (the design document's Day 5 beat); "own pace" waits for the release |
 | Maghrib | After | The drone gone; they laugh too loudly | — |
 
-**Joy.** Iqra: the first lesson; the notes. **Sami.** The message line; his unread note. **Notebook.** The notes she did read. A tin can drawn in the margin.
+**Joy.** Iqra: the first lesson; the notes. **Sami.** The message line; the note she dropped. **Notebook.** The notes she did read. A tin can drawn in the margin.
 
 ---
 
@@ -169,10 +172,11 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 | Fajr | The call | An SMS on Karim's phone. The house phone rings with a recorded voice. Teta picks up, listens, says "Wrong number," and hangs up | A laugh in the worst morning (the design document's joy beat) |
 | Dhuhr | One trip | What can the family carry? Layla's bag has three slots besides the notebook; everyone's hands are full. Sami on his roof across the gap: an ordinary last exchange about kites (the writer's to write; nothing that sounds like goodbye) | Choose what goes in the bag |
 | Dhuhr | The door | Teta locks the door and keeps the key. Card: Quran 22:40 | — |
-| Dhuhr | Who we carry | Hajja Amina cannot walk the road; neither can Abu Khalil. Baba can carry one person | Choose, as Baba, with the hands. The other reaches the school later by another door, and remembers |
+| Dhuhr | Sami's family goes back | Before anyone chooses anything: Um Sami's mother is in the next street and will not leave without her things. Abu Sami and Um Sami go back for her with Sami and Nour: "Go. We'll follow." The family watches them turn off. The player has no input here | Watch |
+| Dhuhr | Who we carry | Hajja Amina cannot walk the road; neither can Abu Khalil. Baba can carry one person | Choose, as Baba, with the hands. The other leaves with the Bakr cousins by the inland road, far from the coast road, reaches the school later by another door, and remembers |
 | Asr | The road | The column walks south along the coast road with the sea beside it. Looking back at the street under smoke. Card: Quran 14:42, the one card about them. Mishmish follows, because Baba has bread in his pocket. The twins sing to keep walking | Walk, weighted; letterbox; control never taken |
 | Asr | The checkpoint | A berm, lights, shadows behind them, a loudhailer: "Raise your hands and your phones. Say your names." Everyone's hands are full. Layla must drop what she holds to raise hers: the kite, and the wind takes it back over the berm. Teta raises her hands with the key closed in her fist. Young men are called aside; Karim says his name clearly and, after a long moment, is waved on. Baba says his name with Hajja Amina (or Abu Khalil) on his back | Put down, raise hands, say the name; the kite is gone |
-| Asr | Behind them | Far behind, where the rest of the street is still walking, a strike. Dust rises over the road. Adults turn the children forward | Keep walking; there is no going back |
+| Asr | Behind them | Far behind, on the coast road where Sami's family and the last of the street are walking, a strike. Dust rises over the road. Adults turn the children forward | Keep walking; there is no going back |
 | Isha | A name | The school gate at night. The courtyard full of strangers. Sami's family arrives late. Someone says his name. An adult says "inna lillahi wa inna ilayhi raji'un" (spoken, never a card). Card: Sahih al-Bukhari 1283, the final sentence, held | No input |
 
 **Joy.** Teta hangs up on the recorded call; the key in her raised fist; the cat. **Marks.** The bag's contents; who Baba carried. **Notebook.** Only "bismillah" at the top of the page. Nothing else.
@@ -194,7 +198,7 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 | Asr | The generator | Two hours of light if it starts. Karim counts; Layla pulls the cord on his count | The starter cord (the design document's Day 8 beat) |
 | Asr | The last battery | One battery left: Um Samir's clinic corner or Mama's evening lesson | Choose |
 | Maghrib | The speaker | Karim fixes the courtyard speaker; Abu Khalil's voice, unaided since Day 3, carries the adhan across the courtyard | Joy: the adhan returns |
-| Isha | The note | In her notebook Layla finds the note Sami sent down the line on Day 5, unread until now (the design document's notebook surprise). What it says is the writer's; the proposal is his plan for the wedding kite and "whoever won, I'm building yours anyway" | Read it; make a small kite from a worksheet (fix #1) |
+| Isha | The note | Karim, back from digging in the street, gives Layla a folded paper: "It was on our roof." Sami's last note from Day 5, the one she dropped (the design document's notebook surprise). It is ordinary and funny: a drawing of her kite with no tail, labelled "a wish", and whatever the writer adds. If she answered "only if you say mine was better" on Day 1, the drawing is captioned "(still not better)" | Read it; make a small kite from a worksheet (fix #1) |
 | Isha | Should there be a wedding? | Um Sami, Nour and Teta: whether to hold it two days after the janazah. Um Sami decides: "He promised her a kite." (Decision 14; the readers check the custom) | Listen |
 
 **Joy.** The adhan from the speaker. **Marks.** Karim's choice; the battery. **Notebook.** Sami's page, in his handwriting.
@@ -229,9 +233,9 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 | Asr | The women's hall | Switch to Layla. Nour in the white dress with red tatreez. Card: Sunan Ibn Majah 1896, before the duff starts. The duff is the only instrument in the game, played here, by women. The dancing is heard and never shown; the camera stays on hands, henna and the hem of the dress. Hajja Amina has saved Layla a seat if Layla helped her | Switch between the halves; only the player sees the wedding whole |
 | Asr | The gate | Teta tries her key in the school gate. It does not open. She laughs until she has to sit down | — |
 | Maghrib | The walk | The street walks to the beach at dusk past the dedicated kites planted in the sand, each with a name | Walk; read the names |
-| Maghrib | The question | No drone: its absence is the loudest sound. The wind turns off the land. Teta: "They say a kite is a drone now." Then her question from Day 1. Layla: "The hand." | Answer by holding the string |
+| Maghrib | The question | No drone: its absence is the loudest sound. The wind turns off the land. Teta: "They say a kite is a drone now." She starts her question from Day 1: "Up there, who is braver..." Layla, not looking away from the kite: "Teta. I'm holding." | Answer by holding the string |
 | Maghrib | Thirty | Layla ties the Day 1 knot into the bridle and launches Sami's kite; every kite the player earned rises with it (one per remembered act, and the kites the player designed); the street counts to thirty in human voices; the kites go out over the sea | Hold the string. The kite cannot fall |
-| — | The end | At thirty, silence and the sea. Card: Quran 94:5-6, held. Credits over the sea, which carry Quran 3:170 (the design document's placement). The end card with the UNICEF figure and its date | — |
+| — | The end | At thirty, silence and the sea. Card: Quran 94:5-6, held: the one held card of the ending. Credits over the sea, whose last line is Quran 3:170 (the design document's placement, not held). The end card with the UNICEF figure and its date | — |
 
 **Joy.** Everything. **The ending's rule.** Not a rescue. They have been told a kite is a drone; they fly anyway; they are still there.
 
@@ -244,7 +248,8 @@ Nothing here is announced when it happens or when it pays off. None of it decide
 | Act | Day | What comes back | When |
 | --- | --- | --- | --- |
 | Put Hajja Amina's washing back | 1 | She tells Teta, and saves Layla a seat | 10 |
-| Who won the contest | 1 | Who was promised the flight; Nour's line at the henna; the notebook's wording | 9, 10 |
+| Who won the contest | 1 | Who was promised the flight; Nour's line at the henna; the notebook's wording. If Sami won, Layla says so as she launches his kite: "You were supposed to fly it. So I'll fly it badly, for you." | 9, 10 |
+| "You'll fix my kite?" | 1 | The caption of Sami's drawing | 8 |
 | Bread to the twins first | 3 | Their family brings paper for Sami's kite | 9 |
 | Light to Abu Khalil's window | 3 | His fishing line is the kite's best string | 9 |
 | The first water to a door | 4 | That household saves a seat at the wedding | 10 |
@@ -273,7 +278,10 @@ After the credits: the title screen shows the player's own Day 10 sky; the noteb
 | A light on the sea nobody mentions (Day 1) | The gunboat (Day 6) |
 | Sami always wants his kite to go out over the sea; the onshore wind never lets it (Days 1 to 6) | The wind turns and every kite goes out over the sea (Day 10) |
 | Abu Khalil's voice (Day 3) | Through the repaired speaker (Day 8) |
-| Sami's unread note (Day 5) | Read (Day 8) |
+| Sami's note, dropped to hold still (Day 5) | Brought back by Karim and read (Day 8) |
+| "Ten more seconds!" (Layla, then Sami, Day 1) | Sami's name said quietly at the school gate (Day 7) |
+| Holding the kite still for Teta (Day 1) | Holding still under the drone (Day 5); "Teta. I'm holding." (Day 10) |
+| "You'll fix my kite?" (Day 1 choice) | Echoed in Sami's note (Day 8) |
 | The twins' chalk scores (Day 4) | Their family's paper in the kite (Day 9) |
 | Abu Fadi's radio (Days 1, 2) | The announcement (Day 9) |
 
