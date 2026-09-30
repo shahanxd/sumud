@@ -8,7 +8,7 @@ Every documented detail below comes from `docs/research/05-gaza-reality.md` as c
 
 A street of Gaza City near the sea, running up from the beach. The year is never stated; the conditions are those of 2023 to 2026, compressed into ten days (the design document's rule). The readers may name the neighbourhood; until then it is unnamed. The culture critique suggested the fishing neighbourhoods by the port (readers).
 
-Reading the street from the sea inland, which is left to right on screen in every space that shows it:
+Reading the street from the sea inland (a map for the team; on screen, direction follows the walk, below):
 
 ```
  SEA | beach, the kiosk, the boats   | steps | corniche road | Abu Fadi's stall (corner)
@@ -29,7 +29,7 @@ Films change the camera's direction between scenes; players need something simpl
 | Space | What the camera looks at | Background | Screen right leads to |
 | --- | --- | --- | --- |
 | The beach | Out to sea | The horizon, the far coast curving away to one side, boats, and at night a light that does not move | The steps up to the corniche and the street |
-| The street | Across the street at the facades | The city's roofs, water tanks, the minaret | The top of the street and the mosque |
+| The street | Across the street at the facades | The city's roofs, water tanks, the minaret | Wherever the walk is going: toward the beach on the way down, inland on the way up. Each direction shows the opposite side of the street, so screen right never reverses mid-walk |
 | The home | Through the house, cut away | Behind the roof, the sea: every roof scene has the sunset over the water | Up the stairs (the flights zigzag: ground flight rises to the right, first-floor flight rises to the left) |
 | The harbour | Along the breakwater, out to sea | The open sea, later the gunboat | The open water |
 | The coastal road (Day 7) | The column walking south with the sea beside it | The sea on one side, smoke over the city behind | South, and the checkpoint |

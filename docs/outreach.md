@@ -30,3 +30,23 @@ It takes about fifteen minutes including one question afterwards. You need a Win
 If you are up for it, reply and I will send a link and a date. Thank you.
 
 [name]
+
+## Call for an artist (post publicly or send directly)
+
+Subject: Draw the people of a game about one family in Gaza (credit above the fold)
+
+I'm making SUMUD, a short 2D narrative game about one family on one street in Gaza City over ten days, from a kite festival to a wedding in a school courtyard. The look is silhouettes lit by warm light, like Limbo and Inside, with colour only in the sky, the sea, kites and tatreez. There is no combat, the score is human voices only, Palestinian readers review everything, and nothing in the game is made with AI.
+
+The world is built by code and already looks right. The people do not. I'm looking for an artist, ideally Palestinian or from the region, to design the family and the street's neighbours as silhouettes, paint three style frames, and either animate the characters or clean up performances we film. The full brief is ready to send, and you would be credited at the top of the store page with the other Palestinian contributors.
+
+If you're interested, or know someone who might be, reply with a link to your work. [terms: the founder fills in fee or revenue share]
+
+[name]
+
+## To a performer (for filmed movement reference)
+
+Subject: Help us film how a family moves (one afternoon, no face shown)
+
+We're making a game whose characters are silhouettes. To make them move like real people, we film someone walking, running, sitting, carrying a water can or flying a kite against a plain wall, and trace only the outline. Your face never appears, the footage stays private and is deleted after tracing, and you're credited if you want to be. It takes one afternoon. Children only with a parent present and agreeing. Women may be filmed by women if preferred.
+
+[name]
