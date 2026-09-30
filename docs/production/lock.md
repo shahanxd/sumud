@@ -4,6 +4,8 @@ Everything that cannot change once production starts, in one list. Production st
 
 **Statuses.** LOCKED: decided by the founder, recorded in `docs/decisions.md`. PROPOSED: a recommendation waiting for the founder's yes or no. OPEN: a question that needs someone (the founder, the readers, the scholar, a test). **Priority.** P0 blocks the vertical slice; P1 blocks production of Days 2 to 10; P2 blocks launch.
 
+**What LOCKED means here.** Rows marked LOCKED are the founder's answers of 29 September (listed in `docs/HANDOFF.md` history and the design document's Decisions section, "your answers of 29 September are locked") or rows recorded in `docs/decisions.md`. Everything the design document says that the founder has not answered directly is PROPOSED until signed.
+
 **How the founder locks a row.** Say "lock" (or change it) in chat or in a doc comment; the agent writes the row to `docs/decisions.md` with the date and changes its status here. "Go with your picks" locks every PROPOSED row as written.
 
 ## A. Vision and scope
@@ -50,7 +52,8 @@ Everything that cannot change once production starts, in one list. Production st
 
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
-| D-01 | Five spaces, three states | Beach, street, home and roof, school courtyard, harbour; before, siege, after; plus the coastal road on Day 7 | LOCKED | P0 | Founder | gdd pillar 4 |
+| D-01 | Five spaces, three states | Beach, street, home and roof, school courtyard, harbour; before, siege, after | LOCKED |
+| D-05 | The coastal road | A connecting walk on Day 7, not a sixth space | PROPOSED | P1 | Founder | story/world | P0 | Founder | gdd pillar 4 |
 | D-02 | Camera and screen direction | Screen right is where the day goes; background turns only at boundaries | PROPOSED | P0 | Agent | story/world |
 | D-03 | A day is one continuous walk | Fades only at the day's edges; time moves on the adhan | PROPOSED | P0 | Agent | design/feel |
 | D-04 | Signs in the world | "مخبز أبو أحمد", "كشك الشاطئ" | OPEN | P2 | Readers | decisions |
@@ -61,17 +64,18 @@ Everything that cannot change once production starts, in one list. Production st
 | --- | --- | --- | --- | --- | --- | --- |
 | E-01 | Halal rules | No instruments; duff only at the wedding on the women's side; Quran as a full stop; no AI Quran, voices or music | LOCKED | P0 | Founder | gdd |
 | E-02 | School lens | Hanafi (Decision 3) | PROPOSED | P1 | Founder | gdd Decisions |
-| E-03 | Scripture moments | The design document's 22 items; two hadith re-checked in a browser before their cards ship | LOCKED (two pending checks) | P1 | Founder | gdd |
+| E-03 | Scripture moments | The design document's 22 items; two hadith re-checked in a browser before their cards ship | PROPOSED (design document; two pending checks) | P1 | Founder | gdd |
 | E-04 | Who recites | A local hafiz for tests, a Palestinian qari for launch, under a written licence; text only until then (Decision 8) | PROPOSED | P2 | Founder | gdd |
 | E-05 | Named scholar | One scholar reviews the audio rules, the singing voices and the wedding storyboard before the slice ships | OPEN | P0 | Founder | gdd |
 | E-06 | Readers | Two Palestinian readers, paid, credited, binding; none yet | OPEN | P0 for any public build | Founder | outreach |
-| E-07 | "They" | Faceless but present; "al-yahud" never written; Israel named once in the title card and in the Sources | LOCKED | P0 | Founder | gdd |
+| E-07 | "They" | Faceless but present; the colloquial word for "the Jews" never written (the design document, Tone and ethics); Israel named once in the title card and in the Sources | LOCKED | P0 | Founder | gdd |
 
 ## F. Art
 
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
-| F-01 | AI | Nothing AI-generated ships, enters the repository, the store page or marketing, or is given to a collaborator as a style target | PROPOSED (restates the design document) | P0 | Founder | art/direction |
+| F-01 | AI | Nothing AI-generated ships, enters the repository, the store page or marketing, or is given to a collaborator as a style target | LOCKED (30 Sep) |
+| F-09 | What counts as AI-generated | Recommended: the output of generative image, audio, voice or text models never ships. The world is drawn by code that an AI coding agent writes and the founder reviews; that is disclosed honestly on Steam's AI content survey, and public copy says "no generative AI art, audio or voices" rather than "no AI". The alternative is an artist redrawing the world too | OPEN | P0 | Founder | pipeline | P0 | Founder | art/direction |
 | F-02 | Art base | Silhouettes with colour carried by light | LOCKED | P0 | Founder | decisions |
 | F-03 | Character method | Chosen by the animation test: rotoscoped performance recommended, an artist's cut-out rig the alternative | OPEN (test) | P0 | Founder | art/direction |
 | F-04 | An artist | Recruit one; credit above the fold; terms by the founder | OPEN | P0 | Founder | art/artist-brief |
@@ -94,12 +98,12 @@ Everything that cannot change once production starts, in one list. Production st
 
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
-| H-01 | Verbs and inputs | Eight inputs; no new verbs after the lock | LOCKED | P0 | Founder | design/feel |
+| H-01 | Verbs and inputs | Eight inputs; no new verbs after the lock | PROPOSED (design document) | P0 | Founder | design/feel |
 | H-02 | Carry rules | As built, with per-character classes (a full jerrycan is two-handed for children) | PROPOSED | P0 | Agent | design/feel |
 | H-03 | Feel targets | Coyote time, jump buffer, variable jump, landings, ledge grab, camera leading | PROPOSED | P0 | Agent, founder tunes | design/feel |
 | H-04 | Readability rules | The world points, not the HUD; no objective text after the first minute | PROPOSED | P0 | Agent | design/feel |
 | H-05 | Choices | Marks not branches; the callbacks table; one or two answer choices a day, never timed | PROPOSED | P1 | Founder | beat-sheet |
-| H-06 | Timed moments | At most one a day (two on Day 3), none on Days 1, 7, 10; "own pace" for all | LOCKED | P1 | Founder | gdd |
+| H-06 | Timed moments | At most one a day (two on Day 3), none on Days 1, 7, 10; "own pace" for all | PROPOSED (design document) | P1 | Founder | gdd |
 
 ## I. Tech
 
@@ -109,8 +113,8 @@ Everything that cannot change once production starts, in one list. Production st
 | I-02 | Renderer and minimum machine | Forward+; the founder's laptop (Intel Iris Xe) at 1080p60 is the minimum | PROPOSED | P0 | Agent | art/direction |
 | I-03 | Character tech | `AnimatedSprite2D` frames with per-frame hand points (if rotoscope), or Skeleton2D (if cut-out) | OPEN (follows F-03) | P0 | Agent | art/direction |
 | I-04 | Day structure in code | One day scene made of connected spaces, driven by a data file per day | PROPOSED | P0 | Agent | tech/codebase |
-| I-05 | Saves | JSON per slot with the notebook; Steam cloud later | LOCKED | P1 | Founder | gdd |
-| I-06 | Platforms | Windows and Linux (Steam Deck) at launch; macOS when a Mac tester exists; mobile later, Android first | LOCKED | P2 | Founder | gdd |
+| I-05 | Saves | JSON per slot with the notebook; Steam cloud later | PROPOSED (design document) | P1 | Founder | gdd |
+| I-06 | Platforms | Windows and Linux (Steam Deck) at launch; macOS when a Mac tester exists; mobile later, Android first | PROPOSED (design document) | P2 | Founder | gdd |
 
 ## J. Localisation and accessibility
 
@@ -118,18 +122,18 @@ Everything that cannot change once production starts, in one list. Production st
 | --- | --- | --- | --- | --- | --- | --- |
 | J-01 | Languages | English and Arabic at launch; Urdu and Hindi within a month | LOCKED | P1 | Founder | decisions |
 | J-02 | Arabic writing | A Palestinian writer writes the Arabic from the English guidance; the readers review | PROPOSED | P0 | Founder | day1-script |
-| J-03 | Arabic and Latin fonts | Amiri 1.001 and Noto Naskh Arabic 2.019 (OFL) in the prototype; final pairing chosen on the style frames | PROPOSED | P1 | Founder | decisions |
-| J-04 | Accessibility | The design document's list as launch requirements | LOCKED | P2 | Founder | gdd |
+| J-03 | Arabic and Latin fonts | Amiri 1.001 and Noto Naskh Arabic 2.019 (OFL) in the prototype (research 13 says Amiri 1.000; later tags exist); scripture cards use a Quran face (KFGQPC or Amiri Quran), never the body fonts; final pairing chosen on the style frames | PROPOSED | P1 | Founder | decisions |
+| J-04 | Accessibility | The design document's list as launch requirements | PROPOSED (design document) | P2 | Founder | gdd |
 
 ## K. Business and production
 
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
-| K-01 | Schedule | Lock by 13 October 2026; Day 1 slice by early December; launch no earlier than late 2027, dated at the Day 3 gate (the founder said yes on 30 September to moving the date for quality) | PROPOSED | P0 | Founder | pipeline |
+| K-01 | Schedule | The launch moves for quality (LOCKED, 30 September). Proposed dates: lock by 13 October 2026; Day 1 slice by early December; launch no earlier than late 2027, dated at the Day 3 gate. Supersedes the design document's Production plan and Go-to-market dates | PROPOSED (dates) | P0 | Founder | pipeline |
 | K-02 | Budget | Readers are paid; the artist's and reciter's terms set by the founder; LaunchGood if money is needed | OPEN | P0 | Founder | pipeline |
 | K-03 | Charity | The War Child wording, a named charity with consent (Decision 5) | PROPOSED | P2 | Founder | gdd |
 | K-04 | Steamworks | Pay the fee and onboard; Coming Soon page from the slice's frames | OPEN | P1 | Founder | gdd |
-| K-05 | Rating | PEGI 16 target, ESRB T; content warning written | LOCKED | P2 | Founder | gdd |
+| K-05 | Rating | PEGI 16 target, ESRB T; content warning written | PROPOSED | P2 | Founder | gdd |
 | K-06 | Source of truth | The repository (`docs/`) is canonical for any agent; the Claude Doc is the founder's reading copy, kept in sync | PROPOSED | P0 | Founder | HANDOFF |
 
 ## What may still change during production

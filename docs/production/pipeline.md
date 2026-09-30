@@ -6,7 +6,7 @@ How SUMUD goes from the first playable (v0.2 in the founder's words) to the game
 
 | Stage | What it proves | Output | Gate | Dates |
 | --- | --- | --- | --- | --- |
-| 1. Concept | The idea, the rules, the research | Design document, research 01 to 22 | Founder | Done |
+| 1. Concept | The idea, the rules, the research | Design document, research 01 to 23 | Founder | Done |
 | 2. First playable | The systems work end to end | Day 1 sampler, bots, `tools/check.sh` | Founder plays it | Done (29 September 2026) |
 | 3. **Pre-production lock** (now) | Every decision that cannot change later is made | `lock.md` all P0 rows LOCKED; animation test; style frames; Day 1 script; the friend's first recording | Founder signs the lock in `decisions.md` | 30 September to 13 October 2026 |
 | 4. Vertical slice: Day 1 | One day at shipping quality | Day 1 playable start to finish at the bar below | The world-class tests below | About 14 October to 8 December 2026 |
@@ -36,7 +36,7 @@ The founder said yes on 30 September 2026 to moving the launch for quality. The 
 | Role | Who | Does |
 | --- | --- | --- |
 | Founder, director | shahanxd | Decides; plays every build; films and records; recruits; pays; signs the lock and each gate |
-| Agent (engineering, design, first drafts) | An AI coding agent in this repository | Code, tools, level building, bots, docs, the English guidance script, the Claude Doc sync; never makes art or audio that ships |
+| Agent (engineering, design, first drafts) | An AI coding agent in this repository | Code, tools, level building, bots, docs, the English guidance script, the Claude Doc sync; writes the code that draws the world (lock F-09); never uses generative image, audio or voice models |
 | Artist | To recruit (`docs/art/artist-brief.md`) | Model sheets, style frames, clean-up, hero props |
 | Performers | Family and friends, with consent | Rotoscope performances (if method B), barks |
 | The friend | The founder's friend | The voice score |
@@ -62,7 +62,7 @@ If a P0 row cannot be locked by 13 October (usually the readers or the scholar),
 
 ## The vertical slice (Day 1): what gets built
 
-1. The day as one continuous walk: beach, coastal road, street, home, roof (`docs/story/world.md`), driven by a data file.
+1. The day as one continuous walk: home, roof, street, corniche, beach (`docs/story/world.md`), driven by a data file.
 2. The characters by the chosen method: Layla's full list, then Sami, Teta, the family, the neighbours, the crowd.
 3. The scene list in `docs/story/day1-script.md`, each with a want, an obstacle, a turn, a payoff and something optional.
 4. The recorded sound course for Day 1 (`docs/audio/direction.md`).
@@ -119,9 +119,10 @@ Readers (paid); the Palestinian writer; the artist (test piece, then batches); t
 4. The animation test scene and render.
 5. Style frames in-engine.
 6. Day structure in code: one day scene of connected spaces from a data file (lock I-04).
-7. Day 1 route: beach, coastal road, street, home, roof as one walk.
+7. Day 1 route: home, roof, street, corniche, beach as one walk.
 8. Day 1 scenes 0 to 9 from the script with keyed lines.
 9. Adhan transitions; sound leads the picture.
 10. Recorded audio in; synthesised foley out.
 11. World fixes (ground shader, lights, specific places).
 12. Bots per scene; stranger test; gate 4.
+13. Scripture cards: a Quran face for every card (the hadith font is a body font today), with a `test_core` check; a check that `lines.csv` never contains the forbidden colloquial word (lock E-07).

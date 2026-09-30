@@ -26,7 +26,7 @@ shahanxd (GitHub). A practising Muslim; everything must be halal. Small budget: 
 
 ## The design document
 
-A Claude Doc: https://claude.ai/code/artifact/edb009e1-ac2b-462a-8860-f031366c2ec2 (doc id `edb009e1-ac2b-462a-8860-f031366c2ec2`, tab file `97c63c3c-32af`, body node `dc81e545-7518`). `docs/gdd.md` matches rev 82 (30 September 2026). Edit it with the docs connector, never by publishing HTML; mirror each change into `docs/gdd.md` (the markdown export escapes brackets and backticks, so apply the same edits to the snapshot rather than pasting the export). If the connector is not available to you, edit `docs/gdd.md` and say in `decisions.md` that the Claude Doc is behind. Where the new docs change the design document (the beat sheet's fixes, the slice order), the new docs win once the founder locks them.
+A Claude Doc: https://claude.ai/code/artifact/edb009e1-ac2b-462a-8860-f031366c2ec2 (doc id `edb009e1-ac2b-462a-8860-f031366c2ec2`, tab file `97c63c3c-32af`, body node `dc81e545-7518`). `docs/gdd.md` matches rev 84 (30 September 2026). Edit it with the docs connector, never by publishing HTML; mirror each change into `docs/gdd.md` (the markdown export escapes brackets and backticks, so apply the same edits to the snapshot rather than pasting the export). If the connector is not available to you, edit `docs/gdd.md` and say in `decisions.md` that the Claude Doc is behind. Where the new docs change the design document (the beat sheet's fixes, the slice order), the new docs win once the founder locks them.
 
 Scripture: sunnah.com is blocked from the cloud container, so Sahih al-Bukhari 1284 and Sunan Ibn Majah 1896 carry only their first verification. Before their cards ship, open https://sunnah.com/bukhari:1284 and https://sunnah.com/ibnmajah:1896 in a browser and match the text, numbers and grade.
 
@@ -34,7 +34,7 @@ Scripture: sunnah.com is blocked from the cloud container, so Sahih al-Bukhari 1
 
 - **Halal.** No instruments, ever, and nothing imitating one. The duff only at the wedding, on the women's side. Quran only as a full stop: play paused, every bus silent, skip at ayah boundaries; audio only from a licensed human reciter, otherwise text. Women's dancing never shown; no romance on screen.
 - **No AI assets.** No AI-generated art, texture, audio, voice, Quran or music ships, enters the repository, appears in marketing, or is used as a style target (lock F-01).
-- **No combat.** The perpetrator is "they": present, faceless, never a character or target. Never write "al-yahud".
+- **No combat.** The perpetrator is "they": present, faceless, never a character or target. Never write the colloquial Arabic word for "the Jews" (the design document, Tone and ethics).
 - **Sami's death** (Day 7) is aftermath only, never preventable, never a fail state, never caused by a player choice. Children's deaths may be shown as aftermath.
 - **Facts** are checked against `docs/research/13` to `18` before they go into the doc or the game. No invented real people on signs or in lines.
 - **Made with, not for.** The Palestinian readers' notes are binding; no public build before they have read it.

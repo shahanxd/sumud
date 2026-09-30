@@ -47,7 +47,7 @@ Films change the camera's direction between scenes; players need something simpl
 
 **After (Day 10, down the coast).** The same sea by the school: tents on the sand (the documented wartime beaches), the lifeguard in a tent at ground level instead of a tower, the dedicated kites planted in the sand with names on them.
 
-**Light and sound.** The sea, the wind, gulls or no gulls (readers), whistles, the count in hundreds of voices. No drone on Day 1 or Day 10; the silence is the point.
+**Light and sound.** The sea, the wind, gulls or no gulls (readers), whistles, the count in hundreds of voices. No drone on Day 1, and none on the Day 10 beach; the silence is the point.
 
 ### 2. The street
 
@@ -79,7 +79,7 @@ Gaza City harbour. The motor boats burned; the fishermen row paddle boats and us
 
 **Days:** 7 (night, arrival), 8, 9, 10.
 
-An UNRWA school down the coast, now a shelter: about fifty people to a classroom, women and children inside, men and boys in the courtyard under tarpaulins, laundry on the railings, a generator that gives about two hours, a science room with a hole in its ceiling, a speaker on the wall that has been silent. Lessons in the courtyard in the morning with cardboard as slates. By Day 9 and 10: the street re-formed among strangers; coloured lights strung for the wedding, a gold-framed mirror, embroidered cloth, rice trays (the documented war weddings kept these).
+An UNRWA school down the coast, now a shelter: about fifty people to a classroom, women and children inside, men and boys in the courtyard under tarpaulins, laundry on the railings, a generator that gives about two hours, a science room with a hole in its ceiling, a speaker on the wall that has been silent. Lessons in the courtyard in the morning with cardboard as slates. By Day 9 and 10: the street re-formed among strangers; coloured lights strung for the wedding, a gold-framed mirror, embroidered cloth, rice trays (the readers confirm).
 
 ### Between spaces: the coastal road (Day 7)
 
@@ -115,7 +115,7 @@ Two compressions to show the readers: the documented checkpoint where people wer
 
 | Day | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Hum | 0 | 0.1, first faint hum | 0.3 rising to 0.8 | 0.5, open at dawn | 0.6 with passes | 0.4, the gunboat instead | 0.8 | 0.4 | 0.3 | 0.2 by day, **0 on the beach** |
+| Hum | 0 | 0.1, first faint hum | 0.3 rising to 0.8 | 0.5, open at dawn | 0.6 with passes | 0.4, the gunboat instead | 0.5 at dawn, then 0.8 | 0.4 | 0.3 | 0.2 by day, **0 on the beach** |
 
 **The wind.** Onshore by day: kites fly inland, which is why Sami's kite falls into the street on Day 1. On Day 10 at dusk the wind turns and blows off the land, and every kite goes out over the sea, where Sami always wanted his to go. (A sea breeze by day and a land breeze in the evening is ordinary coastal weather; the wind field makes it visible with dust, washing and plastic.)
 
@@ -132,7 +132,7 @@ Two compressions to show the readers: the documented checkpoint where people wer
 | Leaflets ("For your safety, you need to evacuate your places of residence immediately and head to known shelters"), SMS, recorded calls | Home, Day 7 | research/05, 16 |
 | "Raise your hands and phones and state your names" at the checkpoint | Coastal road, Day 7 | research/05, 16 (NGO testimony, marked likely) |
 | About 50 to a classroom, women and children inside, men outside, tents in the courtyard, laundry on railings, two generator hours, cardboard slates, lessons 8 to 11 am | School, Days 8 to 10 | research/05, 16 |
-| War weddings: white dress with red embroidery, rings, zaghareet, men's dabke, coloured lights and a gold-framed mirror, borrowed flowers | School, Days 9, 10 | research/05, 16 |
+| War weddings: white dress with red embroidery, rings, zaghareet, men's dabke, coloured lights and a gold-framed mirror, artificial flowers rented by the hour | School, Days 9, 10 | research/05, 16 |
 | The 1948 key, kept and carried again by families displaced in 2023 and 2024 | Home and road, Days 1, 2, 7, 10 | research/05, 16 |
 | Tatreez on chest, sleeves and cuffs; passed mother to daughter | The dress, Teta's thobe, the interface | research/05, 16 |
 

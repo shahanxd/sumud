@@ -25,13 +25,17 @@ Read with `docs/story/characters.md` (who), `docs/story/world.md` (where) and `d
 | 3 | "Until Day 8 the adhan is one unaided voice from a roof" | Whose voice | Abu Khalil, the old fisherman; on Day 8 his voice goes through the speaker Karim repairs |
 | 4 | Someone conducts the nikah and leads the janazah | Nobody named | The street's imam, a neighbour (readers decide if this is right) |
 | 5 | The wedding is Sami's older sister's (Decision 14, recommended) | Relations not fixed | Teta is Baba's mother; Sami's father is Baba's younger brother, so Teta is grandmother to Layla, Karim, Sami and Nour, and the wedding is the family's own. The groom is Fadi, Abu Fadi's son |
-| 6 | "Teta says the line from Day 1" at the end | No line written | Her question about the kite and the hand (above), which Layla answers by holding, not by stating it |
+| 6 | Teta's Day 1 question is "what does it mean to stay?", and she "says the line from Day 1" at the end | Stated as a thesis, it would be answered by a thesis | Carry it as the kite-and-hand question (above), which Layla answers on Day 10 by holding, not by stating it (lock B-02) |
 | 7 | "The kite is taken" on Day 7 | By whom | At the checkpoint Layla must drop what is in her hands to raise them; the wind takes the kite back over the berm. No soldier touches it |
 | 8 | Choices change "what Teta recites" | Tying Quran to player choices makes recitation a reward | Choices change which of her mother's stories and which proverb Teta tells; her recitation is the same for everyone, pending the scholar |
 | 9 | A leaflet is caught by the kite on Day 7, but the sky is closed above hum 0.6 | Contradiction | At dawn on Day 7 the hum dips; Layla flies from the roof, sees the column forming, snags a leaflet, and brings the kite down as the hum rises |
 | 10 | Day 3 holds four cards between maghrib and night (3:173, 2:155, Bukhari 2486, 2:153) | The most driven evening becomes stop and start | Proposal for the founder and the scholar: hold two (3:173 under the stairs, 2:153 on the roof) and move the other two to quieter moments or the notebook page. The scripture list itself is unchanged until they decide |
-| 11 | The ending: the question, the count, a held card, credits with a card, the end card | Five endings in a row | Keep the count, one held card (94:5-6), then the credits, whose last line is 3:170 (not held), then the end card |
+| 11 | The ending: the question spoken, the count, a held card, credits carrying 3:170, the end card | Too many endings, and Quran on the credits would sit under the score | The question answered by holding (no statement); the count; 94:5-6 held; the credits with no Quran; 3:170 as its own held card; the end card. The design document's scripture table says "the credits take 3:170" and changes to match |
 | 12 | Day 1's promise: "the winner flies at the wedding, the loser builds the kite" | If Layla wins, Day 10 has her flying a kite the loser should have built; if Sami wins, she flies the kite he won the right to fly, and the Day 8 note has to explain it | Whoever won flies; Sami builds the kite either way ("because yours are ugly"). If Sami won, Layla says so as she launches it on Day 10 |
+| 13 | Day 6 has two timed moments (hauling the net, the turn home) | The limit is one a day, two on Day 3 (lock H-06) | The net haul is untimed; the turn home is Day 6's one timed moment |
+| 14 | Day 1's contest is a "kite-making contest" | Nothing decides who made the better kite | Both kites are home-made; the contest is decided by whose kite is higher at the count of thirty |
+| 15 | Quran spoken inside live scenes (3:173 whispered under the stairs on Day 3, 2:156 on Day 7, 30:21 at the nikah) | Recitation must never sit under play, the drone or the rumble | Every spoken ayah is a full stop: input paused, every bus (including the drone and the rumble) silent, the complete ayah, then play resumes |
+| 16 | The henna night on Day 9 has the duff | The duff is only at the wedding, on the women's side (lock E-01); the research does not place it at the henna | No duff at the henna unless the scholar allows it |
 
 ## The days at a glance
 
@@ -42,7 +46,7 @@ Read with `docs/story/characters.md` (who), `docs/story/world.md` (where) and `d
 | 3 | The dark | Siege | Tentpole | Layla, Baba, Teta | Home, roof, street, bakery | 0.3 to 0.8 | Drains to grey and fire | The run downstairs; cupping the candle |
 | 4 | Water | Siege | Short | Layla, Karim | Street | 0.5 | Grey, water catches light | The empty-jerrycan race |
 | 5 | Iqra | Siege | Short | Layla, Mama | Stairwell, roofs | 0.6 | Grey | Stillness under the drone |
-| 6 | The sea | Siege | Short | Baba, Layla | Harbour, sea, beach, table | 0.4 | Grey sea, orange net floats | Hauling the net; the turn home |
+| 6 | The sea | Siege | Short | Baba, Layla | Harbour, sea, beach, table | 0.4 | Grey sea, orange net floats | The turn home (the net haul is untimed, fix #13) |
 | 7 | The key | Siege | Tentpole | Layla, Baba, Karim | Home, street, coastal road, checkpoint, school gate | 0.5 then 0.8 | Nearly monochrome | None: only weight |
 | 8 | The courtyard | Sumud | Short | Layla, Karim | School, the ruined street | 0.4 | Returning with the generator light | The starter cord |
 | 9 | One part from each | Sumud | Short | Layla, Karim, Teta | School courtyard | 0.3 | Henna, the dress | Stamping on Teta's cane |
@@ -153,7 +157,7 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 | --- | --- | --- | --- |
 | Fajr | The harbour | Paddle boats, the motor boats burned, refrigerator parts as floats. Baba scans the horizon, as fishermen do each morning. "We go out by day, so they can see we are only fishing." | Walk the harbour; ready the boat |
 | Dhuhr | Out | Rowing into the swell; the sea fills the frame. Card: Quran 16:14 | Row as Baba |
-| Dhuhr | The net | Haul on the crest, release in the trough | Hold and release (the design document's Day 6 beat) |
+| Dhuhr | The net | Haul on the crest, release in the trough, at the player's pace | Hold and release, untimed (fix #13) |
 | Asr | The gunboat | A shape on the horizon, a loudhailer, a searchlight in daylight, water cannon. One wide window to turn the boat home | The turn; failure costs part of the catch, never Baba |
 | Asr | The kite | On the beach, Layla and Sami fly the red kite high so Baba can find the landing in the haze. Sami has watched for the boat all day | Switch to Layla: keep the kite high |
 | Maghrib | The table | The net comes up with enough. Card: Quran 65:3. Zibdiyit gambari at one table for whoever the family invites; Mishmish steals a shrimp | Choose who is invited |
@@ -194,7 +198,7 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 | Fajr | A ceasefire | A phone's radio in the courtyard: a ceasefire from dawn. Nobody cheers. Card: Sahih al-Bukhari 6011, the believers as one body, over the courtyard becoming a neighbourhood | Walk the courtyard: fifty to a classroom, men outside, laundry on railings |
 | Fajr | The janazah | The men in rows, the women's row behind them, Layla in it. A small shape wrapped in white carried at a distance. Four takbirs. Card: Sahih al-Bukhari 1284, first line; the second when a man weeps in silhouette. The burial is off screen | Stand in the row; control kept, the path narrow |
 | Dhuhr | The poster | Karim draws Sami's poster by hand for the school wall (there is no print shop). The street calls him shahid; nobody says he passed away. Card: Quran 3:169 on the poster or the dusk sea (the design document's choice) | — |
-| Dhuhr | Karim's choice | A man with a list for scholarships abroad; the young men leaving to walk back up the road and dig out Abu Ahmad's oven | Playable as Karim: put his name down, or go and dig (two-handed rubble, the drone overhead). Neither is a rescue; neither is judged |
+| Dhuhr | Karim's choice | A man with a list for scholarships abroad; the young men leaving to walk back up the road and dig out Abu Ahmad's oven (a trip there and back, home by asr) | Playable as Karim: put his name down, or go and dig (two-handed rubble, the drone overhead). Neither is a rescue; neither is judged |
 | Asr | The generator | Two hours of light if it starts. Karim counts; Layla pulls the cord on his count | The starter cord (the design document's Day 8 beat) |
 | Asr | The last battery | One battery left: Um Samir's clinic corner or Mama's evening lesson | Choose |
 | Maghrib | The speaker | Karim fixes the courtyard speaker; Abu Khalil's voice, unaided since Day 3, carries the adhan across the courtyard | Joy: the adhan returns |
@@ -216,7 +220,7 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 | Asr | One part from each | The street rebuilds Sami's kite anyway: thread from the hem of Nour's dress, paper from Mama's books, spars from Baba's boat, paste from Abu Ahmad's flour, string from Karim's wire, and whatever the families Layla helped bring on their own. Teta ties the bridle knot: "A knot is a promise." Card: Sahih al-Bukhari 5644, the tender plant in the wind | Gather the parts across the courtyard; each family gives when asked, faster if you helped them |
 | Asr | The test flight | The rebuilt kite rises in the courtyard wind and falls; Layla runs it down between the tents | Kite running returns |
 | Maghrib | Dabke practice | The young men learn the steps from Teta's cane taps | Stamp on the tap (the design document's Day 9 beat) |
-| Isha | Henna | From the men's side: the women's henna singing heard through the wall, zaghareet and the duff clear, the men's sahja outside | Listen as Karim; the women's side is heard, never shown |
+| Isha | Henna | From the men's side: the women's henna singing heard through the wall, zaghareet and singing clear; no duff (the duff is kept for the wedding itself unless the scholar allows it at the henna), the men's sahja outside | Listen as Karim; the women's side is heard, never shown |
 
 **Joy.** The dress, the sahja, the dabke. **Marks.** Whether she gave the small kite; which families brought parts. **Notebook.** The list of parts and who gave them.
 
@@ -228,14 +232,14 @@ Full scene-by-scene script in `docs/story/day1-script.md`. Summary:
 
 | Phase | Scene | What happens | The player |
 | --- | --- | --- | --- |
-| Dhuhr | The nikah | On the men's side, the imam says Quran 30:21 as he conducts it (spoken, never a card); Abu Sami gives the blessing | Stand with the men as Karim |
+| Dhuhr | The nikah | On the men's side, the imam says Quran 30:21 as he conducts it (spoken, never a card; a full stop, fix #15); Abu Sami gives the blessing | Stand with the men as Karim; no input during the ayah |
 | Asr | The zaffa | The young men bring the groom through the courtyard with voices and feet | Play the dabke line as Karim |
-| Asr | The women's hall | Switch to Layla. Nour in the white dress with red tatreez. Card: Sunan Ibn Majah 1896, before the duff starts. The duff is the only instrument in the game, played here, by women. The dancing is heard and never shown; the camera stays on hands, henna and the hem of the dress. Hajja Amina has saved Layla a seat if Layla helped her | Switch between the halves; only the player sees the wedding whole |
+| Asr | The women's hall | Switch to Layla. Nour in the white dress with red tatreez. Card: Sunan Ibn Majah 1896, before the duff starts. The duff is the only instrument in the game, played here, by women. The dancing is heard and never shown; the camera stays on still subjects: seated hands with henna, the duff in a seated woman's hands, the bride seated; no moving bodies or garments. Hajja Amina has saved Layla a seat if Layla helped her | Switch between the halves; only the player sees the wedding whole |
 | Asr | The gate | Teta tries her key in the school gate. It does not open. She laughs until she has to sit down | — |
 | Maghrib | The walk | The street walks to the beach at dusk past the dedicated kites planted in the sand, each with a name | Walk; read the names |
 | Maghrib | The question | No drone: its absence is the loudest sound. The wind turns off the land. Teta: "They say a kite is a drone now." She starts her question from Day 1: "Up there, who is braver..." Layla, not looking away from the kite: "Teta. I'm holding." | Answer by holding the string |
 | Maghrib | Thirty | Layla ties the Day 1 knot into the bridle and launches Sami's kite; every kite the player earned rises with it (one per remembered act, and the kites the player designed); the street counts to thirty in human voices; the kites go out over the sea | Hold the string. The kite cannot fall |
-| — | The end | At thirty, silence and the sea. Card: Quran 94:5-6, held: the one held card of the ending. Credits over the sea, whose last line is Quran 3:170 (the design document's placement, not held). The end card with the UNICEF figure and its date | — |
+| — | The end | At thirty, silence and the sea. Card: Quran 94:5-6, held. Credits over the sea with no Quran on them. Then Quran 3:170 as a held card, every bus silent (moved from the credits so recitation is never under anything). The end card with the UNICEF figure and its date | — |
 
 **Joy.** Everything. **The ending's rule.** Not a rescue. They have been told a kite is a drone; they fly anyway; they are still there.
 

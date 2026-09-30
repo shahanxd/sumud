@@ -1,10 +1,10 @@
 # Feel, readability and transitions
 
-Status: **PROPOSED for the lock** (section I of `docs/production/lock.md`). The systems (carry, kite, light, the street's memory, switching) are locked in the design document. This file is how they must feel and how a player finds their way, written because the first playtest found the gameplay "dry", the walk and jump "weird", the cuts "sudden", and a staircase nobody could reach.
+Status: **PROPOSED for the lock** (section H of `docs/production/lock.md`). The systems (carry, kite, light, the street's memory, switching) are locked in the design document. This file is how they must feel and how a player finds their way, written because the first playtest found the gameplay "dry", the walk and jump "weird", the cuts "sudden", and a staircase nobody could reach.
 
 ## The verbs (locked; no new verbs after the lock)
 
-Move, jump, crawl, climb, interact (talk, sit, look, use), grab and release, kite (launch, steer, pay out, pull, reel, hook), switch character, notebook. Eight inputs, keyboard and controller, fully remappable (the design document). Every puzzle in ten days is built from these and the puzzle kit (plank, cart, rubble pile, jerrycan, beam, hook).
+Move, jump (ledges are grabbed and climbed automatically), crawl, interact (talk, sit, look, use), grab and release, kite (launch, steer, pay out, pull, reel, hook), switch character, notebook. Eight inputs, keyboard and controller, fully remappable (the design document). Every puzzle in ten days is built from these and the puzzle kit (plank, cart, rubble pile, jerrycan, beam, hook).
 
 **Carry rules (locked, with one addition).** Light: body free. Heavy one-hand: run at 0.6, no jump. Two-handed: under 0.5, no jump, no crawl, cannot open doors. Each item has a class per character: a full 20-litre jerrycan is two-handed for Layla and Sami, heavy one-hand for adults, and Karim carries heavy one-hand at full speed (the design document). Layla cannot lift an adult; Teta carries only the bag.
 

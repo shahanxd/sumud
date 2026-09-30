@@ -110,7 +110,7 @@ Status: **PROPOSED for the story lock.** This is the scene-by-scene script of th
 
 **Staging.** The two of them on the sand, kites resting, the sea. The crowd thins behind them. The friend's voice, low, if recorded.
 
-**Play.** Sit (the first sit spot; the sit input is taught here). Tie the knot: hold to tie. Close shot of two hands and one knot; the hands never touch.
+**Play.** Sit (the first sit spot; interact to sit is taught here). Tie the knot: hold to tie. Close shot of two hands and one knot; the hands never touch.
 
 | Key | Speaker | Line |
 | --- | --- | --- |
@@ -260,6 +260,6 @@ The tatreez end card finishes stitching. **End of Day 1.** In the demo: the end 
 
 **People on screen.** Layla, Sami, Teta, Mama, Baba, Karim, Abu Ahmad, Abu Fadi, Um Samir and Samir, Hajja Amina, the twins, Um Sami (a voice), a volunteer, the crowd, Mishmish. Every one needs a performed idle, walk and at least one gesture (`docs/art/direction.md`).
 
-**Sound.** No drone at all. The sea, the wind, the crowd, whistles, the count in voices, the adhan four times, the fridge and the fan, pigeons, the friend's voice under the roof sit (`docs/audio/direction.md`).
+**Sound.** No drone at all. The sea, the wind, the crowd, whistles, the count in voices, the adhan five times (fajr to isha), the fridge and the fan, pigeons, the friend's voice under the roof sit (`docs/audio/direction.md`).
 
 **Gate for this script.** A stranger plays it without help, finishes in under 25 minutes, and when asked what stuck names the count, the kite run, the promise or Teta's question.

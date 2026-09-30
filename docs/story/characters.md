@@ -9,7 +9,7 @@ Every name is a working name until the Palestinian readers confirm it or choose 
 - Adults are called by kunya in the street (Abu Karim, Um Karim), by relation in the family (Baba, Mama, Teta), never by first name by children.
 - No romance on screen. The bride and groom are never shown together; the bride appears only in women's spaces.
 - Women wear hijab and a long dress, jilbab or thobe outside the home and in front of men who are not family. At home among family, Layla's hair shows; she covers when a neighbour knocks.
-- Nobody says "al-yahud". People say "they", "the army", "the occupation", "the planes", "the zanana".
+- Nobody uses the colloquial word for "the Jews" (the design document, Tone and ethics). People say "they", "the army", "the occupation", "the planes", "the zanana".
 - Nobody makes a speech. Politics is in what happens to them, never in what they say to the camera.
 - Everyone is allowed to be tired, afraid, angry and funny. Nobody is a saint, and nobody is a symbol.
 
@@ -23,13 +23,13 @@ Every name is a working name until the Palestinian readers confirm it or choose 
 
 **Need.** To learn that holding on is its own kind of bravery. Teta asks her on Day 1 who is braver, the kite or the hand that holds the string; she says the kite, because "the hand just stands there". Over ten days the game takes away her running and gives her things to hold, and on Day 10 she answers: the hand.
 
-**Her arc, mapped to what the player does.** Day 1 she runs (the kite run). Day 2 the shopping slows her down. Day 4 she carries water and cannot run. Day 5 she must hold completely still while the drone passes. Day 7 she carries, walks, and has to let go of her kite to raise her hands. Day 8 she sits in the women's row and cannot do anything at all. Day 9 she holds the string while the whole street builds. Day 10 she holds. The mechanic is the arc.
+**Her arc, mapped to what the player does.** Day 1 she runs (the kite run). Day 2 the shopping slows her down. Day 4 she carries water and cannot run. Day 5 she must hold completely still while the drone passes. Day 7 she carries, walks, and has to let go of her kite to raise her hands. Day 8 at the janazah she stands in the women's row and can do nothing; after it, only small tasks. Day 9 she holds the string while the whole street builds. Day 10 she holds. The mechanic is the arc.
 
 **Voice.** Short, quick sentences; teasing; swears by "wallahi" when she is telling the truth and when she is not. Calls her grandmother Teta (or Sitti, if the readers choose), her father Baba, her brother by name or "ya Karim" when she wants something. Her notebook is her inner voice: lists, drawings, crossings-out, a child's honesty. Sample: "Tails don't win. Height wins." "It's only torn. I'll fix it tonight."
 
 **How she moves.** In bursts. Runs, stops dead, spins to look back. Climbs with her whole body. When she is thinking she winds kite string around two fingers, a habit that must be in every idle animation until Day 7, missing on Day 8, and back on Day 10. When she is scared she goes very still and very straight.
 
-**Silhouette and costume.** Small and quick. Outdoors and at school: a white headscarf, as Gaza school custom expects of girls from about her age (the readers confirm the age and the colour), a long school dress or coat over trousers, trainers. At home among family: hair in a ponytail, house clothes. The change of silhouette between the street and the house is a small signal of safety, and it disappears after Day 7, when there is no house. Her readable trait is the kite and its string.
+**Silhouette and costume.** Small and quick. Outdoors and at school: a headscarf (colour per lock F-06, the readers confirm), as Gaza school custom expects of girls from about her age (the readers confirm the age), a long school dress or coat over trousers, trainers. At home among family: hair in a ponytail, house clothes. The change of silhouette between the street and the house is a small signal of safety, and it disappears after Day 7, when there is no house. Her readable trait is the kite and its string.
 
 **Playable.** Every day. Physical verb: crawl through gaps, climb, fly the kite, run a fallen kite down. Social verb: children follow her.
 
@@ -91,7 +91,7 @@ Every name is a working name until the Palestinian readers confirm it or choose 
 
 **Want.** To do something that matters. **Need.** To find what his own hands can do.
 
-**His thread.** Day 1 asleep until the electricity comes on, then plugs three phones into one socket. Day 2 football at sunset (playable). Day 4 fetches water angrily, carries more than anyone. Day 6 wants to row out with Baba; Baba refuses. Day 7 at the checkpoint the loudhailer calls young men aside; he says his name clearly and is waved through after a long moment. Day 8 his choice (playable): put his name down for a scholarship abroad, or walk back up the road with the young men to dig out Abu Ahmad's oven; either way he restarts the generator and fixes the courtyard speaker so the adhan is heard again. Day 9 string from his wire for Sami's kite; the men's sahja. Day 10 the zaffa and the dabke, played as Karim.
+**His thread.** Day 1 asleep until the electricity comes on, then plugs three phones into one socket. Day 2 football at sunset (playable). Day 4 fetches water angrily, carries more than anyone. Day 6 wants to row out with Baba; Baba refuses. Day 7 at the checkpoint the loudhailer calls young men aside; he says his name clearly and is waved through after a long moment. Day 8 his choice (playable): put his name down for a scholarship abroad, or walk back up the road with the young men to dig out Abu Ahmad's oven; either way he is back by asr: he counts while Layla pulls the generator's cord, and at maghrib he fixes the courtyard speaker so the adhan is heard again. Day 9 string from his wire for Sami's kite; the men's sahja. Day 10 the zaffa and the dabke, played as Karim.
 
 **Voice.** Sarcastic, short, calls Layla "ya zghireh" (little one) when she annoys him. Respectful with Baba, which is harder than shouting. Sample: "Why is everyone shouting? Oh. Power."
 
@@ -99,7 +99,7 @@ Every name is a working name until the Palestinian readers confirm it or choose 
 
 **Silhouette and costume.** Tall and thin, a track jacket, the ball.
 
-**Playable.** Days 2, 8, 10 and as switching needs. Physical verb: run fast, jump far, fix electronics. Social verb: young men of the street.
+**Playable.** Days 2, 4, 7, 8, 9, 10 and as switching needs. Physical verb: run fast, jump far, fix electronics. Social verb: young men of the street.
 
 **For the readers.** What an angry 17-year-old in Gaza actually says, and what his family says back. Karim's choice must never frame leaving as salvation, and the answer to his anger must never be "violence is wrong".
 

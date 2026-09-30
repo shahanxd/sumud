@@ -38,7 +38,7 @@ bin/                   Godot binaries (not committed)
 | Notebook | core/notebook.gd | Layla's entries and marks to JSON; acts that become kites |
 | Fx | core/fx.gd | Fade, strike flash, white-out, letterbox |
 | Settings | core/settings.gd | `--own-pace`, `--photosensitive` |
-| Cards | ui/scripture_card.gd | Scripture cards as full stops: pauses play, silences every bus, text from `scripture.csv` |
+| Cards | ui/scripture_card.gd | Scripture cards as full stops: pauses play, silences every bus, text from `scripture.csv`. Known gap: its hadith font is Amiri Regular, a body font; the design document requires a Quran face (KFGQPC or Amiri Quran) for every card. Fix with a `test_core` check before any card ships |
 | Say | core/say.gd | Arabic over English lines from `lines.csv` by key |
 | Day | core/day_runner.gd | Chains a day's beat scenes with fades and the chapter card |
 

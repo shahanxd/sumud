@@ -8,7 +8,8 @@ Status: the **halal rules and the voice-only score are LOCKED** (`docs/gdd.md`, 
 - The score is human voices and the world: the friend's voice (a cappella lines, hums, held vowels layered into pads that must audibly be a voice), the adhan, the count, voices of the street.
 - Quran is a full stop: gameplay paused, every bus silent, text on screen with its reference, skip only at an ayah boundary; audio only from a human reciter under a written licence, otherwise text only. Never AI.
 - No AI-generated audio, voices, Quran or music ships or enters the repository.
-- A real, close strike once per strike day (Days 3 and 7), then silence, ringing and dust. No sound under recitation.
+- A real, close strike on Day 3, then silence, ringing and dust. Day 7's strike is distant: a heavy rumble and dust over the road, no close impact. No sound under recitation.
+- Any spoken ayah (Teta's whisper on Day 3, the words at the gate on Day 7, the nikah on Day 10) is a full stop like a card: input paused, every bus silent including the drone and the rumble, the complete ayah, then play resumes.
 - The zanana: absent on Day 1, a first faint hum on Day 2, the bed of every siege day, gone on the final beach.
 
 ## The course: what makes each sound
@@ -29,7 +30,7 @@ Synthesis stays only where a sound must follow a parameter in real time. Everyth
 
 ## Recording plan
 
-**The friend's session (first, in lock week 1 or 2).** A quiet room, a phone on a folded towel 30 cm away, no reverb. Takes: the main theme hummed three times at slow, medium and fast tempo; held vowels (a, o, u, e) on eight pitches, five seconds each; soft breaths; a cappella lines if the friend sings in Arabic (otherwise wordless); zaghareet if appropriate; claps and foot stamps for the dabke. Before recording: the founder confirms with the scholar who may be heard and where (a woman's singing voice before a mixed audience is the highest halal risk in the plan; the design document's Teta's songs rule).
+**The friend's session (first, in lock week 1 or 2).** A quiet room, a phone on a folded towel 30 cm away, no reverb. Takes: the main theme hummed three times at slow, medium and fast tempo; held vowels (a, o, u, e) on eight pitches, five seconds each; soft breaths; a cappella lines if the friend sings in Arabic (otherwise wordless); zaghareet if appropriate; foot stamps and voices for the dabke (claps only if the scholar approves; Decision 3). Before recording: the founder confirms with the scholar who may be heard and where (a woman's singing voice before a mixed audience is the highest halal risk in the plan; the design document's Teta's songs rule).
 
 **Layla's sung lines, if any.** Only a young girl before puberty sings, with a parent's consent, or Teta speaks the lyric as poetry over a vocal drone (Decision 4). The scholar signs off.
 
