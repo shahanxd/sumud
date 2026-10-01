@@ -35,7 +35,7 @@ func _build() -> void:
 	_visual = Node2D.new()
 	add_child(_visual)
 	var sprite_figure := SpriteFigure.new()
-	sprite_figure.character = character if character != "" else npc_name.to_lower()
+	sprite_figure.character = character if character != "" else npc_name.to_lower().replace(" ", "_")
 	figure = sprite_figure
 	figure.build = build
 	figure.headscarf = headscarf

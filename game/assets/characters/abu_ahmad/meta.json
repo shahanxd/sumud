@@ -1,0 +1,8 @@
+{
+  "idle": {
+    "stand_ratio": 1.0
+  },
+  "walk": {
+    "stand_ratio": 1.0
+  }
+}
