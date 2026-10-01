@@ -1144,7 +1144,7 @@ SOUNDS: list[Entry] = [
     Entry("wind_loop", wind_loop, 2, 20.0, True, ("rms", -26.0),
           "coastal wind on the beach, the roof and the street; bus ambience",
           "one 0.05 to 0.3 Hz gust signal driving a low pressure band, a swept-low-pass whoosh and a hiss with speed powers 1.5, 2 and 3, the right channel 30 ms behind, and three Q 40 whistles swelling at gust peaks"),
-    Entry("sea_loop", sea_loop, 2, 24.0, True, ("rms", -24.0),
+    Entry("sea_loop", sea_loop, 2, 20.0, True, ("rms", -24.0),
           "the Mediterranean on the beach beats and under the sea verse's silence before the full stop; bus ambience",
           "three waves 7.4 to 8.5 s apart, each a low-pass opening from 250 Hz to 3.2 kHz with foam flutter, a retreating high-passed hiss whose cutoff climbs, and Poisson bubble pops, over a distant surf bed"),
     Entry("birds_leave", birds_leave, 2, 4.0, False, ("peak", -6.0),

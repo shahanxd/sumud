@@ -49,3 +49,4 @@ Founder decisions, with the date. The design document holds the reasoning; this 
 | 2026-10-01 | The founder does the scholar review themselves before each day ships | lock E-05 |
 | 2026-10-01 | Readers deferred ("not now, later"); still required before any public build | lock E-06 |
 | 2026-10-01 | Budget as proposed, no ceiling given; Canva for images ("canva doing good") | lock K-02, F-01 |
+| 2026-10-01 | Generated world sound is in the game: 22 files from ElevenLabs (`tools/eleven.py`, prompts in `game/assets/audio/generated.json`); drone, rumble, ringing and the friend's placeholder stay synthesised. Free-tier output is non-commercial, so the files are drafts until the account is paid and they are regenerated | lock G-01; rights.md |

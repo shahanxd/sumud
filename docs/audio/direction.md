@@ -20,10 +20,10 @@ Status: the **halal rules and the voice-only score are LOCKED** (`docs/gdd.md`, 
 | The adhan (every phase turn) | A human muezzin or the friend, recorded with permission | None | **Record** fajr, dhuhr, asr, maghrib, isha |
 | The count to thirty | Many voices: family, friends, children with consent, layered | None | **Record** (Day 1 and Day 10 use it) |
 | Character voices (barks, laughter, calls, efforts) | Arabic speakers, ideally Palestinian, recorded | None | **Record** a small set per character (below); dialogue itself stays subtitled |
-| Foley (steps, cloth, paper, jerrycan, bread, doors, kites, knots) | Generated with ElevenLabs sound effects (the founder's account; Weave needs a paid plan) or recorded by the founder; whichever sounds truer in the game | Synthesised | **Generate first**, replacing the synthesised files one for one; record what the model gets wrong |
-| Ambience (sea, wind, beach crowd, street, market, harbour) | Generated loops (audio model) or field recordings with provenance (CC0 or our own) | Synthesised sea and wind | **Replace** with generated or field loops; keep synthesis only to follow the wind field |
+| Foley (steps, cloth, paper, jerrycan, bread, doors, kites, knots) | Generated with ElevenLabs sound effects (`tools/eleven.py`) or recorded by the founder; whichever sounds truer in the game | **Generated (1 Oct)**: every foley file in the game | The founder listens in the game and marks what to regenerate or record |
+| Ambience (sea, wind, beach crowd, street, market, harbour) | Generated loops (ElevenLabs, two takes per loop for stereo, crossfaded) or field recordings with provenance | **Generated (1 Oct)**: sea and wind | Beach crowd, street, market and harbour beds still to generate |
 | The drone, the rumble | Synthesised, because they follow a 0-to-1 intensity every frame | Synthesised | Keep; tune |
-| The strike | A generated or CC0 explosion, designed and layered | Synthesised | Replace before Day 3 is built |
+| The strike | A generated explosion, designed and layered | **Generated (1 Oct)**, one take | Layer with the synthesised sub and dust if the founder finds it thin |
 | Quran and hadith cards | A human reciter under a written licence, or silence with text | Text only | Text only in the slice |
 
 Synthesis stays only where a sound must follow a parameter in real time. Everything else is generated or recorded, reviewed in the game, and listed in `docs/rights.md` with the model named.

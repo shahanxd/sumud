@@ -1,0 +1,222 @@
+{
+ "birds_leave": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "A flock of pigeons and sparrows bursting into flight from a flat rooftop all at once, many wings clapping and flapping, then fading away into the distance. Realistic, outdoors, quiet city air. No music, no instruments, no voices, no speech.",
+  "take_seconds": 4.0,
+  "prompt_influence": 0.45,
+  "loop": false,
+  "variants_of": null
+ },
+ "candle_out": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "A small candle flame blown out by a short puff of breath, very close, then a faint hiss of the wick. Quiet room. No music, no instruments, no voices, no speech.",
+  "take_seconds": 1.0,
+  "prompt_influence": 0.45,
+  "loop": false,
+  "variants_of": null
+ },
+ "cloth_rustle": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "A short rustle of cotton clothing as a person crouches down, very close, quiet, dry room, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 1.0,
+  "prompt_influence": 0.45,
+  "loop": false,
+  "variants_of": null
+ },
+ "door_wood": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "An old wooden apartment door: the latch clicks and the door is pushed open with a short creak, close, a small concrete hallway, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 1.5,
+  "prompt_influence": 0.45,
+  "loop": false,
+  "variants_of": null
+ },
+ "drop_heavy": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "A full twenty litre plastic water container set down heavily on concrete: a deep thump, a plastic slap and water sloshing inside, close, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 1.0,
+  "prompt_influence": 0.55,
+  "loop": false,
+  "variants_of": null
+ },
+ "footstep_concrete_1": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate footsteps of sandals on a hard concrete pavement, evenly spaced about half a second apart, very close and dry, a little grit, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_concrete"
+ },
+ "footstep_concrete_2": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate footsteps of sandals on a hard concrete pavement, evenly spaced about half a second apart, very close and dry, a little grit, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_concrete"
+ },
+ "footstep_concrete_3": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate footsteps of sandals on a hard concrete pavement, evenly spaced about half a second apart, very close and dry, a little grit, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_concrete"
+ },
+ "footstep_concrete_4": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate footsteps of sandals on a hard concrete pavement, evenly spaced about half a second apart, very close and dry, a little grit, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_concrete"
+ },
+ "footstep_sand_1": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate slow footsteps of sandals on dry soft beach sand, evenly spaced about half a second apart, very close and dry, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_sand"
+ },
+ "footstep_sand_2": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate slow footsteps of sandals on dry soft beach sand, evenly spaced about half a second apart, very close and dry, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_sand"
+ },
+ "footstep_sand_3": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate slow footsteps of sandals on dry soft beach sand, evenly spaced about half a second apart, very close and dry, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_sand"
+ },
+ "footstep_sand_4": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Four separate slow footsteps of sandals on dry soft beach sand, evenly spaced about half a second apart, very close and dry, no reverb, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 3.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "footstep_sand"
+ },
+ "grab": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "A hand grabbing the handle of an empty plastic jerrycan: one short plastic tock and a little hollow ring, very close, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 1.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": null
+ },
+ "kite_flap": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "A homemade plastic bag kite fluttering and crackling fast in a steady wind, close, outdoors, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 2.0,
+  "prompt_influence": 0.45,
+  "loop": false,
+  "variants_of": null
+ },
+ "paper_page": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "A single page of a small paper notebook being turned by hand, close, a quiet room, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 1.0,
+  "prompt_influence": 0.45,
+  "loop": false,
+  "variants_of": null
+ },
+ "sea_loop": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "The Mediterranean sea on a sandy beach: calm medium waves rolling in, breaking softly and hissing back over the sand, with a distant surf bed, seamless loop, realistic field recording, no wind noise on the microphone, no birds. No music, no instruments, no voices, no speech.",
+  "take_seconds": 22.0,
+  "prompt_influence": 0.4,
+  "loop": true,
+  "variants_of": null
+ },
+ "stitch_1": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Three quick separate stitches of a needle pulling embroidery thread through stretched cloth, tiny and very close, evenly spaced about half a second apart, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 2.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "stitch"
+ },
+ "stitch_2": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Three quick separate stitches of a needle pulling embroidery thread through stretched cloth, tiny and very close, evenly spaced about half a second apart, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 2.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "stitch"
+ },
+ "stitch_3": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Three quick separate stitches of a needle pulling embroidery thread through stretched cloth, tiny and very close, evenly spaced about half a second apart, nothing else. No music, no instruments, no voices, no speech.",
+  "take_seconds": 2.0,
+  "prompt_influence": 0.6,
+  "loop": false,
+  "variants_of": "stitch"
+ },
+ "strike_bang": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "One single enormous explosion very close by: an airstrike hitting a concrete apartment building. A sharp shock crack, then collapsing concrete, glass shattering and falling, rubble and grit raining down, dust pouring, a long decay into dust and silence. Realistic, recorded outdoors on a street. No music, no instruments, no voices, no speech.",
+  "take_seconds": 6.0,
+  "prompt_influence": 0.5,
+  "loop": false,
+  "variants_of": null
+ },
+ "wind_loop": {
+  "model": "eleven_text_to_sound_v2",
+  "provider": "ElevenLabs sound effects",
+  "date": "2026-10-01",
+  "prompt": "Steady coastal wind on an open beach, gusting gently, low pressure and soft hiss, seamless loop, no sea waves, no birds, realistic field recording. No music, no instruments, no voices, no speech.",
+  "take_seconds": 22.0,
+  "prompt_influence": 0.4,
+  "loop": true,
+  "variants_of": null
+ }
+}
