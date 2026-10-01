@@ -4,7 +4,8 @@ extends SceneTree
 ## Layout expected under res://assets/characters/<name>/:
 ##   <anim>/strip.png   a horizontal strip of equal frames (tools/roto.py strip)
 ##   <anim>/strip.json  {"frames": n, "frame_w": w, "frame_h": h, "fps": 12, "loop": true, "hand": [[x,y], ...]}
-## Output: res://assets/characters/<name>/frames.tres and hands.json (per-animation hand points).
+## Output: res://assets/characters/<name>/frames.tres, hands.json (per-animation hand points) and
+## meta.json (per-animation stand_ratio: the figure's height in that frame relative to standing).
 ##
 ## Run from the repo root after an import:
 ##   bin/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import --quit
@@ -40,6 +41,7 @@ func _build_character(path: String) -> bool:
 	var frames := SpriteFrames.new()
 	frames.remove_animation("default")
 	var hands := {}
+	var meta_out := {}
 	var dir := DirAccess.open(path)
 	if dir == null:
 		return false
@@ -56,6 +58,7 @@ func _build_character(path: String) -> bool:
 					any = true
 					if meta.has("hand"):
 						hands[anim] = meta["hand"]
+					meta_out[anim] = {"stand_ratio": float(meta.get("stand_ratio", 1.0))}
 		anim = dir.get_next()
 	dir.list_dir_end()
 	if not any:
@@ -69,6 +72,10 @@ func _build_character(path: String) -> bool:
 	if hf != null:
 		hf.store_string(JSON.stringify(hands, "  "))
 		hf.close()
+	var mf := FileAccess.open(path + "meta.json", FileAccess.WRITE)
+	if mf != null:
+		mf.store_string(JSON.stringify(meta_out, "  "))
+		mf.close()
 	print("build_frames: " + out + " with " + ", ".join(frames.get_animation_names()))
 	return true
 

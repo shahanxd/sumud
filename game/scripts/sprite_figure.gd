@@ -19,6 +19,7 @@ class_name SpriteFigure
 
 var _sprite: AnimatedSprite2D
 var _hands: Dictionary = {}
+var _meta: Dictionary = {}
 var _frame_size: Dictionary = {}
 var _current := ""
 var _base := "idle"
@@ -26,6 +27,24 @@ var _base := "idle"
 
 func _ready() -> void:
 	super._ready()
+	_load_frames()
+
+
+## Switch to another character's frames (or to none). Owners call it when their own export is
+## applied after this node is ready.
+func set_character(name: String) -> void:
+	character = name
+	if _sprite != null:
+		_sprite.queue_free()
+		_sprite = null
+	_hands = {}
+	_meta = {}
+	_frame_size = {}
+	_current = ""
+	_load_frames()
+
+
+func _load_frames() -> void:
 	if character == "":
 		return
 	var path := "res://assets/characters/%s/frames.tres" % character
@@ -40,6 +59,7 @@ func _ready() -> void:
 	_sprite.name = "Sprite"
 	add_child(_sprite)
 	_hands = _read_json("res://assets/characters/%s/hands.json" % character)
+	_meta = _read_json("res://assets/characters/%s/meta.json" % character)
 	for anim in frames.get_animation_names():
 		if frames.get_frame_count(anim) > 0:
 			var tex: Texture2D = frames.get_frame_texture(anim, 0)
@@ -104,7 +124,11 @@ func _draw() -> void:
 ## Scale the frame so the figure stands height() tall with its feet at the origin.
 func _fit(anim: String) -> void:
 	var size: Vector2 = _frame_size.get(anim, Vector2(1.0, 1.0))
-	var s := height() / maxf(size.y * frame_height_ratio, 1.0)
+	var ratio := 1.0
+	var m: Variant = _meta.get(anim)
+	if m is Dictionary:
+		ratio = float((m as Dictionary).get("stand_ratio", 1.0))
+	var s := height() * ratio / maxf(size.y * frame_height_ratio, 1.0)
 	_sprite.scale = Vector2(s, s)
 	_sprite.position = Vector2(-size.x * 0.5 * s, -size.y * s)
 

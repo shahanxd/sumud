@@ -4,5 +4,6 @@
   "frame_h": 585,
   "fps": 6,
   "loop": true,
+  "stand_ratio": 1.12,
   "hand": null
 }

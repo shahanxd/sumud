@@ -59,6 +59,9 @@ signal landed(impact_speed: float)
 @export var is_active := true
 ## 0 child (Layla), 1 adult (Baba). Adults can lift what children cannot.
 @export_enum("child", "adult") var build := 0
+## Frames folder under res://assets/characters/ for this player's SpriteFigure; empty keeps the
+## scene's own setting (Layla in player.tscn).
+@export var character := ""
 @export var character_name := "Layla"
 ## What the feet land on, for Sound.step: "concrete" or "sand" (the beach).
 @export var surface := "concrete"
@@ -109,6 +112,8 @@ func _ready() -> void:
 
 func _apply_build() -> void:
 	figure.build = build
+	if character != "" and figure is SpriteFigure:
+		(figure as SpriteFigure).set_character(character)
 	if build == 1:
 		figure.headscarf = false
 		figure.dress = 0

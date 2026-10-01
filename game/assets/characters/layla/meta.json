@@ -1,0 +1,26 @@
+{
+  "crawl": {
+    "stand_ratio": 0.5
+  },
+  "idle": {
+    "stand_ratio": 1.0
+  },
+  "idle_kite": {
+    "stand_ratio": 1.12
+  },
+  "jump": {
+    "stand_ratio": 1.08
+  },
+  "run": {
+    "stand_ratio": 1.0
+  },
+  "sit": {
+    "stand_ratio": 1.0
+  },
+  "walk": {
+    "stand_ratio": 1.0
+  },
+  "walk_twohand": {
+    "stand_ratio": 1.0
+  }
+}

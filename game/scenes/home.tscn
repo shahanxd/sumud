@@ -470,6 +470,7 @@ position = Vector2(680, 900)
 [node name="Baba" parent="." instance=ExtResource("1_player")]
 position = Vector2(1000, 900)
 is_active = false
+character = "baba"
 build = 1
 character_name = "Baba"
 

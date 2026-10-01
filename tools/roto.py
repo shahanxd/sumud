@@ -42,6 +42,7 @@ def _frames_in(folder: str) -> list[str]:
     names = sorted(
         f for f in os.listdir(folder)
         if f.lower().endswith((".png", ".jpg", ".jpeg", ".webp")) and not f.startswith(".")
+        and f != "strip.png"
     )
     if not names:
         sys.exit(f"roto: no frames in {folder}")
@@ -200,7 +201,8 @@ def cmd_strip(args: argparse.Namespace) -> None:
         strip.paste(im, (n * w + (w - im.width) // 2, h - im.height))
     out = args.out or os.path.join(args.frames, "strip.png")
     strip.save(out)
-    side = {"frames": len(ims), "frame_w": w, "frame_h": h, "fps": args.fps, "loop": bool(args.loop)}
+    side = {"frames": len(ims), "frame_w": w, "frame_h": h, "fps": args.fps, "loop": bool(args.loop),
+            "stand_ratio": args.stand_ratio}
     hands_path = os.path.join(args.frames, "frames.json")
     if os.path.exists(hands_path):
         with open(hands_path, encoding="utf-8") as fh:
@@ -245,6 +247,8 @@ def main() -> None:
     t.add_argument("--out")
     t.add_argument("--fps", type=int, default=12)
     t.add_argument("--loop", action="store_true")
+    t.add_argument("--stand-ratio", dest="stand_ratio", type=float, default=1.0,
+                   help="height of this frame's whole figure relative to the standing figure (crawl 0.5, seated 0.65)")
     t.set_defaults(fn=cmd_strip)
 
     args = ap.parse_args()

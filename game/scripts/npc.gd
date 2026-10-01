@@ -14,6 +14,9 @@ signal approached(npc: Npc)
 @export_enum("auto:-1", "none:0", "short:1", "long:2") var dress := -1
 @export var talk_radius := 130.0
 @export var silhouette := Color(0.09, 0.08, 0.10)
+## Folder under res://assets/characters/ with this person's frames; empty means the NPC's name in
+## lower case. Bones are drawn when no frames exist.
+@export var character := ""
 
 var player_near := false
 var figure: Figure
@@ -31,7 +34,9 @@ func _ready() -> void:
 func _build() -> void:
 	_visual = Node2D.new()
 	add_child(_visual)
-	figure = Figure.new()
+	var sprite_figure := SpriteFigure.new()
+	sprite_figure.character = character if character != "" else npc_name.to_lower()
+	figure = sprite_figure
 	figure.build = build
 	figure.headscarf = headscarf
 	figure.dress = dress if dress >= 0 else (2 if build == 2 else 0)
