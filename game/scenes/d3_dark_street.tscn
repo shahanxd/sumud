@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://sumud_d3_dark_street"]
+
+[ext_resource type="PackedScene" path="res://scenes/night_street.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/beats/d3_dark_street_beat.gd" id="beat"]
+[ext_resource type="PackedScene" path="res://scenes/abu_khalil_roof.tscn" id="roof"]
+
+[sub_resource type="RectangleShape2D" id="door_shape"]
+size = Vector2(120, 160)
+
+[node name="DarkStreet" instance=ExtResource("base")]
+script = ExtResource("beat")
+
+[node name="Player" parent="."]
+position = Vector2(1120, 900)
+
+[node name="AbuKhalilRoof" parent="." instance=ExtResource("roof")]
+
+[node name="Doors" type="Node2D" parent="."]
+z_index = -2
+
+[node name="TwinsDoor" type="Area2D" parent="Doors"]
+position = Vector2(1920, 820)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Doors/TwinsDoor"]
+shape = SubResource("door_shape")
+
+[node name="Frame" type="Polygon2D" parent="Doors/TwinsDoor"]
+color = Color(0.13, 0.12, 0.12, 1)
+polygon = PackedVector2Array(-26, 80, -26, -18, 26, -18, 26, 80)
+
+[node name="Slab" type="Polygon2D" parent="Doors/TwinsDoor"]
+color = Color(0.04, 0.04, 0.05, 1)
+polygon = PackedVector2Array(-20, 80, -20, -12, 20, -12, 20, 80)
+
+[node name="ClinicDoor" type="Area2D" parent="Doors"]
+position = Vector2(2350, 820)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Doors/ClinicDoor"]
+shape = SubResource("door_shape")
+
+[node name="Frame" type="Polygon2D" parent="Doors/ClinicDoor"]
+color = Color(0.13, 0.12, 0.12, 1)
+polygon = PackedVector2Array(-26, 80, -26, -18, 26, -18, 26, 80)
+
+[node name="Slab" type="Polygon2D" parent="Doors/ClinicDoor"]
+color = Color(0.04, 0.04, 0.05, 1)
+polygon = PackedVector2Array(-20, 80, -20, -12, 20, -12, 20, 80)
+
+[node name="Crescent" type="Polygon2D" parent="Doors/ClinicDoor"]
+color = Color(0.4, 0.12, 0.12, 1)
+polygon = PackedVector2Array(-6, -34, 6, -34, 8, -26, 0, -22, -8, -26)
+
+[node name="HajjaDoor" type="Area2D" parent="Doors"]
+position = Vector2(2560, 820)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Doors/HajjaDoor"]
+shape = SubResource("door_shape")
+
+[node name="Frame" type="Polygon2D" parent="Doors/HajjaDoor"]
+color = Color(0.13, 0.12, 0.12, 1)
+polygon = PackedVector2Array(-26, 80, -26, -18, 26, -18, 26, 80)
+
+[node name="Slab" type="Polygon2D" parent="Doors/HajjaDoor"]
+color = Color(0.04, 0.04, 0.05, 1)
+polygon = PackedVector2Array(-20, 80, -20, -12, 20, -12, 20, 80)
+
+[node name="AbuKhalilDoor" type="Area2D" parent="Doors"]
+position = Vector2(3760, 820)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Doors/AbuKhalilDoor"]
+shape = SubResource("door_shape")

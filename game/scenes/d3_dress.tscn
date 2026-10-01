@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://sumud_d3_dress"]
+
+[ext_resource type="PackedScene" path="res://scenes/home.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/beats/d3_dress_beat.gd" id="beat"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/neighbour_roof.tscn" id="roof"]
+
+[node name="Dress" instance=ExtResource("base")]
+script = ExtResource("beat")
+
+[node name="Lights" parent="House"]
+visible = false
+
+[node name="Teta" parent="."]
+z_index = 1
+position = Vector2(1570, 500)
+talk_radius = 0.0
+
+[node name="SitSpot" parent="."]
+position = Vector2(1690, 440)
+
+[node name="Candle" parent="."]
+visible = false
+position = Vector2(-4000, 2400)
+
+[node name="Player" parent="."]
+z_index = 1
+position = Vector2(960, 500)
+
+[node name="Baba" parent="."]
+visible = false
+position = Vector2(-4000, 2400)
+
+[node name="NeighbourRoof" parent="." instance=ExtResource("roof")]
+
+[node name="Cushions" type="Node2D" parent="."]
+
+[node name="CushionTeta" type="Polygon2D" parent="Cushions"]
+color = Color(0.52, 0.42, 0.3, 1)
+polygon = PackedVector2Array(1544, 486, 1596, 486, 1596, 500, 1544, 500)
+
+[node name="CushionUmSami" type="Polygon2D" parent="Cushions"]
+color = Color(0.34, 0.4, 0.5, 1)
+polygon = PackedVector2Array(1604, 486, 1656, 486, 1656, 500, 1604, 500)
+
+[node name="CushionLayla" type="Polygon2D" parent="Cushions"]
+color = Color(0.44, 0.24, 0.22, 1)
+polygon = PackedVector2Array(1664, 486, 1716, 486, 1716, 500, 1664, 500)
+
+[node name="CushionNour" type="Polygon2D" parent="Cushions"]
+color = Color(0.52, 0.42, 0.3, 1)
+polygon = PackedVector2Array(1724, 486, 1776, 486, 1776, 500, 1724, 500)
+
+[node name="CushionMama" type="Polygon2D" parent="Cushions"]
+color = Color(0.34, 0.4, 0.5, 1)
+polygon = PackedVector2Array(1784, 486, 1836, 486, 1836, 500, 1784, 500)
+
+[node name="TeaTray" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Tray" type="Polygon2D" parent="TeaTray"]
+color = Color(0.56, 0.5, 0.38, 1)
+polygon = PackedVector2Array(1868, 494, 1912, 494, 1908, 500, 1872, 500)
+
+[node name="GlassA" type="Polygon2D" parent="TeaTray"]
+color = Color(0.8, 0.66, 0.4, 0.85)
+polygon = PackedVector2Array(1874, 482, 1881, 482, 1880, 494, 1875, 494)
+
+[node name="GlassB" type="Polygon2D" parent="TeaTray"]
+color = Color(0.8, 0.66, 0.4, 0.85)
+polygon = PackedVector2Array(1886, 482, 1893, 482, 1892, 494, 1887, 494)
+
+[node name="GlassC" type="Polygon2D" parent="TeaTray"]
+color = Color(0.8, 0.66, 0.4, 0.85)
+polygon = PackedVector2Array(1898, 482, 1905, 482, 1904, 494, 1899, 494)
+
+[node name="Pot" type="Polygon2D" parent="TeaTray"]
+color = Color(0.3, 0.3, 0.32, 1)
+polygon = PackedVector2Array(1848, 500, 1848, 478, 1852, 472, 1862, 472, 1866, 478, 1866, 500)
+
+[node name="UmSami" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(1630, 500)
+script = ExtResource("npc")
+npc_name = "Um Sami"
+build = 1
+headscarf = true
+dress = 2
+talk_radius = 0.0
+
+[node name="Nour" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(1750, 500)
+script = ExtResource("npc")
+npc_name = "Nour"
+build = 1
+headscarf = true
+dress = 2
+talk_radius = 0.0
+
+[node name="Mama" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(1810, 500)
+script = ExtResource("npc")
+npc_name = "Mama"
+build = 1
+headscarf = true
+dress = 2
+talk_radius = 0.0
+character = "mama_seated"
+
+[node name="Dress" type="Polygon2D" parent="."]
+z_index = 2
+color = Color(0.9, 0.88, 0.82, 1)
+polygon = PackedVector2Array(1548, 464, 1600, 460, 1660, 466, 1690, 462, 1720, 466, 1780, 460, 1832, 464, 1838, 480, 1790, 488, 1740, 484, 1690, 490, 1640, 484, 1590, 488, 1542, 480)

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://sumud_neighbour_roof"]
+
+[node name="NeighbourRoof" type="StaticBody2D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1510, 500, 2000, 500, 2000, 900, 1510, 900)
+
+[node name="Body" type="Polygon2D" parent="."]
+z_index = -5
+color = Color(0.14, 0.12, 0.13, 1)
+polygon = PackedVector2Array(1510, 500, 2000, 500, 2000, 900, 1510, 900)
+
+[node name="Parapet" type="Polygon2D" parent="."]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1510, 486, 2000, 486, 2000, 500, 1510, 500)
+
+[node name="Tank" type="Polygon2D" parent="."]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1800, 500, 1800, 440, 1860, 440, 1860, 500)
+
+[node name="TankBand" type="Polygon2D" parent="."]
+color = Color(0.2, 0.19, 0.2, 1)
+polygon = PackedVector2Array(1800, 466, 1860, 466, 1860, 470, 1800, 470)
+
+[node name="Hatch" type="Polygon2D" parent="."]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1900, 500, 1900, 456, 1960, 456, 1960, 500)

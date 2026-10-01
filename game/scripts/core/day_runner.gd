@@ -22,8 +22,13 @@ const DAYS := {
 		"res://scenes/notebook_page.tscn",
 	],
 	3: [
-		"res://scenes/home.tscn",
-		"res://scenes/night_street.tscn",
+		"res://scenes/d3_roofs_fajr.tscn",
+		"res://scenes/d3_dress.tscn",
+		"res://scenes/d3_strike.tscn",
+		"res://scenes/d3_minaret.tscn",
+		"res://scenes/d3_bakery.tscn",
+		"res://scenes/d3_dark_street.tscn",
+		"res://scenes/d3_roof_night.tscn",
 		"res://scenes/notebook_page.tscn",
 	],
 	4: [

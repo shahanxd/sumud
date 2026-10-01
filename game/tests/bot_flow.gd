@@ -4,7 +4,8 @@ extends Node2D
 ## beat ran, that each handed its result forward, and that the notebook kept the acts.
 ## Exit code 0 when every check of every bot passes.
 
-const BOTS := {
+const DAY_BOTS := {
+	1: {
 	"res://scenes/d1_home_fajr.tscn": "res://tests/bot_d1_home_fajr.gd",
 	"res://scenes/d1_street_morning.tscn": "res://tests/bot_d1_street_morning.gd",
 	"res://scenes/d1_beach.tscn": "res://tests/bot_d1_beach.gd",
@@ -13,20 +14,38 @@ const BOTS := {
 	"res://scenes/d1_roof_maghrib.tscn": "res://tests/bot_d1_roof_maghrib.gd",
 	"res://scenes/d1_roof_isha.tscn": "res://tests/bot_d1_roof_isha.gd",
 	"res://scenes/notebook_page.tscn": "res://tests/bot_notebook.gd",
+	},
+	3: {
+	"res://scenes/d3_roofs_fajr.tscn": "res://tests/bot_d3_roofs_fajr.gd",
+	"res://scenes/d3_dress.tscn": "res://tests/bot_d3_dress.gd",
+	"res://scenes/d3_strike.tscn": "res://tests/bot_d3_strike.gd",
+	"res://scenes/d3_minaret.tscn": "res://tests/bot_d3_minaret.gd",
+	"res://scenes/d3_bakery.tscn": "res://tests/bot_d3_bakery.gd",
+	"res://scenes/d3_dark_street.tscn": "res://tests/bot_d3_dark_street.gd",
+	"res://scenes/d3_roof_night.tscn": "res://tests/bot_d3_roof_night.gd",
+	"res://scenes/notebook_page.tscn": "res://tests/bot_notebook.gd",
+	},
 }
+var BOTS: Dictionary = {}
+var which_day := 1
 
 var total_passed := 0
+var reported := 0
 var all_fails := PackedStringArray()
 var played: Array = []
 var _pending := 0
 
 
 func _ready() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if String(arg).begins_with("--day="):
+			which_day = int(String(arg).substr(6))
+	BOTS = DAY_BOTS.get(which_day, {})
 	Notebook.clear()
 	Day.beat_started.connect(_on_beat_started)
 	Day.day_finished.connect(_on_day_finished)
 	await get_tree().physics_frame
-	Day.start(1, self)
+	Day.start(which_day, self)
 
 
 func _on_beat_started(beat: Beat, index: int) -> void:
@@ -40,6 +59,7 @@ func _on_beat_started(beat: Beat, index: int) -> void:
 	bot.flow = true
 	_pending += 1
 	bot.run_finished.connect(func(p: int, f: PackedStringArray):
+		reported += 1
 		total_passed += p
 		all_fails.append_array(f)
 		_pending -= 1
@@ -56,8 +76,22 @@ func _on_day_finished(day: int, ctx: Dictionary) -> void:
 	var fails := PackedStringArray()
 	var checks := 0
 	var winner := String(ctx.get("d1_contest_winner", ""))
-	var expect := {
+	var expect := {}
+	if which_day == 3:
+		expect = {
+			"the eight beats of Day 3 ran in order": played == BOTS.keys(),
+			"every Day 3 bot reported (a bot that touches a freed beat dies silently)": reported == BOTS.size(),
+			"the strike handed the candle forward": bool(ctx.get("candle", false)) or bool(ctx.get("d3_struck", false)),
+			"the bakery handed bread for the street forward": bool(ctx.get("d3_bread_for_street", false)),
+			"the dark street handed the order of doors forward": (ctx.get("d3_bread_order", []) as Array).size() >= 1,
+			"the notebook page ran": bool(ctx.get("notebook_shown", false)),
+			"the notebook kept at least five entries": Notebook.day_entries(day).size() >= 5,
+			"the notebook kept at least two acts for the final sky": Notebook.remembered_acts().size() >= 2,
+		}
+	else:
+		expect = {
 		"the eight beats of Day 1 ran in the script's order": played == BOTS.keys(),
+		"every Day 1 bot reported (a bot that touches a freed beat dies silently)": reported == BOTS.size(),
 		"the beach handed the contest winner forward": winner == "layla" or winner == "sami",
 		"the beach handed the tied tail and the promise forward": bool(ctx.get("d1_tail_tied", false)) and bool(ctx.get("d1_promise", false)),
 		"the kite run handed the answer choice forward": String(ctx.get("d1_fix_answer", "")) in ["practice", "better"],
@@ -66,7 +100,7 @@ func _on_day_finished(day: int, ctx: Dictionary) -> void:
 		"the notebook page ran": bool(ctx.get("notebook_shown", false)),
 		"the notebook kept at least seven entries": Notebook.day_entries(day).size() >= 7,
 		"the notebook kept at least two acts for the final sky": Notebook.remembered_acts().size() >= 2,
-	}
+		}
 	for k in expect:
 		checks += 1
 		if expect[k]:

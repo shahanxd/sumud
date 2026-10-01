@@ -45,7 +45,7 @@ echo "== notebook bot =="
 timeout 120 "$GODOT" --headless --path game res://tests/bot_notebook.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|notebook:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== day 1 beats =="
-for b in d1_home_fajr d1_street_morning d1_beach d1_kite_run d1_home_asr d1_roof_maghrib d1_roof_isha; do
+for b in d1_home_fajr d1_street_morning d1_beach d1_kite_run d1_home_asr d1_roof_maghrib d1_roof_isha d3_roofs_fajr d3_dress d3_strike d3_minaret d3_bakery d3_dark_street d3_roof_night; do
 	if [ -f "game/tests/bot_$b.tscn" ]; then
 		timeout 200 "$GODOT" --headless --path game "res://tests/bot_$b.tscn" -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|$b:|ERROR|SCRIPT" || true
 		[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
@@ -54,8 +54,13 @@ for b in d1_home_fajr d1_street_morning d1_beach d1_kite_run d1_home_asr d1_roof
 	fi
 done
 echo "== full day flow =="
-timeout 900 "$GODOT" --headless --path game res://tests/bot_flow.tscn -- --bot --notebook=user://test_flow_notebook.json 2>&1 | grep -E "FAIL|flow:|ERROR|SCRIPT" || true
+timeout 900 "$GODOT" --headless --path game res://tests/bot_flow.tscn -- --bot --day=1 --notebook=user://test_flow_notebook.json 2>&1 | grep -E "FAIL|flow:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+if [ -f game/scenes/d3_strike.tscn ]; then
+echo "== day 3 flow =="
+timeout 900 "$GODOT" --headless --path game res://tests/bot_flow.tscn -- --bot --day=3 --notebook=user://test_flow_notebook3.json 2>&1 | grep -E "FAIL|flow:|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+fi
 echo "== sprites =="
 timeout 60 "$GODOT" --headless --path game res://tests/test_sprites.tscn 2>&1 | grep -E "FAIL|sprites:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1

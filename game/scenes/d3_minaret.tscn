@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://sumud_d3_minaret"]
+
+[ext_resource type="PackedScene" path="res://scenes/night_street.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/beats/d3_minaret_beat.gd" id="beat"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/abu_khalil_roof.tscn" id="roof"]
+
+[node name="Minaret" instance=ExtResource("base")]
+script = ExtResource("beat")
+
+[node name="Player" parent="."]
+position = Vector2(3400, 900)
+
+[node name="AbuKhalilRoof" parent="." instance=ExtResource("roof")]
+
+[node name="AbuKhalil" type="Node2D" parent="."]
+position = Vector2(3840, 700)
+script = ExtResource("npc")
+npc_name = "Abu Khalil"
+build = 2
+talk_radius = 130.0

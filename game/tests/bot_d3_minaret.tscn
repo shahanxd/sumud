@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://sumud_bot_d3_minaret"]
+
+[ext_resource type="Script" path="res://tests/bot_d3_minaret.gd" id="1_bot"]
+[ext_resource type="PackedScene" path="res://scenes/d3_minaret.tscn" id="2_scene"]
+
+[node name="BotD3Minaret" type="Node"]
+
+[node name="Minaret" parent="." instance=ExtResource("2_scene")]
+
+[node name="Bot" type="Node" parent="."]
+script = ExtResource("1_bot")

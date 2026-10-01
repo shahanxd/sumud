@@ -17,7 +17,7 @@ func run() -> void:
 	check(await until(func(): return page.shown, 120), "the notebook page opens")
 	var pages := int(Sound.play_count.get("paper_page", 0))
 	check(pages >= 1 and Sound.last_played == "paper_page", "the page is heard opening")
-	check(page.entry_count == Notebook.day_entries(1).size() and page.entry_count >= 2, "every entry of the day is on the page (%d)" % page.entry_count)
+	check(page.entry_count == Notebook.day_entries(Notebook.current_day).size() and page.entry_count >= 2, "every entry of the day is on the page (%d)" % page.entry_count)
 	await frames(5)
 	var stitches := stitch_count()
 	await tap("interact")

@@ -9,8 +9,8 @@ How SUMUD goes from the first playable (v0.2 in the founder's words) to the game
 | 1. Concept | The idea, the rules, the research | Design document, research 01 to 23 | Founder | Done |
 | 2. First playable | The systems work end to end | Day 1 sampler, bots, `tools/check.sh` | Founder plays it | Done (29 September 2026) |
 | 3. Pre-production lock | Every decision that cannot change later is made | `lock.md` all P0 rows LOCKED | Founder signs | Done (1 October 2026, in chat; F-05, F-07, E-06, G-02 remain open by the founder's choice) |
-| 4. **Day 1** (now) | One day complete, at the bar | Day 1 playable start to finish, every beat of the beat sheet, generated cast and props, ElevenLabs sound | The world-class tests below, iterated until they pass | Complete by 1 October 2026 (founder's date); polished while Day 3 is built |
-| 5. Day 3 | The siege and the strike work (the hardest tone) | Day 3 complete | Tests; founder's own scholar review | By 7 October 2026 |
+| 4. Day 1 | One day complete, at the bar | Day 1 playable start to finish, every beat of the beat sheet, generated cast and props, ElevenLabs sound | The world-class tests below, iterated until they pass | First pass complete 1 October 2026 (eight beats, 222-check flow); the bar is not yet met (see the polish list in `HANDOFF.md`) |
+| 5. **Day 3** (now) | The siege and the strike work (the hardest tone) | Day 3 complete | Tests; founder's own scholar review | By 7 October 2026; script and scaffold in, beats in progress on 1 October |
 | 6. Production | The rest | Days 2, 4 to 10, in order of risk: 7, 10, 8, 5, 2, 4, 6, 9 | Each day passes its definition of done | October to November 2026 |
 | 7. Alpha | Whole game playable | All ten days | Full playthrough by 5 strangers | Mid November 2026 |
 | 8. Beta | Content complete | Everything final; localisation in; accessibility list done | Readers, the founder's scholar review, testers | Late November 2026 |

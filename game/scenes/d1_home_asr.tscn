@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sumud_d1_home_asr"]
+[gd_scene load_steps=10 format=3 uid="uid://sumud_d1_home_asr"]
 
 [ext_resource type="PackedScene" path="res://scenes/home.tscn" id="base"]
 [ext_resource type="Script" path="res://scripts/beats/d1_home_asr_beat.gd" id="beat"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="carry"]
 [ext_resource type="PackedScene" path="res://scenes/kite.tscn" id="kite"]
 [ext_resource type="Texture2D" path="res://assets/props/kites/kite_3.png" id="kite_3"]
+[ext_resource type="PackedScene" path="res://scenes/neighbour_roof.tscn" id="roof"]
 
 [sub_resource type="RectangleShape2D" id="gap_shape"]
 size = Vector2(60, 140)
@@ -108,33 +109,7 @@ z_index = -5
 color = Color(0.14, 0.12, 0.13, 1)
 polygon = PackedVector2Array(120, 560, 520, 560, 520, 900, 120, 900)
 
-[node name="NeighbourRoof" type="StaticBody2D" parent="."]
-collision_layer = 1
-collision_mask = 0
-
-[node name="Shape" type="CollisionPolygon2D" parent="NeighbourRoof"]
-polygon = PackedVector2Array(1510, 500, 2000, 500, 2000, 900, 1510, 900)
-
-[node name="Body" type="Polygon2D" parent="NeighbourRoof"]
-z_index = -5
-color = Color(0.14, 0.12, 0.13, 1)
-polygon = PackedVector2Array(1510, 500, 2000, 500, 2000, 900, 1510, 900)
-
-[node name="Parapet" type="Polygon2D" parent="NeighbourRoof"]
-color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(1510, 486, 2000, 486, 2000, 500, 1510, 500)
-
-[node name="Tank" type="Polygon2D" parent="NeighbourRoof"]
-color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(1800, 500, 1800, 440, 1860, 440, 1860, 500)
-
-[node name="TankBand" type="Polygon2D" parent="NeighbourRoof"]
-color = Color(0.2, 0.19, 0.2, 1)
-polygon = PackedVector2Array(1800, 466, 1860, 466, 1860, 470, 1800, 470)
-
-[node name="Hatch" type="Polygon2D" parent="NeighbourRoof"]
-color = Color(0.09, 0.08, 0.1, 1)
-polygon = PackedVector2Array(1900, 500, 1900, 456, 1960, 456, 1960, 500)
+[node name="NeighbourRoof" parent="." instance=ExtResource("roof")]
 
 [node name="StreetWindows" type="Node2D" parent="."]
 z_index = -4

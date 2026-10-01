@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://sumud_d3_roofs_fajr"]
+
+[ext_resource type="PackedScene" path="res://scenes/home.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/beats/d3_roofs_fajr_beat.gd" id="2_beat"]
+[ext_resource type="PackedScene" path="res://scenes/kite.tscn" id="3_kite"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="4_npc"]
+[ext_resource type="PackedScene" path="res://scenes/neighbour_roof.tscn" id="5_roof"]
+[ext_resource type="Script" path="res://scripts/d1_sami_kite.gd" id="6_sami_kite"]
+
+[node name="RoofsFajr" instance=ExtResource("1_base")]
+script = ExtResource("2_beat")
+
+[node name="Lights" parent="House"]
+visible = false
+
+[node name="Teta" parent="."]
+position = Vector2(1210, 700)
+
+[node name="Player" parent="."]
+position = Vector2(1200, 500)
+kite_path = NodePath("../Kite")
+
+[node name="Baba" parent="."]
+visible = false
+process_mode = 4
+position = Vector2(-2500, 900)
+
+[node name="Candle" parent="."]
+visible = false
+position = Vector2(-4000, 2400)
+
+[node name="Camera" parent="."]
+kite_path = NodePath("../Kite")
+
+[node name="Kite" parent="." instance=ExtResource("3_kite")]
+anchor_path = NodePath("../Player/Visual/Hand")
+ground_y = 760.0
+
+[node name="NeighbourRoof" parent="." instance=ExtResource("5_roof")]
+
+[node name="Sami" type="Node2D" parent="."]
+position = Vector2(1600, 500)
+script = ExtResource("4_npc")
+npc_name = "Sami"
+talk_radius = 0.0
+character = "sami"
+
+[node name="Hand" type="Node2D" parent="Sami"]
+position = Vector2(16, -60)
+
+[node name="SamiKite" parent="." instance=ExtResource("3_kite")]
+script = ExtResource("6_sami_kite")
+anchor_path = NodePath("../Sami/Hand")
+ground_y = 760.0
+seed = 17
+drift = 220.0

@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://sumud_abu_khalil_roof"]
+
+[node name="AbuKhalilRoof" type="StaticBody2D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Roof" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(3720, 700, 4020, 700, 4020, 712, 3720, 712)
+
+[node name="RoofEdge" type="CollisionPolygon2D" parent="."]
+one_way_collision = true
+polygon = PackedVector2Array(3646, 700, 3720, 700, 3720, 706, 3646, 706)
+
+[node name="Rung1" type="CollisionPolygon2D" parent="."]
+one_way_collision = true
+polygon = PackedVector2Array(3650, 836, 3692, 836, 3692, 842, 3650, 842)
+
+[node name="Rung2" type="CollisionPolygon2D" parent="."]
+one_way_collision = true
+polygon = PackedVector2Array(3650, 768, 3692, 768, 3692, 774, 3650, 774)
+
+[node name="SeaWall" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(4080, 850, 4092, 850, 4092, 900, 4080, 900)
+
+[node name="Facade" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.06, 0.055, 0.07, 1)
+polygon = PackedVector2Array(3660, 900, 3660, 700, 4020, 700, 4020, 900)
+
+[node name="Parapet" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(3660, 688, 4020, 688, 4020, 700, 3660, 700)
+
+[node name="Room" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.08, 0.075, 0.09, 1)
+polygon = PackedVector2Array(3920, 700, 3920, 610, 4020, 610, 4020, 700)
+
+[node name="RoomDoor" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.03, 0.03, 0.04, 1)
+polygon = PackedVector2Array(3940, 700, 3940, 630, 3972, 630, 3972, 700)
+
+[node name="Door" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.04, 0.04, 0.05, 1)
+polygon = PackedVector2Array(3740, 900, 3740, 808, 3780, 808, 3780, 900)
+
+[node name="DoorFrame" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.13, 0.12, 0.12, 1)
+polygon = PackedVector2Array(3734, 900, 3734, 802, 3786, 802, 3786, 900)
+
+[node name="WindowFrame" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.13, 0.12, 0.12, 1)
+polygon = PackedVector2Array(3794, 734, 3886, 734, 3886, 846, 3794, 846)
+
+[node name="Window" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.03, 0.03, 0.04, 1)
+polygon = PackedVector2Array(3800, 740, 3880, 740, 3880, 840, 3800, 840)
+
+[node name="CrateA" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.16, 0.14, 0.12, 1)
+polygon = PackedVector2Array(3590, 900, 3590, 852, 3644, 852, 3644, 900)
+
+[node name="CrateATop" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(3590, 852, 3644, 852, 3644, 856, 3590, 856)
+
+[node name="CrateB" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.14, 0.125, 0.11, 1)
+polygon = PackedVector2Array(3598, 852, 3598, 810, 3638, 810, 3638, 852)
+
+[node name="CrateBTop" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(3598, 810, 3638, 810, 3638, 814, 3598, 814)
+
+[node name="CrateC" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.16, 0.14, 0.12, 1)
+polygon = PackedVector2Array(3700, 900, 3700, 862, 3736, 862, 3736, 900)
+
+[node name="RailLeft" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(3651, 900, 3651, 690, 3655, 690, 3655, 900)
+
+[node name="RailRight" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(3687, 900, 3687, 690, 3691, 690, 3691, 900)
+
+[node name="RungVis1" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.3, 0.27, 0.23, 1)
+polygon = PackedVector2Array(3651, 836, 3691, 836, 3691, 841, 3651, 841)
+
+[node name="RungVis2" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.3, 0.27, 0.23, 1)
+polygon = PackedVector2Array(3651, 768, 3691, 768, 3691, 773, 3651, 773)
+
+[node name="RungVis3" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.3, 0.27, 0.23, 1)
+polygon = PackedVector2Array(3646, 700, 3720, 700, 3720, 706, 3646, 706)
+
+[node name="SeaWallVis" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.12, 0.11, 0.11, 1)
+polygon = PackedVector2Array(4080, 900, 4080, 850, 4092, 850, 4092, 900)
+
+[node name="SeaRail" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.12, 0.11, 0.11, 1)
+polygon = PackedVector2Array(4080, 850, 4080, 846, 4140, 846, 4140, 850)
+
+[node name="Step1" type="Polygon2D" parent="."]
+z_index = -4
+color = Color(0.2, 0.19, 0.18, 1)
+polygon = PackedVector2Array(4092, 920, 4136, 920, 4136, 1000, 4092, 1000)
+
+[node name="Step2" type="Polygon2D" parent="."]
+z_index = -4
+color = Color(0.18, 0.17, 0.16, 1)
+polygon = PackedVector2Array(4136, 940, 4180, 940, 4180, 1000, 4136, 1000)
+
+[node name="Step3" type="Polygon2D" parent="."]
+z_index = -4
+color = Color(0.16, 0.15, 0.14, 1)
+polygon = PackedVector2Array(4180, 960, 4224, 960, 4224, 1000, 4180, 1000)
+
+[node name="Step4" type="Polygon2D" parent="."]
+z_index = -4
+color = Color(0.14, 0.13, 0.12, 1)
+polygon = PackedVector2Array(4224, 980, 4268, 980, 4268, 1000, 4224, 1000)
+
+[node name="Sand" type="Polygon2D" parent="."]
+z_index = -4
+color = Color(0.17, 0.16, 0.13, 1)
+polygon = PackedVector2Array(4268, 1000, 4700, 1000, 4700, 1500, 4268, 1500)
+
+[node name="Sea" type="Polygon2D" parent="."]
+z_index = -4
+color = Color(0.03, 0.04, 0.05, 1)
+polygon = PackedVector2Array(4700, 1000, 9000, 1000, 9000, 1500, 4700, 1500)

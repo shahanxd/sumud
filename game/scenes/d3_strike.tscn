@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://sumud_d3_strike"]
+
+[ext_resource type="PackedScene" path="res://scenes/home.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/beats/d3_strike_beat.gd" id="2_beat"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="3_npc"]
+
+[sub_resource type="RectangleShape2D" id="cover_shape_d3"]
+size = Vector2(300, 350)
+
+[node name="Strike" instance=ExtResource("1_base")]
+script = ExtResource("2_beat")
+
+[node name="WindowVoid" type="Polygon2D" parent="House"]
+visible = false
+z_index = -3
+color = Color(0.02, 0.02, 0.03, 1)
+polygon = PackedVector2Array(860, 760, 980, 760, 980, 850, 860, 850)
+
+[node name="WindowShards" type="Node2D" parent="House"]
+visible = false
+z_index = -3
+
+[node name="ShardA" type="Polygon2D" parent="House/WindowShards"]
+color = Color(0.58, 0.64, 0.68, 0.55)
+polygon = PackedVector2Array(860, 760, 902, 760, 884, 778, 870, 796, 860, 802)
+
+[node name="ShardB" type="Polygon2D" parent="House/WindowShards"]
+color = Color(0.58, 0.64, 0.68, 0.5)
+polygon = PackedVector2Array(980, 760, 980, 812, 966, 790, 950, 772, 940, 760)
+
+[node name="ShardC" type="Polygon2D" parent="House/WindowShards"]
+color = Color(0.58, 0.64, 0.68, 0.5)
+polygon = PackedVector2Array(860, 850, 860, 822, 876, 836, 896, 850)
+
+[node name="ShardD" type="Polygon2D" parent="House/WindowShards"]
+color = Color(0.58, 0.64, 0.68, 0.45)
+polygon = PackedVector2Array(980, 850, 946, 850, 962, 838, 980, 834)
+
+[node name="GlassFloor" type="Node2D" parent="."]
+visible = false
+z_index = -2
+
+[node name="GlassA" type="Polygon2D" parent="GlassFloor"]
+color = Color(0.62, 0.68, 0.72, 0.6)
+polygon = PackedVector2Array(884, 900, 902, 893, 912, 900)
+
+[node name="GlassB" type="Polygon2D" parent="GlassFloor"]
+color = Color(0.62, 0.68, 0.72, 0.55)
+polygon = PackedVector2Array(930, 900, 938, 891, 952, 896, 948, 900)
+
+[node name="GlassC" type="Polygon2D" parent="GlassFloor"]
+color = Color(0.62, 0.68, 0.72, 0.55)
+polygon = PackedVector2Array(972, 900, 986, 894, 1004, 900)
+
+[node name="GlassD" type="Polygon2D" parent="GlassFloor"]
+color = Color(0.62, 0.68, 0.72, 0.5)
+polygon = PackedVector2Array(1016, 900, 1022, 895, 1034, 898, 1036, 900)
+
+[node name="Teta" parent="."]
+position = Vector2(1200, 900)
+talk_radius = 0.0
+
+[node name="Mama" type="Node2D" parent="."]
+position = Vector2(1256, 900)
+script = ExtResource("3_npc")
+npc_name = "Mama"
+build = 1
+headscarf = true
+talk_radius = 0.0
+character = "mama"
+
+[node name="Karim" type="Node2D" parent="."]
+position = Vector2(1304, 900)
+script = ExtResource("3_npc")
+npc_name = "Karim"
+talk_radius = 0.0
+character = "karim"
+
+[node name="Cover" parent="."]
+position = Vector2(1230, 735)
+
+[node name="Shape" parent="Cover"]
+shape = SubResource("cover_shape_d3")
+
+[node name="Candle" parent="."]
+position = Vector2(1125, 854)
+
+[node name="StairCandle" type="Node2D" parent="."]
+position = Vector2(1125, 838)
+
+[node name="WindowView" type="Node2D" parent="."]
+position = Vector2(920, 800)
+
+[node name="Player" parent="."]
+position = Vector2(1100, 500)
+
+[node name="Baba" parent="."]
+position = Vector2(1050, 900)
+
+[node name="TitleLayer" type="CanvasLayer" parent="."]
+layer = 80

@@ -1,0 +1,353 @@
+[gd_scene load_steps=10 format=3 uid="uid://sumud_d3_bakery"]
+
+[ext_resource type="PackedScene" path="res://scenes/night_street.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/beats/d3_bakery_beat.gd" id="beat"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="player"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="carry"]
+[ext_resource type="PackedScene" path="res://scenes/beam.tscn" id="beam"]
+
+[sub_resource type="RectangleShape2D" id="hopper_shape"]
+size = Vector2(170, 230)
+
+[sub_resource type="Gradient" id="candle_grad"]
+offsets = PackedFloat32Array(0, 0.35, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.25, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="candle_tex"]
+gradient = SubResource("candle_grad")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Bakery" instance=ExtResource("base")]
+script = ExtResource("beat")
+
+[node name="HouseL" type="Polygon2D" parent="Facades"]
+color = Color(0.06, 0.055, 0.07, 1)
+polygon = PackedVector2Array(100, 900, 100, 610, 118, 596, 528, 596, 540, 610, 540, 900)
+
+[node name="HouseR" type="Polygon2D" parent="Facades"]
+color = Color(0.06, 0.055, 0.07, 1)
+polygon = PackedVector2Array(1620, 900, 1620, 570, 1638, 556, 1920, 556, 1932, 570, 1932, 900)
+
+[node name="HouseR2" type="Polygon2D" parent="Facades"]
+color = Color(0.06, 0.055, 0.07, 1)
+polygon = PackedVector2Array(1950, 900, 1950, 640, 1968, 626, 2320, 626, 2332, 640, 2332, 900)
+
+[node name="TankR" type="Polygon2D" parent="Facades"]
+color = Color(0.06, 0.055, 0.07, 1)
+polygon = PackedVector2Array(1800, 556, 1800, 526, 1834, 526, 1834, 556)
+
+[node name="Glow" parent="Oven"]
+energy = 0.0
+
+[node name="Front" parent="Oven"]
+visible = false
+
+[node name="Mouth" parent="Oven"]
+color = Color(0.08, 0.06, 0.06, 1)
+
+[node name="AbuAhmad" parent="."]
+position = Vector2(1250, 900)
+character = "abu_ahmad"
+
+[node name="Player" parent="."]
+position = Vector2(1440, 900)
+
+[node name="Interior" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Wall" type="Polygon2D" parent="Interior"]
+color = Color(0.4, 0.34, 0.28, 1)
+polygon = PackedVector2Array(560, 600, 1600, 600, 1600, 900, 560, 900)
+
+[node name="WallBack" type="Polygon2D" parent="Interior"]
+color = Color(0.3, 0.26, 0.22, 1)
+polygon = PackedVector2Array(560, 600, 900, 600, 900, 900, 560, 900)
+
+[node name="Floor" type="Polygon2D" parent="Interior"]
+color = Color(0.26, 0.23, 0.2, 1)
+polygon = PackedVector2Array(560, 898, 1600, 898, 1600, 912, 560, 912)
+
+[node name="Roof" type="Polygon2D" parent="Interior"]
+color = Color(0.08, 0.075, 0.08, 1)
+polygon = PackedVector2Array(540, 580, 1620, 580, 1620, 602, 540, 602)
+
+[node name="ParapetL" type="Polygon2D" parent="Interior"]
+color = Color(0.08, 0.075, 0.08, 1)
+polygon = PackedVector2Array(540, 556, 562, 556, 562, 580, 540, 580)
+
+[node name="ParapetR" type="Polygon2D" parent="Interior"]
+color = Color(0.08, 0.075, 0.08, 1)
+polygon = PackedVector2Array(1598, 556, 1620, 556, 1620, 580, 1598, 580)
+
+[node name="WallL" type="Polygon2D" parent="Interior"]
+color = Color(0.08, 0.075, 0.08, 1)
+polygon = PackedVector2Array(540, 580, 560, 580, 560, 900, 540, 900)
+
+[node name="WallR" type="Polygon2D" parent="Interior"]
+color = Color(0.08, 0.075, 0.08, 1)
+polygon = PackedVector2Array(1600, 580, 1620, 580, 1620, 900, 1600, 900)
+
+[node name="DoorDark" type="Polygon2D" parent="Interior"]
+color = Color(0.04, 0.04, 0.06, 1)
+polygon = PackedVector2Array(1500, 735, 1570, 735, 1570, 900, 1500, 900)
+
+[node name="DoorFrameTop" type="Polygon2D" parent="Interior"]
+color = Color(0.22, 0.18, 0.14, 1)
+polygon = PackedVector2Array(1492, 727, 1578, 727, 1578, 735, 1492, 735)
+
+[node name="DoorFrameL" type="Polygon2D" parent="Interior"]
+color = Color(0.22, 0.18, 0.14, 1)
+polygon = PackedVector2Array(1492, 727, 1500, 727, 1500, 900, 1492, 900)
+
+[node name="DoorFrameR" type="Polygon2D" parent="Interior"]
+color = Color(0.22, 0.18, 0.14, 1)
+polygon = PackedVector2Array(1570, 727, 1578, 727, 1578, 900, 1570, 900)
+
+[node name="Shelf1" type="Polygon2D" parent="Interior"]
+color = Color(0.24, 0.19, 0.14, 1)
+polygon = PackedVector2Array(1250, 676, 1400, 676, 1400, 683, 1250, 683)
+
+[node name="Shelf2" type="Polygon2D" parent="Interior"]
+color = Color(0.24, 0.19, 0.14, 1)
+polygon = PackedVector2Array(1250, 736, 1400, 736, 1400, 743, 1250, 743)
+
+[node name="Chimney" type="Polygon2D" parent="Interior"]
+color = Color(0.3, 0.24, 0.2, 1)
+polygon = PackedVector2Array(1088, 602, 1132, 602, 1132, 720, 1088, 720)
+
+[node name="OvenBody" type="Polygon2D" parent="Interior"]
+color = Color(0.34, 0.27, 0.22, 1)
+polygon = PackedVector2Array(1008, 900, 1008, 800, 1028, 742, 1068, 712, 1110, 704, 1152, 712, 1192, 742, 1212, 800, 1212, 900)
+
+[node name="OvenCourse1" type="Polygon2D" parent="Interior"]
+color = Color(0.26, 0.2, 0.16, 1)
+polygon = PackedVector2Array(1016, 840, 1204, 840, 1204, 843, 1016, 843)
+
+[node name="OvenCourse2" type="Polygon2D" parent="Interior"]
+color = Color(0.26, 0.2, 0.16, 1)
+polygon = PackedVector2Array(1024, 780, 1196, 780, 1196, 783, 1024, 783)
+
+[node name="OvenCourse3" type="Polygon2D" parent="Interior"]
+color = Color(0.26, 0.2, 0.16, 1)
+polygon = PackedVector2Array(1050, 730, 1170, 730, 1170, 733, 1050, 733)
+
+[node name="OvenArch" type="Polygon2D" parent="Interior"]
+color = Color(0.14, 0.1, 0.08, 1)
+polygon = PackedVector2Array(1068, 900, 1068, 812, 1110, 796, 1152, 812, 1152, 900)
+
+[node name="BackRoom" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Slab" type="Polygon2D" parent="BackRoom"]
+color = Color(0.14, 0.12, 0.11, 1)
+polygon = PackedVector2Array(560, 602, 880, 602, 880, 790, 840, 805, 760, 795, 700, 808, 640, 798, 560, 804)
+
+[node name="Crack" type="Polygon2D" parent="BackRoom"]
+color = Color(0.1, 0.085, 0.08, 1)
+polygon = PackedVector2Array(700, 602, 760, 602, 740, 700, 720, 760, 700, 806, 690, 760, 712, 700)
+
+[node name="Lintel" type="Polygon2D" parent="BackRoom"]
+color = Color(0.14, 0.12, 0.11, 1)
+polygon = PackedVector2Array(870, 602, 970, 602, 970, 828, 940, 840, 900, 832, 870, 842)
+
+[node name="Heap" type="Polygon2D" parent="BackRoom"]
+color = Color(0.13, 0.115, 0.11, 1)
+polygon = PackedVector2Array(560, 900, 560, 830, 590, 838, 620, 846, 650, 870, 680, 900)
+
+[node name="Debris1" type="Polygon2D" parent="BackRoom"]
+color = Color(0.13, 0.115, 0.11, 1)
+polygon = PackedVector2Array(980, 900, 996, 886, 1014, 900)
+
+[node name="Debris2" type="Polygon2D" parent="BackRoom"]
+color = Color(0.13, 0.115, 0.11, 1)
+polygon = PackedVector2Array(846, 900, 858, 890, 872, 900)
+
+[node name="Collapse" type="StaticBody2D" parent="BackRoom"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CeilingShape" type="CollisionPolygon2D" parent="BackRoom/Collapse"]
+polygon = PackedVector2Array(560, 600, 880, 600, 880, 800, 560, 800)
+
+[node name="LintelShape" type="CollisionPolygon2D" parent="BackRoom/Collapse"]
+polygon = PackedVector2Array(880, 600, 960, 600, 960, 835, 880, 835)
+
+[node name="WallLShape" type="CollisionPolygon2D" parent="BackRoom/Collapse"]
+polygon = PackedVector2Array(540, 580, 560, 580, 560, 900, 540, 900)
+
+[node name="WallRShape" type="CollisionPolygon2D" parent="BackRoom/Collapse"]
+polygon = PackedVector2Array(1600, 580, 1620, 580, 1620, 900, 1600, 900)
+
+[node name="AdultBlock" type="StaticBody2D" parent="BackRoom"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="BackRoom/AdultBlock"]
+polygon = PackedVector2Array(900, 830, 944, 830, 944, 900, 900, 900)
+
+[node name="Mishmish" type="Node2D" parent="."]
+position = Vector2(612, 846)
+
+[node name="Body" type="Polygon2D" parent="Mishmish"]
+color = Color(0.05, 0.045, 0.05, 1)
+polygon = PackedVector2Array(-14, 0, -18, -12, -16, -24, -8, -30, 0, -28, 6, -20, 8, -8, 10, 0)
+
+[node name="Head" type="Polygon2D" parent="Mishmish"]
+color = Color(0.05, 0.045, 0.05, 1)
+polygon = PackedVector2Array(2, -26, 0, -34, 4, -44, 8, -38, 14, -38, 18, -44, 20, -34, 18, -26, 10, -22)
+
+[node name="Tail" type="Polygon2D" parent="Mishmish"]
+color = Color(0.05, 0.045, 0.05, 1)
+polygon = PackedVector2Array(-14, 0, -26, -4, -30, -12, -26, -14, -22, -8, -12, -4)
+
+[node name="EyeL" type="Polygon2D" parent="Mishmish"]
+color = Color(0.95, 0.8, 0.4, 1)
+polygon = PackedVector2Array(5, -33, 7, -31, 9, -33, 7, -35)
+
+[node name="EyeR" type="Polygon2D" parent="Mishmish"]
+color = Color(0.95, 0.8, 0.4, 1)
+polygon = PackedVector2Array(12, -33, 14, -31, 16, -33, 14, -35)
+
+[node name="Sack1" parent="." instance=ExtResource("carry")]
+position = Vector2(700, 900)
+label = "sack"
+color = Color(0.82, 0.78, 0.7, 1)
+hookable = false
+
+[node name="Sack2" parent="." instance=ExtResource("carry")]
+position = Vector2(790, 900)
+label = "sack"
+color = Color(0.82, 0.78, 0.7, 1)
+hookable = false
+
+[node name="Beam" parent="." instance=ExtResource("beam")]
+position = Vector2(990, 900)
+door_x = 1110.0
+
+[node name="Machine" type="Node2D" parent="."]
+position = Vector2(1310, 900)
+
+[node name="LegL" type="Polygon2D" parent="Machine"]
+color = Color(0.22, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-62, -60, -48, -60, -48, 0, -62, 0)
+
+[node name="LegR" type="Polygon2D" parent="Machine"]
+color = Color(0.22, 0.2, 0.2, 1)
+polygon = PackedVector2Array(48, -60, 62, -60, 62, 0, 48, 0)
+
+[node name="Drum" type="Polygon2D" parent="Machine"]
+color = Color(0.4, 0.38, 0.37, 1)
+polygon = PackedVector2Array(-75, -130, -60, -150, 60, -150, 75, -130, 75, -75, 60, -55, -60, -55, -75, -75)
+
+[node name="Band1" type="Polygon2D" parent="Machine"]
+color = Color(0.28, 0.26, 0.26, 1)
+polygon = PackedVector2Array(-75, -118, 75, -118, 75, -113, -75, -113)
+
+[node name="Band2" type="Polygon2D" parent="Machine"]
+color = Color(0.28, 0.26, 0.26, 1)
+polygon = PackedVector2Array(-75, -90, 75, -90, 75, -85, -75, -85)
+
+[node name="Funnel" type="Polygon2D" parent="Machine"]
+color = Color(0.34, 0.32, 0.31, 1)
+polygon = PackedVector2Array(-58, -215, 58, -215, 30, -150, -30, -150)
+
+[node name="Chute" type="Polygon2D" parent="Machine"]
+color = Color(0.3, 0.28, 0.27, 1)
+polygon = PackedVector2Array(-20, -55, 20, -55, 26, -30, -26, -30)
+
+[node name="Handle" type="Node2D" parent="Machine"]
+position = Vector2(80, -102)
+
+[node name="Axle" type="Polygon2D" parent="Machine/Handle"]
+color = Color(0.2, 0.18, 0.18, 1)
+polygon = PackedVector2Array(-7, -7, 7, -7, 7, 7, -7, 7)
+
+[node name="Arm" type="Polygon2D" parent="Machine/Handle"]
+color = Color(0.24, 0.22, 0.22, 1)
+polygon = PackedVector2Array(-3, -3, 44, -3, 44, 3, -3, 3)
+
+[node name="Knob" type="Polygon2D" parent="Machine/Handle"]
+color = Color(0.36, 0.28, 0.22, 1)
+polygon = PackedVector2Array(40, -11, 50, -11, 50, 11, 40, 11)
+
+[node name="Hopper" type="Area2D" parent="."]
+position = Vector2(1310, 900)
+collision_layer = 0
+collision_mask = 4
+
+[node name="Shape" type="CollisionShape2D" parent="Hopper"]
+position = Vector2(0, -105)
+shape = SubResource("hopper_shape")
+
+[node name="Sami" type="Node2D" parent="."]
+position = Vector2(1400, 900)
+script = ExtResource("npc")
+npc_name = "Sami"
+build = 0
+talk_radius = 1.0
+character = "sami"
+
+[node name="Candle" type="Node2D" parent="Sami"]
+position = Vector2(18, -62)
+
+[node name="Stick" type="Polygon2D" parent="Sami/Candle"]
+color = Color(0.9, 0.86, 0.78, 1)
+polygon = PackedVector2Array(-4, 0, 4, 0, 4, -22, -4, -22)
+
+[node name="Flame" type="Polygon2D" parent="Sami/Candle"]
+color = Color(1, 0.86, 0.55, 1)
+polygon = PackedVector2Array(0, -36, 4, -28, 0, -22, -4, -28)
+
+[node name="Light" type="PointLight2D" parent="Sami/Candle"]
+position = Vector2(0, -28)
+color = Color(1, 0.78, 0.5, 1)
+energy = 1.1
+shadow_enabled = false
+texture = SubResource("candle_tex")
+texture_scale = 2.5
+
+[node name="Baba" parent="." instance=ExtResource("player")]
+position = Vector2(1490, 900)
+collision_mask = 9
+is_active = false
+build = 1
+character = "baba"
+character_name = "Baba"
+
+[node name="Teta" parent="." instance=ExtResource("player")]
+position = Vector2(1540, 900)
+collision_mask = 9
+run_speed = 110.0
+jump_velocity = 0.0
+is_active = false
+build = 1
+character = "teta"
+character_name = "Teta"
+
+[node name="OvenView" type="Node2D" parent="."]
+position = Vector2(1110, 790)
+
+[node name="Tray" type="Node2D" parent="."]
+visible = false
+position = Vector2(1110, 900)
+
+[node name="Board" type="Polygon2D" parent="Tray"]
+color = Color(0.3, 0.22, 0.15, 1)
+polygon = PackedVector2Array(-44, -8, 44, -8, 44, 0, -44, 0)
+
+[node name="Loaf1" type="Polygon2D" parent="Tray"]
+color = Color(0.85, 0.72, 0.45, 1)
+polygon = PackedVector2Array(-38, -9, -32, -17, -18, -17, -12, -9)
+
+[node name="Loaf2" type="Polygon2D" parent="Tray"]
+color = Color(0.85, 0.72, 0.45, 1)
+polygon = PackedVector2Array(-12, -9, -6, -17, 8, -17, 14, -9)
+
+[node name="Loaf3" type="Polygon2D" parent="Tray"]
+color = Color(0.85, 0.72, 0.45, 1)
+polygon = PackedVector2Array(14, -9, 20, -17, 34, -17, 40, -9)
