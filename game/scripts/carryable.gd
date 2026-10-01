@@ -27,6 +27,9 @@ var home_parent: Node = null
 
 var _light: PointLight2D = null
 var _flicker := 0.0
+## A generated picture of the item, when assets/props/items/<shape>.png exists; the code
+## drawing below is the fallback.
+var _tex: Texture2D = null
 
 @onready var visual: Polygon2D = $Visual
 
@@ -45,6 +48,9 @@ func _ready() -> void:
 		$CollisionShape2D.position = Vector2(0.0, -size.y * 0.5)
 	if is_light_source:
 		_make_light()
+	var tex_path := "res://assets/props/items/%s.png" % _shape()
+	if ResourceLoader.exists(tex_path):
+		_tex = load(tex_path) as Texture2D
 	queue_redraw()
 
 
@@ -89,6 +95,17 @@ func _draw() -> void:
 		# Contact with the ground.
 		var w := _size_for_weight().x * 0.75
 		draw_colored_polygon(_ellipse(Vector2(1.0, 0.0), w, 3.0), Color(0.0, 0.0, 0.0, 0.3))
+	if _tex != null:
+		# Fit the picture to the item's height class and stand it on the origin.
+		var size := _size_for_weight()
+		var th := size.y * 1.15
+		var tw := th * _tex.get_size().x / maxf(_tex.get_size().y, 1.0)
+		# Pictures come out glossy; in this world only the accents keep their colour (bread, fire,
+		# kites), everything else sinks toward the silhouette palette.
+		var shape := _shape()
+		var tint := Color(1.0, 1.0, 1.0) if shape == "candle" or shape == "bread" else Color(0.38, 0.36, 0.4)
+		draw_texture_rect(_tex, Rect2(-tw * 0.5, -th, tw, th), false, tint)
+		return
 	match _shape():
 		"bread":
 			# Three flat loaves, stacked.
@@ -165,7 +182,7 @@ func _process(delta: float) -> void:
 	_light.energy = (1.05 + 0.12 * sin(_flicker) * sin(_flicker * 1.7)) if lit else 0.0
 	var flame := get_node_or_null("Flame")
 	if flame:
-		flame.visible = lit
+		flame.visible = lit and _tex == null
 
 
 ## Blows the flame out, or lights it again at a flame source.
