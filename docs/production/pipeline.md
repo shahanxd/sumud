@@ -8,15 +8,15 @@ How SUMUD goes from the first playable (v0.2 in the founder's words) to the game
 | --- | --- | --- | --- | --- |
 | 1. Concept | The idea, the rules, the research | Design document, research 01 to 23 | Founder | Done |
 | 2. First playable | The systems work end to end | Day 1 sampler, bots, `tools/check.sh` | Founder plays it | Done (29 September 2026) |
-| 3. **Pre-production lock** (now) | Every decision that cannot change later is made | `lock.md` all P0 rows LOCKED; animation test; style frames; Day 1 script; the friend's first recording | Founder signs the lock in `decisions.md` | 30 September to 13 October 2026 |
-| 4. Vertical slice: Day 1 | One day at shipping quality | Day 1 playable start to finish at the bar below | The world-class tests below | About 14 October to 8 December 2026 |
-| 5. Slice 2: Day 3 | The siege and the strike work (the hardest tone) | Day 3 at shipping quality | Readers' sign-off; tests; launch date set here | About 8 weeks after gate 4 |
-| 6. Production | The rest | Days 2, 4 to 10, in order of risk: 7, 10, 8, 5, 2, 4, 6, 9 | Each day passes its definition of done | 2027 |
-| 7. Alpha | Whole game playable | All ten days, placeholder allowed only in polish | Full playthrough by 5 strangers | Set at gate 5 |
-| 8. Beta | Content complete | Everything final; localisation in; accessibility list done | Readers, scholar, testers on the full game | Set at gate 5 |
-| 9. Launch | | Steam (Windows, Linux) | | Not earlier than late 2027; a Next Fest with the Day 1 demo 2 to 4 months before (confirm Steam's dates) |
+| 3. Pre-production lock | Every decision that cannot change later is made | `lock.md` all P0 rows LOCKED | Founder signs | Done (1 October 2026, in chat; F-05, F-07, E-06, G-02 remain open by the founder's choice) |
+| 4. **Day 1** (now) | One day complete, at the bar | Day 1 playable start to finish, every beat of the beat sheet, generated cast and props, ElevenLabs sound | The world-class tests below, iterated until they pass | Complete by 1 October 2026 (founder's date); polished while Day 3 is built |
+| 5. Day 3 | The siege and the strike work (the hardest tone) | Day 3 complete | Tests; founder's own scholar review | By 7 October 2026 |
+| 6. Production | The rest | Days 2, 4 to 10, in order of risk: 7, 10, 8, 5, 2, 4, 6, 9 | Each day passes its definition of done | October to November 2026 |
+| 7. Alpha | Whole game playable | All ten days | Full playthrough by 5 strangers | Mid November 2026 |
+| 8. Beta | Content complete | Everything final; localisation in; accessibility list done | Readers, the founder's scholar review, testers | Late November 2026 |
+| 9. Launch | | Steam (Windows, Linux) | | December 2026 (founder, 1 October: "full game by december"); Steam's Coming Soon page needs at least two weeks before release, so K-04 by mid November |
 
-The founder said yes on 30 September 2026 to moving the launch for quality. The date is set at gate 5, when the speed of real production is known, not before.
+**The founder set these dates on 1 October 2026** ("we speed up, day 1 today, day 3 this week, full game by december"), replacing the 30 September plan (lock by 13 October, slice by December, launch late 2027). The quality bar below did not move. Where they collide, the order is: every day exists and plays end to end first, then the bar is reached by iterating on finished days, hardest days first. The readers (E-06, deferred) are the one gate that cannot be iterated past: no public build before they have read it, so they must be recruited by early November. Any agent that sees the bar slipping says so in `HANDOFF.md` rather than quietly lowering it.
 
 ## The world-class bar, as tests
 
@@ -37,16 +37,16 @@ The founder said yes on 30 September 2026 to moving the launch for quality. The 
 | --- | --- | --- |
 | Founder, director | shahanxd | Decides; plays every build; films and records; recruits; pays; signs the lock and each gate |
 | Agent (engineering, design, first drafts) | An AI coding agent in this repository | Code, tools, level building, bots, docs, the English guidance script, the Claude Doc sync; generates art, textures, frames and sound with image and audio models within F-09 and puts them in the game; the founder approves every asset in-engine |
-| Artist | To recruit (`docs/art/artist-brief.md`) | Model sheets, style frames, clean-up, hero props |
+| Artist | None (founder, 1 October: "no artist, i can judge, but you have to handle all") | The agent generates and the founder judges; the brief stays on file |
 | Performers | Family and friends, with consent | Rotoscope performances (if method B), barks |
-| The friend | The founder's friend | The voice score |
+| The friend | The founder's friend, a song performer (named later) | The songs only |
 | Palestinian writer | To recruit | The Arabic of every line |
 | Readers | Two Palestinians, paid, credited | Binding review of story, names, culture, the Arabic |
-| Scholar | One, named | Halal rules, voices, the wedding, the scripture cards |
+| Scholar | The founder, for now (E-05) | Halal rules, voices, the wedding, the scripture cards |
 | Reciter | A licensed human qari | Quran audio, or text only |
 | Testers | Strangers, then Steam playtest | The stranger test |
 
-## The lock: week by week
+## The lock: week by week (superseded 1 October: the founder answered everything in one sitting; kept for the record)
 
 | Week | Tasks | Owner | Output |
 | --- | --- | --- | --- |

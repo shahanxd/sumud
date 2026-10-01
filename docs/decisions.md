@@ -38,3 +38,14 @@ Founder decisions, with the date. The design document holds the reasoning; this 
 | 2026-10-01 | Commit after every batch and update HANDOFF.md in the same commit, so the project can be handed to another agent at any time | founder's instruction |
 | 2026-10-01 | The playable's characters and hero props are generated images extracted through Canva previews and keyed by tools/roto.py; the bone rig stays as the fallback for anyone without frames | lock F-03 still PROPOSED for the founder to confirm by playing; method D in docs/art/direction.md |
 
+| 2026-10-01 | The founder answered the whole lock register in chat: every PROPOSED row locked as written except the changes below ("lock all", "p1 and p2 lock") | lock.md, all rows |
+| 2026-10-01 | Schedule: "we speed up": Day 1 complete on 1 October, Day 3 by 7 October, the full game by December 2026. Supersedes the 30 September "launch moves for quality" dates; the quality bar (A-04) stands, reached by iterating on finished days | lock K-01; pipeline.md stages |
+| 2026-10-01 | Character method: generated silhouette frames, kept after the founder played the build ("keep") | lock F-03, I-03 |
+| 2026-10-01 | No artist: the founder judges every asset, the agent produces all art by generation and code | lock F-04; pipeline roles |
+| 2026-10-01 | Layla's scarf is dusty blue, her one colour accent | lock F-06; player.tscn `scarf_color` |
+| 2026-10-01 | Eyes: try Limbo-style eye-lights against none on the next style frame; the founder picks there | lock F-05 stays PROPOSED |
+| 2026-10-01 | Sound: ElevenLabs on the founder's account for foley, ambience and the strike; Quran never generated, each scripture moment gets an audio slot the founder fills by hand with a licensed human recording | lock G-01 |
+| 2026-10-01 | The founder's friend (a song performer, named later) sings only the songs; Layla's lines are sung by a young girl with consent | lock G-02, G-04 |
+| 2026-10-01 | The founder does the scholar review themselves before each day ships | lock E-05 |
+| 2026-10-01 | Readers deferred ("not now, later"); still required before any public build | lock E-06 |
+| 2026-10-01 | Budget as proposed, no ceiling given; Canva for images ("canva doing good") | lock K-02, F-01 |

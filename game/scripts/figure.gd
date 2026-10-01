@@ -14,7 +14,7 @@ const TAIL_SEGMENTS := 5
 
 @export_enum("child", "adult", "elder") var build := 1
 @export var headscarf := false
-## The scarf's own colour; the body colour by default, cream for Layla (her one accent).
+## The scarf's own colour; the body colour by default, dusty blue for Layla (her one accent, lock F-06).
 @export var scarf_color := Color(0.09, 0.08, 0.10)
 ## Shoulder half-width as a fraction of height; broader for Baba.
 @export var shoulder := 0.0
