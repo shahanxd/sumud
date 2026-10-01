@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://sumud_night_street"]
+[gd_scene load_steps=16 format=3 uid="uid://sumud_night_street"]
 
 [ext_resource type="Script" path="res://scripts/beats/night_street_beat.gd" id="0_beat"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="0_npc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/camera_rig.gd" id="6_camera"]
 [ext_resource type="Script" path="res://scripts/wind_dust.gd" id="8_dust"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="7_sky"]
+[ext_resource type="Texture2D" path="res://assets/props/bakery_front.png" id="20_bakery"]
 
 [sub_resource type="ShaderMaterial" id="sky_mat"]
 shader = ExtResource("7_sky")
@@ -99,6 +100,13 @@ color = Color(1, 0.62, 0.3, 1)
 energy = 2.0
 texture = SubResource("oven_tex")
 texture_scale = 3.2
+
+[node name="Front" type="Sprite2D" parent="Oven"]
+texture = ExtResource("20_bakery")
+centered = false
+position = Vector2(-130, -158)
+scale = Vector2(0.5, 0.5)
+modulate = Color(0.55, 0.5, 0.5, 1)
 
 [node name="Mouth" type="Polygon2D" parent="Oven"]
 color = Color(1, 0.55, 0.2, 0.85)
