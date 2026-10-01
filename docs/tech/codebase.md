@@ -48,13 +48,13 @@ A beat is a scene whose root extends `Beat` (`core/beat.gd`), which emits `finis
 
 ## Characters
 
-`scripts/figure.gd` draws every person as bones each frame. It is **to be replaced** by the method the animation test picks (lock F-03, I-03): `AnimatedSprite2D` with `SpriteFrames` built from rotoscoped frames and a per-frame hand point, or a Skeleton2D cut-out rig. Keep `Player` and `Npc` as the drivers and swap what they drive; carried items and the kite string attach to the hand point.
+`scripts/figure.gd` draws every person as bones each frame. `scripts/sprite_figure.gd` (`SpriteFigure extends Figure`) replaces the drawing with an `AnimatedSprite2D` when `assets/characters/<name>/frames.tres` exists (built by `game/tools/build_frames.gd` from strips that `tools/roto.py` makes out of generated or filmed frames), moves the `Hand` node to the per-frame point in `hands.json`, drives walk/run/crawl from the owner's `phase` so feet stay planted, and falls back to bones otherwise. Switch a character by pointing their scene's Visual node at `sprite_figure.gd` and setting `character`. Animation names: idle, walk, run, jump, crawl, sit, with `_kite`, `_carry`, `_heavy`, `_twohand` variants looked up first.
 
-`scripts/player.gd` holds movement (run 320, jump -640, accel 2600 ground and 1400 air), carry classes, crawl, switching; `camera_rig.gd` holds the camera (`ground_zoom` 1.3, look-ahead 140, kite pull-out). Feel targets are in `docs/design/feel-and-readability.md`.
+`scripts/player.gd` holds movement (run 320, jump -640 with a 0.45 release cut, ground accel 4000 and decel 5400, air 1400, coyote 0.1 s, buffer 0.1 s, skid), carry classes, crawl, switching, impact-scaled landing (`landed` signal, `land_squash`) and the F3 tuning overlay (never under bot mode or `--smoke`); `camera_rig.gd` holds the camera (`ground_zoom` 1.3, smoothed look-ahead 140, 120 px edge clamp, kite pull-out). `scripts/sprite_figure.gd` is the frame-driven replacement for `figure.gd` (see Characters). Feel targets are in `docs/design/feel-and-readability.md`.
 
 ## Tests
 
-`tools/check.sh` runs, in order: smoke (main scene one frame), `test_core`, `test_audio` (includes the halal audit of files and buses), `bot_beach`, `bot_beach_beat`, `bot_street`, `bot_home`, `bot_night`, `bot_notebook`, `bot_flow` (the whole of Day 1 through `Day.start(1)`), `shot_card`. Bots live in `game/tests/`, share `bot.gd` and `bot_driver.gd`, press real inputs and walk with real physics. **Teleport only to set up a test, never to cross a gap the player must cross** (playtest 1: the stairs passed a teleporting bot and nobody could climb them).
+`tools/check.sh` runs, in order: smoke (main scene one frame), `test_core`, `test_audio` (includes the halal audit of files and buses), `bot_beach`, `bot_beach_beat`, `bot_street`, `bot_home`, `bot_night`, `bot_notebook`, `bot_flow` (the whole of Day 1 through `Day.start(1)`), `test_sprites` (SpriteFigure against Layla's frames or the bone fallback), `shot_card`. Bots live in `game/tests/`, share `bot.gd` and `bot_driver.gd`, press real inputs and walk with real physics. **Teleport only to set up a test, never to cross a gap the player must cross** (playtest 1: the stairs passed a teleporting bot and nobody could climb them).
 
 ## Conventions
 

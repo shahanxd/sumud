@@ -22,10 +22,11 @@ func run() -> void:
 	await frames(5)
 	Input.action_press("move_right")
 	await until(func(): return player.global_position.x > 1950.0, 120)
+	# Held through the rise for the full jump; a tap would only hop.
 	Input.action_press("jump")
-	await frames(3)
+	await frames(42)
 	Input.action_release("jump")
-	await frames(100)
+	await frames(61)
 	Input.action_release("move_right")
 	check(player.global_position.x > 2320.0 and player.global_position.y < 905.0, "jumps the pit empty-handed (x=%.0f y=%.0f)" % [player.global_position.x, player.global_position.y])
 

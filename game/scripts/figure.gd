@@ -38,6 +38,9 @@ var load := -1
 ## Leading arm raised (flying the kite).
 var arm_up := false
 var airborne := false
+## Landing squash from the owner (0 rest .. about 0.45 a heavy landing): the knees give
+## and the body drops for a moment. Negative is the take-off stretch and leaves the pose alone.
+var squash := 0.0
 
 var _t := randf() * 10.0
 var _p: Dictionary = {}
@@ -184,6 +187,15 @@ func _pose_points() -> Dictionary:
 		elbow_k = [0.3, 0.3]
 		chest.x += 0.04 * H
 		head.x += 0.06 * H
+	elif squash > 0.0 and not explicit_limbs:
+		# The landing pose: knees bent, the body lower, the arms out a little for balance.
+		var give := clampf(squash, 0.0, 0.5)
+		for i in 2:
+			thigh_a[i] += 0.35 * give
+			knee_k[i] += 1.6 * give
+			arm_a[i] += 0.5 * give
+		chest.x += 0.06 * H * give
+		head.x += 0.08 * H * give
 
 	if not explicit_limbs:
 		match load:

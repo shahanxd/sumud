@@ -15,15 +15,16 @@ The feel is Silksong's lesson: the character answers the hand at once, and the a
 | Property | Today | Target |
 | --- | --- | --- |
 | Input to motion | Immediate | Movement starts the same frame; the animation's anticipation never delays control |
+| Tuning | F3 overlay (1 Oct) lists every value live; all are `@export` on `player.gd` and `camera_rig.gd` | The founder tunes in play and pastes the numbers back |
 | Run speed | 320 px/s | Tune on the laptop; Layla faster than every adult |
-| Acceleration and stopping | 2600 px/s² ground, 1400 air | About 0.08 s to full speed, 0.06 s to stop on the ground; a short skid when turning at full run |
-| Jump | Fixed velocity -640 | Variable height (release early to cut), about a quarter of a second rising |
-| Coyote time | None | About 0.1 s after leaving a ledge |
-| Jump buffer | None | About 0.1 s before landing |
-| Landing | Squash on the code rig | A landing pose; heavier with loads; a puff of dust on sand |
+| Acceleration and stopping | 4000 px/s² ground, 5400 stopping, 1400 air; skid 0.12 s at half accel when reversing above 0.8 of run speed (1 Oct) | Met: 0.08 s to full speed, 0.06 s to stop; tune by feel |
+| Jump | -640 with variable height: releasing while rising multiplies vertical speed by 0.45 (1 Oct) | Rise is 0.65 s at gravity 980; a snappier quarter-second rise needs higher gravity and a shorter jump, decided by the founder in play |
+| Coyote time | 0.1 s (1 Oct) | Met |
+| Jump buffer | 0.1 s (1 Oct) | Met; a buffered jump released before landing is not cut |
+| Landing | Impact-scaled squash (0.30 at 900 px/s; ×1.3 heavy, ×1.5 two-handed) and a knees-give pose on the rig; `landed` signal (1 Oct) | Dust on sand still to do; the sprite rig will carry a drawn landing frame |
 | Ledge climb | None | Automatic grab of ledges at chest height and below, with a climb animation |
 | Crawl | Hold down | Enters and leaves by animation; never stuck under a low ceiling |
-| Camera | Follows with look-ahead 140, zoom 1.3 | Leads in the direction of travel; frames the kite and Layla together while flying; holds still in sit spots and cards; never lets the character leave the screen |
+| Camera | Smoothed look-ahead 140 over 0.4 s, returns to centre when idle; 120 px edge clamp; zoom 1.3; kite pull-out (1 Oct) | Met for leading and clamping; sit-spot hold to confirm in the slice |
 | Kite | Physics on a string in the wind field | Readable tension (string sag and sound), gusts shown by dust at Layla's feet before they arrive, cannot be lost on Day 1 and Day 10 |
 
 A debug overlay exposes gravity, jump, speeds, carry factors, kite drag and wind so the founder can tune in play and paste the numbers back (the design document).

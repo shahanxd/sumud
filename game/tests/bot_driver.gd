@@ -47,16 +47,28 @@ func _physics_process(_delta: float) -> void:
 				Input.action_release("move_right")
 				_next()
 		2:
+			# Jump height follows the hold: held through the rise (about 0.65 s at -640)
+			# for the full jump, a tap for a hop.
 			if _frames == 1:
 				_y0 = player.global_position.y
 				_y_min = _y0
 				Input.action_press("jump")
-			if _frames == 3:
+			if _frames == 45:
 				Input.action_release("jump")
 			_y_min = minf(_y_min, player.global_position.y)
 			if _frames == 110:
 				_check(_y_min < _y0 - 120.0, "jumps (%.0f px high)" % (_y0 - _y_min))
 				_check(absf(player.global_position.y - _y0) < 2.0, "lands back on the ground")
+				_y_min = _y0
+				Input.action_press("jump")
+			if _frames == 113:
+				Input.action_release("jump")
+			if _frames > 110:
+				_y_min = minf(_y_min, player.global_position.y)
+			if _frames == 200:
+				var hop := _y0 - _y_min
+				_check(hop > 25.0 and hop < 120.0, "a tap gives a lower hop (%.0f px)" % hop)
+				_check(absf(player.global_position.y - _y0) < 2.0, "lands again after the hop")
 				_next()
 		3:
 			# Teleport next to the jerrycan (heavy) and grab it.
