@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/characters/layla/walk/strip.png" id="1_k4twy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d330w"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(0, 0, 316, 571)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2tl7"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(316, 0, 316, 571)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f06q5"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(632, 0, 316, 571)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_todro"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(948, 0, 316, 571)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wljqb"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(1264, 0, 316, 571)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt6kr"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(1580, 0, 316, 571)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55lt6"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(1896, 0, 316, 571)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvg3e"]
+atlas = ExtResource("1_k4twy")
+region = Rect2(2212, 0, 316, 571)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d330w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2tl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f06q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_todro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wljqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt6kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55lt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvg3e")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 12.0
+}]
