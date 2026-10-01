@@ -46,6 +46,9 @@ timeout 120 "$GODOT" --headless --path game res://tests/bot_notebook.tscn -- --b
 echo "== full day flow =="
 timeout 420 "$GODOT" --headless --path game res://tests/bot_flow.tscn -- --bot --notebook=user://test_flow_notebook.json 2>&1 | grep -E "FAIL|flow:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== sprites =="
+timeout 60 "$GODOT" --headless --path game res://tests/test_sprites.tscn 2>&1 | grep -E "FAIL|sprites:|ERROR|SCRIPT" || true
+[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== chapter card =="
 timeout 60 "$GODOT" --headless --path game res://tests/shot_card.tscn 2>&1 | grep -E "card finished|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
