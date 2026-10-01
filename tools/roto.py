@@ -127,9 +127,13 @@ def cmd_split(args: argparse.Namespace) -> None:
 def cmd_key(args: argparse.Namespace) -> None:
     paths = _frames_in(args.frames)
     plate = _load(args.bg) if args.bg else None
+    frames = [Image.open(p).convert("RGBA") for p in paths]
+    # Previews of the same page can arrive at different pixel sizes; bring them to the largest.
+    big = max(frames, key=lambda im: im.width * im.height).size
+    frames = [im if im.size == big else im.resize(big, Image.LANCZOS) for im in frames]
     masks: list[np.ndarray] = []
-    for p in paths:
-        f = _load(p)
+    for im in frames:
+        f = np.asarray(im, dtype=np.uint8)
         if plate is not None and plate.shape != f.shape:
             sys.exit("roto: background plate must match the frame size")
         m = _mask_for(f, args, plate)

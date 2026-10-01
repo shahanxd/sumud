@@ -63,27 +63,27 @@ region = Rect2(1272, 0, 212, 583)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kobrk"]
 atlas = ExtResource("3_28pdp")
-region = Rect2(0, 0, 217, 591)
+region = Rect2(0, 0, 217, 585)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmxtx"]
 atlas = ExtResource("3_28pdp")
-region = Rect2(217, 0, 217, 591)
+region = Rect2(217, 0, 217, 585)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx4tj"]
 atlas = ExtResource("3_28pdp")
-region = Rect2(434, 0, 217, 591)
+region = Rect2(434, 0, 217, 585)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvlmu"]
 atlas = ExtResource("3_28pdp")
-region = Rect2(651, 0, 217, 591)
+region = Rect2(651, 0, 217, 585)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ti72t"]
 atlas = ExtResource("3_28pdp")
-region = Rect2(868, 0, 217, 591)
+region = Rect2(868, 0, 217, 585)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gd6wu"]
 atlas = ExtResource("3_28pdp")
-region = Rect2(1085, 0, 217, 591)
+region = Rect2(1085, 0, 217, 585)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7j8l4"]
 atlas = ExtResource("4_ybjph")
