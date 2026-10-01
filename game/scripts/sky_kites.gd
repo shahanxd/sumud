@@ -7,11 +7,13 @@ class_name SkyKites
 const KITE_DIR := "res://assets/props/kites/"
 const KITE_COUNT := 8
 
-@export var count := 90
-@export var span := Rect2(-1200.0, 40.0, 8600.0, 460.0)
+@export var count := 110
+## World box the kites hang in: the visible sky sits between the frame top (about y 460 at the
+## ground camera) and the horizon (y 702); near kites may dip below it.
+@export var span := Rect2(-1200.0, 300.0, 8600.0, 420.0)
 ## Sprite scale range: small far kites, a few nearer ones.
-@export var scale_min := 0.06
-@export var scale_max := 0.2
+@export var scale_min := 0.07
+@export var scale_max := 0.26
 @export var string_color := Color(0.25, 0.22, 0.2, 0.35)
 @export var seed := 7
 
@@ -73,7 +75,7 @@ func _draw() -> void:
 	for i in _sprites.size():
 		var s := _sprites[i]
 		var top := s.position + Vector2(0.0, s.texture.get_size().y * 0.5 * s.scale.y)
-		var length := 180.0 + 1400.0 * s.scale.x
+		var length := 110.0 + 900.0 * s.scale.x
 		var foot := top + Vector2(-length * 0.35, length)
 		var mid := top.lerp(foot, 0.5) + Vector2(-length * 0.08, 0.0)
 		var pts := PackedVector2Array()
