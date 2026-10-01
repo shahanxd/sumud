@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://sumud_beach"]
+[gd_scene load_steps=19 format=3 uid="uid://sumud_beach"]
 
 [ext_resource type="Script" path="res://scripts/beats/beach_beat.gd" id="0_beat"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="0_npc"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://scripts/sea.gd" id="9_sea"]
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="6_sky"]
 [ext_resource type="Shader" path="res://shaders/sea.gdshader" id="7_sea"]
+[ext_resource type="Texture2D" path="res://assets/props/boat_hasaka.png" id="11_boat"]
+[ext_resource type="Texture2D" path="res://assets/props/kiosk.png" id="12_kiosk"]
+[ext_resource type="Script" path="res://scripts/sky_kites.gd" id="13_skykites"]
 
 [sub_resource type="ShaderMaterial" id="sky_mat"]
 shader = ExtResource("6_sky")
@@ -47,6 +50,10 @@ base_spread = 0.15
 fill_below = 40.0
 coverage = 0.38
 near_color = Color(0.27, 0.25, 0.3, 1)
+
+[node name="SkyKites" type="Node2D" parent="."]
+z_index = -5
+script = ExtResource("13_skykites")
 
 [node name="Ambient" type="CanvasModulate" parent="." groups=["ambient"]]
 
@@ -88,24 +95,36 @@ collision_mask = 0
 polygon = PackedVector2Array(-170, -66, 150, -66, 150, -80, 210, -128, 130, 0, -130, 0)
 
 [node name="Hull" type="Polygon2D" parent="Boat"]
+visible = false
 color = Color(0.11, 0.09, 0.09, 1)
 polygon = PackedVector2Array(-176, -60, -170, -78, 150, -84, 214, -134, 200, -80, 132, 0, -130, 0, -172, -20)
 
 [node name="Gunwale" type="Polygon2D" parent="Boat"]
+visible = false
 color = Color(0.2, 0.17, 0.15, 1)
 polygon = PackedVector2Array(-168, -74, 148, -80, 150, -72, -166, -66)
 
 [node name="Thwarts" type="Polygon2D" parent="Boat"]
+visible = false
 color = Color(0.2, 0.17, 0.15, 1)
 polygon = PackedVector2Array(-90, -62, -78, -62, -78, -58, -90, -58)
 
 [node name="Mast" type="Polygon2D" parent="Boat"]
+visible = false
 color = Color(0.11, 0.09, 0.09, 1)
 polygon = PackedVector2Array(-30, -76, -26, -76, -22, -250, -28, -250)
 
 [node name="Keel" type="Polygon2D" parent="Boat"]
+visible = false
 color = Color(0.2, 0.17, 0.15, 1)
 polygon = PackedVector2Array(-100, -30, 60, -30, 60, -27, -100, -27)
+
+[node name="HullSprite" type="Sprite2D" parent="Boat"]
+texture = ExtResource("11_boat")
+centered = false
+flip_h = true
+position = Vector2(-186, -146)
+scale = Vector2(0.375, 0.375)
 
 [node name="Crates" type="StaticBody2D" parent="."]
 position = Vector2(2300, 900)
@@ -197,50 +216,66 @@ collision_mask = 0
 polygon = PackedVector2Array(0, 0, 0, -300, 300, -300, 300, 0)
 
 [node name="Wall" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.34, 0.30, 0.26, 1)
 polygon = PackedVector2Array(0, 0, 0, -300, 300, -300, 300, 0)
 
 [node name="Hatch" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.1, 0.09, 0.09, 1)
 polygon = PackedVector2Array(30, -200, 30, -110, 250, -110, 250, -200)
 
 [node name="Counter" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.5, 0.42, 0.32, 1)
 polygon = PackedVector2Array(20, -116, 20, -104, 262, -104, 262, -116)
 
 [node name="Goods" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.46, 0.3, 0.3, 1)
 polygon = PackedVector2Array(60, -150, 60, -128, 88, -128, 88, -150)
 
 [node name="Goods2" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.34, 0.4, 0.5, 1)
 polygon = PackedVector2Array(150, -160, 150, -128, 180, -128, 180, -160)
 
 [node name="HatchLid" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.26, 0.23, 0.2, 1)
 polygon = PackedVector2Array(24, -200, 24, -206, 256, -206, 256, -200, 300, -250, 300, -258, 22, -258)
 
 [node name="Roof" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.22, 0.2, 0.18, 1)
 polygon = PackedVector2Array(-16, -300, 316, -300, 316, -310, -16, -310)
 
 [node name="RoofBattens" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.14, 0.13, 0.12, 1)
 polygon = PackedVector2Array(20, -310, 20, -318, 24, -318, 24, -310, 140, -310, 140, -318, 144, -318, 144, -310, 260, -310, 260, -318, 264, -318, 264, -310)
 
+[node name="KioskSprite" type="Sprite2D" parent="Stall"]
+texture = ExtResource("12_kiosk")
+centered = false
+position = Vector2(-152, -437)
+scale = Vector2(1.27, 1.27)
+
 [node name="Panels" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.16, 0.2, 0.28, 1)
 polygon = PackedVector2Array(40, -310, 60, -334, 140, -334, 120, -310)
 
 [node name="Sign" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.2, 0.17, 0.15, 1)
 polygon = PackedVector2Array(40, -262, 40, -292, 260, -292, 260, -262)
 
 [node name="SignText" type="Label" parent="Stall"]
-offset_left = 40.0
-offset_top = -298.0
-offset_right = 260.0
-offset_bottom = -256.0
+offset_left = 80.0
+offset_top = -432.0
+offset_right = 300.0
+offset_bottom = -392.0
 theme_override_colors/font_color = Color(0.88, 0.8, 0.62, 1)
 theme_override_fonts/font = ExtResource("10_amiri")
 theme_override_font_sizes/font_size = 28
@@ -250,6 +285,7 @@ vertical_alignment = 1
 text_direction = 2
 
 [node name="Awning" type="Polygon2D" parent="Stall"]
+visible = false
 color = Color(0.46, 0.22, 0.18, 1)
 polygon = PackedVector2Array(10, -230, 290, -230, 300, -206, 0, -206)
 

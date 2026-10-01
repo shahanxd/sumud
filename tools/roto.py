@@ -119,6 +119,10 @@ def _fill_holes(mask: np.ndarray) -> np.ndarray:
 
 
 def _mask_for(frame: np.ndarray, args: argparse.Namespace, plate: np.ndarray | None) -> np.ndarray:
+    if args.key:
+        key = np.array([int(args.key[i:i + 2], 16) for i in (0, 2, 4)], dtype=np.int16)
+        diff = np.abs(frame[:, :, :3].astype(np.int16) - key).sum(axis=2)
+        return diff > args.diff
     if plate is not None:
         diff = np.abs(frame[:, :, :3].astype(np.int16) - plate[:, :, :3].astype(np.int16)).sum(axis=2)
         return diff > args.diff
@@ -200,7 +204,15 @@ def cmd_key(args: argparse.Namespace) -> None:
     for i, m in enumerate(masks, start=1):
         crop = m[max(top - pad, 0):bottom + pad + 1, max(left - pad, 0):right + pad + 1]
         rgba = np.zeros((*crop.shape, 4), dtype=np.uint8)
-        rgba[crop] = (*colour, 255)
+        if args.key:
+            src = np.asarray(frames[i - 1], dtype=np.uint8)
+            if args.per_frame:
+                sys.exit("roto: --key and --per-frame cannot be combined")
+            win = src[max(top - pad, 0):bottom + pad + 1, max(left - pad, 0):right + pad + 1, :3]
+            rgba[crop, :3] = win[crop]
+            rgba[crop, 3] = 255
+        else:
+            rgba[crop] = (*colour, 255)
         im = Image.fromarray(rgba, "RGBA")
         if scale != 1.0:
             im = im.resize((max(1, round(im.width * scale)), max(1, round(im.height * scale))), Image.LANCZOS)
@@ -263,6 +275,7 @@ def main() -> None:
     k.add_argument("--colour", default="0b0a14", help="silhouette colour, hex")
     k.add_argument("--hand", help="static hand position x,y in output pixels")
     k.add_argument("--per-frame", dest="per_frame", action="store_true", help="crop each frame to its own box and bottom-align (jumps)")
+    k.add_argument("--key", help="colour-key mode: pixels near this hex colour become transparent and the rest keep their own colours (coloured props)")
     k.add_argument("--erase", action="append", default=[], metavar="X0,Y0,X1,Y1",
                    help="blank this region (fractions of the frame) before keying; repeatable")
     k.add_argument("--solid", action="store_true", help="fill enclosed holes (grey detail inside a silhouette)")
