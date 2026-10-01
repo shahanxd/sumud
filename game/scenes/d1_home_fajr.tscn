@@ -1,0 +1,183 @@
+[gd_scene load_steps=7 format=3 uid="uid://sumud_d1_home_fajr"]
+
+[ext_resource type="PackedScene" path="res://scenes/home.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/beats/d1_home_fajr_beat.gd" id="2_beat"]
+[ext_resource type="PackedScene" path="res://scenes/kite.tscn" id="3_kite"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="4_npc"]
+
+[sub_resource type="RectangleShape2D" id="look_shape"]
+size = Vector2(90, 150)
+
+[sub_resource type="RectangleShape2D" id="look_wide"]
+size = Vector2(170, 150)
+
+[node name="HomeFajr" instance=ExtResource("1_base")]
+script = ExtResource("2_beat")
+
+[node name="GasCrate" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.2, 0.17, 0.14, 1)
+polygon = PackedVector2Array(674, 870, 716, 870, 716, 900, 674, 900)
+
+[node name="GasRing" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.32, 0.34, 1)
+polygon = PackedVector2Array(680, 864, 710, 864, 710, 870, 680, 870)
+
+[node name="GasHose" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.14, 0.13, 0.12, 1)
+polygon = PackedVector2Array(658, 846, 684, 866, 682, 869, 656, 850)
+
+[node name="Pot" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.25, 0.25, 0.27, 1)
+polygon = PackedVector2Array(683, 846, 707, 846, 705, 864, 685, 864)
+
+[node name="Fridge" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.27, 0.28, 0.29, 1)
+polygon = PackedVector2Array(816, 776, 850, 776, 850, 900, 816, 900)
+
+[node name="FridgeSeam" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.18, 0.18, 0.19, 1)
+polygon = PackedVector2Array(816, 836, 850, 836, 850, 838, 816, 838)
+
+[node name="WeddingList" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.86, 0.82, 0.7, 1)
+polygon = PackedVector2Array(822, 798, 845, 798, 845, 828, 822, 828)
+
+[node name="WeddingListLines" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.26, 0.24, 1)
+polygon = PackedVector2Array(825, 804, 841, 804, 841, 806, 825, 806)
+
+[node name="WeddingListLines2" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.26, 0.24, 1)
+polygon = PackedVector2Array(825, 811, 839, 811, 839, 813, 825, 813)
+
+[node name="WeddingListLines3" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.3, 0.26, 0.24, 1)
+polygon = PackedVector2Array(825, 818, 842, 818, 842, 820, 825, 820)
+
+[node name="KeyNail" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.14, 0.13, 0.12, 1)
+polygon = PackedVector2Array(1022, 814, 1026, 814, 1026, 820, 1022, 820)
+
+[node name="KeyRing" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.58, 0.48, 0.3, 1)
+polygon = PackedVector2Array(1024, 818, 1030, 824, 1024, 830, 1018, 824)
+
+[node name="KeyShaft" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.58, 0.48, 0.3, 1)
+polygon = PackedVector2Array(1023, 830, 1026, 830, 1026, 848, 1030, 848, 1030, 851, 1023, 851)
+
+[node name="PrayerMat" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.44, 0.24, 0.22, 1)
+polygon = PackedVector2Array(1028, 894, 1094, 894, 1094, 900, 1028, 900)
+
+[node name="PrayerMatBand" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.86, 0.78, 0.6, 1)
+polygon = PackedVector2Array(1034, 896, 1088, 896, 1088, 898, 1034, 898)
+
+[node name="Basket" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.46, 0.38, 0.26, 1)
+polygon = PackedVector2Array(612, 882, 648, 882, 644, 900, 616, 900)
+
+[node name="Teta" parent="."]
+position = Vector2(1060, 900)
+
+[node name="Player" parent="."]
+position = Vector2(1200, 500)
+kite_path = NodePath("../Kite")
+
+[node name="Baba" parent="."]
+visible = false
+process_mode = 4
+position = Vector2(-2500, 900)
+
+[node name="Camera" parent="."]
+kite_path = NodePath("../Kite")
+
+[node name="Kite" parent="." instance=ExtResource("3_kite")]
+anchor_path = NodePath("../Player/Visual/Hand")
+ground_y = 760.0
+
+[node name="Mama" type="Node2D" parent="."]
+position = Vector2(740, 900)
+script = ExtResource("4_npc")
+npc_name = "Mama"
+build = 1
+headscarf = true
+character = "mama"
+
+[node name="BabaHome" type="Node2D" parent="."]
+position = Vector2(662, 900)
+script = ExtResource("4_npc")
+npc_name = "Baba"
+build = 1
+character = "baba"
+
+[node name="Karim" type="Node2D" parent="."]
+position = Vector2(1160, 876)
+rotation = 1.45
+script = ExtResource("4_npc")
+npc_name = "Karim"
+build = 1
+talk_radius = 1.0
+character = "karim"
+
+[node name="ScarfHook" type="Node2D" parent="."]
+position = Vector2(630, 900)
+
+[node name="Hook" type="Polygon2D" parent="ScarfHook"]
+z_index = -3
+color = Color(0.14, 0.13, 0.12, 1)
+polygon = PackedVector2Array(-2, -146, 4, -146, 4, -140, -2, -140)
+
+[node name="Cloth" type="Polygon2D" parent="ScarfHook"]
+z_index = -3
+color = Color(0.9, 0.88, 0.84, 1)
+polygon = PackedVector2Array(-4, -142, 6, -142, 10, -100, 8, -62, 0, -58, -6, -96)
+
+[node name="LookKey" type="Area2D" parent="."]
+position = Vector2(1024, 840)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="LookKey"]
+shape = SubResource("look_shape")
+
+[node name="LookList" type="Area2D" parent="."]
+position = Vector2(833, 840)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="LookList"]
+shape = SubResource("look_shape")
+
+[node name="LookKarim" type="Area2D" parent="."]
+position = Vector2(1215, 840)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="LookKarim"]
+shape = SubResource("look_wide")
+
+[node name="LookCat" type="Area2D" parent="."]
+position = Vector2(650, 840)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="LookCat"]
+shape = SubResource("look_shape")

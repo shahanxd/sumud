@@ -6,13 +6,28 @@ extends Node
 signal beat_started(beat: Beat, index: int)
 signal day_finished(day: int, context: Dictionary)
 
-## The prototype day: one continuous playable from the beach to the end card.
+## Day 1 follows docs/story/day1-script.md scene by scene (the scenes share three spaces:
+## the home with its roof, the street, the beach). The sampler's Day 3 and Day 4 content
+## (the strike at home, the water run, the night street) waits under those days. A listed
+## scene that does not exist yet is skipped with a warning, so the day runs while it grows.
 const DAYS := {
 	1: [
-		"res://scenes/beach.tscn",
-		"res://scenes/street.tscn",
+		"res://scenes/d1_home_fajr.tscn",
+		"res://scenes/d1_street_morning.tscn",
+		"res://scenes/d1_beach.tscn",
+		"res://scenes/d1_kite_run.tscn",
+		"res://scenes/d1_home_asr.tscn",
+		"res://scenes/d1_roof_maghrib.tscn",
+		"res://scenes/d1_roof_isha.tscn",
+		"res://scenes/notebook_page.tscn",
+	],
+	3: [
 		"res://scenes/home.tscn",
 		"res://scenes/night_street.tscn",
+		"res://scenes/notebook_page.tscn",
+	],
+	4: [
+		"res://scenes/street.tscn",
 		"res://scenes/notebook_page.tscn",
 	],
 }
@@ -102,6 +117,8 @@ func stitch_sounds(card: ChapterCard) -> void:
 func _day_title() -> String:
 	match day:
 		1: return "The kites"
+		3: return "The dark"
+		4: return "Water"
 		_: return ""
 
 

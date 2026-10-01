@@ -50,3 +50,4 @@ Founder decisions, with the date. The design document holds the reasoning; this 
 | 2026-10-01 | Readers deferred ("not now, later"); still required before any public build | lock E-06 |
 | 2026-10-01 | Budget as proposed, no ceiling given; Canva for images ("canva doing good") | lock K-02, F-01 |
 | 2026-10-01 | Generated world sound is in the game: 22 files from ElevenLabs (`tools/eleven.py`, prompts in `game/assets/audio/generated.json`); drone, rumble, ringing and the friend's placeholder stay synthesised. Free-tier output is non-commercial, so the files are drafts until the account is paid and they are regenerated | lock G-01; rights.md |
+| 2026-10-01 | Day 1 is rebuilt scene by scene from `docs/story/day1-script.md` as eight beats on the three existing spaces (inherited scenes); the sampler's strike, water run and night street become Day 3 and Day 4 placeholders | lock A-06, I-04 (continuous day scene still to come); day_runner.gd DAYS |

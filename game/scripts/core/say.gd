@@ -133,3 +133,111 @@ func key(k: String, seconds: float = 0.0) -> void:
 func text(k: String, lang: String = "en") -> String:
 	var entry: Dictionary = lines.get(k, {})
 	return String(entry.get(lang, k))
+
+
+## In bot mode, the option choose() picks (tests set it before the choice appears).
+var bot_choice := 0
+## The last choice made, by key, for tests and the notebook.
+var last_choice := ""
+
+var _choice_box: PanelContainer
+var _choice_labels: Array[Label] = []
+
+
+## An answer choice: two or three of Layla's lines, never timed, move_up / move_down (or
+## left / right) to pick and interact to say it. Returns the index chosen. The chosen line
+## is then shown as a normal line. The design's rule: choices are marks, not branches.
+func choose(keys: Array[String]) -> int:
+	while busy:
+		await get_tree().process_frame
+	busy = true
+	if _choice_box == null:
+		_build_choice()
+	for i in _choice_labels.size():
+		var l := _choice_labels[i]
+		l.visible = i < keys.size()
+		if i < keys.size():
+			var e: Dictionary = lines.get(keys[i], {})
+			var ar := String(e.get("ar", ""))
+			var en := String(e.get("en", keys[i]))
+			l.text = en if ar.is_empty() else ar + "\n" + en
+	var pick := 0
+	_paint_choice(pick)
+	_choice_box.visible = true
+	var tw := create_tween()
+	tw.tween_property(_choice_box, "modulate:a", 1.0, 0.25)
+	await tw.finished
+	var bot := OS.get_cmdline_user_args().has("--bot")
+	if bot:
+		pick = clampi(bot_choice, 0, keys.size() - 1)
+		_paint_choice(pick)
+		for _i in 4:
+			await get_tree().physics_frame
+	else:
+		for _i in 3:
+			await get_tree().physics_frame
+		while true:
+			await get_tree().physics_frame
+			if Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_left"):
+				pick = maxi(0, pick - 1)
+				_paint_choice(pick)
+			elif Input.is_action_just_pressed("move_down") or Input.is_action_just_pressed("move_right"):
+				pick = mini(keys.size() - 1, pick + 1)
+				_paint_choice(pick)
+			elif Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("jump"):
+				break
+	var out := create_tween()
+	out.tween_property(_choice_box, "modulate:a", 0.0, 0.2)
+	await out.finished
+	_choice_box.visible = false
+	busy = false
+	last_choice = keys[pick]
+	await key(keys[pick])
+	return pick
+
+
+func _build_choice() -> void:
+	_choice_box = PanelContainer.new()
+	_choice_box.anchor_left = 0.0
+	_choice_box.anchor_right = 1.0
+	_choice_box.anchor_top = 1.0
+	_choice_box.anchor_bottom = 1.0
+	_choice_box.offset_left = 420.0
+	_choice_box.offset_right = -420.0
+	_choice_box.offset_top = -48.0
+	_choice_box.offset_bottom = -48.0
+	_choice_box.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	_choice_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.03, 0.03, 0.04, 0.78)
+	style.set_corner_radius_all(4)
+	style.content_margin_left = 34.0
+	style.content_margin_right = 34.0
+	style.content_margin_top = 14.0
+	style.content_margin_bottom = 16.0
+	_choice_box.add_theme_stylebox_override("panel", style)
+	add_child(_choice_box)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	_choice_box.add_child(col)
+	var font := load(ARABIC_FONT)
+	for _i in 3:
+		var l := Label.new()
+		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD
+		l.add_theme_font_size_override("font_size", 24)
+		if font:
+			l.add_theme_font_override("font", font)
+		col.add_child(l)
+		_choice_labels.append(l)
+	_choice_box.modulate.a = 0.0
+	_choice_box.visible = false
+
+
+func _paint_choice(pick: int) -> void:
+	for i in _choice_labels.size():
+		var on := i == pick
+		_choice_labels[i].add_theme_color_override("font_color", Color(0.96, 0.93, 0.86) if on else Color(0.6, 0.57, 0.52))
+		_choice_labels[i].text = _choice_labels[i].text.trim_prefix("›  ")
+		if on:
+			_choice_labels[i].text = "›  " + _choice_labels[i].text

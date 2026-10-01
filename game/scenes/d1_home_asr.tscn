@@ -1,0 +1,226 @@
+[gd_scene load_steps=9 format=3 uid="uid://sumud_d1_home_asr"]
+
+[ext_resource type="PackedScene" path="res://scenes/home.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/beats/d1_home_asr_beat.gd" id="beat"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="carry"]
+[ext_resource type="PackedScene" path="res://scenes/kite.tscn" id="kite"]
+[ext_resource type="Texture2D" path="res://assets/props/kites/kite_3.png" id="kite_3"]
+
+[sub_resource type="RectangleShape2D" id="gap_shape"]
+size = Vector2(60, 140)
+
+[node name="HomeAsr" instance=ExtResource("base")]
+script = ExtResource("beat")
+
+[node name="Player" parent="."]
+position = Vector2(640, 900)
+kite_path = NodePath("../PatchedKite")
+
+[node name="Baba" parent="."]
+position = Vector2(740, 900)
+
+[node name="Teta" parent="."]
+position = Vector2(1030, 900)
+
+[node name="Candle" parent="."]
+visible = false
+position = Vector2(-4000, 2400)
+
+[node name="Camera" parent="."]
+kite_path = NodePath("../PatchedKite")
+
+[node name="Lights" parent="House"]
+visible = false
+
+[node name="Shelf" parent="House"]
+polygon = PackedVector2Array(660, 840, 800, 840, 800, 846, 660, 846)
+
+[node name="JarA" parent="House"]
+polygon = PackedVector2Array(672, 818, 690, 818, 690, 840, 672, 840)
+
+[node name="JarB" parent="House"]
+polygon = PackedVector2Array(700, 824, 722, 824, 722, 840, 700, 840)
+
+[node name="JarC" parent="House"]
+polygon = PackedVector2Array(732, 814, 744, 814, 744, 840, 732, 840)
+
+[node name="SewingTin" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.36, 0.4, 0.44, 1)
+polygon = PackedVector2Array(752, 820, 796, 820, 796, 840, 752, 840)
+
+[node name="SewingTinLid" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.46, 0.5, 0.54, 1)
+polygon = PackedVector2Array(750, 818, 798, 818, 798, 822, 750, 822)
+
+[node name="Lists" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.86, 0.82, 0.72, 1)
+polygon = PackedVector2Array(904, 856, 926, 854, 928, 862, 906, 862)
+
+[node name="ListsB" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.8, 0.76, 0.66, 1)
+polygon = PackedVector2Array(912, 852, 934, 851, 936, 858, 914, 858)
+
+[node name="Knafeh" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.72, 0.42, 0.18, 1)
+polygon = PackedVector2Array(936, 856, 974, 856, 972, 850, 938, 850)
+
+[node name="Net" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.22, 0.25, 0.22, 0.75)
+polygon = PackedVector2Array(690, 900, 760, 900, 772, 846, 748, 812, 716, 830, 688, 858)
+
+[node name="Fan" type="Node2D" parent="."]
+z_index = -3
+position = Vector2(800, 728)
+
+[node name="Rod" type="Polygon2D" parent="Fan"]
+color = Color(0.2, 0.19, 0.2, 1)
+polygon = PackedVector2Array(-2, -8, 2, -8, 2, 0, -2, 0)
+
+[node name="Blades" type="Node2D" parent="Fan"]
+
+[node name="BladeA" type="Polygon2D" parent="Fan/Blades"]
+color = Color(0.2, 0.19, 0.2, 1)
+polygon = PackedVector2Array(-26, -3, 26, -3, 26, 3, -26, 3)
+
+[node name="BladeB" type="Polygon2D" parent="Fan/Blades"]
+rotation = 1.0472
+color = Color(0.2, 0.19, 0.2, 1)
+polygon = PackedVector2Array(-26, -3, 26, -3, 26, 3, -26, 3)
+
+[node name="BladeC" type="Polygon2D" parent="Fan/Blades"]
+rotation = 2.0944
+color = Color(0.2, 0.19, 0.2, 1)
+polygon = PackedVector2Array(-26, -3, 26, -3, 26, 3, -26, 3)
+
+[node name="Hub" type="Polygon2D" parent="Fan"]
+color = Color(0.3, 0.29, 0.3, 1)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="LeftBlock" type="Polygon2D" parent="."]
+z_index = -5
+color = Color(0.14, 0.12, 0.13, 1)
+polygon = PackedVector2Array(120, 560, 520, 560, 520, 900, 120, 900)
+
+[node name="NeighbourRoof" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="NeighbourRoof"]
+polygon = PackedVector2Array(1510, 500, 2000, 500, 2000, 900, 1510, 900)
+
+[node name="Body" type="Polygon2D" parent="NeighbourRoof"]
+z_index = -5
+color = Color(0.14, 0.12, 0.13, 1)
+polygon = PackedVector2Array(1510, 500, 2000, 500, 2000, 900, 1510, 900)
+
+[node name="Parapet" type="Polygon2D" parent="NeighbourRoof"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1510, 486, 2000, 486, 2000, 500, 1510, 500)
+
+[node name="Tank" type="Polygon2D" parent="NeighbourRoof"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1800, 500, 1800, 440, 1860, 440, 1860, 500)
+
+[node name="TankBand" type="Polygon2D" parent="NeighbourRoof"]
+color = Color(0.2, 0.19, 0.2, 1)
+polygon = PackedVector2Array(1800, 466, 1860, 466, 1860, 470, 1800, 470)
+
+[node name="Hatch" type="Polygon2D" parent="NeighbourRoof"]
+color = Color(0.09, 0.08, 0.1, 1)
+polygon = PackedVector2Array(1900, 500, 1900, 456, 1960, 456, 1960, 500)
+
+[node name="StreetWindows" type="Node2D" parent="."]
+z_index = -4
+
+[node name="W1" type="Polygon2D" parent="StreetWindows"]
+color = Color(0.98, 0.76, 0.42, 0)
+polygon = PackedVector2Array(170, 640, 250, 640, 250, 720, 170, 720)
+
+[node name="W2" type="Polygon2D" parent="StreetWindows"]
+color = Color(0.98, 0.76, 0.42, 0)
+polygon = PackedVector2Array(300, 640, 380, 640, 380, 720, 300, 720)
+
+[node name="W3" type="Polygon2D" parent="StreetWindows"]
+color = Color(0.98, 0.76, 0.42, 0)
+polygon = PackedVector2Array(430, 640, 510, 640, 510, 720, 430, 720)
+
+[node name="W4" type="Polygon2D" parent="StreetWindows"]
+color = Color(0.98, 0.76, 0.42, 0)
+polygon = PackedVector2Array(1580, 600, 1660, 600, 1660, 680, 1580, 680)
+
+[node name="W5" type="Polygon2D" parent="StreetWindows"]
+color = Color(0.98, 0.76, 0.42, 0)
+polygon = PackedVector2Array(1720, 600, 1800, 600, 1800, 680, 1720, 680)
+
+[node name="W6" type="Polygon2D" parent="StreetWindows"]
+color = Color(0.98, 0.76, 0.42, 0)
+polygon = PackedVector2Array(1860, 600, 1940, 600, 1940, 680, 1860, 680)
+
+[node name="GapSpot" type="Area2D" parent="."]
+position = Vector2(1350, 450)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="GapSpot"]
+shape = SubResource("gap_shape")
+
+[node name="Mama" type="Node2D" parent="."]
+position = Vector2(870, 900)
+script = ExtResource("npc")
+npc_name = "Mama"
+build = 1
+headscarf = true
+talk_radius = 120.0
+
+[node name="Karim" type="Node2D" parent="."]
+position = Vector2(1372, 882)
+rotation = -1.5708
+script = ExtResource("npc")
+npc_name = "Karim"
+build = 1
+talk_radius = 0.0
+
+[node name="Phones" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.12, 0.11, 0.12, 1)
+polygon = PackedVector2Array(1236, 892, 1250, 892, 1250, 900, 1236, 900)
+
+[node name="Sami" type="Node2D" parent="."]
+position = Vector2(1560, 500)
+script = ExtResource("npc")
+npc_name = "Sami"
+talk_radius = 240.0
+
+[node name="TornKite" type="Node2D" parent="Sami"]
+position = Vector2(-24, -54)
+
+[node name="Sail" type="Sprite2D" parent="Sami/TornKite"]
+rotation = 0.3
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("kite_3")
+
+[node name="Tear" type="Polygon2D" parent="Sami/TornKite"]
+color = Color(0.16, 0.14, 0.15, 1)
+polygon = PackedVector2Array(-8, -12, 2, -16, 4, -2, 12, 10, 0, 8, -6, 0)
+
+[node name="Stitch" type="Line2D" parent="Sami/TornKite"]
+visible = false
+width = 1.5
+default_color = Color(0.92, 0.88, 0.8, 1)
+points = PackedVector2Array(-10, -14, -4, -8, 0, -12, 2, -4, 6, -2, 4, 4, 10, 6, 8, 12)
+
+[node name="Spool" parent="." instance=ExtResource("carry")]
+position = Vector2(774, 840)
+label = "spool"
+color = Color(0.55, 0.5, 0.42, 1)
+hookable = false
+
+[node name="PatchedKite" parent="." instance=ExtResource("kite")]
+anchor_path = NodePath("../Player/Visual/Hand")

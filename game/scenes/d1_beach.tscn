@@ -1,0 +1,283 @@
+[gd_scene load_steps=17 format=3 uid="uid://sumud_d1_beach"]
+
+[ext_resource type="PackedScene" path="res://scenes/beach.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/beats/d1_beach_beat.gd" id="beat"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="npc"]
+[ext_resource type="Script" path="res://scripts/d1_crowd_kite.gd" id="crowd_kite"]
+[ext_resource type="Script" path="res://scripts/d1_sami_kite.gd" id="sami_kite"]
+[ext_resource type="PackedScene" path="res://scenes/carryable.tscn" id="carry"]
+[ext_resource type="PackedScene" path="res://scenes/kite.tscn" id="kite"]
+[ext_resource type="FontFile" path="res://assets/fonts/amiri/Amiri-Bold.ttf" id="amiri"]
+[ext_resource type="Texture2D" path="res://assets/props/kites/kite_2.png" id="kite_2"]
+[ext_resource type="Texture2D" path="res://assets/props/kites/kite_7.png" id="kite_7"]
+
+[sub_resource type="RectangleShape2D" id="sit_shape"]
+size = Vector2(140, 160)
+
+[sub_resource type="Gradient" id="tail_fade"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(1, 1, 1, 0.9, 1, 1, 1, 0.3)
+
+[node name="Beach1" instance=ExtResource("base")]
+script = ExtResource("beat")
+
+[node name="Bread" parent="."]
+visible = false
+position = Vector2(-5000, 2400)
+hookable = false
+
+[node name="Jerrycan" parent="."]
+visible = false
+position = Vector2(-5100, 2400)
+hookable = false
+
+[node name="WaterDrum" parent="."]
+visible = false
+position = Vector2(-5200, 2400)
+hookable = false
+
+[node name="StringSpool" parent="."]
+visible = false
+position = Vector2(-5300, 2400)
+hookable = false
+
+[node name="Boat" parent="."]
+position = Vector2(1500, 842)
+
+[node name="PropL" type="Polygon2D" parent="Boat"]
+z_index = 1
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(-134, 0, -96, 0, -96, 49, -134, 49)
+
+[node name="PropR" type="Polygon2D" parent="Boat"]
+z_index = 1
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(96, 0, 134, 0, 134, 67, 96, 67)
+
+[node name="PropLBand" type="Polygon2D" parent="Boat"]
+z_index = 1
+color = Color(0.2, 0.17, 0.15, 1)
+polygon = PackedVector2Array(-134, 20, -96, 20, -96, 24, -134, 24)
+
+[node name="PropRBand" type="Polygon2D" parent="Boat"]
+z_index = 1
+color = Color(0.2, 0.17, 0.15, 1)
+polygon = PackedVector2Array(96, 30, 134, 30, 134, 34, 96, 34)
+
+[node name="Bag" parent="." instance=ExtResource("carry")]
+position = Vector2(1500, 900)
+label = "bag"
+color = Color(0.36, 0.47, 0.6, 1)
+hookable = false
+
+[node name="Sami" parent="."]
+character = "sami"
+
+[node name="Hand" type="Node2D" parent="Sami"]
+position = Vector2(16, -60)
+
+[node name="RestingKiteA" type="Sprite2D" parent="Sami"]
+position = Vector2(-52, -34)
+rotation = 0.45
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("kite_2")
+
+[node name="RestingKiteB" type="Sprite2D" parent="Sami"]
+position = Vector2(48, -32)
+rotation = -0.4
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("kite_7")
+
+[node name="SamiKite" parent="." instance=ExtResource("kite")]
+script = ExtResource("sami_kite")
+anchor_path = NodePath("../Sami/Hand")
+
+[node name="LongTail" type="Line2D" parent="Kite"]
+visible = false
+width = 4.0
+default_color = Color(0.45, 0.58, 0.72, 0.9)
+gradient = SubResource("tail_fade")
+
+[node name="SitSpot" type="Area2D" parent="."]
+position = Vector2(3270, 820)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="SitSpot"]
+shape = SubResource("sit_shape")
+
+[node name="Umbrella1" type="Node2D" parent="."]
+z_index = -4
+position = Vector2(760, 900)
+
+[node name="Canopy" type="Polygon2D" parent="Umbrella1"]
+color = Color(0.44, 0.2, 0.18, 1)
+polygon = PackedVector2Array(-72, -150, -40, -176, 0, -186, 40, -176, 72, -150, 0, -142)
+
+[node name="Pole" type="Polygon2D" parent="Umbrella1"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(-2, -150, 2, -150, 2, 0, -2, 0)
+
+[node name="Umbrella2" type="Node2D" parent="."]
+z_index = -4
+position = Vector2(2580, 900)
+
+[node name="Canopy" type="Polygon2D" parent="Umbrella2"]
+color = Color(0.2, 0.3, 0.42, 1)
+polygon = PackedVector2Array(-72, -150, -40, -176, 0, -186, 40, -176, 72, -150, 0, -142)
+
+[node name="Pole" type="Polygon2D" parent="Umbrella2"]
+color = Color(0.11, 0.09, 0.09, 1)
+polygon = PackedVector2Array(-2, -150, 2, -150, 2, 0, -2, 0)
+
+[node name="Crowd1" type="Node2D" parent="."]
+position = Vector2(620, 900)
+script = ExtResource("npc")
+npc_name = "Mother"
+build = 1
+headscarf = true
+talk_radius = 0.0
+
+[node name="Crowd2" type="Node2D" parent="."]
+position = Vector2(664, 900)
+script = ExtResource("npc")
+npc_name = "Child"
+talk_radius = 0.0
+
+[node name="HeldKite" type="Node2D" parent="Crowd2" groups=["d1_flyer"]]
+position = Vector2(12, -58)
+script = ExtResource("crowd_kite")
+texture_index = 1
+
+[node name="Crowd3" type="Node2D" parent="."]
+position = Vector2(850, 900)
+script = ExtResource("npc")
+npc_name = "Girl"
+headscarf = true
+talk_radius = 0.0
+
+[node name="HeldKite" type="Node2D" parent="Crowd3" groups=["d1_flyer"]]
+position = Vector2(12, -58)
+script = ExtResource("crowd_kite")
+texture_index = 4
+fly_offset = Vector2(260, -300)
+
+[node name="Crowd4" type="Node2D" parent="."]
+position = Vector2(1000, 900)
+script = ExtResource("npc")
+npc_name = "Father"
+build = 1
+talk_radius = 0.0
+
+[node name="Crowd5" type="Node2D" parent="."]
+position = Vector2(1044, 900)
+script = ExtResource("npc")
+npc_name = "Boy"
+talk_radius = 0.0
+
+[node name="HeldKite" type="Node2D" parent="Crowd5" groups=["d1_flyer"]]
+position = Vector2(12, -58)
+script = ExtResource("crowd_kite")
+texture_index = 2
+fly_offset = Vector2(200, -380)
+
+[node name="Crowd6" type="Node2D" parent="."]
+position = Vector2(1250, 900)
+script = ExtResource("npc")
+npc_name = "Small boy"
+talk_radius = 0.0
+
+[node name="Hussein" type="Node2D" parent="."]
+position = Vector2(1760, 900)
+script = ExtResource("npc")
+npc_name = "Hussein"
+talk_radius = 0.0
+
+[node name="Hassan" type="Node2D" parent="."]
+position = Vector2(1812, 900)
+script = ExtResource("npc")
+npc_name = "Hassan"
+talk_radius = 0.0
+
+[node name="Crowd7" type="Node2D" parent="."]
+position = Vector2(1900, 900)
+script = ExtResource("npc")
+npc_name = "Uncle"
+build = 1
+talk_radius = 0.0
+
+[node name="HeldKite" type="Node2D" parent="Crowd7" groups=["d1_flyer"]]
+position = Vector2(14, -72)
+script = ExtResource("crowd_kite")
+texture_index = 5
+sail_scale = 0.15
+fly_offset = Vector2(240, -420)
+
+[node name="Crowd8" type="Node2D" parent="."]
+position = Vector2(2100, 900)
+script = ExtResource("npc")
+npc_name = "Aunt"
+build = 1
+headscarf = true
+talk_radius = 0.0
+
+[node name="Crowd9" type="Node2D" parent="."]
+position = Vector2(2150, 900)
+script = ExtResource("npc")
+npc_name = "Little girl"
+headscarf = true
+talk_radius = 0.0
+
+[node name="HeldKite" type="Node2D" parent="Crowd9" groups=["d1_flyer"]]
+position = Vector2(12, -58)
+script = ExtResource("crowd_kite")
+texture_index = 8
+fly_offset = Vector2(180, -330)
+
+[node name="Volunteer" type="Node2D" parent="."]
+position = Vector2(2450, 900)
+script = ExtResource("npc")
+npc_name = "Volunteer"
+build = 1
+talk_radius = 0.0
+
+[node name="Megaphone" type="Polygon2D" parent="Volunteer"]
+position = Vector2(18, -76)
+color = Color(0.12, 0.1, 0.1, 1)
+polygon = PackedVector2Array(0, -4, 0, 4, 10, 5, 30, 13, 30, -13, 10, -5)
+
+[node name="Crowd10" type="Node2D" parent="."]
+position = Vector2(2950, 900)
+script = ExtResource("npc")
+npc_name = "Grandmother"
+build = 2
+headscarf = true
+talk_radius = 0.0
+
+[node name="Crowd11" type="Node2D" parent="."]
+position = Vector2(2996, 900)
+script = ExtResource("npc")
+npc_name = "Grandchild"
+talk_radius = 0.0
+
+[node name="HeldKite" type="Node2D" parent="Crowd11" groups=["d1_flyer"]]
+position = Vector2(12, -58)
+script = ExtResource("crowd_kite")
+texture_index = 3
+fly_offset = Vector2(230, -360)
+
+[node name="Count" type="Label" parent="HUD"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 80.0
+offset_right = 320.0
+offset_bottom = 300.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.97, 0.93, 0.85, 0.95)
+theme_override_fonts/font = ExtResource("amiri")
+theme_override_font_sizes/font_size = 96
+horizontal_alignment = 1
+vertical_alignment = 1

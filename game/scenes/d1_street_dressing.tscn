@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://sumud_d1_street_dressing"]
+
+[ext_resource type="Script" path="res://scripts/d1_street_dressing.gd" id="1_dress"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="2_npc"]
+
+[sub_resource type="RectangleShape2D" id="hook_shape"]
+size = Vector2(170, 200)
+
+[node name="Dressing" type="Node2D"]
+z_index = -1
+script = ExtResource("1_dress")
+
+[node name="Structure" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Roof" type="CollisionPolygon2D" parent="Structure"]
+polygon = PackedVector2Array(-548, 586, -129, 586, -129, 680, -141, 680, -141, 600, -548, 600)
+
+[node name="Stairs" type="CollisionPolygon2D" parent="Structure"]
+polygon = PackedVector2Array(-129, 660, -60, 660, 300, 900, 300, 920, -60, 680, -129, 680)
+
+[node name="LeftWall" type="CollisionPolygon2D" parent="Structure"]
+polygon = PackedVector2Array(-568, 300, -548, 300, -548, 586, -568, 586)
+
+[node name="Laundry" type="Node2D" parent="."]
+
+[node name="Line" type="Line2D" parent="Laundry"]
+width = 2.0
+default_color = Color(0.2, 0.17, 0.15, 0.9)
+
+[node name="Sheet1" type="Polygon2D" parent="Laundry"]
+color = Color(0.62, 0.62, 0.64, 1)
+polygon = PackedVector2Array(-472, 452, -408, 452, -408, 548, -472, 548)
+
+[node name="Sheet2" type="Polygon2D" parent="Laundry"]
+color = Color(0.78, 0.76, 0.72, 1)
+polygon = PackedVector2Array(-372, 456, -308, 456, -308, 556, -372, 556)
+
+[node name="Sheet3" type="Polygon2D" parent="Laundry"]
+color = Color(0.34, 0.4, 0.5, 1)
+polygon = PackedVector2Array(-272, 452, -208, 452, -208, 540, -272, 540)
+
+[node name="Hook" type="Area2D" parent="Laundry"]
+position = Vector2(-340, 540)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Laundry/Hook"]
+shape = SubResource("hook_shape")
+
+[node name="HajjaAmina" type="Node2D" parent="."]
+position = Vector2(-200, 740)
+script = ExtResource("2_npc")
+npc_name = "Hajja Amina"
+build = 2
+headscarf = true
+
+[node name="AbuAhmad" type="Node2D" parent="."]
+position = Vector2(1250, 900)
+script = ExtResource("2_npc")
+npc_name = "Abu Ahmad"
+build = 1
+character = "abu_ahmad"
+
+[node name="AbuFadi" type="Node2D" parent="."]
+position = Vector2(1636, 900)
+script = ExtResource("2_npc")
+npc_name = "Abu Fadi"
+build = 1
+
+[node name="UmSamir" type="Node2D" parent="."]
+position = Vector2(2700, 900)
+script = ExtResource("2_npc")
+npc_name = "Um Samir"
+build = 1
+headscarf = true
+dress = 2
+
+[node name="Samir" type="Node2D" parent="."]
+position = Vector2(2752, 900)
+script = ExtResource("2_npc")
+npc_name = "Samir"
+build = 0
+
+[node name="Hassan" type="Node2D" parent="."]
+position = Vector2(3150, 900)
+script = ExtResource("2_npc")
+npc_name = "Hassan"
+build = 0
+
+[node name="Hussein" type="Node2D" parent="."]
+position = Vector2(3206, 900)
+script = ExtResource("2_npc")
+npc_name = "Hussein"
+build = 0
+
+[node name="Sami" type="Node2D" parent="."]
+visible = false
+position = Vector2(4990, 900)
+script = ExtResource("2_npc")
+npc_name = "Sami"
+build = 0
+character = "sami"

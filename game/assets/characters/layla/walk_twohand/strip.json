@@ -1,8 +1,9 @@
 {
   "frames": 8,
-  "frame_w": 289,
-  "frame_h": 570,
+  "frame_w": 255,
+  "frame_h": 512,
   "fps": 10,
   "loop": true,
+  "stand_ratio": 1.0,
   "hand": null
 }

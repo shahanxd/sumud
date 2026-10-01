@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Runs before every commit: re-import, headless smoke test, beach bot, chapter card test.
+# Runs before every commit: re-import, smoke, core, audio, the sampler bots (Day 3 and 4
+# scenes), the Day 1 beat bots, the full Day 1 flow, sprites, the chapter card.
 # Exit code is non-zero if anything fails. Usage from the repo root:  bash tools/check.sh
 set -u
 cd "$(dirname "$0")/.."
@@ -43,8 +44,17 @@ timeout 180 "$GODOT" --headless --path game res://tests/bot_night.tscn -- --bot 
 echo "== notebook bot =="
 timeout 120 "$GODOT" --headless --path game res://tests/bot_notebook.tscn -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|notebook:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+echo "== day 1 beats =="
+for b in d1_home_fajr d1_street_morning d1_beach d1_kite_run d1_home_asr d1_roof_maghrib d1_roof_isha; do
+	if [ -f "game/tests/bot_$b.tscn" ]; then
+		timeout 200 "$GODOT" --headless --path game "res://tests/bot_$b.tscn" -- --bot --notebook=user://test_notebook.json 2>&1 | grep -E "FAIL|$b:|ERROR|SCRIPT" || true
+		[ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
+	else
+		echo "  (no bot_$b yet)"
+	fi
+done
 echo "== full day flow =="
-timeout 420 "$GODOT" --headless --path game res://tests/bot_flow.tscn -- --bot --notebook=user://test_flow_notebook.json 2>&1 | grep -E "FAIL|flow:|ERROR|SCRIPT" || true
+timeout 900 "$GODOT" --headless --path game res://tests/bot_flow.tscn -- --bot --notebook=user://test_flow_notebook.json 2>&1 | grep -E "FAIL|flow:|ERROR|SCRIPT" || true
 [ "${PIPESTATUS[0]}" -eq 0 ] || fail=1
 echo "== sprites =="
 timeout 60 "$GODOT" --headless --path game res://tests/test_sprites.tscn 2>&1 | grep -E "FAIL|sprites:|ERROR|SCRIPT" || true

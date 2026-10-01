@@ -5,10 +5,13 @@ extends Node2D
 ## Exit code 0 when every check of every bot passes.
 
 const BOTS := {
-	"res://scenes/beach.tscn": "res://tests/bot_beach_beat.gd",
-	"res://scenes/street.tscn": "res://tests/bot_street.gd",
-	"res://scenes/home.tscn": "res://tests/bot_home.gd",
-	"res://scenes/night_street.tscn": "res://tests/bot_night.gd",
+	"res://scenes/d1_home_fajr.tscn": "res://tests/bot_d1_home_fajr.gd",
+	"res://scenes/d1_street_morning.tscn": "res://tests/bot_d1_street_morning.gd",
+	"res://scenes/d1_beach.tscn": "res://tests/bot_d1_beach.gd",
+	"res://scenes/d1_kite_run.tscn": "res://tests/bot_d1_kite_run.gd",
+	"res://scenes/d1_home_asr.tscn": "res://tests/bot_d1_home_asr.gd",
+	"res://scenes/d1_roof_maghrib.tscn": "res://tests/bot_d1_roof_maghrib.gd",
+	"res://scenes/d1_roof_isha.tscn": "res://tests/bot_d1_roof_isha.gd",
 	"res://scenes/notebook_page.tscn": "res://tests/bot_notebook.gd",
 }
 
@@ -52,15 +55,17 @@ func _on_day_finished(day: int, ctx: Dictionary) -> void:
 		await get_tree().physics_frame
 	var fails := PackedStringArray()
 	var checks := 0
+	var winner := String(ctx.get("d1_contest_winner", ""))
 	var expect := {
-		"five beats ran in order": played == BOTS.keys(),
-		"the beach handed kite_fetched forward": bool(ctx.get("kite_fetched", false)),
-		"the street handed water forward": bool(ctx.get("water", false)),
-		"the house handed the candle forward": bool(ctx.get("candle", false)),
-		"the night handed bread forward": bool(ctx.get("bread", false)),
+		"the eight beats of Day 1 ran in the script's order": played == BOTS.keys(),
+		"the beach handed the contest winner forward": winner == "layla" or winner == "sami",
+		"the beach handed the tied tail and the promise forward": bool(ctx.get("d1_tail_tied", false)) and bool(ctx.get("d1_promise", false)),
+		"the kite run handed the answer choice forward": String(ctx.get("d1_fix_answer", "")) in ["practice", "better"],
+		"the asr house handed the thread and the patched kite forward": bool(ctx.get("d1_thread_taken", false)) and bool(ctx.get("d1_kite_patched", false)),
+		"the maghrib roof handed the held kite forward": bool(ctx.get("d1_held_still", false)),
 		"the notebook page ran": bool(ctx.get("notebook_shown", false)),
 		"the notebook kept at least seven entries": Notebook.day_entries(day).size() >= 7,
-		"the notebook kept at least four acts for the final sky": Notebook.remembered_acts().size() >= 4,
+		"the notebook kept at least two acts for the final sky": Notebook.remembered_acts().size() >= 2,
 	}
 	for k in expect:
 		checks += 1

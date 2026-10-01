@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://sumud_d1_kite_run"]
+
+[ext_resource type="PackedScene" uid="uid://sumud_street" path="res://scenes/street.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/beats/d1_kite_run_beat.gd" id="2_beat"]
+[ext_resource type="PackedScene" uid="uid://sumud_d1_street_dressing" path="res://scenes/d1_street_dressing.tscn" id="3_dress"]
+
+[node name="KiteRun" instance=ExtResource("1_base")]
+script = ExtResource("2_beat")
+
+[node name="Truck" parent="." index="5"]
+visible = false
+
+[node name="Jerrycan" parent="." index="6"]
+visible = false
+
+[node name="Plank" parent="." index="7"]
+visible = false
+
+[node name="HomeDoor" parent="." index="8"]
+position = Vector2(440, 800)
+
+[node name="Player" parent="." index="9"]
+position = Vector2(4880, 900)
+
+[node name="Dressing" parent="." instance=ExtResource("3_dress")]

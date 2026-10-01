@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://sumud_d1_roof_isha"]
+
+[ext_resource type="PackedScene" path="res://scenes/home.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/beats/d1_roof_isha_beat.gd" id="2_beat"]
+
+[node name="RoofIsha" instance=ExtResource("1_base")]
+script = ExtResource("2_beat")
+
+[node name="Cushion" type="Polygon2D" parent="House"]
+z_index = -3
+color = Color(0.52, 0.42, 0.3, 1)
+polygon = PackedVector2Array(1304, 486, 1356, 486, 1356, 500, 1304, 500)
+
+[node name="Player" parent="."]
+position = Vector2(1020, 500)
+
+[node name="Baba" parent="."]
+position = Vector2(1090, 500)
+
+[node name="SeaLight" type="Polygon2D" parent="."]
+z_index = -9
+position = Vector2(-140, 742)
+color = Color(0.92, 0.88, 0.74, 0.9)
+polygon = PackedVector2Array(-4, 0, 0, -3, 4, 0, 0, 3)
+
+[node name="SeaGaze" type="Node2D" parent="."]
+position = Vector2(560, 610)
