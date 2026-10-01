@@ -156,6 +156,10 @@ def cmd_key(args: argparse.Namespace) -> None:
         if plate is not None and plate.shape != f.shape:
             sys.exit("roto: background plate must match the frame size")
         m = _mask_for(f, args, plate)
+        for region in args.erase:
+            x0, y0, x1, y1 = (float(v) for v in region.split(","))
+            hh, ww = m.shape
+            m[int(y0 * hh):int(y1 * hh), int(x0 * ww):int(x1 * ww)] = False
         m = _dilate(_erode(m, args.clean), args.clean)          # open: drop specks
         m = _erode(_dilate(m, args.fill), args.fill)            # close: fill pin holes
         m = _largest_components(m, 1.0 if args.largest else 0.02)
@@ -259,6 +263,8 @@ def main() -> None:
     k.add_argument("--colour", default="0b0a14", help="silhouette colour, hex")
     k.add_argument("--hand", help="static hand position x,y in output pixels")
     k.add_argument("--per-frame", dest="per_frame", action="store_true", help="crop each frame to its own box and bottom-align (jumps)")
+    k.add_argument("--erase", action="append", default=[], metavar="X0,Y0,X1,Y1",
+                   help="blank this region (fractions of the frame) before keying; repeatable")
     k.add_argument("--solid", action="store_true", help="fill enclosed holes (grey detail inside a silhouette)")
     k.add_argument("--largest", action="store_true", help="keep only the single biggest blob (a figure and what it holds)")
     k.set_defaults(fn=cmd_key)
