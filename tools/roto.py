@@ -100,6 +100,24 @@ def _largest_components(mask: np.ndarray, keep_ratio: float = 0.02) -> np.ndarra
     return np.isin(labels, list(keep))
 
 
+def _fill_holes(mask: np.ndarray) -> np.ndarray:
+    """Everything the background cannot reach from the image border becomes figure."""
+    h, w = mask.shape
+    outside = np.zeros((h, w), dtype=bool)
+    stack = [(y, x) for x in range(w) for y in (0, h - 1) if not mask[y, x]]
+    stack += [(y, x) for y in range(h) for x in (0, w - 1) if not mask[y, x]]
+    for y, x in stack:
+        outside[y, x] = True
+    while stack:
+        y, x = stack.pop()
+        for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            ny, nx = y + dy, x + dx
+            if 0 <= ny < h and 0 <= nx < w and not mask[ny, nx] and not outside[ny, nx]:
+                outside[ny, nx] = True
+                stack.append((ny, nx))
+    return ~outside
+
+
 def _mask_for(frame: np.ndarray, args: argparse.Namespace, plate: np.ndarray | None) -> np.ndarray:
     if plate is not None:
         diff = np.abs(frame[:, :, :3].astype(np.int16) - plate[:, :, :3].astype(np.int16)).sum(axis=2)
@@ -141,6 +159,8 @@ def cmd_key(args: argparse.Namespace) -> None:
         m = _dilate(_erode(m, args.clean), args.clean)          # open: drop specks
         m = _erode(_dilate(m, args.fill), args.fill)            # close: fill pin holes
         m = _largest_components(m, 1.0 if args.largest else 0.02)
+        if args.solid:
+            m = _fill_holes(m)
         masks.append(m)
     ys = [np.nonzero(m.any(axis=1))[0] for m in masks]
     xs = [np.nonzero(m.any(axis=0))[0] for m in masks]
@@ -239,6 +259,7 @@ def main() -> None:
     k.add_argument("--colour", default="0b0a14", help="silhouette colour, hex")
     k.add_argument("--hand", help="static hand position x,y in output pixels")
     k.add_argument("--per-frame", dest="per_frame", action="store_true", help="crop each frame to its own box and bottom-align (jumps)")
+    k.add_argument("--solid", action="store_true", help="fill enclosed holes (grey detail inside a silhouette)")
     k.add_argument("--largest", action="store_true", help="keep only the single biggest blob (a figure and what it holds)")
     k.set_defaults(fn=cmd_key)
 
