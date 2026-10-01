@@ -36,7 +36,7 @@ The founder said yes on 30 September 2026 to moving the launch for quality. The 
 | Role | Who | Does |
 | --- | --- | --- |
 | Founder, director | shahanxd | Decides; plays every build; films and records; recruits; pays; signs the lock and each gate |
-| Agent (engineering, design, first drafts) | An AI coding agent in this repository | Code, tools, level building, bots, docs, the English guidance script, the Claude Doc sync; writes the code that draws the world (lock F-09); never uses generative image, audio or voice models |
+| Agent (engineering, design, first drafts) | An AI coding agent in this repository | Code, tools, level building, bots, docs, the English guidance script, the Claude Doc sync; generates art, textures, frames and sound with image and audio models within F-09 and puts them in the game; the founder approves every asset in-engine |
 | Artist | To recruit (`docs/art/artist-brief.md`) | Model sheets, style frames, clean-up, hero props |
 | Performers | Family and friends, with consent | Rotoscope performances (if method B), barks |
 | The friend | The founder's friend | The voice score |
@@ -83,8 +83,8 @@ If a P0 row cannot be locked by 13 October (usually the readers or the scholar),
 ## How assets flow
 
 1. The need is written (the animation list, the takes list, the prop list).
-2. Made by a person (filmed, recorded, drawn) with consent and rights.
-3. Placed in `game/assets/...` by the agent with a `rights.md` row; nothing AI-generated at any step (lock F-01).
+2. Generated (image or audio model) or made by a person (filmed, recorded, drawn) with consent and rights.
+3. Placed in `game/assets/...` by the agent with a `rights.md` row naming the source, model and prompt (lock F-09).
 4. Reviewed in-engine, in context, never in isolation (the pose sheet, the scene render).
 5. The founder approves; the readers review anything cultural.
 

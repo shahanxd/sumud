@@ -62,7 +62,7 @@ Everything that cannot change once production starts, in one list. Production st
 
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
-| E-01 | Halal rules | No instruments; duff only at the wedding on the women's side; Quran as a full stop; no AI Quran, voices or music | LOCKED | P0 | Founder | gdd |
+| E-01 | Halal rules | No instruments; duff only at the wedding on the women's side; Quran as a full stop; no AI Quran and no AI music | LOCKED | P0 | Founder | gdd |
 | E-02 | School lens | Hanafi (Decision 3) | PROPOSED | P1 | Founder | gdd Decisions |
 | E-03 | Scripture moments | The design document's 22 items; two hadith re-checked in a browser before their cards ship | PROPOSED (design document; two pending checks) | P1 | Founder | gdd |
 | E-04 | Who recites | A local hafiz for tests, a Palestinian qari for launch, under a written licence; text only until then (Decision 8) | PROPOSED | P2 | Founder | gdd |
@@ -74,21 +74,21 @@ Everything that cannot change once production starts, in one list. Production st
 
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
-| F-01 | AI | Nothing AI-generated ships, enters the repository, the store page or marketing, or is given to a collaborator as a style target | LOCKED (30 Sep) |
-| F-09 | What counts as AI-generated | Recommended: the output of generative image, audio, voice or text models never ships. The world is drawn by code that an AI coding agent writes and the founder reviews; that is disclosed honestly on Steam's AI content survey, and public copy says "no generative AI art, audio or voices" rather than "no AI". The alternative is an artist redrawing the world too | OPEN | P0 | Founder | pipeline | P0 | Founder | art/direction |
+| F-01 | AI generation | Allowed for art, textures, props, animation frames, sound effects, ambience and reference, under F-09 (founder, 1 October 2026) | LOCKED (1 Oct) | P0 | Founder | decisions |
+| F-09 | Limits on AI generation | Never for Quran (text, or a licensed human reciter); never music or anything that imitates an instrument (E-01); never prompted on, trained on or traced from footage, photographs or likenesses of real Gazans or real victims; every generated asset is reviewed in-engine by the founder, culturally by the readers, and gets a `docs/rights.md` row naming the model; disclosed on Steam's AI content survey and on the store page as "some art and sound were made with generative AI tools and reviewed by people"; voices for characters only after the scholar's view on synthetic voices (G-02 to G-04) | PROPOSED | P0 | Founder, readers, scholar | art/direction |
 | F-02 | Art base | Silhouettes with colour carried by light | LOCKED | P0 | Founder | decisions |
-| F-03 | Character method | Chosen by the animation test: rotoscoped performance recommended, an artist's cut-out rig the alternative | OPEN (test) | P0 | Founder | art/direction |
+| F-03 | Character method | Chosen by the animation test: AI-generated silhouette frames (image model) now the first candidate, rotoscoped performance second, an artist's cut-out rig third | OPEN (test) | P0 | Founder | art/direction |
 | F-04 | An artist | Recruit one; credit above the fold; terms by the founder | OPEN | P0 | Founder | art/artist-brief |
 | F-05 | Faces and eyes | No eye-lights; profile and rim light | PROPOSED | P0 | Founder (style frames) | art/direction |
 | F-06 | Layla's headscarf | Designed on the model sheet; custom and colour from the readers; colour in silhouette decided on the style frames | OPEN | P0 | Founder, readers | art/direction |
-| F-07 | Style frames | Beach at the count, roof at maghrib, the dark street | OPEN | P0 | Artist or agent, founder | art/direction |
-| F-08 | World by code | Kept, with the critique's fixes and hand-drawn hero props | PROPOSED | P1 | Agent | art/direction |
+| F-07 | Style frames | Beach at the count, roof at maghrib, the dark street; generated with an image model from the art direction, chosen by the founder | OPEN (first draft 1 Oct, thumbnail only until the network allows the full file) | P0 | Agent, founder | art/style-frames |
+| F-08 | World | Code-built layout and light kept; surfaces, hero props and dressing from generated textures and silhouettes | PROPOSED | P1 | Agent | art/direction |
 
 ## G. Audio
 
 | ID | Decision | Answer | Status | P | Owner | Where |
 | --- | --- | --- | --- | --- | --- | --- |
-| G-01 | Sound course | Record voices, foley and ambience; synthesise only the drone and rumble | PROPOSED | P0 | Founder | audio/direction |
+| G-01 | Sound course | Generate foley, ambience and the strike with an audio model, record what sounds better (the friend, the adhan, the count); synthesise the drone and rumble | PROPOSED | P0 | Founder | audio/direction |
 | G-02 | The friend | Who they are, their voice, and where the scholar allows it | OPEN | P0 | Founder | audio/direction |
 | G-03 | Dialogue | Subtitled, Arabic over English; short recorded barks in Arabic; full voice acting after launch | PROPOSED | P0 | Founder | audio/direction |
 | G-04 | Who sings Layla's lines | A young girl with consent, or Teta speaks poetry (Decision 4) | OPEN | P1 | Founder, scholar | audio/direction |
@@ -132,7 +132,7 @@ Everything that cannot change once production starts, in one list. Production st
 | K-01 | Schedule | The launch moves for quality (LOCKED, 30 September). Proposed dates: lock by 13 October 2026; Day 1 slice by early December; launch no earlier than late 2027, dated at the Day 3 gate. Supersedes the design document's Production plan and Go-to-market dates | PROPOSED (dates) | P0 | Founder | pipeline |
 | K-02 | Budget | Readers are paid; the artist's and reciter's terms set by the founder; LaunchGood if money is needed | OPEN | P0 | Founder | pipeline |
 | K-03 | Charity | The War Child wording, a named charity with consent (Decision 5) | PROPOSED | P2 | Founder | gdd |
-| K-04 | Steamworks | Pay the fee and onboard; Coming Soon page from the slice's frames | OPEN | P1 | Founder | gdd |
+| K-04 | Steamworks | Pay the fee and onboard; Coming Soon page from the slice's frames; AI content survey filled in (F-09) | OPEN | P1 | Founder | gdd |
 | K-05 | Rating | PEGI 16 target, ESRB T; content warning written | PROPOSED | P2 | Founder | gdd |
 | K-06 | Source of truth | The repository (`docs/`) is canonical for any agent; the Claude Doc is the founder's reading copy, kept in sync | PROPOSED | P0 | Founder | HANDOFF |
 

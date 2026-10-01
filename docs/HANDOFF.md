@@ -4,11 +4,13 @@ Where SUMUD stands on 30 September 2026, and how to pick it up in a new session 
 
 ## Where we are
 
-**Stage: pre-production lock** (30 September to 13 October 2026). The first playable (a Day 1 sampler) is done and the founder has played it on Windows. Their verdict: "if my dream is v2.0, this is v0.2" — characters wooden, scarf and eyes weird, walk and jump weird, story dead, gameplay dry, cuts sudden, sounds weird. They asked to lock everything that cannot change before real production, and said yes to moving the launch date for quality. Nothing AI-generated is used for assets, even as placeholders. The plan: lock, then Day 1 as a vertical slice at shipping quality, then Day 3, then production (`docs/production/pipeline.md`).
+**Latest (1 October 2026, morning).** The founder allowed AI generation ("go ahead make it good"). The policy is flipped in `lock.md` (F-01 LOCKED, F-09 the limits), `art/direction.md`, `audio/direction.md` and `decisions.md`. First style frame generated (beach at the count) but only a thumbnail reached the repo: the cloud environment's network policy denies `*.canva.com` and `fal.media`, so full-resolution generated files cannot be downloaded until the founder widens Network access in the environment settings. In progress: a feel pass in `player.gd` and `camera_rig.gd` (coyote time, jump buffer, variable jump, skid, landing, camera lead, F3 tuning overlay); the sprite-import tool. Next: the other two style frames, Layla's model sheet and sprite frames, textures and hero props, generated foley.
+
+**Stage: pre-production lock** (30 September to 13 October 2026). The first playable (a Day 1 sampler) is done and the founder has played it on Windows. Their verdict: "if my dream is v2.0, this is v0.2" — characters wooden, scarf and eyes weird, walk and jump weird, story dead, gameplay dry, cuts sudden, sounds weird. They asked to lock everything that cannot change before real production, and said yes to moving the launch date for quality. The plan: lock, then Day 1 as a vertical slice at shipping quality, then Day 3, then production (`docs/production/pipeline.md`).
 
 **What is waiting on the founder:** answering the PROPOSED and OPEN rows of `docs/production/lock.md`, posting the calls in `docs/outreach.md` (artist, readers, performers), recording the friend, filming the animation test footage.
 
-**What the next agent does (backlog in `pipeline.md`, in order):** the feel pass in the first playable; `tools/roto.py` and the SpriteFrames import tool; the animation test scene; in-engine style frames; then the Day 1 slice once the lock is signed. Work that is the founder's (decisions, recruiting, recording, filming) is never done for them.
+**What the next agent does (backlog in `pipeline.md`, in order):** finish the feel pass; the SpriteFrames import tool and `tools/roto.py`; generate and key Layla's frames and replace the code rig for her; style frames 2 and 3; textures and props into the beach and street; generated foley into `game/assets/audio`; then the Day 1 slice once the lock is signed. Generation routes: Canva image generation (no credits, returns a thumbnail inline; full file needs network access) and Figma Weave models (Nano Banana, Veo, CassetteAI sound effects; each run needs the founder's approval in chat and spends their credits). Work that is the founder's (decisions, recruiting, recording, filming) is never done for them.
 
 ## Reading order
 
@@ -33,7 +35,7 @@ Scripture: sunnah.com is blocked from the cloud container, so Sahih al-Bukhari 1
 ## Rules (never broken)
 
 - **Halal.** No instruments, ever, and nothing imitating one. The duff only at the wedding, on the women's side. Quran only as a full stop: play paused, every bus silent, skip at ayah boundaries; audio only from a licensed human reciter, otherwise text. Women's dancing never shown; no romance on screen.
-- **No AI assets.** No AI-generated art, texture, audio, voice, Quran or music ships, enters the repository, appears in marketing, or is used as a style target (lock F-01).
+- **AI generation is allowed (1 October 2026)** for art, textures, props, animation frames, sound effects and ambience, within lock F-09: never Quran, never music or anything imitating an instrument, never prompted on or traced from footage or likenesses of real Gazans; founder and readers review every asset; a `docs/rights.md` row names the model; Steam AI disclosure. Character voices wait for the scholar.
 - **No combat.** The perpetrator is "they": present, faceless, never a character or target. Never write the colloquial Arabic word for "the Jews" (the design document, Tone and ethics).
 - **Sami's death** (Day 7) is aftermath only, never preventable, never a fail state, never caused by a player choice. Children's deaths may be shown as aftermath.
 - **Facts** are checked against `docs/research/13` to `18` before they go into the doc or the game. No invented real people on signs or in lines.
@@ -45,7 +47,7 @@ Scripture: sunnah.com is blocked from the cloud container, so Sahih al-Bukhari 1
 
 - Read this file and the reading order; run `bash tools/setup_linux.sh` then `bash tools/check.sh`; `git log --oneline -20` shows recent work.
 - The container reaches GitHub and package registries only (no sunnah.com, quran.com, Freesound, Kenney). Renders need `xvfb-run` and the compatibility renderer (`docs/tech/codebase.md`).
-- Update this file at the end of each session: the stage, what waits on the founder, what the next agent does. Record decisions in `docs/decisions.md` and lock status in `lock.md` the day they change.
+- **Commit after every batch of work and update this file's "Latest" paragraph in the same commit** (the founder asked for this on 1 October so the project can be handed to another agent at any moment). Also update it at the end of each session: the stage, what waits on the founder, what the next agent does. Record decisions in `docs/decisions.md` and lock status in `lock.md` the day they change.
 
 ## Status of the first playable (29 September 2026)
 

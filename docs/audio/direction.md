@@ -7,7 +7,7 @@ Status: the **halal rules and the voice-only score are LOCKED** (`docs/gdd.md`, 
 - No instruments, ever, and nothing that imitates one. The duff only at the wedding, on the women's side.
 - The score is human voices and the world: the friend's voice (a cappella lines, hums, held vowels layered into pads that must audibly be a voice), the adhan, the count, voices of the street.
 - Quran is a full stop: gameplay paused, every bus silent, text on screen with its reference, skip only at an ayah boundary; audio only from a human reciter under a written licence, otherwise text only. Never AI.
-- No AI-generated audio, voices, Quran or music ships or enters the repository.
+- No AI Quran, ever. No AI music or anything that imitates an instrument. Generated sound effects and ambience are allowed from 1 October 2026 (lock F-01, F-09); generated character voices wait for the scholar's view (G-02 to G-04).
 - A real, close strike on Day 3, then silence, ringing and dust. Day 7's strike is distant: a heavy rumble and dust over the road, no close impact. No sound under recitation.
 - Any spoken ayah (Teta's whisper on Day 3, the words at the gate on Day 7, the nikah on Day 10) is a full stop like a card: input paused, every bus silent including the drone and the rumble, the complete ayah, then play resumes.
 - The zanana: absent on Day 1, a first faint hum on Day 2, the bed of every siege day, gone on the final beach.
@@ -20,13 +20,13 @@ Status: the **halal rules and the voice-only score are LOCKED** (`docs/gdd.md`, 
 | The adhan (every phase turn) | A human muezzin or the friend, recorded with permission | None | **Record** fajr, dhuhr, asr, maghrib, isha |
 | The count to thirty | Many voices: family, friends, children with consent, layered | None | **Record** (Day 1 and Day 10 use it) |
 | Character voices (barks, laughter, calls, efforts) | Arabic speakers, ideally Palestinian, recorded | None | **Record** a small set per character (below); dialogue itself stays subtitled |
-| Foley (steps, cloth, paper, jerrycan, bread, doors, kites, knots) | Recorded by the founder with a phone or recorder in a quiet room | Synthesised | **Record**, replacing the synthesised files one for one |
-| Ambience (sea, wind, beach crowd, street, market, harbour) | Field recordings with provenance we can show (CC0 or our own), downloaded or recorded on the founder's machine (the cloud container cannot reach Freesound) | Synthesised sea and wind | **Replace** with field recordings; keep synthesis only to follow the wind field |
+| Foley (steps, cloth, paper, jerrycan, bread, doors, kites, knots) | Generated with an audio model (CassetteAI sound effects via Weave, about 2 credits a sound) or recorded by the founder; whichever sounds truer in the game | Synthesised | **Generate first**, replacing the synthesised files one for one; record what the model gets wrong |
+| Ambience (sea, wind, beach crowd, street, market, harbour) | Generated loops (audio model) or field recordings with provenance (CC0 or our own) | Synthesised sea and wind | **Replace** with generated or field loops; keep synthesis only to follow the wind field |
 | The drone, the rumble | Synthesised, because they follow a 0-to-1 intensity every frame | Synthesised | Keep; tune |
-| The strike | A recorded CC0 or licensed explosion (Sonniss, Freesound CC0), designed and layered | Synthesised | Replace before Day 3 is built |
+| The strike | A generated or CC0 explosion, designed and layered | Synthesised | Replace before Day 3 is built |
 | Quran and hadith cards | A human reciter under a written licence, or silence with text | Text only | Text only in the slice |
 
-Synthesis stays only where a sound must follow a parameter in real time. Everything else is recorded by people, which is also the honest answer to "no generative AI".
+Synthesis stays only where a sound must follow a parameter in real time. Everything else is generated or recorded, reviewed in the game, and listed in `docs/rights.md` with the model named.
 
 ## Recording plan
 

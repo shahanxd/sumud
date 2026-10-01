@@ -4,7 +4,7 @@ For the founder to send (edited as he likes) to an artist who might join SUMUD. 
 
 ## The game in one paragraph
 
-SUMUD is a short 2D narrative game about one family on one street in Gaza City over ten days, from a kite festival to a wedding held in a school courtyard. A twelve-year-old girl, Layla, flies kites. There is no combat. The look is silhouettes lit by scarce warm light, like Limbo and Inside, with colour carried by the sky, the sea and a few objects: kites, bread, fire, the red of tatreez. The score is human voices only. The game is made with Palestinian readers whose notes are binding, and nothing in it is AI-generated.
+SUMUD is a short 2D narrative game about one family on one street in Gaza City over ten days, from a kite festival to a wedding held in a school courtyard. A twelve-year-old girl, Layla, flies kites. There is no combat. The look is silhouettes lit by scarce warm light, like Limbo and Inside, with colour carried by the sky, the sea and a few objects: kites, bread, fire, the red of tatreez. The score is human voices only. The game is made with Palestinian readers whose notes are binding, and generated art is cleaned and judged by people.
 
 ## Why we need you
 
@@ -19,7 +19,7 @@ The world (skies, sea, buildings, light) is built by code and already looks righ
 
 ## Rules
 
-- Your own hand. No AI tools anywhere in the process, including for reference or ideas.
+- Generated images are part of the pipeline (model sheets, frames, props come out of image models); your job is design, clean-up, consistency and the things models get wrong. Say how you like to work with that.
 - No women's dancing, no romance, women covered outside the home; the readers and the founder review every character.
 - Reference from your own photographs, public-domain or CC0 material. Never trace a photographer's image or footage of real Gazans.
 - Delivery as PNG with transparency (and your source files), at twice game size, named as `docs/art/direction.md` specifies.
