@@ -317,6 +317,7 @@ func _animate(delta: float) -> void:
 	figure.load = load_kind()
 	figure.arm_up = kite_mode()
 	figure.airborne = not is_on_floor()
+	figure.vertical = velocity.y / maxf(absf(jump_velocity), 1.0)
 	figure.squash = land_squash
 	if sitting:
 		figure.pose = Figure.Pose.SIT

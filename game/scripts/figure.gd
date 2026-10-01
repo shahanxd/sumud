@@ -38,6 +38,9 @@ var load := -1
 ## Leading arm raised (flying the kite).
 var arm_up := false
 var airborne := false
+## Vertical speed as a fraction of the jump speed: negative rising, positive falling. Sprite rigs
+## pick the jump frame from it; the bone rig ignores it.
+var vertical := 0.0
 ## Landing squash from the owner (0 rest .. about 0.45 a heavy landing): the knees give
 ## and the body drops for a moment. Negative is the take-off stretch and leaves the pose alone.
 var squash := 0.0

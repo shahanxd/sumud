@@ -74,6 +74,20 @@ func _process(delta: float) -> void:
 	if cyclic and count > 0:
 		var cycle := fposmod(phase, TAU) / TAU
 		_sprite.frame = int(floor(cycle * float(count))) % count
+	elif _base == "jump" and anim.begins_with("jump") and count >= 6:
+		# Frames: crouch, take-off, rise, apex, fall, land. Pick by vertical speed.
+		_sprite.stop()
+		var idx := 4
+		if vertical < -0.7:
+			idx = 1
+		elif vertical < -0.25:
+			idx = 2
+		elif vertical < 0.25:
+			idx = 3
+		_sprite.frame = idx
+	elif _base == "land" and anim.begins_with("jump"):
+		_sprite.stop()
+		_sprite.frame = count - 1
 	elif _base == "idle" and not anim.begins_with("idle"):
 		# Standing with only a cycle to show: hold its first frame.
 		_sprite.stop()
@@ -127,6 +141,8 @@ func _pick_animation() -> String:
 			base = "idle"
 	if airborne and pose != Pose.SIT and pose != Pose.CRAWL:
 		base = "jump"
+	elif squash > 0.08 and base == "idle":
+		base = "land"
 	_base = base
 	var candidates: Array[String] = []
 	if arm_up:
@@ -138,7 +154,8 @@ func _pick_animation() -> String:
 	if load >= 0:
 		candidates.append(base + "_carry")
 	candidates.append(base)
-	if base == "jump":
+	if base == "jump" or base == "land":
+		candidates.append("jump")
 		candidates.append("run")
 		candidates.append("walk")
 	if base == "run":

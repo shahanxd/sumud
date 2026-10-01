@@ -1,6 +1,10 @@
 {
+  "crawl": null,
   "idle": null,
+  "idle_kite": null,
   "jump": null,
   "run": null,
-  "walk": null
+  "sit": null,
+  "walk": null,
+  "walk_twohand": null
 }
