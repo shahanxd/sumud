@@ -55,7 +55,7 @@ Scripture: sunnah.com is blocked from the cloud container, so Sahih al-Bukhari 1
 - **Facts** are checked against `docs/research/13` to `18` before they go into the doc or the game. No invented real people on signs or in lines.
 - **Made with, not for.** The Palestinian readers' notes are binding; no public build before they have read it.
 - **Every session ends** with `bash tools/check.sh` green and a commit pushed to `main` (no pull requests unless asked). Commit as the founder: `git -c user.name=shahanxd -c user.email=<the founder's email> commit`. No model identifiers in commit messages, code or docs, beyond any attribution trailer the session requires.
-- **Before handing a build over:** render through `main.tscn` at 1920x1010 and look at it; make sure bots walk every route; test a fresh clone with `tools/play.bat` in mind; tell the founder the route to the best minute (`docs/playtests/2026-09-29-founder.md`, Lessons).
+- **Launchers.** `tools\play.bat` and `tools\play.ps1` download Godot 4.7.2 for Windows into `bin\` on first run (the GitHub release zip holds both executables), import, then run; `--own-pace` and `--photosensitive` pass through. **Before handing a build over:** render through `main.tscn` at 1920x1010 and look at it; make sure bots walk every route; test a fresh clone with `tools/play.bat` in mind; tell the founder the route to the best minute (`docs/playtests/2026-09-29-founder.md`, Lessons).
 
 ## Switching agents
 
