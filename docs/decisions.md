@@ -36,3 +36,5 @@ Founder decisions, with the date. The design document holds the reasoning; this 
 | 2026-09-30 | The repository's `docs/` is the source of truth for any agent; the Claude Doc is the founder's reading copy | lock K-06 |
 | 2026-10-01 | AI generation allowed for art, textures, props, animation frames, sound effects and ambience ("ai generation allowed, go ahead make it good"); reverses the 30 September rule | lock F-01; limits proposed in F-09: no AI Quran, no AI music, nothing from real Gazans' footage or likeness, review, rights rows, Steam disclosure |
 | 2026-10-01 | Commit after every batch and update HANDOFF.md in the same commit, so the project can be handed to another agent at any time | founder's instruction |
+| 2026-10-01 | The playable's characters and hero props are generated images extracted through Canva previews and keyed by tools/roto.py; the bone rig stays as the fallback for anyone without frames | lock F-03 still PROPOSED for the founder to confirm by playing; method D in docs/art/direction.md |
+
