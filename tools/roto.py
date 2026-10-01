@@ -94,6 +94,8 @@ def _largest_components(mask: np.ndarray, keep_ratio: float = 0.02) -> np.ndarra
         return mask
     biggest = max(sizes)
     keep = {i + 1 for i, s in enumerate(sizes) if s >= biggest * keep_ratio}
+    if keep_ratio >= 1.0:
+        keep = {sizes.index(biggest) + 1}
     return np.isin(labels, list(keep))
 
 
@@ -133,13 +135,29 @@ def cmd_key(args: argparse.Namespace) -> None:
         m = _mask_for(f, args, plate)
         m = _dilate(_erode(m, args.clean), args.clean)          # open: drop specks
         m = _erode(_dilate(m, args.fill), args.fill)            # close: fill pin holes
-        m = _largest_components(m)
+        m = _largest_components(m, 1.0 if args.largest else 0.02)
         masks.append(m)
-    # one crop box for the whole animation, anchored at the lowest foot
     ys = [np.nonzero(m.any(axis=1))[0] for m in masks]
     xs = [np.nonzero(m.any(axis=0))[0] for m in masks]
     if any(len(y) == 0 for y in ys):
         sys.exit("roto: a frame keyed to nothing; adjust --lum, --diff or --alpha")
+    if args.per_frame:
+        # each frame on its own box, bottom-centred into one canvas: for jumps and poses whose
+        # rise the game supplies itself
+        boxes = [m[int(y[0]):int(y[-1]) + 1, int(x[0]):int(x[-1]) + 1] for m, y, x in zip(masks, ys, xs)]
+        cw = max(b.shape[1] for b in boxes) + 2 * args.pad
+        chh = max(b.shape[0] for b in boxes) + 2 * args.pad
+        padded: list[np.ndarray] = []
+        for b in boxes:
+            canvas = np.zeros((chh, cw), dtype=bool)
+            ox = (cw - b.shape[1]) // 2
+            oy = chh - args.pad - b.shape[0]
+            canvas[oy:oy + b.shape[0], ox:ox + b.shape[1]] = b
+            padded.append(canvas)
+        masks = padded
+        ys = [np.nonzero(m.any(axis=1))[0] for m in masks]
+        xs = [np.nonzero(m.any(axis=0))[0] for m in masks]
+    # one crop box for the whole animation, anchored at the lowest foot
     top = min(int(y[0]) for y in ys)
     bottom = max(int(y[-1]) for y in ys)
     left = min(int(x[0]) for x in xs)
@@ -214,6 +232,8 @@ def main() -> None:
     k.add_argument("--height", type=int, default=0, help="scale the crop box to this height")
     k.add_argument("--colour", default="0b0a14", help="silhouette colour, hex")
     k.add_argument("--hand", help="static hand position x,y in output pixels")
+    k.add_argument("--per-frame", dest="per_frame", action="store_true", help="crop each frame to its own box and bottom-align (jumps)")
+    k.add_argument("--largest", action="store_true", help="keep only the single biggest blob (a figure and what it holds)")
     k.set_defaults(fn=cmd_key)
 
     t = sub.add_parser("strip")
